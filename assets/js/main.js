@@ -94,13 +94,15 @@ $(function(){
 
 		setTimeout(function(){
 			var bgcolor = "#fff";
-			if($(".ace_gutter").css("background-color") != "undefined"){
-				bgcolor = $(".ace_gutter").css("background-color");
-			}
+			$(".ace_gutter").each(function(){
+				if($(this).css("background-color") != "undefined"){
+					bgcolor = $(this).css("background-color");
 
-			$("#console-editor").css("background-color", $(".ace_scroller").css("background-color"));
-			$("#console-editor").css("color", $(".ace_gutter").css("color"));
-	
+					$("#console-editor").css("background-color", $(".ace_scroller").css("background-color"));
+					$("#console-editor").css("color", $(this).css("color"));
+				}
+			});
+
 			$("#left").css("background-color", bgcolor);
 			$("#left").css("border-bottom-color", bgcolor);
 		}, 500);
