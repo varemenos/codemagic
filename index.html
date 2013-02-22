@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>codeMagic</title>
+
+		<meta name="author" content="http://varemenos.com">
+		<meta name="description" content="codeMagic - Online IDE for on-the-go HTML, CSS, Javascript web tests">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta property="og:site_name" content="codeMagic | AKLP.gr Projects">
+		<meta property="og:title" content="codeMagic - Online IDE for on-the-go HTML, CSS, Javascript web tests">
+		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
+
+		<link rel="stylesheet" href="assets/css/style.css?v=0.3.7.71">
+
+		<!--[if IE 7]>
+			<link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+		<![endif]-->
+	</head>
+	<body>
+
+	<div id="container">
+		<header>
+			<ul class="navigation float-left">
+				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.3.7</sub></a></h1>
+				<li class="seperator">&nbsp;</li>
+				<li data-selector="html" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle HTML panel visibility">HTML</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="css" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle CSS panel visibility">CSS</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="js" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle Javascript panel visibility">Javascript</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="console" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle Console panel visibility">Console</a><i class="icon-circle-blank"></i>
+				</li>
+				<li class="seperator">&nbsp;</li>
+				<li data-selector="options" class="toggler button">
+					<a class="hint hint--bottom" title="Settings" data-hint="Settings"><i class="icon-cog"></i></a>
+				</li>
+				<li id="update" class="button">
+					<a class="hint hint--bottom" title="Create" data-hint="Create"><i class="icon-play"></i></a>
+				</li>
+				<li class="button">
+					<a class="hint hint--bottom" title="Save" data-hint="Save"><i class="icon-save"></i></a>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+			<ul class="navigation float-right">
+				<li class="button">
+					<a class="hint hint--bottom" title="User Control Panel" data-hint="User Control Panel"><i class="icon-user"></i></a>
+				</li>
+				<li class="button">
+					<a class="hint hint--bottom" title="Sign In" data-hint="Sign In"><i class="icon-signin"></i></a>
+				</li>
+				<li class="button">
+					<a class="hint hint--bottom" title="Sign Out" data-hint="Sign Out"><i class="icon-off"></i></a>
+				</li>
+				<li data-selector="credits" class="toggler button">
+					<a class="hint hint--left" data-hint="Toggle Credits visibility"><i class="icon-info-sign"></i></a>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</header>
+		<div id="main" role="main">
+			<div id="left" class="region">
+				<div id="langs">
+					<section id="html">
+						<h1>HTML</h1>
+						<div class="editor-wrap">
+							<div id="html-editor" class="editor"></div>
+						</div>
+					</section>
+					<section id="css">
+						<h1>CSS</h1>
+						<div class="editor-wrap">
+							<div id="css-editor" class="editor"></div>
+						</div>
+					</section>
+					<section id="js">
+						<h1>JavaScript</h1>
+						<div class="editor-wrap">
+							<div id="js-editor" class="editor"></div>
+						</div>
+					</section>
+					<section id="console">
+						<h1>Console</h1>
+						<div class="editor-wrap">
+							<pre id="console-editor" class="editor"></pre>
+						</div>
+					</section>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="right" class="region">
+				<iframe id="iframe"></iframe>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div id="options" class="disabled popup">
+		<p>
+			<label for="pageTitle">Title:</label>
+			<br>
+			<input type="text" name="pageTitle" value="">
+		</p>
+
+		<p>
+			<label for="library">External Libraries:</label>
+			<br>
+			<select id="library" name="library" multiple>
+				<optgroup id="CSSlibrary" label="CSS Libraries">
+					<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
+					<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
+					<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
+				</optgroup>
+				<optgroup id="JSlibrary" label="Javascript Libraries">
+					<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">JQuery 1.9.1</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js">Prefixfree 1.0.7</option>
+					<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
+					<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
+				</optgroup>
+			</select>
+		</p>
+
+		<p>
+			<label for="theme">Color Scheme:</label>
+			<br>
+			<select id="theme" name="theme">
+				<option value="chrome">chrome</option>
+				<option value="clouds">clouds</option>
+				<option value="clouds_midnight">clouds_midnight</option>
+				<option value="cobalt">cobalt</option>
+				<option value="crimson_editor">crimson_editor</option>
+				<option value="dawn">dawn</option>
+				<option value="dreamweaver">dreamweaver</option>
+				<option value="eclipse">eclipse</option>
+				<option value="github">github</option>
+				<option value="idle_fingers">idle_fingers</option>
+				<option value="merbivore">merbivore</option>
+				<option value="merbivore_soft">merbivore_soft</option>
+				<option value="mono_industrial">mono_industrial</option>
+				<option value="monokai">monokai</option>
+				<option value="pastel_on_dark">pastel_on_dark</option>
+				<option value="solarized_dark">solarized_dark</option>
+				<option value="solarized_light">solarized_light</option>
+				<option value="textmate">textmate</option>
+				<option value="tomorrow">tomorrow</option>
+				<option value="tomorrow_night" selected>tomorrow_night</option>
+				<option value="tomorrow_night_blue">tomorrow_night_blue</option>
+				<option value="tomorrow_night_bright">tomorrow_night_bright</option>
+				<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
+				<option value="twilight">twilight</option>
+				<option value="vibrant_ink">vibrant_ink</option>
+			</select>
+		</p>
+
+		<button type="">Close</button>
+	</div>
+
+	<div id="credits" class="disabled popup">
+		<section>
+			<h1>#TODO, Issue Tracker, Credits, Notes etc</h1>
+			<p>
+				- Add more libraries (create an automated way to track library versions).<br>
+				- Create a credits page where the licenses of all the components used will be credited.<br>
+				- No user-specific functionality works so far (register, save etc), need to implement a back-end for it.<br>
+				- There is a click related issue with the top navigation buttons not activating.<br>
+				- Hopefully, when the back-end is ready, there could be a Github, Twitter and maybe facebook integration so the users won't have to register directly in the site.
+				- When switching color scheme and If the HTML panel is hidden, the theme's background doesn't apply to the panel wrapper, making it seem "broken".
+			</p>
+			<p>
+				- You can now use the get parameters (html, css, js, console) to visit the codeMagic with the selected panels enabled only. For example: <code>codemagic.aklp.gr?js&console</code>
+			</p>
+			<p>
+				Created by <a href="http://varemenos.com" title="Adonis K.">Adonis K.</a>, &copy; 2013
+			</p>
+		</section>
+	</div>
+
+	<div id="overlay"></div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
+		<script src="assets/js/plugins.js?v=0.3.7.71"></script>
+		<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/js/main.js?v=0.3.7.71"></script>
+
+		<script>
+			var _gaq=[['_setAccount','UA-18251681-12'],['_trackPageview']];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>		
+	</body>
+</html>
+
