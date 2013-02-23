@@ -142,7 +142,7 @@ $(function(){
 		var style;
 
 		if($("#markupSettings").val() === "markdown"){
-			content = markdown.toHTML(editors.html.getValue());
+			content = marked(editors.html.getValue());
 		}else{
 			content = editors.html.getValue();
 		}
