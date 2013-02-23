@@ -11,6 +11,7 @@
 1. Markup choices: HTML , Markdown
 2. Stylesheet choices: CSS, LESS
 3. Built-in Console
+4. Prettify your code automatically
 
 ## License
 Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License

@@ -123,6 +123,16 @@ $(function(){
 		$("head title").html($(this).val() + " - codeMagic");
 	});
 
+	// prettify code
+	$("#prettify").click(function(){
+		if($("#markupSettings").val() === "html"){
+			editors.html.setValue(style_html(editors.html.getValue()));
+		}
+
+		editors.css.setValue(css_beautify(editors.css.getValue()));
+		editors.js.setValue(js_beautify(editors.js.getValue()));
+	});
+
 	// update iframe
 	$("#update").click(function(){
 		// empty the console text
