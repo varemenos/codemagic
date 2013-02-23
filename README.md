@@ -15,7 +15,7 @@
 
 ### Support
 
-* Chrome 14
+* Chrome 14+
 * Firefox 3.6+
 * Internet Explorer 9+
 * Opera 10+
