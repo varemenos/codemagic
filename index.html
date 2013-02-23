@@ -14,7 +14,7 @@
 		<meta property="og:title" content="codeMagic - Online IDE for on-the-go HTML, CSS, Javascript web tests">
 		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
 
-		<link rel="stylesheet" href="assets/css/style.css?v=0.3.7.72">
+		<link rel="stylesheet" href="assets/css/style.css?v=0.3.8">
 
 		<!--[if IE 7]>
 			<link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
@@ -71,13 +71,23 @@
 			<div id="left" class="region">
 				<div id="langs">
 					<section id="html">
-						<h1>HTML</h1>
+						<h1>
+							<select id="markupSettings" name="markupSettings" class="dropdownSettings">
+								<option value="html">HTML</option>
+								<option value="markdown">Markdown</option>
+							</select>
+						</h1>
 						<div class="editor-wrap">
 							<div id="html-editor" class="editor"></div>
 						</div>
 					</section>
 					<section id="css">
-						<h1>CSS</h1>
+						<h1>
+							<select id="stylesheetSettings" name="stylesheetSettings" class="dropdownSettings">
+								<option value="css">CSS</option>
+								<option value="less">LESS</option>
+							</select>
+						</h1>
 						<div class="editor-wrap">
 							<div id="css-editor" class="editor"></div>
 						</div>
@@ -181,9 +191,9 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
-		<script src="assets/js/plugins.js?v=0.3.7.72"></script>
+		<script src="assets/js/plugins.js?v=0.3.8"></script>
 		<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/js/main.js?v=0.3.7.72"></script>
+		<script src="assets/js/main.js?v=0.3.8"></script>
 
 		<script>
 			var _gaq=[['_setAccount','UA-18251681-12'],['_trackPageview']];

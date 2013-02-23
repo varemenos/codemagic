@@ -607,6 +607,7 @@ header {
   margin: 0;
   padding: 0; }
   .navigation h1 {
+    display: block;
     font-size: 1em;
     float: left; }
     .navigation h1 a,
@@ -728,6 +729,18 @@ header {
       font-size: 1em;
       font-weight: normal;
       text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
+      #left #langs h1 .dropdownSettings,
+      #left #langs h1 .dropdownSettings:active {
+        margin-bottom: 0.5em;
+        color: #fff;
+        background-color: transparent;
+        border: none;
+        outline: 0; }
+        #left #langs h1 .dropdownSettings option,
+        #left #langs h1 .dropdownSettings option:active,
+        #left #langs h1 .dropdownSettings:active option,
+        #left #langs h1 .dropdownSettings:active option:active {
+          color: #222; }
     #left #langs .editor-wrap {
       height: 200px;
       -webkit-box-sizing: border-box;

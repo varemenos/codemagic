@@ -60,7 +60,7 @@ $(function(){
 	editors.js = ace.edit("js-editor");
 	editors.html = ace.edit("html-editor");
 
-	editors.html.getSession().setMode("ace/mode/html");
+	editors.html.getSession().setMode("ace/mode/"+$("#markupSettings").val());
 	editors.css.getSession().setMode("ace/mode/css");
 	editors.js.getSession().setMode("ace/mode/javascript");
 	
@@ -85,6 +85,16 @@ $(function(){
 		setTimeout(function(){
 			updateLayout();
 		}, 500);
+	});
+
+	// get markup type
+	$("#markupSettings").change(function(){
+		editors.html.getSession().setMode("ace/mode/"+$("#markupSettings").val());
+	});
+
+	// get stylesheet type
+	$("#stylesheetSettings").change(function(){
+		editors.css.getSession().setMode("ace/mode/"+$("#stylesheetSettings").val());
 	});
 
 	// editor theme
@@ -118,8 +128,28 @@ $(function(){
 		// empty the console text
 		$("#console-editor").html("");
 
-		var content = editors.html.getValue();
-		var style = editors.css.getValue();
+		var content;
+		var style;
+
+		if($("#markupSettings").val() === "markdown"){
+			content = markdown.toHTML(editors.html.getValue());
+		}else{
+			content = editors.html.getValue();
+		}
+
+		if($("#stylesheetSettings").val() === "less"){
+			var parser = new(less.Parser)();
+
+			parser.parse(editors.css.getValue(), function (e, tree) {
+				if (e){
+					console.log(e);
+				}
+				style = tree.toCSS();
+			});
+		}else{
+			style = editors.css.getValue();
+		}
+
 		var script = editors.js.getValue();
 		var pageTitle = $("#options input[name=pageTitle]").val();
 
