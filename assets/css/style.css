@@ -735,12 +735,14 @@ header {
         color: #fff;
         background-color: transparent;
         border: none;
-        outline: 0; }
+        outline: 0;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
         #left #langs h1 .dropdownSettings option,
         #left #langs h1 .dropdownSettings option:active,
         #left #langs h1 .dropdownSettings:active option,
         #left #langs h1 .dropdownSettings:active option:active {
-          color: #222; }
+          color: #222;
+          background-color: #fff; }
     #left #langs .editor-wrap {
       height: 200px;
       -webkit-box-sizing: border-box;
