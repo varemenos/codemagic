@@ -2,10 +2,6 @@ $(function(){
 	define([], function(require){
 		require("plugins");
 		require("libs/less");
-		require("libs/select2");
-		require("libs/beautify");
-		require("libs/beautify-css");
-		require("libs/beautify-html");
 
 		function resizeEditors(){
 			editors.html.resize();
@@ -54,14 +50,6 @@ $(function(){
 			$(".navigation li[data-selector=js]").addClass("enabled");
 		}
 
-		$("#theme").select2({
-			"width" : "100%"
-		});
-
-		$("#library").select2({
-			placeholder: "Select external Libraries",
-			"width" : "100%"
-		});
 
 		var editors = {};
 		editors.css = ace.edit("css-editor");
@@ -133,6 +121,10 @@ $(function(){
 
 		// prettify code
 		$("#prettify").click(function(){
+			require("libs/beautify");
+			require("libs/beautify-css");
+			require("libs/beautify-html");
+
 			if($("#markupSettings").val() === "html"){
 				editors.html.setValue(style_html(editors.html.getValue()));
 			}
@@ -230,6 +222,18 @@ $(function(){
 				$("#"+$(this).data("selector")).toggle();
 
 				setTheme($("#options #theme").val());
+			}
+
+			if($(this).find("a").data("hint") == "Settings"){
+				require("libs/select2");
+				$("#theme").select2({
+					"width" : "100%"
+				});
+
+				$("#library").select2({
+					placeholder: "Select external Libraries",
+					"width" : "100%"
+				});
 			}
 
 			setTimeout(function(){
