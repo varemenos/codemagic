@@ -121,16 +121,14 @@ $(function(){
 
 		// prettify code
 		$("#prettify").click(function(){
-			require("libs/beautify");
-			require("libs/beautify-css");
-			require("libs/beautify-html");
+			require(["libs/beautify", "libs/beautify-css", "libs/beautify-html"], function(){
+				if($("#markupSettings").val() === "html"){
+					editors.html.setValue(style_html(editors.html.getValue()));
+				}
 
-			if($("#markupSettings").val() === "html"){
-				editors.html.setValue(style_html(editors.html.getValue()));
-			}
-
-			editors.css.setValue(css_beautify(editors.css.getValue()));
-			editors.js.setValue(js_beautify(editors.js.getValue()));
+				editors.css.setValue(css_beautify(editors.css.getValue()));
+				editors.js.setValue(js_beautify(editors.js.getValue()));
+			});
 		});
 
 		// update iframe
@@ -225,14 +223,15 @@ $(function(){
 			}
 
 			if($(this).find("a").data("hint") == "Settings"){
-				require("libs/select2");
-				$("#theme").select2({
-					"width" : "100%"
-				});
+				require(["libs/select2"], function(){
+					$("#theme").select2({
+						"width" : "100%"
+					});
 
-				$("#library").select2({
-					placeholder: "Select external Libraries",
-					"width" : "100%"
+					$("#library").select2({
+						placeholder: "Select external Libraries",
+						"width" : "100%"
+					});
 				});
 			}
 
