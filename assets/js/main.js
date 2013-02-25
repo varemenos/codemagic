@@ -1,7 +1,15 @@
 $(function(){
 	define([], function(require){
-		require("plugins");
+		/* *******************************************************
+			Libraries
+		******************************************************* */
+
 		require("libs/less");
+		require("libs/jsuri");
+
+		/* *******************************************************
+			Functions
+		******************************************************* */
 
 		function resizeEditors(){
 			editors.html.resize();
@@ -21,60 +29,84 @@ $(function(){
 			editors.js.setTheme("ace/theme/"+theme);
 		}
 
-		var prmarr = window.location.search.substr(1).split ("&");
-		var params = [];
-		var panels = ['html', 'css', 'js', 'console'];
-
-		for (i = 0; i < prmarr.length; i++) {
-			var tmparr = prmarr[i].split("=");
-			params.push(tmparr[0]);
+		function enablePanel(id){
+			$("#"+id).show();
+			$(".navigation li[data-selector="+id+"]").addClass("enabled");
 		}
 
-		if(params[0] !== ""){
-			for(i = 0; i < panels.length; i++){
-				if($.inArray(panels[i], params) < 0){
-					$("#"+panels[i]).hide();
-					$(".navigation li[data-selector="+panels[i]+"]").removeClass("enabled");
-				}else{
-					$("#"+panels[i]).show();
-					$(".navigation li[data-selector="+panels[i]+"]").addClass("enabled");
-				}
-			}
-		}else{
+		function disablePanel(id){
+			$("#"+id).hide();
+			$(".navigation li[data-selector="+id+"]").removeClass("enabled");
+		}
+
+		/* *******************************************************
+			Uri parsing
+		******************************************************* */
+
+		var uri = new Uri(window.location).queryPairs;
+
+		if(uri.length === 0){
 			$("#html").show();
 			$("#css").show();
 			$("#js").show();
-			$("#console").hide();
 			$(".navigation li[data-selector=html]").addClass("enabled");
 			$(".navigation li[data-selector=css]").addClass("enabled");
 			$(".navigation li[data-selector=js]").addClass("enabled");
+		}else{
+			for(var param in uri){
+				if(uri[param][0] === "data"){
+					// AJAX load of data
+					// localStorage backup of data
+				}else{
+					enablePanel(uri[param][0]);
+				}
+			}
 		}
 
+		/* *******************************************************
+			Editors
+		******************************************************* */
 
 		var editors = {};
+
+		// initialize editors to targeted ids
 		editors.css = ace.edit("css-editor");
 		editors.js = ace.edit("js-editor");
 		editors.html = ace.edit("html-editor");
 
+		// editor syntax highlighting modes
 		editors.html.getSession().setMode("ace/mode/"+$("#markupSettings").val());
 		editors.css.getSession().setMode("ace/mode/css");
 		editors.js.getSession().setMode("ace/mode/javascript");
-		
+
+		// editor tab size
 		editors.html.getSession().setTabSize(4);
 		editors.css.getSession().setTabSize(4);
 		editors.js.getSession().setTabSize(4);
-		
+
+		// hide vertical print line
 		editors.html.setShowPrintMargin(false);
 		editors.css.setShowPrintMargin(false);
 		editors.js.setShowPrintMargin(false);
 
+		// editor word wrapping mode
 		editors.html.getSession().setUseWrapMode(true);
 		editors.css.getSession().setUseWrapMode(true);
 		editors.js.getSession().setUseWrapMode(true);
 
+		/* *******************************************************
+		******************************************************* */
+
+		// get default theme
 		setTheme($("#options #theme").val());
+		// set enabled panels' toggling anchors as 'enabled'
 		$(".navigation li input:not(:checked)").parent().removeClass("enabled");
+		// call updateLayout
 		updateLayout();
+
+		/* *******************************************************
+			Events
+		******************************************************* */
 
 		// on window resize, redraw layout
 		$(window).resize(function(){
@@ -149,7 +181,7 @@ $(function(){
 
 					parser.parse(editors.css.getValue(), function (e, tree) {
 						if (e){
-							console.log(e);
+							$("#console-editor").append("<code>> "+e.message+"</code><br>");
 						}
 						style = tree.toCSS();
 					});
