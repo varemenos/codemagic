@@ -46,15 +46,50 @@ $(function(){
 		var uri = new Uri(window.location).queryPairs;
 
 		if(uri.length === 0){
-			$("#html").show();
-			$("#css").show();
-			$("#js").show();
-			$(".navigation li[data-selector=html]").addClass("enabled");
-			$(".navigation li[data-selector=css]").addClass("enabled");
-			$(".navigation li[data-selector=js]").addClass("enabled");
+			enablePanel("html");
+			enablePanel("css");
+			enablePanel("js");
 		}else{
 			for(var param in uri){
-				if(uri[param][0] === "data"){
+				if(uri[param][0] == "view"){
+					// display selected views
+						// h = html
+						// j = javascript
+						// c = css
+						// k = konsole
+						// all = h+j+c+k
+						// l = less
+						// m = markdown
+						// examples : view=hc, view=lm, view=all, view=hcjk
+					var temp = uri[param][1].split('');
+					for(i = 0; i < temp.length; i++){
+						if(temp[i] == "h"){
+							enablePanel("html");
+						}else if(temp[i] == "c"){
+							enablePanel("css");
+						}else if(temp[i] == "j"){
+							enablePanel("js");
+						}else if(temp[i] == "k"){
+							enablePanel("console");
+						}else if(temp[i] == "m"){
+							enablePanel("html");
+							$("#markupSettings").val("markdown");
+						}else if(temp[i] == "l"){
+							enablePanel("css");
+							$("#stylesheetSettings").val("less");
+						}else if(uri[param][1] == "all"){
+							enablePanel("html");
+							enablePanel("css");
+							enablePanel("js");
+							enablePanel("console");
+						}else{
+							disablePanel("html");
+							disablePanel("css");
+							disablePanel("js");
+							disablePanel("console");
+						}
+					}
+				}else if(uri[param[0]] === "data"){
 					// AJAX load of data
 					// localStorage backup of data
 				}else{
