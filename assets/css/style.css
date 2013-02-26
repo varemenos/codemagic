@@ -736,7 +736,7 @@ header {
       font-weight: normal; }
       #left #langs h1 a,
       #left #langs h1 a:visited {
-        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5); }
+        text-shadow: 0 0 3px #999999; }
       #left #langs h1 a:hover {
         color: #fff;
         cursor: pointer;
@@ -746,21 +746,8 @@ header {
       #left #langs h1 .settingsWrap {
         display: none;
         position: absolute;
-        top: 0; }
-      #left #langs h1 .dropdownSettings,
-      #left #langs h1 .dropdownSettings:active {
-        margin-bottom: 0.5em;
-        color: #fff;
-        background-color: transparent;
-        border: none;
-        outline: 0;
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
-        #left #langs h1 .dropdownSettings option,
-        #left #langs h1 .dropdownSettings option:active,
-        #left #langs h1 .dropdownSettings:active option,
-        #left #langs h1 .dropdownSettings:active option:active {
-          color: #222;
-          background-color: #fff; }
+        top: 0;
+        z-index: 15; }
     #left #langs .editor-wrap {
       height: 200px;
       -webkit-box-sizing: border-box;
