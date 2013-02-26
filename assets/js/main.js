@@ -200,7 +200,7 @@ $(function(){
 
 		// toggle editor language type settings visibility
 		$("section h1 a").click(function(){
-			$(this).next().toggle();
+			$(this).toggleClass("enabled").next().toggle();
 		});
 
 		// get markup type
@@ -208,6 +208,7 @@ $(function(){
 			editors.html.getSession().setMode("ace/mode/"+$("#markupSettings").val());
 			$("#selectedMarkup").html($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1));
 			$(this).parent().hide();
+			$(this).parents().eq(1).find("a").removeClass("enabled");
 		});
 
 		// get stylesheet type
@@ -215,6 +216,7 @@ $(function(){
 			editors.css.getSession().setMode("ace/mode/"+$("#stylesheetSettings").val());
 			$("#selectedStylesheet").html($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1));
 			$(this).parent().hide();
+			$(this).parents().eq(1).find("a").removeClass("enabled");
 		});
 
 		// editor theme
@@ -223,9 +225,11 @@ $(function(){
 			setTheme(selectedTheme);
 
 			setTimeout(function(){
+				var fontcolor = "#222";
 				var bgcolor = "#fff";
 				$(".ace_gutter").each(function(){
 					if($(this).css("background-color") != "undefined"){
+						fontcolor = $(this).css("color");
 						bgcolor = $(this).css("background-color");
 
 						$("#console-editor").css("background-color", $(".ace_scroller").css("background-color"));
@@ -234,6 +238,7 @@ $(function(){
 				});
 
 				$("#left").css("background-color", bgcolor);
+				$("section h1").css("color", fontcolor);
 				$("#left").css("border-bottom-color", bgcolor);
 			}, 500);
 		});

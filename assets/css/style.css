@@ -733,15 +733,16 @@ header {
       padding: 0 1em 1em 1em; }
     #left #langs h1 {
       font-size: 1em;
-      font-weight: normal;
-      text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
+      font-weight: normal; }
       #left #langs h1 a,
       #left #langs h1 a:visited {
-        color: #222;
         text-shadow: 0 0 3px rgba(255, 255, 255, 0.5); }
       #left #langs h1 a:hover {
         color: #fff;
-        cursor: pointer; }
+        cursor: pointer;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }
+      #left #langs h1 a.enabled {
+        color: #ffee96; }
       #left #langs h1 .settingsWrap {
         display: none;
         position: absolute;
