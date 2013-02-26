@@ -14,14 +14,14 @@
 		<meta property="og:title" content="codeMagic - Online IDE for on-the-go HTML, CSS, Javascript web tests">
 		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
 
-		<link rel="stylesheet" href="assets/css/style.css?v=0.3.8.4">
+		<link rel="stylesheet" href="assets/css/style.css?v=0.3.9.0">
 	</head>
 	<body>
 
 	<div id="container">
 		<header>
 			<ul class="navigation float-left">
-				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.3.7</sub></a></h1>
+				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.3.9</sub></a></h1>
 				<li class="seperator">&nbsp;</li>
 				<li data-selector="html" class="toggler withtext">
 					<a class="hint hint--bottom" data-hint="Toggle HTML panel visibility">HTML</a><i class="icon-circle-blank"></i>
@@ -42,6 +42,9 @@
 				<li class="button">
 					<a class="hint hint--bottom" data-hint="Fork"><i class="icon-food"></i></a>
 				</li>
+				<li id="fullscreen" class="button">
+					<a class="hint hint--bottom" data-hint="Fullscreen"><i class="icon-fullscreen"></i></a>
+				</li>
 				<li class="button">
 					<a class="hint hint--bottom" data-hint="Save"><i class="icon-save"></i></a>
 				</li>
@@ -59,11 +62,13 @@
 			</ul>
 			<ul class="navigation float-right">
 				<li class="button">
-					<a class="hint hint--bottom" data-hint="User Control Panel"><i class="icon-user"></i></a>
+					<a class="hint hint--bottom" data-hint="User Control Panel"><i class="icon-user"></i> Username</a>
 				</li>
-				<li class="button">
-					<a class="hint hint--bottom" data-hint="Sign In"><i class="icon-signin"></i></a>
-				</li>
+				<!--
+					<li class="button">
+						<a class="hint hint--bottom" data-hint="Sign In"><i class="icon-signin"></i></a>
+					</li>
+				-->
 				<li class="button">
 					<a class="hint hint--bottom" data-hint="Sign Out"><i class="icon-off"></i></a>
 				</li>
@@ -78,37 +83,49 @@
 				<div id="langs">
 					<section id="html">
 						<h1>
-							<select id="markupSettings" name="markupSettings" class="dropdownSettings">
-								<option value="html">HTML</option>
-								<option value="markdown">Markdown</option>
-							</select>
+							<span id="selectedMarkup">Html</span>
+							<a><span class="hint hint--bottom" data-hint="Select between HTML or Markdown"><i class="icon-cog"></i></span></a>
+							<span class="settingsWrap">
+								<select id="markupSettings" name="markupSettings" class="dropdownSettings">
+									<option value="html">Html</option>
+									<option value="markdown">Markdown</option>
+								</select>
+							</span>
 						</h1>
 						<div class="editor-wrap">
 							<div id="html-editor" class="editor"></div>
 						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 					<section id="css">
 						<h1>
-							<select id="stylesheetSettings" name="stylesheetSettings" class="dropdownSettings">
-								<option value="css">CSS</option>
-								<option value="less">LESS</option>
-							</select>
+							<span id="selectedStylesheet">Css</span>
+							<a><span class="hint hint--bottom" data-hint="Select between CSS or LESS"><i class="icon-cog"></i></span></a>
+							<span class="settingsWrap">
+								<select id="stylesheetSettings" name="stylesheetSettings" class="dropdownSettings">
+									<option value="css">Css</option>
+									<option value="less">Less</option>
+								</select>
+							</span>
 						</h1>
 						<div class="editor-wrap">
 							<div id="css-editor" class="editor"></div>
 						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 					<section id="js">
 						<h1>JavaScript</h1>
 						<div class="editor-wrap">
 							<div id="js-editor" class="editor"></div>
 						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 					<section id="console">
 						<h1>Console</h1>
 						<div class="editor-wrap">
 							<pre id="console-editor" class="editor"></pre>
 						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 				</div>
 				<div class="clearfix"></div>
@@ -134,7 +151,7 @@
 				<optgroup id="CSSlibrary" label="CSS Libraries">
 					<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
 					<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
-					<option value="http://yui.yahooapis.com/3.8.4/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.4</option>
+					<option value="http://yui.yahooapis.com/3.9.0/build/cssreset/cssreset-min.css">YUI Reset.css 3.9.0</option>
 				</optgroup>
 				<optgroup id="JSlibrary" label="Javascript Libraries">
 					<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">JQuery 1.9.1</option>
@@ -198,9 +215,8 @@
 	<div id="overlay"></div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 		<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-		<script data-main="assets/js/main" src="assets/js/libs/require.js?v=0.3.8.4"></script>
+		<script data-main="assets/js/main" src="assets/js/libs/require.js"></script>
 
 		<script>
 			var _gaq=[['_setAccount','UA-18251681-12'],['_trackPageview']];

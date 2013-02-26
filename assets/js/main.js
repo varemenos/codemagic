@@ -20,7 +20,8 @@ $(function(){
 		function updateLayout(){
 			resizeEditors();
 			$("#console-editor").css("margin-left", $(".ace_gutter-layer").width());
-			$("#right").height($("#left").height());
+			$(".editor-resizer").css("margin-left", $(".ace_gutter-layer").width());
+			$("#main").height($("#container").height() - $("header").height() - 4);
 		}
 
 		function setTheme(theme){
@@ -39,18 +40,40 @@ $(function(){
 			$(".navigation li[data-selector="+id+"]").removeClass("enabled");
 		}
 
+		function enableDefaultPanels(){
+			enablePanel("html");
+			enablePanel("css");
+			enablePanel("js");
+		}
+
+		function toggleFullscreen(){
+			if($("#fullscreen").hasClass("enabled")){
+				$("#fullscreen").removeClass("enabled");
+				$("#left").show();
+				$("#right").css("width", "50%");
+			}else{
+				$("#fullscreen").addClass("enabled");
+				$("#left").hide();
+				$("#right").css("width", "100%");
+			}
+		}
+
 		/* *******************************************************
 			Uri parsing
 		******************************************************* */
 
 		var uri = new Uri(window.location).queryPairs;
 
+		// #TODO: consider alternative way of implementing this:
+			// uri = new Uri(window.location);
+			// if(uri.getQueryParamValue("view") != undefined){
+				// do view checks
+			// }
+
 		if(uri.length === 0){
-			enablePanel("html");
-			enablePanel("css");
-			enablePanel("js");
+			enableDefaultPanels();
 		}else{
-			for(var param in uri){
+			for(var param = 0; param < uri.length; param++){
 				if(uri[param][0] == "view"){
 					// display selected views
 						// h = html
@@ -61,6 +84,7 @@ $(function(){
 						// l = less
 						// m = markdown
 						// examples : view=hc, view=lm, view=all, view=hcjk
+					// #TODO: use views to calculate amount of panels enabled, and toggle Height classes(ie: twoHorizontal, threeVertical, etc)
 					var temp = uri[param][1].split('');
 					for(i = 0; i < temp.length; i++){
 						if(temp[i] == "h"){
@@ -78,20 +102,17 @@ $(function(){
 							enablePanel("css");
 							$("#stylesheetSettings").val("less");
 						}else if(uri[param][1] == "all"){
-							enablePanel("html");
-							enablePanel("css");
-							enablePanel("js");
+							enableDefaultPanels();
 							enablePanel("console");
-						}else{
-							disablePanel("html");
-							disablePanel("css");
-							disablePanel("js");
-							disablePanel("console");
 						}
 					}
-				}else if(uri[param[0]] === "data"){
+				}else if(uri[param][0] == "data"){
+					enableDefaultPanels();
 					// AJAX load of data
 					// localStorage backup of data
+				}else if(uri[param][0] == "fullscreen"){
+					enableDefaultPanels();
+					toggleFullscreen();
 				}else{
 					enablePanel(uri[param][0]);
 				}
@@ -130,6 +151,7 @@ $(function(){
 		editors.js.getSession().setUseWrapMode(true);
 
 		/* *******************************************************
+			Other
 		******************************************************* */
 
 		// get default theme
@@ -143,6 +165,32 @@ $(function(){
 			Events
 		******************************************************* */
 
+		// Resizing editors{
+			var resize = false,
+				resizeTarget = {
+					height : 0,
+					id : ""
+				};
+
+			$(".editor-resizer").mousedown(function(e){
+				resize = e.pageY;
+				resizeTarget.id = $(this).parent().prop("id");
+				resizeTarget.height = $("#"+resizeTarget.id).find(".editor-wrap").height();
+			});
+
+			$(document).mouseup(function(e){
+				resize = false;
+				resizeTarget.height = $("#"+resizeTarget.id).height();
+				updateLayout();
+			});
+
+			$(document).mousemove(function(e){
+				if(resize){
+					$("#"+resizeTarget.id).find(".editor-wrap").height(resizeTarget.height + event.pageY - resize);
+				}
+			});
+		// }
+
 		// on window resize, redraw layout
 		$(window).resize(function(){
 			setTimeout(function(){
@@ -150,14 +198,23 @@ $(function(){
 			}, 500);
 		});
 
+		// toggle editor language type settings visibility
+		$("section h1 a").click(function(){
+			$(this).next().toggle();
+		});
+
 		// get markup type
 		$("#markupSettings").change(function(){
 			editors.html.getSession().setMode("ace/mode/"+$("#markupSettings").val());
+			$("#selectedMarkup").html($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1));
+			$(this).parent().hide();
 		});
 
 		// get stylesheet type
 		$("#stylesheetSettings").change(function(){
 			editors.css.getSession().setMode("ace/mode/"+$("#stylesheetSettings").val());
+			$("#selectedStylesheet").html($(this).val().charAt(0).toUpperCase() + $(this).val().slice(1));
+			$(this).parent().hide();
 		});
 
 		// editor theme
@@ -184,6 +241,11 @@ $(function(){
 		// change title
 		$("#options input[name=pageTitle]").change(function(){
 			$("head title").html($(this).val() + " - codeMagic");
+		});
+
+		// fullscreen mode
+		$("#fullscreen").click(function(){
+			toggleFullscreen();
 		});
 
 		// prettify code
@@ -256,19 +318,12 @@ $(function(){
 
 				var iframe = document.getElementById("iframe");
 
-				// Modern browsers
-				if(iframe.contentDocument){
-					doc = iframe.contentDocument;
-				}else
-				// IE6-IE7
-				if(iframe.contentWindow){
-					doc = iframe.contentWindow;
-				}
 
-				// open, write results and close the iframe
-				doc.open();
-				doc.write(result);
-				doc.close();
+				// create, open, write result and close the iframe document
+				iDoc = iframe.contentDocument;
+				iDoc.open();
+				iDoc.write(result);
+				iDoc.close();
 
 				// height fix
 				$("iframe").css("height", "100%");
