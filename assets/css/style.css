@@ -790,16 +790,26 @@ header {
   padding: 1em; }
 
 .popup {
+  -webkit-transition: 150ms ease;
+  -moz-transition: 150ms ease;
+  -o-transition: 150ms ease;
+  -ms-transition: 150ms ease;
+  transition: 150ms ease;
   display: none;
   position: absolute;
   z-index: 100;
   width: 50%;
-  top: 30%;
-  left: 30%;
+  top: -15000px;
+  left: 0;
   padding: 1em;
   background-color: #fff;
   border: 5px solid #eeeeee;
   box-shadow: 0 0 5px #999999; }
+  .popup input[type=text] {
+    padding: 0.15em;
+    background-color: #fff;
+    border: 1px solid #999999;
+    box-shadow: 0 0 3px #cccccc inset; }
   .popup p {
     margin: 1em 0; }
 
