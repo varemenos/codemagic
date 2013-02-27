@@ -19,6 +19,14 @@ $(function(){
 
 		function updateLayout(){
 			resizeEditors();
+
+			$(".popup").each(function(){
+				$(this).css({
+					"top" : (($(window).height() - $(".popup").height()) / 2) + "px",
+					"left" : (($(window).width() - $(".popup").width()) / 2) + "px"
+				});
+			});
+
 			$("#console-editor").css("margin-left", $(".ace_gutter-layer").width());
 			$(".editor-resizer").css("margin-left", $(".ace_gutter-layer").width());
 			$("#main").height($("#container").height() - $("header").height() - 4);
@@ -371,9 +379,9 @@ $(function(){
 			$(".navigation .toggler[data-selector=options]")
 				.removeClass("enabled")
 				.find("input[type=checkbox]").prop("checked", false);
-			
+
 			$("#options").fadeOut("150");
-			
+
 			setTheme($("#options #theme").val());
 		});
 	});
