@@ -485,64 +485,6 @@ fieldset {
 textarea {
   resize: vertical; }
 
-form {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  *behavior: url(assets/js/boxsizing.htc);
-  border: 1px solid transparent; }
-  form fieldset,
-  form input,
-  form button,
-  form textarea,
-  form label,
-  form legend,
-  form select,
-  form option,
-  form optgroup {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    *behavior: url(assets/js/boxsizing.htc);
-    margin: 0;
-    border: 1px solid transparent; }
-  form fieldset {
-    border: 1px solid #999999;
-    padding: 0 0.5em; }
-  form fieldset,
-  form input,
-  form textarea,
-  form legend,
-  form select,
-  form option,
-  form optgroup {
-    display: block; }
-  form button,
-  form input[type="checkbox"],
-  form input[type="radio"],
-  form input[type="submit"] {
-    display: inline-block; }
-  form input,
-  form button,
-  form textarea,
-  form select,
-  form optgroup {
-    margin: 0 0 0.5em 0;
-    padding: 0.25em 0.5em; }
-  form option,
-  form optgroup {
-    padding: 0; }
-  form input,
-  form button,
-  form textarea,
-  form select,
-  form option,
-  form optgroup {
-    border: 1px solid #999999;
-    vertical-align: middle; }
-
 @font-face {
   font-family: "AmaranthRegular";
   src: url("../../assets/fonts/Amaranth-webfont.eot");

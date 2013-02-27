@@ -265,11 +265,22 @@ $(function(){
 		$("#prettify").click(function(){
 			require(["libs/beautify", "libs/beautify-css", "libs/beautify-html"], function(){
 				if($("#markupSettings").val() === "html"){
-					editors.html.setValue(style_html(editors.html.getValue()));
+					editors.html.setValue(style_html(editors.html.getValue()), {
+						'brace_style': 'collapse',
+						'indent_size': 4,
+						'indent_char': '\t',
+						'unformatted': []
+					});
 				}
 
-				editors.css.setValue(css_beautify(editors.css.getValue()));
-				editors.js.setValue(js_beautify(editors.js.getValue()));
+				editors.css.setValue(css_beautify(editors.css.getValue()), {
+					'indent_size': 4,
+					'indent_char': '\t'
+				});
+				editors.js.setValue(js_beautify(editors.js.getValue()), {
+					'jslint_happy': true,
+					'brace_style' : 'collapse'
+				});
 			});
 		});
 
@@ -380,7 +391,7 @@ $(function(){
 				.removeClass("enabled")
 				.find("input[type=checkbox]").prop("checked", false);
 
-			$("#options").fadeOut("150");
+			$("#options").hide();
 
 			setTheme($("#options #theme").val());
 		});
