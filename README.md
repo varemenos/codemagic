@@ -31,7 +31,7 @@ Visiting the url above will load codeMagic with JavaScript and Console panels vi
 * k = konsole
 * l = less
 * m = markdown
-* all (h + j + c + k)
+* all = [h, j, c, k]
 
 #### examples:
 
@@ -126,5 +126,7 @@ The output will look like this:
 * Safari 4+
 
 ## License
-Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
-[![Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode)
+
+codeMagic by [Adonis K.](http://varemenos.com) is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+
+[![Creative Commons License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
