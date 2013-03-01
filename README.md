@@ -4,7 +4,7 @@
 
 ## About
 
-[codeMagic](http://codemagic.gr) is an online IDE for on-the-go HTML, CSS, Javascript web tests. It includes a built-in console and various other features!
+[codeMagic](http://codemagic.gr) is an online playground IDE for on-the-go HTML, CSS, Javascript. It includes a built-in console and various other features!
 
 ### Features
 
@@ -12,6 +12,7 @@
 2. Stylesheet choices: CSS, LESS
 3. Built-in Console
 4. Prettify your code automatically
+5. Many CSS and JS libraries to choose from
 
 ## codeMagic's url parameters
 
