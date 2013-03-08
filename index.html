@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>codeMagic</title>
+
+		<meta name="author" content="http://varemenos.com">
+		<meta name="description" content="codeMagic.gr is an online playground-IDE for HTML, CSS, Javascript. It includes a built-in console and various other features!">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta property="og:site_name" content="codeMagic.gr">
+		<meta property="og:title" content="codeMagic.gr - online playground-IDE for HTML, CSS, Javascript">
+		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
+
+		<link rel="stylesheet" href="assets/css/style.css?v=0.4.0.19">
+	</head>
+	<body>
+
+	<div id="container">
+		<header>
+			<ul class="navigation float-left">
+				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.4.0</sub></a></h1>
+				<li class="seperator">&nbsp;</li>
+				<li data-selector="html" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle HTML panel visibility">HTML</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="css" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle CSS panel visibility">CSS</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="js" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle Javascript panel visibility">Javascript</a><i class="icon-circle-blank"></i>
+				</li>
+				<li data-selector="console" class="toggler withtext">
+					<a class="hint hint--bottom" data-hint="Toggle Console panel visibility">Console</a><i class="icon-circle-blank"></i>
+				</li>
+				<li class="seperator">&nbsp;</li>
+				<li data-selector="social" id="share" class="toggler button">
+					<a class="hint hint--bottom" data-hint="Share"><i class="icon-share"></i></a>
+				</li>
+				<li class="button">
+					<a class="hint hint--bottom" data-hint="Fork [doesn't work yet]"><i class="icon-food"></i></a>
+				</li>
+				<li id="fullscreen" class="button">
+					<a class="hint hint--bottom" data-hint="Fullscreen"><i class="icon-fullscreen"></i></a>
+				</li>
+				<li id="save" class="button">
+					<a class="hint hint--bottom" data-hint="Save [doesn't work yet]"><i class="icon-save"></i></a>
+				</li>
+				<li id="download" class="button">
+					<a class="hint hint--bottom" data-hint="Download Project as .zip"><i class="icon-download-alt"></i></a>
+				</li>
+				<li class="seperator">&nbsp;</li>
+				<li data-selector="options" class="toggler button">
+					<a class="hint hint--bottom" data-hint="Settings"><i class="icon-cog"></i></a>
+				</li>
+				<li id="prettify" class="button">
+					<a class="hint hint--bottom" data-hint="Prettify Code"><i class="icon-magic"></i></a>
+				</li>
+				<li id="liveUpdate" class="button">
+					<a class="hint hint--bottom" data-hint="Automatically update results [doesn't work yet]"><i class="icon-refresh icon-spin"></i></a>
+				</li>
+				<li id="update" class="button">
+					<a class="hint hint--bottom" data-hint="Execute"><i class="icon-play"></i></a>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+			<ul class="navigation float-right">
+				<li class="button">
+					<a class="hint hint--left" data-hint="User Control Panel [doesn't work yet]"><i class="icon-user"></i> Control Panel</a>
+				</li>
+				<!--
+					<li class="button">
+						<a class="hint hint--left" data-hint="Sign In"><i class="icon-signin"></i></a>
+					</li>
+				-->
+				<li class="button">
+					<a class="hint hint--left" data-hint="Sign Out [doesn't work yet]"><i class="icon-off"></i></a>
+				</li>
+				<li data-selector="Information" class="toggler button">
+					<a class="hint hint--left" data-hint="Information"><i class="icon-info-sign"></i></a>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</header>
+		<div id="main" role="main">
+			<div id="left" class="region">
+				<div id="langs">
+					<section id="html">
+						<h1>
+							<span id="selectedMarkup">Html</span>
+							<a><span class="hint hint--bottom" data-hint="Select between HTML or Markdown"><i class="icon-cog"></i></span></a>
+							<span class="settingsWrap">
+								<select id="markupSettings" name="markupSettings" class="dropdownSettings">
+									<option value="html">Html</option>
+									<option value="markdown">Markdown</option>
+								</select>
+							</span>
+						</h1>
+						<div class="editor-wrap">
+							<div id="html-editor" class="editor"></div>
+						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
+					</section>
+					<section id="css">
+						<h1>
+							<span id="selectedStylesheet">Css</span>
+							<a><span class="hint hint--bottom" data-hint="Select between CSS or LESS"><i class="icon-cog"></i></span></a>
+							<span class="settingsWrap">
+								<select id="stylesheetSettings" name="stylesheetSettings" class="dropdownSettings">
+									<option value="css">Css</option>
+									<option value="less">Less</option>
+								</select>
+							</span>
+						</h1>
+						<div class="editor-wrap">
+							<div id="css-editor" class="editor"></div>
+						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
+					</section>
+					<section id="js">
+						<h1>JavaScript</h1>
+						<div class="editor-wrap">
+							<div id="js-editor" class="editor"></div>
+						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
+					</section>
+					<section id="console">
+						<h1>Console</h1>
+						<div class="editor-wrap">
+							<pre id="console-editor" class="editor"></pre>
+						</div>
+						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
+					</section>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div id="right" class="region">
+				<iframe id="iframe"></iframe>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div id="options" class="popup">
+		<p>
+			<label for="pageTitle">Title:</label>
+			<br>
+			<input type="text" name="pageTitle" value="">
+		</p>
+		<p>
+			<label for="pageDescription">Description:</label>
+			<br>
+			<textarea name="pageDescription"></textarea>
+		</p>
+
+		<p>
+			<label for="fontSize">Font Size</label>
+			<br>
+			<select name="fontSize">
+				<option value="10">10px</option>
+				<option value="11">11px</option>
+				<option value="12" selected>12px</option>
+				<option value="13">13px</option>
+				<option value="14">14px</option>
+				<option value="15">15px</option>
+				<option value="16">16px</option>
+				<option value="17">17px</option>
+				<option value="18">18px</option>
+				<option value="19">19px</option>
+				<option value="20">20px</option>
+				<option value="21">21px</option>
+				<option value="22">22px</option>
+				<option value="23">23px</option>
+				<option value="24">24px</option>
+				<option value="25">25px</option>
+				<option value="26">26px</option>
+				<option value="27">27px</option>
+				<option value="28">28px</option>
+				<option value="29">29px</option>
+				<option value="30">30px</option>
+				<option value="31">31px</option>
+				<option value="32">32px</option>
+				
+			</select>
+		</p>
+
+		<p>
+			<label for="library">External Libraries:</label>
+			<br>
+			<select id="library" name="library" multiple>
+				<optgroup id="CSSlibrary" label="CSS Libraries">
+					<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
+					<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
+					<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css">FontAwesome 3.0.2</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css">Twitter Bootstrap CSS 2.3.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 2.3.0 (No Icons)</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 2.3.0 (responsive)</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
+				</optgroup>
+				<optgroup id="JSlibrary" label="Javascript Libraries">
+					<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" selected>JQuery 1.9.1</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js">JQueryUI 1.10.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.4.0/coffee-script.min.js">CoffeeScript 1.4.0</option>
+					<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
+					<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js">Backbone.js 0.9.10</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js">Twitter Bootstrap JS 2.3.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
+					<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
+				</optgroup>
+			</select>
+		</p>
+
+		<p>
+			<label for="theme">Color Scheme:</label>
+			<br>
+			<select id="theme" name="theme">
+				<optgroup label="Bright">
+					<option value="clouds">clouds</option>
+					<option value="chrome">chrome</option>
+					<option value="crimson_editor">crimson_editor</option>
+					<option value="dawn">dawn</option>
+					<option value="dreamweaver">dreamweaver</option>
+					<option value="eclipse">eclipse</option>
+					<option value="github">github</option>
+					<option value="solarized_light">solarized_light</option>
+					<option value="textmate">textmate</option>
+					<option value="tomorrow">tomorrow</option>
+				</optgroup>
+				<optgroup label="Dark">
+					<option value="clouds_midnight">clouds_midnight</option>
+					<option value="cobalt">cobalt</option>
+					<option value="idle_fingers">idle_fingers</option>
+					<option value="merbivore">merbivore</option>
+					<option value="merbivore_soft">merbivore_soft</option>
+					<option value="mono_industrial">mono_industrial</option>
+					<option value="monokai">monokai</option>
+					<option value="pastel_on_dark">pastel_on_dark</option>
+					<option value="solarized_dark">solarized_dark</option>
+					<option value="tomorrow_night" selected>tomorrow_night</option>
+					<option value="tomorrow_night_blue">tomorrow_night_blue</option>
+					<option value="tomorrow_night_bright">tomorrow_night_bright</option>
+					<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
+					<option value="twilight">twilight</option>
+					<option value="vibrant_ink">vibrant_ink</option>
+				</optgroup>
+			</select>
+		</p>
+
+		<button class="closeButton">&times;</button>
+	</div>
+
+	<div id="Information" class="popup">
+		<section>
+			<h1>Information</h1>
+			<p style="margin-bottom: 0;">
+				<a href="https://github.com/varemenos/codemagic" title="Source">Source</a><br>
+				<a href="https://github.com/varemenos/codemagic/issues" title="Report Bugs">Report Bugs</a><br>
+				<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" title="License">License</a><br><br>
+				<span>There is a lot to be done (like attribution of libraries used, licensing, TOS etc).</span><br><br>
+				<span>Designed, developed and maintained by <a href="http://varemenos.com" title="Adonis K.">Adonis K.</a>, &copy; 2013</span>
+			</p>
+
+			<button class="closeButton">&times;</button>
+		</section>
+	</div>
+
+	<div id="social" class="popup">
+		<a href="./" class="facebook" title="Share on Facebook" target="_blank">
+			<i class="icon-facebook"></i><span>Share on Facebook</span>
+		</a>
+		<a href="./" class="twitter" title="Tweet on Twitter" target="_blank">
+			<i class="icon-twitter"></i><span>Tweet on Twitter</span>
+		</a>
+
+		<button class="closeButton">&times;</button>
+	</div>
+
+	<div id="overlay"></div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script> var require = { urlArgs: "v=0.4.0.19" }; </script>
+		<script data-main="assets/js/main" src="assets/js/libs/require.js"></script>
+		<script src="assets/js/ace/ace.js?v=0.4.0.19"></script>	
+	</body>
+</html>
+
