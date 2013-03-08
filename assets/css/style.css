@@ -485,15 +485,17 @@ fieldset {
 textarea {
   resize: vertical; }
 
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
 @font-face {
   font-family: "AmaranthRegular";
   src: url("../../assets/fonts/Amaranth-webfont.eot");
   src: url("../../assets/fonts/Amaranth-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Amaranth-webfont.woff") format("woff"), url("../../assets/fonts/Amaranth-webfont.ttf") format("truetype"), url("../../assets/fonts/Amaranth-webfont.svg#AmaranthRegular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
-h1 {
-  margin: 0; }
 
 html,
 body,
@@ -761,6 +763,11 @@ header {
     color: #222; }
   .popup input[type=text],
   .popup textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    *behavior: url(assets/js/boxsizing.htc);
     padding: 0.15em;
     background-color: #fff;
     border: 1px solid #aaaaaa;
@@ -814,8 +821,8 @@ header {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   *behavior: url(assets/js/boxsizing.htc);
-  z-index: 999;
   position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -837,7 +844,7 @@ header {
   position: absolute;
   top: 1em;
   right: 1em;
-  background-color: #FFF;
+  background-color: #fff;
   border: 1px solid #cccccc;
   -webkit-box-shadow: 0 0 3px #cccccc;
   -moz-box-shadow: 0 0 3px #cccccc;
@@ -845,8 +852,8 @@ header {
 
 .closeButton:focus,
 .closeButton:hover {
-  color: #FFF;
-  background-color: #DA0000;
+  color: #fff;
+  background-color: #da0000;
   border: 1px solid #da0000;
   -webkit-box-shadow: 0 0 3px #da0000, 0 0 3px #da0000 inset;
   -moz-box-shadow: 0 0 3px #da0000, 0 0 3px #da0000 inset;
@@ -2558,9 +2565,7 @@ disabled look for already selected choices in the results dropdown
 .ir {
   background-color: transparent;
   border: 0;
-  overflow: hidden;
-  /* IE 6/7 fallback */
-  *text-indent: -9999px; }
+  overflow: hidden; }
 
 .ir:before {
   content: "";
@@ -2628,13 +2633,6 @@ disabled look for already selected choices in the results dropdown
 .clearfix:after {
   clear: both; }
 
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.clearfix {
-  *zoom: 1; }
-
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -2693,3 +2691,5 @@ disabled look for already selected choices in the results dropdown
   h2,
   h3 {
     page-break-after: avoid; } }
+img, object, embed {
+  max-width: 100%; }
