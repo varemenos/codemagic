@@ -497,6 +497,10 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-weight: normal;
   font-style: normal; }
 
+-webkit-full-screen #langs > section {
+  width: 100% !important;
+  height: 100% !important; }
+
 html,
 body,
 #container {
@@ -665,7 +669,15 @@ header {
       *behavior: url(assets/js/boxsizing.htc);
       position: relative;
       padding: 0 1em 1em 1em; }
+      #left #langs > section .editorFullscreen {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.75em;
+        background-color: transparent;
+        border: none; }
     #left #langs h1 {
+      position: relative;
       font-size: 1em;
       font-weight: normal;
       color: #c5c8c6; }

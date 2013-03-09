@@ -53,9 +53,17 @@ $(function () {
 					}
 				},
 				user : {
-					username : "adonisk",
-					email : "aklp08@gmail.com"
+					username : "",
+					email : ""
 				}
+				// ,
+				// app : {
+				// 	callback : "",
+				// 	client_id : "e6e5f5a47b9cd7502cbe",
+				// 	client_secret : "84a3a4ef6281f981322dfb072a06907e05a612da",
+				// 	random_id : genId(16),
+				// 	scope : "user,gist"
+				// }
 			};
 
 			/* *******************************************************
@@ -156,6 +164,7 @@ $(function () {
 					$("#console-editor").css("color", $(this).css("color"));
 					$("#left").css("background-color", bgcolor);
 					$("#left section h1").css("color", fontcolor);
+					$("#left section h1 .editorFullscreen").css("color", fontcolor);
 					$("#left").css("border-bottom-color", bgcolor);
 
 					// force a layout update
@@ -248,6 +257,30 @@ $(function () {
 				}
 			}
 
+			function toggleEditorFullscreen(selected){
+				var target = document.getElementById(selected+"-editor");
+
+				if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+					if (target.requestFullscreen) {
+						target.requestFullscreen();
+					} else if (target.mozRequestFullScreen) {
+						target.mozRequestFullScreen();
+					} else if (target.webkitRequestFullscreen) {
+						target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				} else {
+					if (document.cancelFullScreen) {
+						document.cancelFullScreen();
+					} else if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					} else if (document.webkitCancelFullScreen) {
+						document.webkitCancelFullScreen();
+					}
+				}
+
+				updateLayout();
+			}
+
 			/* *******************************************************
 				Uri parsing
 			******************************************************* */
@@ -329,6 +362,38 @@ $(function () {
 						// get enabled editors
 						// AJAX load of data
 						// localStorage backup of data
+					} else
+					// if the selected query is "code"
+					if (uri[param][0] == "code") {
+						if(new Uri(window.location).getQueryParamValue('state') === localStorage.getItem("random_id")){
+							// store the code returned
+							state.app.code = uri[param][1];
+
+							$.getJSON(
+								"https://github.com/login/oauth/access_token?callback=?",
+								{
+									client_id : state.app.client_id,
+									client_secret :  state.app.client_secret,
+									code :  state.app.code
+								}, function (res){
+									console.log(res);
+								}
+							);
+
+							// var request = new XMLHttpRequest();
+							// request.open("GET", "https://github.com/login/oauth/access_token?callback=codeMagic", true);
+							// request.send("client_id="+state.app.client_id + "&client_secret=" + state.app.client_secret + "&code=" + state.app.code + "&accept=" + "json");
+							// request.onreadystatechange = function(){
+							//	if(request.readyState === 4){
+							//		if(request.status === 200){
+							//				console.log(request.responseText);
+							//			}
+							//		}
+							//	};
+						}else{
+							// TODO: remove alert and add this in the notification system
+							alert("There was a problem concerning your authentication request.\nPlease contact the development team!");
+						}
 					} else
 					// if the selected query is "fullscreen"
 					if (uri[param][0] == "fullscreen") {
@@ -492,6 +557,13 @@ $(function () {
 				state.panels.css.mode = $("#markupSettings").val();
 			});
 
+			// when the click event happens on the #fullscreen element
+			$(".editorFullscreen").click(function () {
+				// toggle the fullscreen mode
+				var selected = $(this).parents().eq(1).attr("id");
+				toggleEditorFullscreen(selected);
+			});
+
 			// when the change event happens on the #options element
 			$("#options #theme").change(function () {
 				// change the theme to the current value
@@ -527,6 +599,14 @@ $(function () {
 			// when the click event happens on the #save element
 			$("#save").click(function() {
 				// Send state object to server
+			});
+
+			// when the click event happens on the #auth element
+			$("#auth").click(function() {
+				// create the authentication request link
+				// state.app.auth_link = "https://github.com/login/oauth/authorize?client_id=" + state.app.client_id + "&client_secret=" + state.app.client_secret + "&state=" + state.app.random_id + "&scope=" + state.app.scope;
+				// localStorage.setItem("random_id", state.app.random_id);
+				// window.location = state.app.auth_link;
 			});
 
 			// when the click event happens on the #share element

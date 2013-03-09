@@ -14,14 +14,14 @@
 		<meta property="og:title" content="codeMagic.gr - online playground-IDE for HTML, CSS, Javascript">
 		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
 
-		<link rel="stylesheet" href="assets/css/style.css?v=0.4.0.19">
+		<link rel="stylesheet" href="assets/css/style.css?v=0.4.1.1">
 	</head>
 	<body>
 
 	<div id="container">
 		<header>
 			<ul class="navigation float-left">
-				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.4.0</sub></a></h1>
+				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.4.1</sub></a></h1>
 				<li class="seperator">&nbsp;</li>
 				<li data-selector="html" class="toggler withtext">
 					<a class="hint hint--bottom" data-hint="Toggle HTML panel visibility">HTML</a><i class="icon-circle-blank"></i>
@@ -67,17 +67,15 @@
 				<div class="clearfix"></div>
 			</ul>
 			<ul class="navigation float-right">
-				<li class="button">
+				<!-- <li class="button">
 					<a class="hint hint--left" data-hint="User Control Panel [doesn't work yet]"><i class="icon-user"></i> Control Panel</a>
+				</li> -->
+				<li id="auth" class="button">
+					<a class="hint hint--left" data-hint="Authorize via Github [doesn't work yet]"><i class="icon-github"></i> Sign in</a>
 				</li>
-				<!--
-					<li class="button">
-						<a class="hint hint--left" data-hint="Sign In"><i class="icon-signin"></i></a>
-					</li>
-				-->
-				<li class="button">
+				<!-- <li class="button">
 					<a class="hint hint--left" data-hint="Sign Out [doesn't work yet]"><i class="icon-off"></i></a>
-				</li>
+				</li> -->
 				<li data-selector="Information" class="toggler button">
 					<a class="hint hint--left" data-hint="Information"><i class="icon-info-sign"></i></a>
 				</li>
@@ -97,6 +95,7 @@
 									<option value="markdown">Markdown</option>
 								</select>
 							</span>
+							<a class="editorFullscreen hint hint--bottom" data-hint="turn Fullscreen on for this editor"><span><i class="icon-fullscreen"></i></span></a>
 						</h1>
 						<div class="editor-wrap">
 							<div id="html-editor" class="editor"></div>
@@ -113,6 +112,7 @@
 									<option value="less">Less</option>
 								</select>
 							</span>
+							<a class="editorFullscreen hint hint--bottom" data-hint="turn Fullscreen on for this editor"><span><i class="icon-fullscreen"></i></span></a>
 						</h1>
 						<div class="editor-wrap">
 							<div id="css-editor" class="editor"></div>
@@ -120,14 +120,20 @@
 						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 					<section id="js">
-						<h1>JavaScript</h1>
+						<h1>
+							<span>JavaScript</span>
+							<a class="editorFullscreen hint hint--bottom" data-hint="turn Fullscreen on for this editor"><span><i class="icon-fullscreen"></i></span></a>
+						</h1>
 						<div class="editor-wrap">
 							<div id="js-editor" class="editor"></div>
 						</div>
 						<div class="editor-resizer"><i class="icon-resize-vertical"></i></div>
 					</section>
 					<section id="console">
-						<h1>Console</h1>
+						<h1>
+							<span>Console</span>
+							<a class="editorFullscreen hint hint--bottom" data-hint="turn Fullscreen on for this editor"><span><i class="icon-fullscreen"></i></span></a>
+						</h1>
 						<div class="editor-wrap">
 							<pre id="console-editor" class="editor"></pre>
 						</div>
@@ -291,9 +297,9 @@
 	<div id="overlay"></div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script> var require = { urlArgs: "v=0.4.0.19" }; </script>
+		<script> var require = { urlArgs: "v=0.4.1.1" }; </script>
 		<script data-main="assets/js/main" src="assets/js/libs/require.js"></script>
-		<script src="assets/js/ace/ace.js?v=0.4.0.19"></script>	
+		<script src="assets/js/ace/ace.js?v=0.4.1.1"></script>
 	</body>
 </html>
 
