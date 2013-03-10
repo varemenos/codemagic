@@ -345,7 +345,7 @@ header{
 
 
 #social{
-	padding: 1em;
+	padding: 1em 1em 0.5em 1em;
 
 	a,
 	a:visited{
@@ -353,6 +353,7 @@ header{
 		text-decoration: none;
 		color: #222;
 		margin-right: 0.5em;
+		margin-bottom: 0.5em;
 		background-color: #eee;
 		border: 1px solid #ccc;
 		-webkit-box-shadow: 0 0 3px #ccc;
@@ -373,9 +374,21 @@ header{
 		color: #1ab2e8;
 	}
 
+	a.linkedin i{
+		color: #0073b2;
+	}
+
+	a.pinterest i{
+		color: #cc2127;
+	}
+
+
+	a.google-plus i{
+		color: #dd4b39;
+	}
+
 	a.facebook i{
 		color: #3b5998;
-		padding: 0.5em 0.75em;
 	}
 
 	a:focus,

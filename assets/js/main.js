@@ -592,9 +592,15 @@ $(function () {
 			// when the click event happens on the #share element
 			$("#share").click(function () {
 				// change the value of the .twitter anchor to match the current page
-				$("#social").find("a.twitter").attr("href", 'http://twitter.com/home?status=' + state.settings.title + ' ' + window.location.href + ' from @code_Magic');
+				$("#social").find("a.twitter").attr("href", "http://twitter.com/home?status=" + state.settings.title + " " + window.location.href + " from @code_Magic");
 				// change the value of the .facebook anchor to match the current page
-				$("#social").find("a.facebook").attr("href", 'http://www.facebook.com/sharer.php?u=' + window.location.href);
+				$("#social").find("a.facebook").attr("href", "http://www.facebook.com/sharer.php?u=" + window.location.href);
+				// change the value of the .google-plus anchor to match the current page
+				$("#social").find("a.google-plus").attr("href", "https://plus.google.com/share?url=" + window.location.href + "&title=" + state.settings.title);
+				// change the value of the .linkedin anchor to match the current page
+				$("#social").find("a.linkedin").attr("href", "http://www.linkedin.com/shareArticle?mini=true&url=" + window.location.href + "&title=" + state.settings.title + "&summary=" + state.settings.description + "&source=http://codeMagic.gr");
+				// change the value of the .pinterest anchor to match the current page
+				$("#social").find("a.pinterest").attr("href", "http://pinterest.com/pin/create/bookmarklet/?url=" + window.location.href + "&is_video=false&description=" + state.settings.title);
 			});
 
 			// when the click event happens on the #prettify element

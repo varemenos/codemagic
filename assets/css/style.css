@@ -792,13 +792,14 @@ header {
     margin: 1em 0; }
 
 #social {
-  padding: 1em; }
+  padding: 1em 1em 0.5em 1em; }
   #social a,
   #social a:visited {
     display: inline-block;
     text-decoration: none;
     color: #222;
     margin-right: 0.5em;
+    margin-bottom: 0.5em;
     background-color: #eee;
     border: 1px solid #cccccc;
     -webkit-box-shadow: 0 0 3px #cccccc;
@@ -814,9 +815,14 @@ header {
       padding: 0.5em; }
   #social a.twitter i {
     color: #1ab2e8; }
+  #social a.linkedin i {
+    color: #0073b2; }
+  #social a.pinterest i {
+    color: #cc2127; }
+  #social a.google-plus i {
+    color: #dd4b39; }
   #social a.facebook i {
-    color: #3b5998;
-    padding: 0.5em 0.75em; }
+    color: #3b5998; }
   #social a:focus,
   #social a:hover {
     background-color: #fff;
