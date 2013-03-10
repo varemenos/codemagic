@@ -166,9 +166,6 @@ $(function () {
 					$("#left section h1 .editorFullscreen").css("color", fontcolor);
 					$("#left").css("border-bottom-color", bgcolor);
 
-					console.log(bgcolor);
-					console.log($("#left").css("background-color"));
-
 					// force a layout update
 					updateLayout();
 				}, 500);
