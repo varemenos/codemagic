@@ -706,10 +706,13 @@ header {
       box-sizing: border-box;
       *behavior: url(assets/js/boxsizing.htc);
       position: relative; }
+    #left #langs #console .js-error {
+      color: #da0000; }
+    #left #langs #console .editor-wrap {
+      margin-left: 3em; }
     #left #langs #console-editor {
       overflow-x: hidden;
       overflow-y: scroll;
-      margin-left: 3em;
       padding: 1em;
       font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace;
       font-size: 0.8em;
@@ -722,9 +725,19 @@ header {
     width: 100%; }
 
 #right {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  *behavior: url(assets/js/boxsizing.htc);
   position: relative;
   background-color: #fff; }
   #right iframe {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    *behavior: url(assets/js/boxsizing.htc);
     border: none;
     width: 100%; }
 
@@ -850,6 +863,7 @@ header {
   background-color: rgba(255, 255, 255, 0.3); }
 
 .editor-resizer {
+  margin-left: 3em;
   font-size: 0.7em;
   text-align: center;
   color: #111;

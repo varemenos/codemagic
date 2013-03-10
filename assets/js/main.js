@@ -86,7 +86,7 @@ $(function () {
 				});
 
 				// align the console and editor resizing bars with the editors
-				$("#console-editor").css("margin-left", maxMargin);
+				$("#console .editor-wrap").css("margin-left", maxMargin);
 				$(".editor-resizer").css("margin-left", maxMargin);
 
 				// set the height of main equal to the height of the container (which is 100%) minus the height of the header
@@ -662,9 +662,9 @@ $(function () {
 						externalScript += '<script src="' + jsLibraries[i] + '"></script>';
 					}
 
-					var logger = '<script>var console={};console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="&nbsp;&nbsp;&nbsp;&nbsp;"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
-					var head = '<!doctype html><html><head><meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="' + state.settings.description + '"><meta name="author" content="' + state.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
-					var body = '<body>' + content + externalScript + logger + '<script>' + script + '</script></body></html>';
+					var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")}; console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+					var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="' + state.settings.description + '"><meta name="author" content="' + state.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
+					var body = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
 					var result = head + body;
 

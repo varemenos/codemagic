@@ -252,10 +252,19 @@ header{
 			position: relative;
 		}
 
+		#console{
+			.js-error{
+				color: #da0000;
+			}
+
+			.editor-wrap{
+				margin-left: 3em;
+			}
+		}
+
 		#console-editor{
 			overflow-x: hidden;
 			overflow-y: scroll;
-			margin-left: 3em;
 			padding: 1em;
 			font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Consolas', monospace;
 			font-size: 0.8em;
@@ -277,10 +286,12 @@ header{
 }
 
 #right{
+	@include border-box;
 	position: relative;
 	background-color: #fff;
 
 	iframe{
+		@include border-box;
 		border: none;
 		width: 100%;
 	}
@@ -419,6 +430,7 @@ header{
 }
 
 .editor-resizer{
+	margin-left: 3em;
 	font-size: 0.7em;
 	text-align: center;
 	color: #111;
