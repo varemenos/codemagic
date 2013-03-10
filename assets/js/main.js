@@ -155,7 +155,6 @@ $(function () {
 						if ($(this).css("background-color") != "undefined" && $(this).parents().eq(2).css("display") !== "none") {
 							fontcolor = $(this).css("color");
 							bgcolor = $(this).css("background-color");
-
 						}
 					});
 
@@ -166,6 +165,9 @@ $(function () {
 					$("#left section h1").css("color", fontcolor);
 					$("#left section h1 .editorFullscreen").css("color", fontcolor);
 					$("#left").css("border-bottom-color", bgcolor);
+
+					console.log(bgcolor);
+					console.log($("#left").css("background-color"));
 
 					// force a layout update
 					updateLayout();
@@ -820,6 +822,3 @@ $(function () {
 	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	s.parentNode.insertBefore(g,s);}(document,'script'));
 });
-
-
-

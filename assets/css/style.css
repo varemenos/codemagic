@@ -603,8 +603,9 @@ header {
       color: #222; }
   .navigation li.toggler:active,
   .navigation li.button:active {
-    color: #222;
-    background-color: #ffe966; }
+    -webkit-box-shadow: 0 0 1em #666666 inset;
+    -moz-box-shadow: 0 0 1em #666666 inset;
+    box-shadow: 0 0 1em #666666 inset; }
   .navigation li.seperator {
     cursor: default !important;
     padding: 0.5em; }
