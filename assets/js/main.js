@@ -56,14 +56,6 @@ $(function () {
 					username : "",
 					email : ""
 				}
-				// ,
-				// app : {
-				// 	callback : "",
-				// 	client_id : "e6e5f5a47b9cd7502cbe",
-				// 	client_secret : "84a3a4ef6281f981322dfb072a06907e05a612da",
-				// 	random_id : genId(16),
-				// 	scope : "user,gist"
-				// }
 			};
 
 			/* *******************************************************
@@ -368,27 +360,16 @@ $(function () {
 							// store the code returned
 							state.app.code = uri[param][1];
 
-							// $.getJSON(
-							// 	"https://github.com/login/oauth/access_token?callback=?",
-							// 	{
-							// 		client_id : state.app.client_id,
-							// 		client_secret :  state.app.client_secret,
-							// 		code :  state.app.code
-							// 	}, function (res){
-							// 		console.log(res);
-							// 	}
-							// );
-
-							// var request = new XMLHttpRequest();
-							// request.open("GET", "https://github.com/login/oauth/access_token?callback=codeMagic", true);
-							// request.send("client_id="+state.app.client_id + "&client_secret=" + state.app.client_secret + "&code=" + state.app.code + "&accept=" + "json");
-							// request.onreadystatechange = function(){
-							//	if(request.readyState === 4){
-							//		if(request.status === 200){
-							//				console.log(request.responseText);
-							//			}
+							//	$.getJSON(
+							//		"https://github.com/login/oauth/access_token?callback=?",
+							//		{
+							//			client_id : state.app.client_id,
+							//			client_secret :  state.app.client_secret,
+							//			code :  state.app.code
+							//		}, function (res){
+							//			console.log(res);
 							//		}
-							//	};
+							//	);
 						}else{
 							// TODO: remove alert and add this in the notification system
 							alert("There was a problem concerning your authentication request.\nPlease contact the development team!");
