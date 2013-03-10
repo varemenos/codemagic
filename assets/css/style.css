@@ -671,12 +671,15 @@ header {
       position: relative;
       padding: 0 1em 1em 1em; }
       #left #langs > section .editorFullscreen {
+        color: #C5C8C6;
         position: absolute;
         top: 0;
         right: 0;
         font-size: 0.75em;
         background-color: transparent;
         border: none; }
+      #left #langs > section .editorFullscreen.enabled {
+        color: #C5C8C6; }
     #left #langs h1 {
       position: relative;
       font-size: 1em;
