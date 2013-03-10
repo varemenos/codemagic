@@ -160,7 +160,7 @@ $(function () {
 
 					// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
 					$("#console-editor").css("background-color", $(".ace_scroller").css("background-color"));
-					$("#console-editor").css("color", $(this).css("color"));
+					$("#console-editor").css("color", $(".ace_gutter").css("color"));
 					$("#left").css("background-color", bgcolor);
 					$("#left section h1").css("color", fontcolor);
 					$("#left section h1 .editorFullscreen").css("color", fontcolor);
