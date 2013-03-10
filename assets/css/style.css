@@ -678,8 +678,6 @@ header {
         font-size: 0.75em;
         background-color: transparent;
         border: none; }
-      #left #langs > section .editorFullscreen.enabled {
-        color: #C5C8C6; }
     #left #langs h1 {
       position: relative;
       font-size: 1em;

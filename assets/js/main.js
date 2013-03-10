@@ -520,7 +520,7 @@ $(function () {
 			});
 
 			// when the click event happens on the selected-mode setting's icon, toggle its visibility
-			$("#left section h1 a").click(function () {
+			$("#left section h1 .selectedSettingsAnchor").click(function () {
 				$(this).toggleClass("enabled").next().toggle();
 			});
 
