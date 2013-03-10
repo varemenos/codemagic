@@ -371,16 +371,16 @@ $(function () {
 							// store the code returned
 							state.app.code = uri[param][1];
 
-							$.getJSON(
-								"https://github.com/login/oauth/access_token?callback=?",
-								{
-									client_id : state.app.client_id,
-									client_secret :  state.app.client_secret,
-									code :  state.app.code
-								}, function (res){
-									console.log(res);
-								}
-							);
+							// $.getJSON(
+							// 	"https://github.com/login/oauth/access_token?callback=?",
+							// 	{
+							// 		client_id : state.app.client_id,
+							// 		client_secret :  state.app.client_secret,
+							// 		code :  state.app.code
+							// 	}, function (res){
+							// 		console.log(res);
+							// 	}
+							// );
 
 							// var request = new XMLHttpRequest();
 							// request.open("GET", "https://github.com/login/oauth/access_token?callback=codeMagic", true);
