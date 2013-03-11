@@ -490,6 +490,18 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   margin: 0;
   padding: 0; }
 
+.floatLeft {
+  float: left; }
+
+.floatRight {
+  float: right; }
+
+.marginLeft {
+  margin-left: 1em; }
+
+.marginRight {
+  margin-right: 1em; }
+
 @font-face {
   font-family: "AmaranthRegular";
   src: url("../../assets/fonts/Amaranth-webfont.eot");
@@ -804,6 +816,36 @@ header {
   .popup p {
     margin: 1em 0; }
 
+#options p {
+  margin: 0.5em 0; }
+#options p.marginRight {
+  margin-right: 1em; }
+#options .floatedContainer {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  *behavior: url(assets/js/boxsizing.htc);
+  float: left;
+  margin-right: 1em;
+  padding: 0.5em;
+  background-color: #eee;
+  border: 1px solid #dddddd;
+  border-radius: 5px; }
+#options .floatedContainer.select {
+  width: 15%; }
+#options .floatedContainer.checkbox input {
+  margin-left: 0.5em; }
+#options .floatedContainer.checkbox label,
+#options .floatedContainer.checkbox input {
+  vertical-align: middle; }
+#options .floatedContainer.checkbox:hover,
+#options .floatedContainer.checkbox label:hover,
+#options .floatedContainer.checkbox input:hover {
+  cursor: pointer; }
+#options .last {
+  margin-right: 0; }
+
 #social {
   padding: 1em 1em 0.5em 1em; }
   #social a,
@@ -892,12 +934,6 @@ header {
   -webkit-box-shadow: 0 0 3px #da0000, 0 0 3px #da0000 inset;
   -moz-box-shadow: 0 0 3px #da0000, 0 0 3px #da0000 inset;
   box-shadow: 0 0 3px #da0000, 0 0 3px #da0000 inset; }
-
-.float-left {
-  float: left; }
-
-.float-right {
-  float: right; }
 
 /*
  *  Font Awesome 3.0.2
@@ -2003,7 +2039,7 @@ Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
 
 .select2-drop {
   background: #fff;
-  color: #000;
+  color: #222;
   border: 1px solid #aaaaaa;
   border-top: 0;
   position: absolute;

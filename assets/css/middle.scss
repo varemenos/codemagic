@@ -354,6 +354,50 @@ header{
 	}
 }
 
+#options{
+	p{
+		margin: 0.5em 0;
+	}
+
+	p.marginRight{
+		margin-right: 1em;
+	}
+
+	.floatedContainer{
+		@include border-box;
+		float: left;
+		margin-right: 1em;
+		padding: 0.5em;
+		background-color: #eee;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+
+	.floatedContainer.select{
+		width: 15%;
+	}
+
+	.floatedContainer.checkbox{
+		input{
+			margin-left: 0.5em;
+		}
+
+		label,
+		input{
+			vertical-align: middle;
+		}
+	}
+
+	.floatedContainer.checkbox:hover,
+	.floatedContainer.checkbox label:hover,
+	.floatedContainer.checkbox input:hover{
+		cursor: pointer;
+	}
+
+	.last{
+		margin-right: 0;
+	}
+}
 
 #social{
 	padding: 1em 1em 0.5em 1em;
@@ -416,7 +460,6 @@ header{
 	}
 }
 
-
 #overlay{
 	display: none;
 	@include border-box;
@@ -455,12 +498,4 @@ header{
 	background-color: #da0000;
 	border: 1px solid #da0000;
 	@include box-shadow(0 0 3px #da0000, 0 0 3px #da0000 inset);
-}
-
-.float-left{
-	float: left;
-}
-
-.float-right{
-	float: right;
 }

@@ -552,10 +552,10 @@ $(function () {
 
 			// when the change event happens on the fontSize element of the options popup
 			$("#options [name=fontSize]").change(function () {
-				// save the selected font size value
+				// save the selected value
 				state.settings.editor.fontSize = parseInt($(this).val(), 10);
 
-				// set the selected font size value to the editors
+				// set the selected value to the editors
 				editors.html.setFontSize(state.settings.editor.fontSize);
 				editors.css.setFontSize(state.settings.editor.fontSize);
 				editors.js.setFontSize(state.settings.editor.fontSize);
@@ -563,13 +563,57 @@ $(function () {
 
 			// when the change event happens on the tabSize element of the options popup
 			$("#options [name=tabSize]").change(function () {
-				// save the selected font size value
+				// save the selected value
 				state.settings.editor.tabSize = parseInt($(this).val(), 10);
 
-				// set the selected font size value to the editors
+				// set the selected value to the editors
 				editors.html.getSession().setTabSize(state.settings.editor.tabSize);
 				editors.css.getSession().setTabSize(state.settings.editor.tabSize);
 				editors.js.getSession().setTabSize(state.settings.editor.tabSize);
+			});
+
+			// when the change event happens on the showPrintMargin element of the options popup
+			$("#options [name=showPrintMargin]").change(function () {
+				// save the selected value
+				state.settings.editor.showPrintMargin = $(this).prop("checked");
+
+				// set the selected value to the editors
+				editors.html.setShowPrintMargin(state.settings.editor.showPrintMargin);
+				editors.css.setShowPrintMargin(state.settings.editor.showPrintMargin);
+				editors.js.setShowPrintMargin(state.settings.editor.showPrintMargin);
+			});
+
+			// when the change event happens on the useWrapMode element of the options popup
+			$("#options [name=useWrapMode]").change(function () {
+				// save the selected value
+				state.settings.editor.useWrapMode = $(this).prop("checked");
+
+				// set the selected value to the editors
+				editors.html.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
+				editors.css.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
+				editors.js.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
+			});
+
+			// when the change event happens on the showInvisibles element of the options popup
+			$("#options [name=showInvisibles]").change(function () {
+				// save the selected value
+				state.settings.editor.showInvisibles = $(this).prop("checked");
+
+				// set the selected value to the editors
+				editors.html.setShowInvisibles(state.settings.editor.showInvisibles);
+				editors.css.setShowInvisibles(state.settings.editor.showInvisibles);
+				editors.js.setShowInvisibles(state.settings.editor.showInvisibles);
+			});
+
+			// when the change event happens on the behavioursEnabled element of the options popup
+			$("#options [name=behavioursEnabled]").change(function () {
+				// save the selected value
+				state.settings.editor.behavioursEnabled = $(this).prop("checked");
+
+				// set the selected value to the editors
+				editors.html.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
+				editors.css.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
+				editors.js.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
 			});
 
 			// when the change event happens on the pageTitle element of the options popup
@@ -598,6 +642,16 @@ $(function () {
 				// state.app.auth_link = "https://github.com/login/oauth/authorize?client_id=" + state.app.client_id + "&client_secret=" + state.app.client_secret + "&state=" + state.app.random_id + "&scope=" + state.app.scope;
 				// localStorage.setItem("random_id", state.app.random_id);
 				// window.location = state.app.auth_link;
+			});
+
+			// when the click event happens on a .floatedContainer.checkbox element
+			$(".floatedContainer.checkbox").click(function() {
+				$(this).find("input").prop("checked", !$(this).find("input").prop("checked"));
+			});
+			// when the click event happens on a .floatedContainer.checkbox input element
+			$(".floatedContainer.checkbox input").click(function(event) {
+				// prevent the input clicking event from firing the $(".floatedContainer.checkbox").click event
+				event.stopPropagation();
 			});
 
 			// when the click event happens on the #share element
@@ -783,11 +837,11 @@ $(function () {
 				if ($(this).find("a").data("hint") == "Settings") {
 					require(["libs/select2"], function () {
 						$("[name=fontSize]").select2({
-							"width": "15%"
+							"width": "100%"
 						});
 
 						$("[name=tabSize]").select2({
-							"width": "15%"
+							"width": "100%"
 						});
 
 						$("#theme").select2({

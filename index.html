@@ -14,13 +14,13 @@
 		<meta property="og:title" content="codeMagic.gr - online playground-IDE for HTML, CSS, Javascript">
 		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
 
-		<link rel="stylesheet" href="assets/css/style.css?v=0.4.1.10">
+		<link rel="stylesheet" href="assets/css/style.css?v=0.4.1.11">
 	</head>
 	<body>
 
 	<div id="container">
 		<header>
-			<ul class="navigation float-left">
+			<ul class="navigation floatLeft">
 				<h1 class="title"><a href="./" title="codeMagic">codeMagic <sub>v0.4.1</sub></a></h1>
 				<li class="seperator">&nbsp;</li>
 				<li data-selector="html" class="toggler withtext">
@@ -66,7 +66,7 @@
 				</li>
 				<div class="clearfix"></div>
 			</ul>
-			<ul class="navigation float-right">
+			<ul class="navigation floatRight">
 				<!-- <li class="button">
 					<a class="hint hint--left" data-hint="User Control Panel [doesn't work yet]"><i class="icon-user"></i> Control Panel</a>
 				</li> -->
@@ -150,18 +150,63 @@
 	</div>
 
 	<div id="options" class="popup">
-		<p>
+		<p class="floatLeft marginRight">
 			<label for="pageTitle">Title:</label>
 			<br>
 			<input type="text" name="pageTitle" value="">
 		</p>
+
+		<p class="floatLeft">
+			<label for="pageAuthor">Author:</label>
+			<br>
+			<input type="text" name="pageAuthor" value="">
+		</p>
+
+		<div class="clearfix"></div>
+
 		<p>
 			<label for="pageDescription">Description:</label>
 			<br>
 			<textarea name="pageDescription"></textarea>
 		</p>
 
-		<p>
+		<p class="floatedContainer select">
+			<label for="theme">Color Scheme:</label>
+			<br>
+			<select id="theme" name="theme">
+				<optgroup label="Bright">
+					<option value="clouds">clouds</option>
+					<option value="chrome">chrome</option>
+					<option value="crimson_editor">crimson_editor</option>
+					<option value="dawn">dawn</option>
+					<option value="dreamweaver">dreamweaver</option>
+					<option value="eclipse">eclipse</option>
+					<option value="github">github</option>
+					<option value="solarized_light">solarized_light</option>
+					<option value="textmate">textmate</option>
+					<option value="tomorrow">tomorrow</option>
+				</optgroup>
+				<optgroup label="Dark">
+					<option value="clouds_midnight">clouds_midnight</option>
+					<option value="cobalt">cobalt</option>
+					<option value="idle_fingers">idle_fingers</option>
+					<option value="merbivore">merbivore</option>
+					<option value="merbivore_soft">merbivore_soft</option>
+					<option value="mono_industrial">mono_industrial</option>
+					<option value="monokai">monokai</option>
+					<option value="pastel_on_dark">pastel_on_dark</option>
+					<option value="solarized_dark">solarized_dark</option>
+					<option value="tomorrow_night" selected>tomorrow_night</option>
+					<option value="tomorrow_night_blue">tomorrow_night_blue</option>
+					<option value="tomorrow_night_bright">tomorrow_night_bright</option>
+					<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
+					<option value="twilight">twilight</option>
+					<option value="vibrant_ink">vibrant_ink</option>
+				</optgroup>
+			</select>
+		</p>
+
+		<p class="floatedContainer select">
 			<label for="fontSize">Font Size</label>
 			<br>
 			<select name="fontSize">
@@ -192,7 +237,7 @@
 			</select>
 		</p>
 
-		<p>
+		<p class="floatedContainer select last">
 			<label for="tabSize">Tab Size</label>
 			<br>
 			<select name="tabSize">
@@ -201,6 +246,26 @@
 				<option value="8">8px</option>
 			</select>
 		</p>
+
+		<div class="clearfix"></div>
+
+		<p class="floatedContainer checkbox">
+			<label for="behavioursEnabled">Auto-complete</label><input type="checkbox" name="behavioursEnabled" checked>
+		</p>
+
+		<p class="floatedContainer checkbox">
+			<label for="useWrapMode">Line Wrapping</label><input type="checkbox" name="useWrapMode" checked>
+		</p>
+
+		<p class="floatedContainer checkbox">
+			<label for="showPrintMargin">Vertical Rule</label><input type="checkbox" name="showPrintMargin">
+		</p>
+
+		<p class="floatedContainer checkbox last">
+			<label for="showInvisibles">Invisible Characters</label><input type="checkbox" name="showInvisibles">
+		</p>
+
+		<div class="clearfix"></div>
 
 		<p>
 			<label for="library">External Libraries:</label>
@@ -235,42 +300,6 @@
 					<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
 					<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
 					<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
-				</optgroup>
-			</select>
-		</p>
-
-		<p>
-			<label for="theme">Color Scheme:</label>
-			<br>
-			<select id="theme" name="theme">
-				<optgroup label="Bright">
-					<option value="clouds">clouds</option>
-					<option value="chrome">chrome</option>
-					<option value="crimson_editor">crimson_editor</option>
-					<option value="dawn">dawn</option>
-					<option value="dreamweaver">dreamweaver</option>
-					<option value="eclipse">eclipse</option>
-					<option value="github">github</option>
-					<option value="solarized_light">solarized_light</option>
-					<option value="textmate">textmate</option>
-					<option value="tomorrow">tomorrow</option>
-				</optgroup>
-				<optgroup label="Dark">
-					<option value="clouds_midnight">clouds_midnight</option>
-					<option value="cobalt">cobalt</option>
-					<option value="idle_fingers">idle_fingers</option>
-					<option value="merbivore">merbivore</option>
-					<option value="merbivore_soft">merbivore_soft</option>
-					<option value="mono_industrial">mono_industrial</option>
-					<option value="monokai">monokai</option>
-					<option value="pastel_on_dark">pastel_on_dark</option>
-					<option value="solarized_dark">solarized_dark</option>
-					<option value="tomorrow_night" selected>tomorrow_night</option>
-					<option value="tomorrow_night_blue">tomorrow_night_blue</option>
-					<option value="tomorrow_night_bright">tomorrow_night_bright</option>
-					<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
-					<option value="twilight">twilight</option>
-					<option value="vibrant_ink">vibrant_ink</option>
 				</optgroup>
 			</select>
 		</p>
@@ -316,9 +345,9 @@
 	<div id="overlay"></div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script> var require = { urlArgs: "v=0.4.1.10" }; </script>
+		<script> var require = { urlArgs: "v=0.4.1.11" }; </script>
 		<script data-main="assets/js/main" src="assets/js/libs/require.js"></script>
-		<script src="assets/js/ace/ace.js?v=0.4.1.10"></script>
+		<script src="assets/js/ace/ace.js?v=0.4.1.11"></script>
 	</body>
 </html>
 
