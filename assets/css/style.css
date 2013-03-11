@@ -711,13 +711,13 @@ header {
         z-index: 15;
         margin-left: 0.5em; }
     #left #langs .editor-wrap {
-      height: 200px;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       -ms-box-sizing: border-box;
       box-sizing: border-box;
       *behavior: url(assets/js/boxsizing.htc);
-      position: relative; }
+      position: relative;
+      height: 200px; }
     #left #langs #console .js-error {
       color: #da0000; }
     #left #langs #console .editor-wrap {
@@ -727,7 +727,11 @@ header {
       overflow-y: scroll;
       padding: 1em;
       font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace;
-      font-size: 0.8em;
+      font-size: 0.8em; }
+    #left #langs #html-editor,
+    #left #langs #css-editor,
+    #left #langs #js-editor,
+    #left #langs #console-editor {
       background-color: #1D1F21; }
   #left #sidebar.active {
     width: 50%; }
@@ -890,6 +894,32 @@ header {
     #social a:focus i,
     #social a:hover i {
       border-right: 1px solid #ff9900; }
+
+#shortcuts {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  *behavior: url(assets/js/boxsizing.htc); }
+  #shortcuts table {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    *behavior: url(assets/js/boxsizing.htc);
+    width: 80%;
+    margin: 0 auto; }
+    #shortcuts table tr {
+      border: 1px solid #cccccc; }
+    #shortcuts table tr,
+    #shortcuts table th,
+    #shortcuts table td {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      *behavior: url(assets/js/boxsizing.htc);
+      padding: 0.5em; }
 
 #overlay {
   display: none;

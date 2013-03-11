@@ -38,7 +38,7 @@ $(function () {
 				},
 				settings : {
 					fullscreen : false,
-					theme : $("#options #theme").val(),
+					theme : "",
 					title : "codeMagic",
 					description : "",
 					author : "",
@@ -104,6 +104,9 @@ $(function () {
 							'indent_char': '\t',
 							'unformatted': []
 						}));
+
+						// move the cursor to the first line
+						editors.html.selection.moveCursorFileStart();
 					}
 
 					// if the selected stylesheet type is CSS
@@ -113,9 +116,12 @@ $(function () {
 							'indent_size': 1,
 							'indent_char': '\t'
 						}));
+
+						// move the cursor to the first line
+						editors.css.selection.moveCursorFileStart();
 					}
 
-						// beautify the JavaScript value using the js beautifing library with the specified options
+					// beautify the JavaScript value using the js beautifing library with the specified options
 					editors.js.setValue(js_beautify(editors.js.getValue(), {
 						'indent_size': 1,
 						'indent_char': '\t',
@@ -128,56 +134,61 @@ $(function () {
 						"unescape_strings": false,
 						"break_chained_methods": false
 					}));
+
+					// move the cursor to the first line
+					editors.js.selection.moveCursorFileStart();
 				});
 			}
 
 			function setTheme(theme) {
-				// Sets a new theme for the editor. theme should exist, and be a directory path, like ace/theme/textmate.
-				editors.html.setTheme("ace/theme/" + theme);
-				editors.css.setTheme("ace/theme/" + theme);
-				editors.js.setTheme("ace/theme/" + theme);
+				// if the currently used theme is not the selected theme
+				if(state.settings.theme !== theme){
+					// then set the selected theme as the new theme for the editor.
+					editors.html.setTheme("ace/theme/" + theme);
+					editors.css.setTheme("ace/theme/" + theme);
+					editors.js.setTheme("ace/theme/" + theme);
 
-				// in 500 miliseconds
-				setTimeout(function () {
-					var fontcolor;
-					var bgcolor;
+					// save the selected theme
+					state.settings.theme = theme;
+				}
+			}
 
-					// try find the background and font color of the ace_gutters that are enabled
-					$(".ace_gutter").each(function () {
-						// if the currently selected element's background color is not undefined and its 2nd parent is not hidden
-						if ($(this).css("background-color") != "undefined" && $(this).parents().eq(2).css("display") !== "none") {
-							// then grab the color from the selected element
-							bgcolor = $(this).css("background-color");
-						}
-					});
+			function themedLayout(isDark){
+				var fontcolor;
+				var bgcolor;
 
-					// if the currently selected theme is in the category group of Bright themes
-					if($("#options #theme :selected").parent().attr("label") === "Bright"){
-						// then set the font color to dark grey
-						fontcolor = "#222";
-					}else{
-						// else set the font color to bright grey
-						fontcolor = "#ccc";
+				// try find the background and font color of the ace_gutters that are enabled
+				$(".ace_gutter").each(function () {
+					// if the currently selected element's background color is not undefined and its 2nd parent is not hidden
+					if ($(this).css("background-color") != "undefined" && $(this).parents().eq(2).css("display") !== "none") {
+						// then grab the color from the selected element
+						bgcolor = $(this).css("background-color");
 					}
+				});
 
-					// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
-					$("#left").css({
-						"background-color" : bgcolor,
-						"border-bottom-color" : bgcolor
-					});
-					$("#left section h1").css("color", fontcolor);
-					$("#left section h1 .editorFullscreen").css("color", fontcolor);
-					$("#console-editor").css({
-						"background-color": $(".ace_scroller").css("background-color"),
-						"color" : $(".ace_gutter").css("color")
-					});
+				// if the currently selected theme is a Dark themes
+				if(isDark){
+					// else set the font color to bright grey
+					fontcolor = "#ccc";
+				}else{
+					// then set the font color to dark grey
+					fontcolor = "#222";
+				}
 
-					// force a layout update
-					updateLayout();
-				}, 500);
+				// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
+				$("#left").css({
+					"background-color" : bgcolor,
+					"border-bottom-color" : bgcolor
+				});
+				$("#left section h1").css("color", fontcolor);
+				$("#left section h1 .editorFullscreen").css("color", fontcolor);
+				$("#console-editor").css({
+					"background-color": $(".ace_scroller").css("background-color"),
+					"color" : $(".ace_gutter").css("color")
+				});
 
-				// save the selected theme
-				state.settings.theme = theme;
+				// force a layout update
+				updateLayout();
 			}
 
 			function enablePanel(panel) {
@@ -403,10 +414,13 @@ $(function () {
 
 			// initialize editors to targeted ids
 			var editors = {
+				html : ace.edit("html-editor"),
 				css : ace.edit("css-editor"),
-				js : ace.edit("js-editor"),
-				html : ace.edit("html-editor")
+				js : ace.edit("js-editor")
 			};
+
+			// set the Default theme
+			setTheme($("#options #theme").val());
 
 			// If showPrintMargin is set to true, the print margin is shown in the editor.
 			// WHY: hide vertical print line
@@ -424,7 +438,8 @@ $(function () {
 			editors.css.setShowInvisibles(state.settings.editor.showInvisibles);
 			editors.js.setShowInvisibles(state.settings.editor.showInvisibles);
 
-			// Specifies whether to use behaviors or not. "Behaviors" in this case is the auto-pairing of special characters, like quotation marks, parenthesis, or brackets.
+			// Specifies whether to use behaviors or not. "Behaviors" in this case is the auto-pairing of special characters,
+			// like quotation marks, parenthesis, or brackets.
 			editors.html.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
 			editors.css.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
 			editors.js.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
@@ -434,7 +449,8 @@ $(function () {
 			editors.css.getSession().setMode("ace/mode/" + state.panels.css.mode);
 			editors.js.getSession().setMode("ace/mode/javascript");
 
-			// Set the number of spaces that define a soft tab; for example, passing in 4 transforms the soft tabs to be equivalent to four spaces. This function also emits the changeTabSize event.
+			// Set the number of spaces that define a soft tab; for example, passing in 4 transforms the soft tabs to be equivalent to four spaces.
+			// This function also emits the changeTabSize event.
 			editors.html.getSession().setTabSize(state.settings.editor.tabsize);
 			editors.css.getSession().setTabSize(state.settings.editor.tabsize);
 			editors.js.getSession().setTabSize(state.settings.editor.tabsize);
@@ -449,15 +465,51 @@ $(function () {
 			editors.css.getSession().setUseWorker(state.settings.editor.useWorker);
 			editors.js.getSession().setUseWorker(state.settings.editor.useWorker);
 
+			// On startup, disable the line highlighting feature (which will be enabled later via an event)
+			editors.html.setHighlightActiveLine(false);
+			editors.css.setHighlightActiveLine(false);
+			editors.js.setHighlightActiveLine(false);
+
 			/* *******************************************************
 				Startup
 			******************************************************* */
 
-			setTheme(state.settings.theme);
-
 			/* *******************************************************
 				Events
 			******************************************************* */
+
+			// when the themeLoaded event happens on the editors, theme/repaint the rest of the layout
+			editors.html.renderer.addEventListener("themeLoaded" , function(e) {
+				themedLayout(e.theme.isDark);
+			});
+			editors.css.renderer.addEventListener("themeLoaded" , function(e) {
+				themedLayout(e.theme.isDark);
+			});
+			editors.js.renderer.addEventListener("themeLoaded" , function(e) {
+				themedLayout(e.theme.isDark);
+			});
+
+			// when the focus event happens on the editors, enable the line highlighting feature
+			editors.html.on("focus", function(){
+				editors.html.setHighlightActiveLine(true);
+			});
+			editors.css.on("focus", function(){
+				editors.css.setHighlightActiveLine(true);
+			});
+			editors.js.on("focus", function(){
+				editors.js.setHighlightActiveLine(true);
+			});
+
+			// when the blur event happens on the editors, disable the line highlighting feature
+			editors.html.on("blur", function(){
+				editors.html.setHighlightActiveLine(false);
+			});
+			editors.css.on("blur", function(){
+				editors.css.setHighlightActiveLine(false);
+			});
+			editors.js.on("blur", function(){
+				editors.js.setHighlightActiveLine(false);
+			});
 
 			// Resizing editors{
 			// resizing helper variables
@@ -653,7 +705,8 @@ $(function () {
 			// when the click event happens on the #auth element
 			$("#auth").click(function() {
 				// create the authentication request link
-				// state.app.auth_link = "https://github.com/login/oauth/authorize?client_id=" + state.app.client_id + "&client_secret=" + state.app.client_secret + "&state=" + state.app.random_id + "&scope=" + state.app.scope;
+				// state.app.auth_link = "https://github.com/login/oauth/authorize?client_id=" + state.app.client_id + "&client_secret="
+				// + state.app.client_secret + "&state=" + state.app.random_id + "&scope=" + state.app.scope;
 				// localStorage.setItem("random_id", state.app.random_id);
 				// window.location = state.app.auth_link;
 			});
@@ -732,8 +785,8 @@ $(function () {
 					}
 
 					// WHY: breaking down logger into 2 pieces to prevent proxies from chocking by passing the 500 character limit
-					var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")}; console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object\"';
-					logger += '{<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+					logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")};';
+					logger += 'console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
 
 					var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="' + state.settings.description + '"><meta name="author" content="' + state.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
 					var body = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
@@ -825,7 +878,6 @@ $(function () {
 					$(this).removeClass("enabled");
 					$("#" + $(this).data("selector")).hide();
 
-					setTheme($("#options #theme").val());
 				} else {
 					$(this).addClass("enabled");
 					$("#" + $(this).data("selector")).show();
@@ -834,8 +886,6 @@ $(function () {
 					if($("#" + $(this).data("selector")).hasClass("popup")){
 						$("#overlay").show();
 					}
-
-					setTheme($("#options #theme").val());
 				}
 
 				if ($(this).find("a").data("hint") == "Settings") {
