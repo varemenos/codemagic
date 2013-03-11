@@ -139,24 +139,38 @@ $(function () {
 
 				// in 500 miliseconds
 				setTimeout(function () {
-					var fontcolor = "#222";
+					var fontcolor;
 					var bgcolor;
 
 					// try find the background and font color of the ace_gutters that are enabled
 					$(".ace_gutter").each(function () {
+						// if the currently selected element's background color is not undefined and its 2nd parent is not hidden
 						if ($(this).css("background-color") != "undefined" && $(this).parents().eq(2).css("display") !== "none") {
-							fontcolor = $(this).css("color");
+							// then grab the color from the selected element
 							bgcolor = $(this).css("background-color");
 						}
 					});
 
+					// if the currently selected theme is in the category group of Bright themes
+					if($("#options #theme :selected").parent().attr("label") === "Bright"){
+						// then set the font color to dark grey
+						fontcolor = "#222";
+					}else{
+						// else set the font color to bright grey
+						fontcolor = "#ccc";
+					}
+
 					// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
-					$("#console-editor").css("background-color", $(".ace_scroller").css("background-color"));
-					$("#console-editor").css("color", $(".ace_gutter").css("color"));
-					$("#left").css("background-color", bgcolor);
+					$("#left").css({
+						"background-color" : bgcolor,
+						"border-bottom-color" : bgcolor
+					});
 					$("#left section h1").css("color", fontcolor);
 					$("#left section h1 .editorFullscreen").css("color", fontcolor);
-					$("#left").css("border-bottom-color", bgcolor);
+					$("#console-editor").css({
+						"background-color": $(".ace_scroller").css("background-color"),
+						"color" : $(".ace_gutter").css("color")
+					});
 
 					// force a layout update
 					updateLayout();

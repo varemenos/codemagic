@@ -14,7 +14,7 @@
 		<meta property="og:title" content="codeMagic.gr - online playground-IDE for HTML, CSS, Javascript">
 		<meta property="og:image" content="http://varemenos.com/apple-touch-icon-114x114-precomposed.png">
 
-		<link rel="stylesheet" href="assets/css/style.css?v=0.4.1.16">
+		<link rel="stylesheet" href="assets/css/style.css?v=0.4.1.23">
 	</head>
 	<body>
 
@@ -154,59 +154,61 @@
 			<label for="pageTitle">Title:</label>
 			<br>
 			<input type="text" name="pageTitle" value="">
-		</p>
-
-		<p class="floatLeft">
+			<br>
 			<label for="pageAuthor">Author:</label>
 			<br>
 			<input type="text" name="pageAuthor" value="">
 		</p>
 
-		<div class="clearfix"></div>
-
-		<p>
+		<p class="floatLeft expanded">
 			<label for="pageDescription">Description:</label>
 			<br>
-			<textarea name="pageDescription"></textarea>
+			<textarea name="pageDescription" rows="8"></textarea>
 		</p>
 
-		<p class="floatedContainer select">
+		<div class="clearfix"></div>
+
+		<p class="floatedContainer select size2x">
 			<label for="theme">Color Scheme:</label>
 			<br>
 			<select id="theme" name="theme">
 				<optgroup label="Bright">
-					<option value="clouds">clouds</option>
-					<option value="chrome">chrome</option>
-					<option value="crimson_editor">crimson_editor</option>
-					<option value="dawn">dawn</option>
-					<option value="dreamweaver">dreamweaver</option>
-					<option value="eclipse">eclipse</option>
-					<option value="github">github</option>
-					<option value="solarized_light">solarized_light</option>
-					<option value="textmate">textmate</option>
-					<option value="tomorrow">tomorrow</option>
+					<option value="chrome">Chrome</option>
+					<option value="clouds">Clouds</option>
+					<option value="crimson_editor">Crimson Editor</option>
+					<option value="dawn">Dawn</option>
+					<option value="dreamweaver">Dreamweaver</option>
+					<option value="eclipse">Eclipse</option>
+					<option value="github">GitHub</option>
+					<option value="solarized_light">Solarized Light</option>
+					<option value="textmate">TextMate</option>
+					<option value="tomorrow">Tomorrow</option>
+					<option value="xcode">XCode</option>
 				</optgroup>
 				<optgroup label="Dark">
+					<option value="ambiance">Ambiance</option>
+					<option value="chaos">Chaos</option>
 					<option value="clouds_midnight">clouds_midnight</option>
 					<option value="cobalt">cobalt</option>
 					<option value="idle_fingers">idle_fingers</option>
+					<option value="kr_theme">krTheme</option>
 					<option value="merbivore">merbivore</option>
 					<option value="merbivore_soft">merbivore_soft</option>
 					<option value="mono_industrial">mono_industrial</option>
 					<option value="monokai">monokai</option>
 					<option value="pastel_on_dark">pastel_on_dark</option>
 					<option value="solarized_dark">solarized_dark</option>
+					<option value="twilight">twilight</option>
 					<option value="tomorrow_night" selected>tomorrow_night</option>
 					<option value="tomorrow_night_blue">tomorrow_night_blue</option>
 					<option value="tomorrow_night_bright">tomorrow_night_bright</option>
 					<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
-					<option value="twilight">twilight</option>
 					<option value="vibrant_ink">vibrant_ink</option>
 				</optgroup>
 			</select>
 		</p>
 
-		<p class="floatedContainer select">
+		<p class="floatedContainer select size1x">
 			<label for="fontSize">Font Size</label>
 			<br>
 			<select name="fontSize">
@@ -237,7 +239,7 @@
 			</select>
 		</p>
 
-		<p class="floatedContainer select last">
+		<p class="floatedContainer select size1x last">
 			<label for="tabSize">Tab Size</label>
 			<br>
 			<select name="tabSize">
@@ -345,9 +347,9 @@
 	<div id="overlay"></div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script> var require = { urlArgs: "v=0.4.1.16" }; </script>
+		<script> var require = { urlArgs: "v=0.4.1.23" }; </script>
 		<script data-main="assets/js/main" src="assets/js/libs/require.js"></script>
-		<script src="assets/js/ace/ace.js?v=0.4.1.16"></script>
+		<script src="assets/js/ace/ace.js?v=0.4.1.23"></script>
 	</body>
 </html>
 

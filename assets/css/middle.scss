@@ -359,10 +359,6 @@ header{
 		margin: 0.5em 0;
 	}
 
-	p.marginRight{
-		margin-right: 1em;
-	}
-
 	.floatedContainer{
 		@include border-box;
 		float: left;
@@ -371,10 +367,6 @@ header{
 		background-color: #eee;
 		border: 1px solid #ddd;
 		border-radius: 5px;
-	}
-
-	.floatedContainer.select{
-		width: 15%;
 	}
 
 	.floatedContainer.checkbox{
@@ -390,6 +382,22 @@ header{
 
 	.floatedContainer.checkbox input:hover{
 		cursor: pointer;
+	}
+
+	.marginRight{
+		margin-right: 1em;
+	}
+
+	.expanded{
+		width: 40%;
+	}
+
+	.size2x{
+		width: 20%;
+	}
+
+	.size1x{
+		width: 10%;
 	}
 
 	.last{

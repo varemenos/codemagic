@@ -818,8 +818,6 @@ header {
 
 #options p {
   margin: 0.5em 0; }
-#options p.marginRight {
-  margin-right: 1em; }
 #options .floatedContainer {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -832,8 +830,6 @@ header {
   background-color: #eee;
   border: 1px solid #dddddd;
   border-radius: 5px; }
-#options .floatedContainer.select {
-  width: 15%; }
 #options .floatedContainer.checkbox input {
   margin-left: 0.5em; }
 #options .floatedContainer.checkbox label,
@@ -841,6 +837,14 @@ header {
   vertical-align: middle; }
 #options .floatedContainer.checkbox input:hover {
   cursor: pointer; }
+#options .marginRight {
+  margin-right: 1em; }
+#options .expanded {
+  width: 40%; }
+#options .size2x {
+  width: 20%; }
+#options .size1x {
+  width: 10%; }
 #options .last {
   margin-right: 0; }
 
