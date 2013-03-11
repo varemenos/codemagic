@@ -561,6 +561,17 @@ $(function () {
 				editors.js.setFontSize(state.settings.editor.fontSize);
 			});
 
+			// when the change event happens on the tabSize element of the options popup
+			$("#options [name=tabSize]").change(function () {
+				// save the selected font size value
+				state.settings.editor.tabSize = parseInt($(this).val(), 10);
+
+				// set the selected font size value to the editors
+				editors.html.getSession().setTabSize(state.settings.editor.tabSize);
+				editors.css.getSession().setTabSize(state.settings.editor.tabSize);
+				editors.js.getSession().setTabSize(state.settings.editor.tabSize);
+			});
+
 			// when the change event happens on the pageTitle element of the options popup
 			$("#options input[name=pageTitle]").change(function () {
 				// change the current page's title to the selected value
@@ -662,7 +673,10 @@ $(function () {
 						externalScript += '<script src="' + jsLibraries[i] + '"></script>';
 					}
 
-					var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")}; console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+					// WHY: breaking down logger into 2 pieces to prevent proxies from chocking by passing the 500 character limit
+					var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")}; console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object\"';
+					logger += '{<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+
 					var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="' + state.settings.description + '"><meta name="author" content="' + state.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
 					var body = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
@@ -769,6 +783,10 @@ $(function () {
 				if ($(this).find("a").data("hint") == "Settings") {
 					require(["libs/select2"], function () {
 						$("[name=fontSize]").select2({
+							"width": "15%"
+						});
+
+						$("[name=tabSize]").select2({
 							"width": "15%"
 						});
 
