@@ -839,8 +839,6 @@ header {
 #options .floatedContainer.checkbox label,
 #options .floatedContainer.checkbox input {
   vertical-align: middle; }
-#options .floatedContainer.checkbox:hover,
-#options .floatedContainer.checkbox label:hover,
 #options .floatedContainer.checkbox input:hover {
   cursor: pointer; }
 #options .last {

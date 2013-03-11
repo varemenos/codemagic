@@ -644,16 +644,6 @@ $(function () {
 				// window.location = state.app.auth_link;
 			});
 
-			// when the click event happens on a .floatedContainer.checkbox element
-			$(".floatedContainer.checkbox").click(function() {
-				$(this).find("input").prop("checked", !$(this).find("input").prop("checked"));
-			});
-			// when the click event happens on a .floatedContainer.checkbox input element
-			$(".floatedContainer.checkbox input").click(function(event) {
-				// prevent the input clicking event from firing the $(".floatedContainer.checkbox").click event
-				event.stopPropagation();
-			});
-
 			// when the click event happens on the #share element
 			$("#share").click(function () {
 				// change the value of the .twitter anchor to match the current page
