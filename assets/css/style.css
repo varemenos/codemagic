@@ -727,11 +727,7 @@ header {
       overflow-y: scroll;
       padding: 1em;
       font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace;
-      font-size: 0.8em; }
-    #left #langs #html-editor,
-    #left #langs #css-editor,
-    #left #langs #js-editor,
-    #left #langs #console-editor {
+      font-size: 0.8em;
       background-color: #1D1F21; }
   #left #sidebar.active {
     width: 50%; }
