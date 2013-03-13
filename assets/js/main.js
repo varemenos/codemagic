@@ -182,10 +182,8 @@ $(function () {
 			$("#left section h1 .editorFullscreen").css("color", fontcolor);
 			$("#console-editor").css({
 				"background-color": $(".ace_scroller").css("background-color"),
-				"color" : $(".ace_gutter").css("color")
+				"color" : fontcolor
 			});
-
-			console.log(bgcolor, fontcolor);
 
 			// force a layout update
 			updateLayout();
