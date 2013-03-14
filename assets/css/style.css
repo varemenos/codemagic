@@ -705,11 +705,34 @@ header {
       #left #langs h1 a.enabled {
         color: #ffee96; }
       #left #langs h1 .settingsWrap {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        *behavior: url(assets/js/boxsizing.htc);
         display: none;
         position: absolute;
         top: 0;
         z-index: 15;
-        margin-left: 0.5em; }
+        margin-left: 0.5em;
+        padding: 0.25em;
+        background-color: #ccc;
+        border-radius: 3px; }
+        #left #langs h1 .settingsWrap select,
+        #left #langs h1 .settingsWrap option {
+          color: #222;
+          background-color: #fff;
+          border: none; }
+      #left #langs h1 .settingsWrap:before {
+        position: absolute;
+        top: 3px;
+        left: -5px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-right: 5px solid #cccccc;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent; }
     #left #langs .editor-wrap {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;

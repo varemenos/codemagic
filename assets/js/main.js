@@ -320,6 +320,10 @@ $(function () {
 			Uri parsing
 		******************************************************* */
 
+		// TODO:
+		// port url parsing to this style:
+		// https://gist.github.com/varemenos/5161407
+
 		// get the current url's query as string
 		var query = window.location.search;
 
