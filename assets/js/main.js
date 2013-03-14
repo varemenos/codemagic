@@ -7,10 +7,10 @@ $(function () {
 
 	define(function (require) {
 		/* *******************************************************
-			State
+			Session
 		******************************************************* */
 
-		var state = {
+		var appSession = {
 			panels : {
 				html : {
 					state : true,
@@ -140,14 +140,14 @@ $(function () {
 
 		function setTheme(theme) {
 			// if the currently used theme is not the selected theme
-			if(state.settings.theme !== theme){
+			if(appSession.settings.theme !== theme){
 				// then set the selected theme as the new theme for the editor.
 				editors.html.setTheme("ace/theme/" + theme);
 				editors.css.setTheme("ace/theme/" + theme);
 				editors.js.setTheme("ace/theme/" + theme);
 
 				// save the selected theme
-				state.settings.theme = theme;
+				appSession.settings.theme = theme;
 			}
 		}
 
@@ -197,21 +197,21 @@ $(function () {
 
 			// save the state and the mode of the editors
 			if(panel === "html"){
-				state.panels.html.state = true;
+				appSession.panels.html.state = true;
 
 				if($("#markupSettings").val() === "markdown"){
-					state.panels.html.mode = "markdown";
+					appSession.panels.html.mode = "markdown";
 				}
 			}else if(panel === "css"){
-				state.panels.css.state = true;
+				appSession.panels.css.state = true;
 
 				if($("#stylesheetSettings").val() === "less"){
-					state.panels.css.mode = "less";
+					appSession.panels.css.mode = "less";
 				}
 			}else if(panel === "js"){
-				state.panels.js.state = true;
+				appSession.panels.js.state = true;
 			}else if(panel === "console"){
-				state.panels.console.state = true;
+				appSession.panels.console.state = true;
 			}
 		}
 
@@ -223,13 +223,13 @@ $(function () {
 
 			// save the state and the mode of the editors
 			if(panel === "html"){
-				state.panels.html.state = false;
+				appSession.panels.html.state = false;
 			}else if(panel === "css"){
-				state.panels.css.state = false;
+				appSession.panels.css.state = false;
 			}else if(panel === "js"){
-				state.panels.js.state = false;
+				appSession.panels.js.state = false;
 			}else if(panel === "console"){
-				state.panels.console.state = false;
+				appSession.panels.console.state = false;
 			}
 		}
 
@@ -240,15 +240,15 @@ $(function () {
 			enablePanel("js");
 
 			// save their state
-			state.panels.html.state = true;
-			state.panels.css.state = true;
-			state.panels.js.state = true;
-			state.panels.console.state = false;
+			appSession.panels.html.state = true;
+			appSession.panels.css.state = true;
+			appSession.panels.js.state = true;
+			appSession.panels.console.state = false;
 		}
 
 		function toggleFullscreen() {
 			// if the page is currently in fullscreen mode
-			if (state.settings.fullscreen === true) {
+			if (appSession.settings.fullscreen === true) {
 				// then remove the "enabled" of the element with the "fullscreen" id
 				$("#fullscreen").removeClass("enabled");
 				// reveal the element with the "left" id
@@ -257,7 +257,7 @@ $(function () {
 				$("#right").css("width", "50%");
 
 				// save the state of the fullscreen mode
-				state.settings.fullscreen = false;
+				appSession.settings.fullscreen = false;
 			} else {
 				// else add the "enabled" of the element with the "fullscreen" id
 				$("#fullscreen").addClass("enabled");
@@ -267,7 +267,7 @@ $(function () {
 				$("#right").css("width", "100%");
 
 				// save the state of the fullscreen mode
-				state.settings.fullscreen = true;
+				appSession.settings.fullscreen = true;
 			}
 		}
 
@@ -356,7 +356,7 @@ $(function () {
 							enablePanel("html");
 
 							// save the editor mode as markdown
-							state.panels.html.mode = "markdown";
+							appSession.panels.html.mode = "markdown";
 						} else
 						// if its c (of CSS)
 						if (temp[j] == "c") {
@@ -372,7 +372,7 @@ $(function () {
 							enablePanel("css");
 
 							// save the editor mode as less
-							state.panels.css.mode = "less";
+							appSession.panels.css.mode = "less";
 						} else
 						// if its j (of JavaScript)
 						if (temp[j] == "j") {
@@ -418,47 +418,47 @@ $(function () {
 		};
 
 		// editor syntax highlighting modes
-		editors.html.getSession().setMode("ace/mode/" + state.panels.html.mode);
-		editors.css.getSession().setMode("ace/mode/" + state.panels.css.mode);
+		editors.html.getSession().setMode("ace/mode/" + appSession.panels.html.mode);
+		editors.css.getSession().setMode("ace/mode/" + appSession.panels.css.mode);
 		editors.js.getSession().setMode("ace/mode/javascript");
 
 		// If showPrintMargin is set to true, the print margin is shown in the editor.
 		// WHY: hide vertical print line
-		editors.html.setShowPrintMargin(state.settings.editor.showPrintMargin);
-		editors.css.setShowPrintMargin(state.settings.editor.showPrintMargin);
-		editors.js.setShowPrintMargin(state.settings.editor.showPrintMargin);
+		editors.html.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+		editors.css.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+		editors.js.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 
 		// Set a new font size (in pixels) for the editor text.
-		editors.html.setFontSize(state.settings.editor.fontSize);
-		editors.css.setFontSize(state.settings.editor.fontSize);
-		editors.js.setFontSize(state.settings.editor.fontSize);
+		editors.html.setFontSize(appSession.settings.editor.fontSize);
+		editors.css.setFontSize(appSession.settings.editor.fontSize);
+		editors.js.setFontSize(appSession.settings.editor.fontSize);
 
 		// If showInvisibiles is set to true, invisible characters—like spaces or new lines—are show in the editor.
-		editors.html.setShowInvisibles(state.settings.editor.showInvisibles);
-		editors.css.setShowInvisibles(state.settings.editor.showInvisibles);
-		editors.js.setShowInvisibles(state.settings.editor.showInvisibles);
+		editors.html.setShowInvisibles(appSession.settings.editor.showInvisibles);
+		editors.css.setShowInvisibles(appSession.settings.editor.showInvisibles);
+		editors.js.setShowInvisibles(appSession.settings.editor.showInvisibles);
 
 		// Specifies whether to use behaviors or not. "Behaviors" in this case is the auto-pairing of special characters,
 		// like quotation marks, parenthesis, or brackets.
-		editors.html.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
-		editors.css.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
-		editors.js.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
+		editors.html.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+		editors.css.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+		editors.js.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
 
 		// Set the number of spaces that define a soft tab; for example, passing in 4 transforms the soft tabs to be equivalent to four spaces.
 		// This function also emits the changeTabSize event.
-		editors.html.getSession().setTabSize(state.settings.editor.tabsize);
-		editors.css.getSession().setTabSize(state.settings.editor.tabsize);
-		editors.js.getSession().setTabSize(state.settings.editor.tabsize);
+		editors.html.getSession().setTabSize(appSession.settings.editor.tabsize);
+		editors.css.getSession().setTabSize(appSession.settings.editor.tabsize);
+		editors.js.getSession().setTabSize(appSession.settings.editor.tabsize);
 
 		// Sets whether or not line wrapping is enabled. If useWrapMode is different than the current value, the 'changeWrapMode' event is emitted.
-		editors.html.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
-		editors.css.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
-		editors.js.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
+		editors.html.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+		editors.css.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+		editors.js.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
 
 		// Identifies if you want to use a worker for the EditSession.
-		editors.html.getSession().setUseWorker(state.settings.editor.useWorker);
-		editors.css.getSession().setUseWorker(state.settings.editor.useWorker);
-		editors.js.getSession().setUseWorker(state.settings.editor.useWorker);
+		editors.html.getSession().setUseWorker(appSession.settings.editor.useWorker);
+		editors.css.getSession().setUseWorker(appSession.settings.editor.useWorker);
+		editors.js.getSession().setUseWorker(appSession.settings.editor.useWorker);
 
 		// On startup, disable the line highlighting feature (which will be enabled later via an event)
 		editors.html.setHighlightActiveLine(false);
@@ -542,12 +542,12 @@ $(function () {
 			resize = false;
 
 			// if its a valid resize session
-			if(typeof resizeTarget.height !== "undefined" && typeof state.panels[resizeTarget.id] !== "undefined"){
+			if(typeof resizeTarget.height !== "undefined" && typeof appSession.panels[resizeTarget.id] !== "undefined"){
 				// then get the selected id's height
 				resizeTarget.height = $("#" + resizeTarget.id).height();
 
 				// save the height in the selected panel's height variable
-				state.panels[resizeTarget.id].height = resizeTarget.height;
+				appSession.panels[resizeTarget.id].height = resizeTarget.height;
 			}
 
 			// force a layout update
@@ -591,7 +591,7 @@ $(function () {
 			$(this).parents().eq(1).find("a").removeClass("enabled");
 
 			// save the markup mode
-			state.panels.html.mode = $("#markupSettings").val();
+			appSession.panels.html.mode = $("#markupSettings").val();
 		});
 
 		// when the change event happens on the #stylesheetSettings element
@@ -607,7 +607,7 @@ $(function () {
 			$(this).parents().eq(1).find("a").removeClass("enabled");
 
 			// save the stylesheet mode
-			state.panels.css.mode = $("#markupSettings").val();
+			appSession.panels.css.mode = $("#markupSettings").val();
 		});
 
 		// when the click event happens on the #fullscreen element
@@ -626,67 +626,67 @@ $(function () {
 		// when the change event happens on the fontSize element of the options popup
 		$("#options [name=fontSize]").change(function () {
 			// save the selected value
-			state.settings.editor.fontSize = parseInt($(this).val(), 10);
+			appSession.settings.editor.fontSize = parseInt($(this).val(), 10);
 
 			// set the selected value to the editors
-			editors.html.setFontSize(state.settings.editor.fontSize);
-			editors.css.setFontSize(state.settings.editor.fontSize);
-			editors.js.setFontSize(state.settings.editor.fontSize);
+			editors.html.setFontSize(appSession.settings.editor.fontSize);
+			editors.css.setFontSize(appSession.settings.editor.fontSize);
+			editors.js.setFontSize(appSession.settings.editor.fontSize);
 		});
 
 		// when the change event happens on the tabSize element of the options popup
 		$("#options [name=tabSize]").change(function () {
 			// save the selected value
-			state.settings.editor.tabSize = parseInt($(this).val(), 10);
+			appSession.settings.editor.tabSize = parseInt($(this).val(), 10);
 
 			// set the selected value to the editors
-			editors.html.getSession().setTabSize(state.settings.editor.tabSize);
-			editors.css.getSession().setTabSize(state.settings.editor.tabSize);
-			editors.js.getSession().setTabSize(state.settings.editor.tabSize);
+			editors.html.getSession().setTabSize(appSession.settings.editor.tabSize);
+			editors.css.getSession().setTabSize(appSession.settings.editor.tabSize);
+			editors.js.getSession().setTabSize(appSession.settings.editor.tabSize);
 		});
 
 		// when the change event happens on the showPrintMargin element of the options popup
 		$("#options [name=showPrintMargin]").change(function () {
 			// save the selected value
-			state.settings.editor.showPrintMargin = $(this).prop("checked");
+			appSession.settings.editor.showPrintMargin = $(this).prop("checked");
 
 			// set the selected value to the editors
-			editors.html.setShowPrintMargin(state.settings.editor.showPrintMargin);
-			editors.css.setShowPrintMargin(state.settings.editor.showPrintMargin);
-			editors.js.setShowPrintMargin(state.settings.editor.showPrintMargin);
+			editors.html.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+			editors.css.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+			editors.js.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 		});
 
 		// when the change event happens on the useWrapMode element of the options popup
 		$("#options [name=useWrapMode]").change(function () {
 			// save the selected value
-			state.settings.editor.useWrapMode = $(this).prop("checked");
+			appSession.settings.editor.useWrapMode = $(this).prop("checked");
 
 			// set the selected value to the editors
-			editors.html.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
-			editors.css.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
-			editors.js.getSession().setUseWrapMode(state.settings.editor.useWrapMode);
+			editors.html.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+			editors.css.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+			editors.js.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
 		});
 
 		// when the change event happens on the showInvisibles element of the options popup
 		$("#options [name=showInvisibles]").change(function () {
 			// save the selected value
-			state.settings.editor.showInvisibles = $(this).prop("checked");
+			appSession.settings.editor.showInvisibles = $(this).prop("checked");
 
 			// set the selected value to the editors
-			editors.html.setShowInvisibles(state.settings.editor.showInvisibles);
-			editors.css.setShowInvisibles(state.settings.editor.showInvisibles);
-			editors.js.setShowInvisibles(state.settings.editor.showInvisibles);
+			editors.html.setShowInvisibles(appSession.settings.editor.showInvisibles);
+			editors.css.setShowInvisibles(appSession.settings.editor.showInvisibles);
+			editors.js.setShowInvisibles(appSession.settings.editor.showInvisibles);
 		});
 
 		// when the change event happens on the behavioursEnabled element of the options popup
 		$("#options [name=behavioursEnabled]").change(function () {
 			// save the selected value
-			state.settings.editor.behavioursEnabled = $(this).prop("checked");
+			appSession.settings.editor.behavioursEnabled = $(this).prop("checked");
 
 			// set the selected value to the editors
-			editors.html.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
-			editors.css.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
-			editors.js.setBehavioursEnabled(state.settings.editor.behavioursEnabled);
+			editors.html.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+			editors.css.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+			editors.js.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
 		});
 
 		// when the change event happens on the pageTitle element of the options popup
@@ -695,7 +695,7 @@ $(function () {
 			$("head title").html($(this).val() + " - codeMagic");
 
 			// set the title to the selected value
-			state.settings.title = $(this).val();
+			appSession.settings.title = $(this).val();
 		});
 
 		// when the click event happens on the #fullscreen element
@@ -711,25 +711,40 @@ $(function () {
 
 		// when the click event happens on the #auth element
 		$("#auth").click(function() {
-			// create the authentication request link
-			// state.app.auth_link = "https://github.com/login/oauth/authorize?client_id=" + state.app.client_id + "&client_secret="
-			// + state.app.client_secret + "&state=" + state.app.random_id + "&scope=" + state.app.scope;
-			// localStorage.setItem("random_id", state.app.random_id);
-			// window.location = state.app.auth_link;
+			var authenticate = {
+				endpoint : "https://accounts.google.com/o/oauth2/auth",
+				response_type : "token",
+				client_id : "1785061010-1osqu1jsk03f033ehv2268jjtiung7h8.apps.googleusercontent.com",
+				redirect_uri : "http://codemagic.gr",
+				scope : "https://www.googleapis.com/auth/plus.login",
+				state : "?auth",
+				approval_prompt : "auto"
+			};
+
+			window.location.href =
+				authenticate.endpoint + "?scope=" +
+				authenticate.scope + "&state=" +
+				authenticate.state + "&redirect_uri=" +
+				authenticate.redirect_uri + "&response_type=" +
+				authenticate.response_type + "&client_id=" +
+				authenticate.client_id;
+
+			// continue from:
+			// Handling the response https://developers.google.com/accounts/docs/OAuth2UserAgent
 		});
 
 		// when the click event happens on the #share element
 		$("#share").click(function () {
 			// change the value of the .twitter anchor to match the current page
-			$("#social").find("a.twitter").attr("href", "http://twitter.com/home?status=" + state.settings.title + " " + window.location.href + " from @code_Magic");
+			$("#social").find("a.twitter").attr("href", "http://twitter.com/home?status=" + appSession.settings.title + " " + window.location.href + " from @code_Magic");
 			// change the value of the .facebook anchor to match the current page
 			$("#social").find("a.facebook").attr("href", "http://www.facebook.com/sharer.php?u=" + window.location.href);
 			// change the value of the .google-plus anchor to match the current page
-			$("#social").find("a.google-plus").attr("href", "https://plus.google.com/share?url=" + window.location.href + "&title=" + state.settings.title);
+			$("#social").find("a.google-plus").attr("href", "https://plus.google.com/share?url=" + window.location.href + "&title=" + appSession.settings.title);
 			// change the value of the .linkedin anchor to match the current page
-			$("#social").find("a.linkedin").attr("href", "http://www.linkedin.com/shareArticle?mini=true&url=" + window.location.href + "&title=" + state.settings.title + "&summary=" + state.settings.description + "&source=http://codeMagic.gr");
+			$("#social").find("a.linkedin").attr("href", "http://www.linkedin.com/shareArticle?mini=true&url=" + window.location.href + "&title=" + appSession.settings.title + "&summary=" + appSession.settings.description + "&source=http://codeMagic.gr");
 			// change the value of the .pinterest anchor to match the current page
-			$("#social").find("a.pinterest").attr("href", "http://pinterest.com/pin/create/bookmarklet/?url=" + window.location.href + "&is_video=false&description=" + state.settings.title);
+			$("#social").find("a.pinterest").attr("href", "http://pinterest.com/pin/create/bookmarklet/?url=" + window.location.href + "&is_video=false&description=" + appSession.settings.title);
 		});
 
 		// when the click event happens on the #prettify element
@@ -767,8 +782,8 @@ $(function () {
 				}
 
 				var script = editors.js.getValue();
-				state.settings.title = $("#options input[name=pageTitle]").val();
-				state.settings.description = $("#options textarea[name=pageDescription]").val();
+				appSession.settings.title = $("#options input[name=pageTitle]").val();
+				appSession.settings.description = $("#options textarea[name=pageDescription]").val();
 
 				var cssLibraries = [];
 				var jsLibraries = [];
@@ -795,7 +810,7 @@ $(function () {
 				logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")};';
 				logger += 'console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
 
-				var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="' + state.settings.description + '"><meta name="author" content="' + state.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
+				var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + appSession.settings.title + '</title><meta name="description" content="' + appSession.settings.description + '"><meta name="author" content="' + appSession.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
 				var body = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
 				var result = head + body;
@@ -828,7 +843,7 @@ $(function () {
 				}
 
 				// generate index.html file's string
-				var zippedContent = '<!doctype html><html><head><meta charset="utf-8"><title>' + state.settings.title + '</title><meta name="description" content="'+state.settings.description+'"><meta name="author" content="' + state.settings.author + '">' + externalStyle + styleString + '</head><body>' + content + externalScript + scriptString + '</body></html>';
+				var zippedContent = '<!doctype html><html><head><meta charset="utf-8"><title>' + appSession.settings.title + '</title><meta name="description" content="'+appSession.settings.description+'"><meta name="author" content="' + appSession.settings.author + '">' + externalStyle + styleString + '</head><body>' + content + externalScript + scriptString + '</body></html>';
 
 				// prettify ugly HTML
 				zippedContent = style_html(zippedContent, {
@@ -852,9 +867,9 @@ $(function () {
 				// add zip base64 href attribute in the download button
 				$("#download").find("a").attr("href", "data:application/zip;base64," + zip.generate());
 
-				state.panels.html.content = content;
-				state.panels.css.content = style;
-				state.panels.js.content = script;
+				appSession.panels.html.content = content;
+				appSession.panels.css.content = style;
+				appSession.panels.js.content = script;
 			});
 		});
 
