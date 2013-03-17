@@ -320,19 +320,28 @@ $(function () {
 			Uri parsing
 		******************************************************* */
 
-		// TODO:
-		// port url parsing to this style:
-		// https://gist.github.com/varemenos/5161407
+		var loc = {
+			search : {
+				string : window.location.search,
+				params : window.location.search.slice(1).split("&")
+			},
+			hash : {
+				string: location.hash.substring(1),
+				params : {}
+			},
+			regex : /([^&=]+)=([^&]*)/g,
+			m : false
+		};
 
-		// get the current url's query as string
-		var query = window.location.search;
+while (!! (m = regex.exec(loc.hash.string))) {
+	loc.hash.params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+}
 
 		// if the query string is empty
-		if (query === "") {
+		if (loc.search.string === "") {
 			// then its the frontpage, so enable the default panels
 			enableDefaultPanels();
 		} else {
-			params = query.slice(1).split("&");
 			// else for every parameter of the query
 			for (var i = 0; i < params.length; i++) {
 				var param = params[i].split("=");
@@ -707,6 +716,11 @@ $(function () {
 		// when the click event happens on the #save element
 		$("#save").click(function() {
 			// Send state object to server
+			if(localStorage.get("auth") === "true"){
+				// save file
+			}else{
+				// inform user of Sign-in requirement
+			}
 		});
 
 		// when the click event happens on the #auth element
