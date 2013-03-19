@@ -1,10 +1,4 @@
 $(function () {
-// TODO
-	// full line selection : toggle@settings
-	// setShowInvisibles(toggle@settings)
-	// setBehavioursEnabled(true)
-	// setReadOnly(true/false)
-
 	define(function (require) {
 		/* *******************************************************
 			Session
@@ -36,18 +30,18 @@ $(function () {
 			},
 			settings : {
 				fullscreen : false,
-				theme : "",
 				title : "codeMagic",
 				description : "",
 				author : "",
 				editor : {
-					tabsize : 4,
-					showPrintMargin : false,
-					useWrapMode : true,
+					theme : "",
+					tabsize : localStorage.getItem("appSession_settings_editor_tabSize") || 4,
+					showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
+					useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
 					useWorker : true,
-					fontSize : parseInt($("select[name=fontSize]").val(), 10),
-					showInvisibles : false,
-					behavioursEnabled : true
+					fontSize : localStorage.getItem("appSession_settings_editor_fontSize") || parseInt($("select[name=fontSize]").val(), 10),
+					showInvisibles : localStorage.getItem("appSession_settings_editor_showInvisibles") || false,
+					behavioursEnabled : localStorage.getItem("appSession_settings_editor_behavioursEnabled") || true
 				}
 			},
 			user : {
@@ -59,6 +53,10 @@ $(function () {
 		/* *******************************************************
 			Functions
 		******************************************************* */
+
+		function isTrue(x){
+			return x === "true";
+		}
 
 		function resizeEditors() {
 			// force-trigger a resize of the editors
@@ -140,14 +138,16 @@ $(function () {
 
 		function setTheme(theme) {
 			// if the currently used theme is not the selected theme
-			if(appSession.settings.theme !== theme){
+			if(appSession.settings.editor.theme !== theme){
 				// then set the selected theme as the new theme for the editor.
 				editors.html.setTheme("ace/theme/" + theme);
 				editors.css.setTheme("ace/theme/" + theme);
 				editors.js.setTheme("ace/theme/" + theme);
 
 				// save the selected theme
-				appSession.settings.theme = theme;
+				appSession.settings.editor.theme = theme;
+
+				localStorage.setItem("appSession_settings_editor_theme", theme);
 			}
 		}
 
@@ -437,9 +437,9 @@ $(function () {
 
 		// If showPrintMargin is set to true, the print margin is shown in the editor.
 		// WHY: hide vertical print line
-		editors.html.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
-		editors.css.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
-		editors.js.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+		editors.html.setShowPrintMargin(isTrue(appSession.settings.editor.showPrintMargin));
+		editors.css.setShowPrintMargin(isTrue(appSession.settings.editor.showPrintMargin));
+		editors.js.setShowPrintMargin(isTrue(appSession.settings.editor.showPrintMargin));
 
 		// Pass true to enable the use of soft tabs. Soft tabs means you're using spaces instead of the tab character ('\t').
 		editors.html.getSession().setUseSoftTabs(false);
@@ -452,15 +452,15 @@ $(function () {
 		editors.js.setFontSize(appSession.settings.editor.fontSize);
 
 		// If showInvisibiles is set to true, invisible characters—like spaces or new lines—are show in the editor.
-		editors.html.setShowInvisibles(appSession.settings.editor.showInvisibles);
-		editors.css.setShowInvisibles(appSession.settings.editor.showInvisibles);
-		editors.js.setShowInvisibles(appSession.settings.editor.showInvisibles);
+		editors.html.setShowInvisibles(isTrue(appSession.settings.editor.showInvisibles));
+		editors.css.setShowInvisibles(isTrue(appSession.settings.editor.showInvisibles));
+		editors.js.setShowInvisibles(isTrue(appSession.settings.editor.showInvisibles));
 
 		// Specifies whether to use behaviors or not. "Behaviors" in this case is the auto-pairing of special characters,
 		// like quotation marks, parenthesis, or brackets.
-		editors.html.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
-		editors.css.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
-		editors.js.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+		editors.html.setBehavioursEnabled(isTrue(appSession.settings.editor.behavioursEnabled));
+		editors.css.setBehavioursEnabled(isTrue(appSession.settings.editor.behavioursEnabled));
+		editors.js.setBehavioursEnabled(isTrue(appSession.settings.editor.behavioursEnabled));
 
 		// Set the number of spaces that define a soft tab; for example, passing in 4 transforms the soft tabs to be equivalent to four spaces.
 		// This function also emits the changeTabSize event.
@@ -469,9 +469,9 @@ $(function () {
 		editors.js.getSession().setTabSize(appSession.settings.editor.tabsize);
 
 		// Sets whether or not line wrapping is enabled. If useWrapMode is different than the current value, the 'changeWrapMode' event is emitted.
-		editors.html.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
-		editors.css.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
-		editors.js.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+		editors.html.getSession().setUseWrapMode(isTrue(appSession.settings.editor.useWrapMode));
+		editors.css.getSession().setUseWrapMode(isTrue(appSession.settings.editor.useWrapMode));
+		editors.js.getSession().setUseWrapMode(isTrue(appSession.settings.editor.useWrapMode));
 
 		// Identifies if you want to use a worker for the EditSession.
 		editors.html.getSession().setUseWorker(appSession.settings.editor.useWorker);
@@ -484,7 +484,7 @@ $(function () {
 		editors.js.setHighlightActiveLine(false);
 
 		// set the Default theme
-		setTheme($("#options #theme").val());
+		setTheme(localStorage.getItem("appSession_settings_editor_theme") || $("#options #theme").val());
 
 		/* *******************************************************
 			Startup
@@ -639,6 +639,8 @@ $(function () {
 		$("#options #theme").change(function () {
 			// change the theme to the current value
 			setTheme($(this).val());
+
+			localStorage.setItem("appSession_settings_editor_theme", $(this).val());
 		});
 
 		// when the change event happens on the fontSize element of the options popup
@@ -650,6 +652,8 @@ $(function () {
 			editors.html.setFontSize(appSession.settings.editor.fontSize);
 			editors.css.setFontSize(appSession.settings.editor.fontSize);
 			editors.js.setFontSize(appSession.settings.editor.fontSize);
+
+			localStorage.setItem("appSession_settings_editor_fontSize", appSession.settings.editor.fontSize);
 		});
 
 		// when the change event happens on the tabSize element of the options popup
@@ -661,6 +665,8 @@ $(function () {
 			editors.html.getSession().setTabSize(appSession.settings.editor.tabSize);
 			editors.css.getSession().setTabSize(appSession.settings.editor.tabSize);
 			editors.js.getSession().setTabSize(appSession.settings.editor.tabSize);
+
+			localStorage.setItem("appSession_settings_editor_tabSize", appSession.settings.editor.tabSize);
 		});
 
 		// when the change event happens on the showPrintMargin element of the options popup
@@ -672,6 +678,8 @@ $(function () {
 			editors.html.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 			editors.css.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 			editors.js.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
+
+			localStorage.setItem("appSession_settings_editor_showPrintMargin", appSession.settings.editor.showPrintMargin);
 		});
 
 		// when the change event happens on the useWrapMode element of the options popup
@@ -683,6 +691,8 @@ $(function () {
 			editors.html.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
 			editors.css.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
 			editors.js.getSession().setUseWrapMode(appSession.settings.editor.useWrapMode);
+
+			localStorage.setItem("appSession_settings_editor_useWrapMode", appSession.settings.editor.useWrapMode);
 		});
 
 		// when the change event happens on the showInvisibles element of the options popup
@@ -694,6 +704,8 @@ $(function () {
 			editors.html.setShowInvisibles(appSession.settings.editor.showInvisibles);
 			editors.css.setShowInvisibles(appSession.settings.editor.showInvisibles);
 			editors.js.setShowInvisibles(appSession.settings.editor.showInvisibles);
+
+			localStorage.setItem("appSession_settings_editor_showInvisibles", appSession.settings.editor.showInvisibles);
 		});
 
 		// when the change event happens on the behavioursEnabled element of the options popup
@@ -705,6 +717,8 @@ $(function () {
 			editors.html.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
 			editors.css.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
 			editors.js.setBehavioursEnabled(appSession.settings.editor.behavioursEnabled);
+
+			localStorage.setItem("appSession_settings_editor_behavioursEnabled", appSession.settings.editor.behavioursEnabled);
 		});
 
 		// when the change event happens on the pageTitle element of the options popup
@@ -846,7 +860,7 @@ $(function () {
 				// create an iframe element
 				var iframe = document.createElement("iframe");
 				// and put it inside the iframe container
-				iframeContainer.insertAdjacentHTML("beforeend", iframe);
+				iframeContainer.appendChild(iframe);
 
 				// create, open, write result and close the iframe document
 				iDoc = iframe.contentDocument;
@@ -941,6 +955,14 @@ $(function () {
 			}
 
 			if ($(this).find("a").data("hint") == "Settings") {
+				$("#options #theme").val(appSession.settings.editor.theme);
+				$("#options [name=tabSize]").val(appSession.settings.editor.tabSize);
+				$("#options [name=showPrintMargin]").prop("checked", isTrue(appSession.settings.editor.showPrintMargin));
+				$("#options [name=useWrapMode]").prop("checked", isTrue(appSession.settings.editor.useWrapMode));
+				$("#options [name=fontSize]").val(appSession.settings.editor.fontSize);
+				$("#options [name=showInvisibles]").prop("checked", isTrue(appSession.settings.editor.showInvisibles));
+				$("#options [name=behavioursEnabled]").prop("checked", isTrue(appSession.settings.editor.behavioursEnabled));
+
 				require(["libs/select2"], function () {
 					$("[name=fontSize]").select2({
 						"width": "100%"
