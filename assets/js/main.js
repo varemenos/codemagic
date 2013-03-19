@@ -35,11 +35,11 @@ $(function () {
 				author : "",
 				editor : {
 					theme : "",
-					tabsize : localStorage.getItem("appSession_settings_editor_tabSize") || 4,
+					tabsize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
 					showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
 					useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
 					useWorker : true,
-					fontSize : localStorage.getItem("appSession_settings_editor_fontSize") || parseInt($("select[name=fontSize]").val(), 10),
+					fontSize : parseInt(localStorage.getItem("appSession_settings_editor_fontSize"), 10) || parseInt($("select[name=fontSize]").val(), 10),
 					showInvisibles : localStorage.getItem("appSession_settings_editor_showInvisibles") || false,
 					behavioursEnabled : localStorage.getItem("appSession_settings_editor_behavioursEnabled") || true
 				}
@@ -49,6 +49,8 @@ $(function () {
 				email : ""
 			}
 		};
+
+		console.log(appSession);
 
 		/* *******************************************************
 			Functions
