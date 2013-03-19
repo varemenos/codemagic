@@ -441,6 +441,11 @@ $(function () {
 		editors.css.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 		editors.js.setShowPrintMargin(appSession.settings.editor.showPrintMargin);
 
+		// Pass true to enable the use of soft tabs. Soft tabs means you're using spaces instead of the tab character ('\t').
+		editors.html.getSession().setUseSoftTabs(false);
+		editors.css.getSession().setUseSoftTabs(false);
+		editors.js.getSession().setUseSoftTabs(false);
+
 		// Set a new font size (in pixels) for the editor text.
 		editors.html.setFontSize(appSession.settings.editor.fontSize);
 		editors.css.setFontSize(appSession.settings.editor.fontSize);
