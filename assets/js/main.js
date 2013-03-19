@@ -323,7 +323,7 @@ $(function () {
 		var loc = {
 			search : {
 				string : window.location.search,
-				params : window.location.search.slice(1).split("&")
+				params : window.location.search.substring(1).split("&")
 			},
 			hash : {
 				string: location.hash.substring(1),
@@ -333,9 +333,13 @@ $(function () {
 			m : false
 		};
 
-while (!! (m = regex.exec(loc.hash.string))) {
-	loc.hash.params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-}
+		while (!! (loc.m = loc.regex.exec(loc.hash.string))) {
+			loc.hash.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
+		}
+
+		while (!! (loc.m = loc.regex.exec(loc.search.string))) {
+			loc.search.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
+		}
 
 		// if the query string is empty
 		if (loc.search.string === "") {
@@ -829,8 +833,15 @@ while (!! (m = regex.exec(loc.hash.string))) {
 
 				var result = head + body;
 
+				// get the container of the iframe
+				var iframeContainer = document.getElementById("right");
+				// empty the container of the iframe
+				iframeContainer.innerHtml = "";
 
-				var iframe = document.getElementById("iframe");
+				// create an iframe element
+				var iframe = document.createElement("iframe");
+				// and put it inside the iframe container
+				iframeContainer.insertAdjacentHTML("beforeend", iframe);
 
 				// create, open, write result and close the iframe document
 				iDoc = iframe.contentDocument;
