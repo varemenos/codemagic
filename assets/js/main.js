@@ -35,7 +35,7 @@ $(function () {
 				description : "",
 				author : "",
 				editor : {
-					theme : "",
+					theme : localStorage.getItem("appSession_settings_editor_theme") || "ambiance",
 					tabSize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
 					showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
 					useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
@@ -154,18 +154,15 @@ $(function () {
 		}
 
 		function setTheme(theme) {
-			// if the currently used theme is not the selected theme
-			if(appSession.settings.editor.theme !== theme){
-				// then set the selected theme as the new theme for the editor.
-				editors.html.setTheme("ace/theme/" + theme);
-				editors.css.setTheme("ace/theme/" + theme);
-				editors.js.setTheme("ace/theme/" + theme);
+			// then set the selected theme as the new theme for the editor.
+			editors.html.setTheme("ace/theme/" + theme);
+			editors.css.setTheme("ace/theme/" + theme);
+			editors.js.setTheme("ace/theme/" + theme);
 
-				// save the selected theme
-				appSession.settings.editor.theme = theme;
+			// save the selected theme
+			appSession.settings.editor.theme = theme;
 
-				localStorage.setItem("appSession_settings_editor_theme", theme);
-			}
+			localStorage.setItem("appSession_settings_editor_theme", theme);
 		}
 
 		function themedLayout(isDark){
@@ -521,7 +518,7 @@ $(function () {
 		editors.js.setHighlightActiveLine(false);
 
 		// set the Default theme
-		setTheme(localStorage.getItem("appSession_settings_editor_theme") || $("#options #theme").val());
+		setTheme(appSession.settings.editor.theme);
 
 		/* *******************************************************
 			Startup
@@ -790,13 +787,12 @@ $(function () {
 		});
 
 		// when the click event happens on the #auth element
-		$('#auth').on('click', function(){
-			window.location.replace("https://accounts.google.com/o/oauth2/auth?client_id="+appSession.authenticate.client_id + "&scope=" + appSession.authenticate.scope.join(" ") + "&response_type=" + appSession.authenticate.response_type + "&redirect_uri=" + appSession.authenticate.redirect_uri + "&state=" + appSession.authenticate.state
-			);
+		$("#auth").on("click", function(){
+			window.location.replace("https://accounts.google.com/o/oauth2/auth?client_id="+appSession.authenticate.client_id + "&scope=" + appSession.authenticate.scope.join(" ") + "&response_type=" + appSession.authenticate.response_type + "&redirect_uri=" + appSession.authenticate.redirect_uri + "&state=" + appSession.authenticate.state);
 		});
 
 		// when the click event happens on the #authOFF element
-		$('#authOFF').on('click', function(){
+		$("#authOFF").on("click", function(){
 			localStorage.clear();
 			window.location.replace("./");
 		});
