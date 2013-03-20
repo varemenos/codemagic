@@ -35,7 +35,7 @@ $(function () {
 				author : "",
 				editor : {
 					theme : "",
-					tabsize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
+					tabSize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
 					showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
 					useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
 					useWorker : true,
