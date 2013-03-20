@@ -527,6 +527,12 @@ $(function () {
 			Startup
 		******************************************************* */
 
+		if(localStorage.getItem("user_id") !== null){
+			$("#ucp").removeClass("hidden");
+			$("#authOFF").removeClass("hidden");
+			$("#auth").addClass("hidden");
+		}
+
 		/* *******************************************************
 			Events
 		******************************************************* */
@@ -789,6 +795,12 @@ $(function () {
 			);
 		});
 
+		// when the click event happens on the #authOFF element
+		$('#authOFF').on('click', function(){
+			localStorage.clear();
+			window.location.replace("./");
+		});
+
 		// when the click event happens on the #share element
 		$("#share").click(function () {
 			// change the value of the .twitter anchor to match the current page
@@ -953,6 +965,7 @@ $(function () {
 			$(".navigation .toggler[data-selector=options]").removeClass("enabled");
 			$(".navigation .toggler[data-selector=social]").removeClass("enabled");
 			$(".navigation .toggler[data-selector=Information]").removeClass("enabled");
+			$(".navigation .toggler[data-selector=UserCP]").removeClass("enabled");
 		});
 
 		// when the click event happens on the .toggler elements

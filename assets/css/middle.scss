@@ -489,27 +489,6 @@ header{
 	}
 }
 
-#shortcuts{
-	@include border-box;
-
-	table{
-		@include border-box;
-		width: 80%;
-		margin: 0 auto;
-
-		tr{
-			border: 1px solid #ccc;
-		}
-
-		tr,
-		th,
-		td{
-			@include border-box;
-			padding: 0.5em;
-		}
-	}
-}
-
 #overlay{
 	display: none;
 	@include border-box;

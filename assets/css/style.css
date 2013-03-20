@@ -1057,36 +1057,6 @@ header {
       border-right: 1px solid #f90; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003492}}
-#shortcuts {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  *behavior: url(assets/js/boxsizing.htc); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003495}}
-  #shortcuts table {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    *behavior: url(assets/js/boxsizing.htc);
-    width: 80%;
-    margin: 0 auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003500}}
-    #shortcuts table tr {
-      border: 1px solid #ccc; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003504}}
-    #shortcuts table tr,
-    #shortcuts table th,
-    #shortcuts table td {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      box-sizing: border-box;
-      *behavior: url(assets/js/boxsizing.htc);
-      padding: 0.5em; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003513}}
 #overlay {
   display: none;
   -webkit-box-sizing: border-box;
@@ -1102,7 +1072,7 @@ header {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003525}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003504}}
 .editor-resizer {
   margin-left: 3em;
   font-size: 0.7em;
@@ -1115,7 +1085,7 @@ header {
   -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) inset; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003536}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003515}}
 .closeButton {
   position: absolute;
   top: 1em;
@@ -1126,7 +1096,7 @@ header {
   -moz-box-shadow: 0 0 3px #cccccc;
   box-shadow: 0 0 3px #cccccc; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003545}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/varemenos\/repos\/codemagic\/assets\/css\/middle\.scss}line{font-family:\00003524}}
 .closeButton:focus,
 .closeButton:hover {
   color: #fff;
