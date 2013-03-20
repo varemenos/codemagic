@@ -1,5 +1,6 @@
 $(function () {
 	define(function (require) {
+
 		/* *******************************************************
 			Session
 		******************************************************* */
@@ -43,6 +44,18 @@ $(function () {
 					showInvisibles : localStorage.getItem("appSession_settings_editor_showInvisibles") || false,
 					behavioursEnabled : localStorage.getItem("appSession_settings_editor_behavioursEnabled") || true
 				}
+			},
+			authenticate : {
+				endpoint : "https://accounts.google.com/o/oauth2/auth",
+				response_type : "token",
+				client_id : "1785061010-1osqu1jsk03f033ehv2268jjtiung7h8.apps.googleusercontent.com",
+				redirect_uri : "http://codemagic.gr",
+				scope : [
+					"https://www.googleapis.com/auth/userinfo.profile",
+					"https://www.googleapis.com/auth/drive"
+				],
+				state : "?auth",
+				approval_prompt : "auto"
 			},
 			user : {
 				username : "",
@@ -345,6 +358,22 @@ $(function () {
 			loc.search.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
 		}
 
+		if(loc.hash.params["state"] === "?auth"){
+			localStorage.setItem("access_token", loc.hash.params.access_token);
+
+			$.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + localStorage.getItem("access_token"), function(data) {
+				if(parseInt(data.expires_in, 10) > 0 && data.audience === appSession.authenticate.client_id){
+					localStorage.setItem("expires_in", data.expires_in);
+					localStorage.setItem("access_type", data.access_type);
+					localStorage.setItem("user_id", data.user_id);
+
+					window.location.replace("./");
+				}else{
+					// TODO handle session hijacking or expiration errors
+				}
+			});
+		}
+
 		// if the query string is empty
 		if (loc.search.string === "") {
 			// then its the frontpage, so enable the default panels
@@ -414,6 +443,10 @@ $(function () {
 					// get enabled editors
 					// AJAX load of data
 					// localStorage backup of data
+				} else
+				// if the selected parameter is "data"
+				if (param[0] == "auth") {
+					// TODO:
 				} else
 				// if the selected parameter is "fullscreen"
 				if (param[0] == "fullscreen") {
@@ -751,27 +784,9 @@ $(function () {
 		});
 
 		// when the click event happens on the #auth element
-		$("#auth").click(function() {
-			var authenticate = {
-				endpoint : "https://accounts.google.com/o/oauth2/auth",
-				response_type : "token",
-				client_id : "1785061010-1osqu1jsk03f033ehv2268jjtiung7h8.apps.googleusercontent.com",
-				redirect_uri : "http://codemagic.gr",
-				scope : "https://www.googleapis.com/auth/plus.login",
-				state : "?auth",
-				approval_prompt : "auto"
-			};
-
-			window.location.href =
-				authenticate.endpoint + "?scope=" +
-				authenticate.scope + "&state=" +
-				authenticate.state + "&redirect_uri=" +
-				authenticate.redirect_uri + "&response_type=" +
-				authenticate.response_type + "&client_id=" +
-				authenticate.client_id;
-
-			// continue from:
-			// Handling the response https://developers.google.com/accounts/docs/OAuth2UserAgent
+		$('#auth').on('click', function(){
+			window.location.replace("https://accounts.google.com/o/oauth2/auth?client_id="+appSession.authenticate.client_id + "&scope=" + appSession.authenticate.scope.join(" ") + "&response_type=" + appSession.authenticate.response_type + "&redirect_uri=" + appSession.authenticate.redirect_uri + "&state=" + appSession.authenticate.state
+			);
 		});
 
 		// when the click event happens on the #share element
@@ -859,7 +874,7 @@ $(function () {
 				// get the container of the iframe
 				var iframeContainer = document.getElementById("right");
 				// empty the container of the iframe
-				iframeContainer.innerHtml = "";
+				$("#right iframe").remove();
 
 				// create an iframe element
 				var iframe = document.createElement("iframe");
