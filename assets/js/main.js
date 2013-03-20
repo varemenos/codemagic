@@ -50,14 +50,16 @@ $(function () {
 			}
 		};
 
-		console.log(appSession);
-
 		/* *******************************************************
 			Functions
 		******************************************************* */
 
 		function isTrue(x){
-			return x === "true";
+			if(typeof x !== "boolean"){
+				return x === "true";
+			}else{
+				return x;
+			}
 		}
 
 		function resizeEditors() {
