@@ -29,7 +29,7 @@ define(['jquery'], function(){
 			description : "",
 			author : "",
 			editor : {
-				theme : localStorage.getItem("appSession_settings_editor_theme") || "ambiance",
+				theme : localStorage.getItem("appSession_settings_editor_theme") || "tomorrow_night",
 				tabSize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
 				showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
 				useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
