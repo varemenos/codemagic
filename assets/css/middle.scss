@@ -178,7 +178,8 @@ header{
 	@include transition(150ms ease-in-out);
 
 	::-webkit-scrollbar {
-		width: 0.5em;
+		width: auto;
+		// width: 0.5em;
 	}
 
 	::-webkit-scrollbar-track {

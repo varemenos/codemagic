@@ -1,461 +1,394 @@
-$(function () {
-	define(function (require) {
+require.config({
+	paths: {
+		jquery: 'libs/jquery-1.9.1.min'
+	}
+});
 
-		/* *******************************************************
-			Session
-		******************************************************* */
+require(['jquery', 'appSession', 'loc'], function ($, appSession, loc) {
 
-		var appSession = {
-			panels : {
-				html : {
-					state : true,
-					mode : $("#markupSettings").val(),
-					height: 200,
-					content : ""
-				},
-				css : {
-					state : true,
-					mode : $("#stylesheetSettings").val(),
-					height: 200,
-					content : ""
-				},
-				js : {
-					state : true,
-					height: 200,
-					content : ""
-				},
-				console : {
-					state : false,
-					height: 200
-				}
-			},
-			settings : {
-				fullscreen : false,
-				title : "codeMagic",
-				description : "",
-				author : "",
-				editor : {
-					theme : localStorage.getItem("appSession_settings_editor_theme") || "ambiance",
-					tabSize : parseInt(localStorage.getItem("appSession_settings_editor_tabSize"), 10) || 4,
-					showPrintMargin : localStorage.getItem("appSession_settings_editor_showPrintMargin") || false,
-					useWrapMode : localStorage.getItem("appSession_settings_editor_useWrapMode") || true,
-					useWorker : true,
-					fontSize : parseInt(localStorage.getItem("appSession_settings_editor_fontSize"), 10) || parseInt($("select[name=fontSize]").val(), 10),
-					showInvisibles : localStorage.getItem("appSession_settings_editor_showInvisibles") || false,
-					behavioursEnabled : localStorage.getItem("appSession_settings_editor_behavioursEnabled") || true
-				}
-			},
-			authenticate : {
-				endpoint : "https://accounts.google.com/o/oauth2/auth",
-				response_type : "token",
-				client_id : "1785061010-1osqu1jsk03f033ehv2268jjtiung7h8.apps.googleusercontent.com",
-				redirect_uri : "http://codemagic.gr",
-				scope : [
-					"https://www.googleapis.com/auth/userinfo.profile",
-					"https://www.googleapis.com/auth/drive"
-				],
-				state : "?auth",
-				approval_prompt : "auto"
-			},
-			user : {
-				username : "",
-				email : ""
+	/* *******************************************************
+		Functions
+	******************************************************* */
+
+	'use strict';
+
+	function isTrue(x){
+		if(typeof x !== 'boolean'){
+			return x === 'true';
+		}else{
+			return x;
+		}
+	}
+
+	function resizeEditors() {
+		// force-trigger a resize of the editors
+		editors.html.resize();
+		editors.css.resize();
+		editors.js.resize();
+	}
+
+	function updateLayout() {
+		resizeEditors();
+
+		// make all the popups display below the header
+		$('.popup').each(function () {
+			$(this).css('top', $('header').height() + 'px');
+		});
+
+		// find the maximum margin value of each .ace_gutter-layer
+		var maxMargin = 0;
+		$('.ace_gutter-layer').each(function(){
+			if($(this).width() > maxMargin){
+				maxMargin = $(this).width();
 			}
-		};
+		});
 
-		/* *******************************************************
-			Functions
-		******************************************************* */
+		// align the console and editor resizing bars with the editors
+		$('#console .editor-wrap').css('margin-left', maxMargin);
+		$('.editor-resizer').css('margin-left', maxMargin);
 
-		function isTrue(x){
-			if(typeof x !== "boolean"){
-				return x === "true";
-			}else{
-				return x;
-			}
-		}
+		// set the height of main equal to the height of the container (which is 100%) minus the height of the header
+		$('#main').height($('#container').height() - $('header').height());
+	}
 
-		function resizeEditors() {
-			// force-trigger a resize of the editors
-			editors.html.resize();
-			editors.css.resize();
-			editors.js.resize();
-		}
-
-		function updateLayout() {
-			resizeEditors();
-
-			// make all the popups display below the header
-			$(".popup").each(function () {
-				$(this).css("top", $("header").height() + "px");
-			});
-
-			// find the maximum margin value of each .ace_gutter-layer
-			var maxMargin = 0;
-			$(".ace_gutter-layer").each(function(){
-				if($(this).width() > maxMargin){
-					maxMargin = $(this).width();
-				}
-			});
-
-			// align the console and editor resizing bars with the editors
-			$("#console .editor-wrap").css("margin-left", maxMargin);
-			$(".editor-resizer").css("margin-left", maxMargin);
-
-			// set the height of main equal to the height of the container (which is 100%) minus the height of the header
-			$("#main").height($("#container").height() - $("header").height());
-		}
-
-		function prettify() {
-			require(["libs/beautify", "libs/beautify-css", "libs/beautify-html"], function () {
-				// if the selected markup type is HTML
-				if ($("#markupSettings").val() === "html") {
-					// then beautify the HTML value using the html beautifing library with the specified options
-					editors.html.setValue(style_html(editors.html.getValue(), {
-						'brace_style': 'collapse',
-						'indent_size': 1,
-						'indent_char': '\t',
-						'unformatted': []
-					}));
-
-					// move the cursor to the first line
-					editors.html.selection.moveCursorFileStart();
-				}
-
-				// if the selected stylesheet type is CSS
-				if ($("#stylesheetSettings").val() === "css") {
-					// then beautify the CSS value using the css beautifing library with the specified options
-					editors.css.setValue(css_beautify(editors.css.getValue(), {
-						'indent_size': 1,
-						'indent_char': '\t'
-					}));
-
-					// move the cursor to the first line
-					editors.css.selection.moveCursorFileStart();
-				}
-
-				// beautify the JavaScript value using the js beautifing library with the specified options
-				editors.js.setValue(js_beautify(editors.js.getValue(), {
+	function prettify() {
+		require(['libs/beautify', 'libs/beautify-css', 'libs/beautify-html'], function () {
+			// if the selected markup type is HTML
+			if ($('#markupSettings').val() === 'html') {
+				// then beautify the HTML value using the html beautifing library with the specified options
+				editors.html.setValue(htmlBeautify(editors.html.getValue(), {
+					'brace_style': 'collapse',
 					'indent_size': 1,
 					'indent_char': '\t',
-					"preserve_newlines": false,
-					"jslint_happy": true,
-					"brace_style": "collapse",
-					"keep_array_indentation": false,
-					"keep_function_indentation": false,
-					"eval_code": false,
-					"unescape_strings": false,
-					"break_chained_methods": false
+					'unformatted': []
 				}));
 
 				// move the cursor to the first line
-				editors.js.selection.moveCursorFileStart();
-			});
-		}
-
-		function setTheme(theme) {
-			// then set the selected theme as the new theme for the editor.
-			editors.html.setTheme("ace/theme/" + theme);
-			editors.css.setTheme("ace/theme/" + theme);
-			editors.js.setTheme("ace/theme/" + theme);
-
-			// save the selected theme
-			appSession.settings.editor.theme = theme;
-
-			localStorage.setItem("appSession_settings_editor_theme", theme);
-		}
-
-		function themedLayout(isDark){
-			var fontcolor;
-			var bgcolor;
-
-			// try find the background and font color of the ace_gutters that are enabled
-			$(".ace_gutter").each(function () {
-				// if the currently selected element's background color is not undefined and its 2nd parent is not hidden
-				if ($(this).css("background-color") != "undefined" && $(this).parents().eq(2).css("display") !== "none") {
-					// then grab the color from the selected element
-					bgcolor = $(this).css("background-color");
-				}
-			});
-
-			// if the currently selected theme is a Dark themes
-			if(isDark){
-				// else set the font color to bright grey
-				fontcolor = "#ccc";
-			}else{
-				// then set the font color to dark grey
-				fontcolor = "#222";
+				editors.html.selection.moveCursorFileStart();
 			}
 
-			// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
-			$("#left").css({
-				"background-color" : bgcolor,
-				"border-bottom-color" : bgcolor
-			});
-			$("#left section h1").css("color", fontcolor);
-			$("#left section h1 .editorFullscreen").css("color", fontcolor);
-			$("#console-editor").css({
-				"background-color": $(".ace_scroller").css("background-color"),
-				"color" : fontcolor
-			});
+			// if the selected stylesheet type is CSS
+			if ($('#stylesheetSettings').val() === 'css') {
+				// then beautify the CSS value using the css beautifing library with the specified options
+				editors.css.setValue(cssBeautify(editors.css.getValue(), {
+					'indent_size': 1,
+					'indent_char': '\t'
+				}));
 
-			// force a layout update
-			updateLayout();
-		}
-
-		function enablePanel(panel) {
-			// show the selected panel
-			$("#" + panel).show();
-			// and add the class "enabled" to its toggler
-			$(".navigation li[data-selector=" + panel + "]").addClass("enabled");
-
-			// save the state and the mode of the editors
-			if(panel === "html"){
-				appSession.panels.html.state = true;
-
-				if($("#markupSettings").val() === "markdown"){
-					appSession.panels.html.mode = "markdown";
-				}
-			}else if(panel === "css"){
-				appSession.panels.css.state = true;
-
-				if($("#stylesheetSettings").val() === "less"){
-					appSession.panels.css.mode = "less";
-				}
-			}else if(panel === "js"){
-				appSession.panels.js.state = true;
-			}else if(panel === "console"){
-				appSession.panels.console.state = true;
+				// move the cursor to the first line
+				editors.css.selection.moveCursorFileStart();
 			}
-		}
 
-		function disablePanel(panel) {
-			// hide the selected panel
-			$("#" + panel).hide();
-			// and remove the class "enabled" from its toggler
-			$(".navigation li[data-selector=" + panel + "]").removeClass("enabled");
+			// beautify the JavaScript value using the js beautifing library with the specified options
+			editors.js.setValue(jsBeautify(editors.js.getValue(), {
+				'indent_size': 1,
+				'indent_char': '\t',
+				'preserve_newlines': false,
+				'jslint_happy': true,
+				'brace_style': 'collapse',
+				'keep_array_indentation': false,
+				'keep_function_indentation': false,
+				'eval_code': false,
+				'unescape_strings': false,
+				'break_chained_methods': false
+			}));
 
-			// save the state and the mode of the editors
-			if(panel === "html"){
-				appSession.panels.html.state = false;
-			}else if(panel === "css"){
-				appSession.panels.css.state = false;
-			}else if(panel === "js"){
-				appSession.panels.js.state = false;
-			}else if(panel === "console"){
-				appSession.panels.console.state = false;
+			// move the cursor to the first line
+			editors.js.selection.moveCursorFileStart();
+		});
+	}
+
+	function setTheme(theme) {
+		// then set the selected theme as the new theme for the editor.
+		editors.html.setTheme('ace/theme/' + theme);
+		editors.css.setTheme('ace/theme/' + theme);
+		editors.js.setTheme('ace/theme/' + theme);
+
+		// save the selected theme
+		appSession.settings.editor.theme = theme;
+
+		localStorage.setItem('appSession_settings_editor_theme', theme);
+	}
+
+	function themedLayout(isDark){
+		var fontcolor;
+		var bgcolor;
+
+		// try find the background and font color of the ace_gutters that are enabled
+		$('.ace_gutter').each(function () {
+			// if the currently selected element's background color is not undefined and its 2nd parent is not hidden
+			if ($(this).css('background-color') != 'undefined' && $(this).parents().eq(2).css('display') !== 'none') {
+				// then grab the color from the selected element
+				bgcolor = $(this).css('background-color');
 			}
+		});
+
+		// if the currently selected theme is a Dark themes
+		if(isDark){
+			// else set the font color to bright grey
+			fontcolor = '#ccc';
+		}else{
+			// then set the font color to dark grey
+			fontcolor = '#222';
 		}
 
-		function enableDefaultPanels() {
-			// enable the default editors
-			enablePanel("html");
-			enablePanel("css");
-			enablePanel("js");
+		// and set their values to the below element's background and font colors so that they fit the design of the enabled editors
+		$('#left').css({
+			'background-color' : bgcolor,
+			'border-bottom-color' : bgcolor
+		});
+		$('#left section h1').css('color', fontcolor);
+		$('#left section h1 .editorFullscreen').css('color', fontcolor);
+		$('#console-editor').css({
+			'background-color': $('.ace_scroller').css('background-color'),
+			'color' : fontcolor
+		});
 
-			// save their state
+		// force a layout update
+		updateLayout();
+	}
+
+	function enablePanel(panel) {
+		// show the selected panel
+		$('#' + panel).show();
+		// and add the class 'enabled' to its toggler
+		$('.navigation li[data-selector=' + panel + ']').addClass('enabled');
+
+		// save the state and the mode of the editors
+		if(panel === 'html'){
 			appSession.panels.html.state = true;
+
+			if($('#markupSettings').val() === 'markdown'){
+				appSession.panels.html.mode = 'markdown';
+			}
+		}else if(panel === 'css'){
 			appSession.panels.css.state = true;
+
+			if($('#stylesheetSettings').val() === 'less'){
+				appSession.panels.css.mode = 'less';
+			}
+		}else if(panel === 'js'){
 			appSession.panels.js.state = true;
+		}else if(panel === 'console'){
+			appSession.panels.console.state = true;
+		}
+	}
+
+	function disablePanel(panel) {
+		// hide the selected panel
+		$('#' + panel).hide();
+		// and remove the class 'enabled' from its toggler
+		$('.navigation li[data-selector=' + panel + ']').removeClass('enabled');
+
+		// save the state and the mode of the editors
+		if(panel === 'html'){
+			appSession.panels.html.state = false;
+		}else if(panel === 'css'){
+			appSession.panels.css.state = false;
+		}else if(panel === 'js'){
+			appSession.panels.js.state = false;
+		}else if(panel === 'console'){
 			appSession.panels.console.state = false;
 		}
+	}
 
-		function toggleFullscreen() {
-			// if the page is currently in fullscreen mode
-			if (appSession.settings.fullscreen === true) {
-				// then remove the "enabled" of the element with the "fullscreen" id
-				$("#fullscreen").removeClass("enabled");
-				// reveal the element with the "left" id
-				$("#left").show();
-				// and resize the element with the "right" id to half the width of the screen
-				$("#right").css("width", "50%");
+	function enableDefaultPanels() {
+		// enable the default editors
+		enablePanel('html');
+		enablePanel('css');
+		enablePanel('js');
 
-				// save the state of the fullscreen mode
-				appSession.settings.fullscreen = false;
-			} else {
-				// else add the "enabled" of the element with the "fullscreen" id
-				$("#fullscreen").addClass("enabled");
-				// hide the element with the "left" id
-				$("#left").hide();
-				// and resize the element with the "right" id to the whole width of the screen
-				$("#right").css("width", "100%");
+		// save their state
+		appSession.panels.html.state = true;
+		appSession.panels.css.state = true;
+		appSession.panels.js.state = true;
+		appSession.panels.console.state = false;
+	}
 
-				// save the state of the fullscreen mode
-				appSession.settings.fullscreen = true;
-			}
-		}
+	function toggleFullscreen() {
+		// if the page is currently in fullscreen mode
+		if (appSession.settings.fullscreen === true) {
+			// then remove the 'enabled' of the element with the 'fullscreen' id
+			$('#fullscreen').removeClass('enabled');
+			// reveal the element with the 'left' id
+			$('#left').show();
+			// and resize the element with the 'right' id to half the width of the screen
+			$('#right').css('width', '50%');
 
-		function toggleEditorFullscreen(selected){
-			// get the selected editor
-			var target = document.getElementById(selected+"-editor");
-
-			// if the fullscreen feature is supported
-			if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
-				// then if the target has the W3C implementation
-				if (target.requestFullscreen) {
-					// then do a fullscreen
-					target.requestFullscreen();
-				} else
-				// else  if the target has the MOZ implementation
-				if (target.mozRequestFullScreen) {
-					// then do a MOZ fullscreen
-					target.mozRequestFullScreen();
-				} else
-				// else  if the target has the WEBKIT implementation
-				if (target.webkitRequestFullscreen) {
-					// then do a WEBKIT fullscreen
-					// and also use ALLOW_KEYBOARD_INPUT parameter to prevent the browser from blocking keyboard input
-					target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-				}
-			}
-			else {
-				// else if the target has the W3C implementation
-				if (document.cancelFullScreen) {
-					// then do a cancel fullscreen
-					document.cancelFullScreen();
-				}
-				// else  if the target has the MOZ implementation
-				else if (document.mozCancelFullScreen) {
-					// then do a MOZ cancel fullscreen
-					document.mozCancelFullScreen();
-				}
-				// else  if the target has the WEBKIT implementation
-				else if (document.webkitCancelFullScreen) {
-					// then do a WEBKIT fullscreen
-					document.webkitCancelFullScreen();
-				}
-			}
-
-			// force a layout update
-			updateLayout();
-		}
-
-		/* *******************************************************
-			Uri parsing
-		******************************************************* */
-
-		var loc = {
-			search : {
-				string : window.location.search,
-				params : window.location.search.substring(1).split("&")
-			},
-			hash : {
-				string: location.hash.substring(1),
-				params : {}
-			},
-			regex : /([^&=]+)=([^&]*)/g,
-			m : false
-		};
-
-		while (!! (loc.m = loc.regex.exec(loc.hash.string))) {
-			loc.hash.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
-		}
-
-		while (!! (loc.m = loc.regex.exec(loc.search.string))) {
-			loc.search.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
-		}
-
-		if(loc.hash.params["state"] === "?auth"){
-			localStorage.setItem("access_token", loc.hash.params.access_token);
-
-			$.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + localStorage.getItem("access_token"), function(data) {
-				if(parseInt(data.expires_in, 10) > 0 && data.audience === appSession.authenticate.client_id){
-					localStorage.setItem("expires_in", data.expires_in);
-					localStorage.setItem("access_type", data.access_type);
-					localStorage.setItem("user_id", data.user_id);
-
-					window.location.replace("./");
-				}else{
-					// TODO handle session hijacking or expiration errors
-				}
-			});
-		}
-
-		// if the query string is empty
-		if (loc.search.string === "") {
-			// then its the frontpage, so enable the default panels
-			enableDefaultPanels();
+			// save the state of the fullscreen mode
+			appSession.settings.fullscreen = false;
 		} else {
-			// else for every parameter of the query
-			for (var i = 0; i < params.length; i++) {
-				var param = params[i].split("=");
-				// if the selected parameter is "view"
-				if (param[0] == "view") {
-					// #TODO: use views to calculate amount of panels enabled, and toggle Height classes(ie: twoHorizontal, threeVertical, etc)
-					var temp = param[1].split('');
-					// spilt the currently selected query's parameter string into an array of characters and foreach character
-					for (j = 0; j < temp.length; j++) {
-						// if its h (of HTML)
-						if (temp[j] == "h") {
-							// then enable the HTML panel
-							enablePanel("html");
-						} else
-						// if its m (of Markdown)
-						if (temp[j] == "m") {
-							// then change the selected markup's name and dropdown option to Markdown
-							$("#markupSettings").val("markdown");
-							$("#selectedMarkup").html("Markdown");
-							// enable the HTML panel
-							enablePanel("html");
+			// else add the 'enabled' of the element with the 'fullscreen' id
+			$('#fullscreen').addClass('enabled');
+			// hide the element with the 'left' id
+			$('#left').hide();
+			// and resize the element with the 'right' id to the whole width of the screen
+			$('#right').css('width', '100%');
 
-							// save the editor mode as markdown
-							appSession.panels.html.mode = "markdown";
-						} else
-						// if its c (of CSS)
-						if (temp[j] == "c") {
-							// then enable the CSS panel
-							enablePanel("css");
-						} else
-						// if its l (of LESS)
-						if (temp[j] == "l") {
-							// then change the selected stylesheet's name and dropdown option to LESS
-							$("#stylesheetSettings").val("less");
-							$("#selectedStylesheet").html("Less");
-							// enable the CSS panel
-							enablePanel("css");
+			// save the state of the fullscreen mode
+			appSession.settings.fullscreen = true;
+		}
+	}
 
-							// save the editor mode as less
-							appSession.panels.css.mode = "less";
-						} else
-						// if its j (of JavaScript)
-						if (temp[j] == "j") {
-							enablePanel("js");
-						} else
-						// if its k (of Console)
-						if (temp[j] == "k") {
-							enablePanel("console");
-						} else
-						// if its all (HTML, CSS, JavaScript and Console)
-						if (param[1] == "all") {
-							// then enable the default panels
-							enableDefaultPanels();
-							// and the console
-							enablePanel("console");
-						}
-					}
-				} else
-				// if the selected parameter is "data"
-				if (param[0] == "data") {
-					// TODO:
-					// get enabled editors
-					// AJAX load of data
-					// localStorage backup of data
-				} else
-				// if the selected parameter is "data"
-				if (param[0] == "auth") {
-					// TODO:
-				} else
-				// if the selected parameter is "fullscreen"
-				if (param[0] == "fullscreen") {
-					// TODO, think of a way to enable the editors after disabling the fullscreen mode
-					toggleFullscreen();
-				}
+	function toggleEditorFullscreen(selected){
+		// get the selected editor
+		var target = document.getElementById(selected+'-editor');
+
+		// if the fullscreen feature is supported
+		if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+			// then if the target has the W3C implementation
+			if (target.requestFullscreen) {
+				// then do a fullscreen
+				target.requestFullscreen();
+			} else
+			// else  if the target has the MOZ implementation
+			if (target.mozRequestFullScreen) {
+				// then do a MOZ fullscreen
+				target.mozRequestFullScreen();
+			} else
+			// else  if the target has the WEBKIT implementation
+			if (target.webkitRequestFullscreen) {
+				// then do a WEBKIT fullscreen
+				// and also use ALLOW_KEYBOARD_INPUT parameter to prevent the browser from blocking keyboard input
+				target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+			}
+		}
+		else {
+			// else if the target has the W3C implementation
+			if (document.cancelFullScreen) {
+				// then do a cancel fullscreen
+				document.cancelFullScreen();
+			}
+			// else  if the target has the MOZ implementation
+			else if (document.mozCancelFullScreen) {
+				// then do a MOZ cancel fullscreen
+				document.mozCancelFullScreen();
+			}
+			// else  if the target has the WEBKIT implementation
+			else if (document.webkitCancelFullScreen) {
+				// then do a WEBKIT fullscreen
+				document.webkitCancelFullScreen();
 			}
 		}
 
-		/* *******************************************************
-			Editors
-		******************************************************* */
+		// force a layout update
+		updateLayout();
+	}
+
+	/* *******************************************************
+		Uri parsing
+	******************************************************* */
+		// TODO, document the url parsing
+
+	while (!! (loc.m = loc.regex.exec(loc.hash.string))) {
+		loc.hash.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
+	}
+
+	while (!! (loc.m = loc.regex.exec(loc.search.string))) {
+		loc.search.params[decodeURIComponent(loc.m[1])] = decodeURIComponent(loc.m[2]);
+	}
+
+	if(loc.hash.params.state === '?auth'){
+		localStorage.setItem('access_token', loc.hash.params.access_token);
+
+		$.get('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + localStorage.getItem('access_token'), function(data) {
+			if(parseInt(data.expires_in, 10) > 0 && data.audience === appSession.authenticate.client_id){
+				localStorage.setItem('expires_in', data.expires_in);
+				localStorage.setItem('access_type', data.access_type);
+				localStorage.setItem('user_id', data.user_id);
+
+				window.location.replace('./');
+			}else{
+				// TODO handle session hijacking or expiration errors
+			}
+		});
+	}
+
+	// if the query string is empty
+	if (loc.search.string === '') {
+		// then its the frontpage, so enable the default panels
+		enableDefaultPanels();
+	} else {
+		// else for every parameter of the query
+		for (var i = 0; i < params.length; i++) {
+			var param = params[i].split('=');
+			// if the selected parameter is 'view'
+			if (param[0] == 'view') {
+				// #TODO: use views to calculate amount of panels enabled, and toggle Height classes(ie: twoHorizontal, threeVertical, etc)
+				var temp = param[1].split('');
+				// spilt the currently selected query's parameter string into an array of characters and foreach character
+				for (j = 0; j < temp.length; j++) {
+					// if its h (of HTML)
+					if (temp[j] == 'h') {
+						// then enable the HTML panel
+						enablePanel('html');
+					} else
+					// if its m (of Markdown)
+					if (temp[j] == "m") {
+						// then change the selected markup's name and dropdown option to Markdown
+						$("#markupSettings").val("markdown");
+						$("#selectedMarkup").html("Markdown");
+						// enable the HTML panel
+						enablePanel("html");
+
+						// save the editor mode as markdown
+						appSession.panels.html.mode = "markdown";
+					} else
+					// if its c (of CSS)
+					if (temp[j] == "c") {
+						// then enable the CSS panel
+						enablePanel("css");
+					} else
+					// if its l (of LESS)
+					if (temp[j] == "l") {
+						// then change the selected stylesheet's name and dropdown option to LESS
+						$("#stylesheetSettings").val("less");
+						$("#selectedStylesheet").html("Less");
+						// enable the CSS panel
+						enablePanel("css");
+
+						// save the editor mode as less
+						appSession.panels.css.mode = "less";
+					} else
+					// if its j (of JavaScript)
+					if (temp[j] == "j") {
+						enablePanel("js");
+					} else
+					// if its k (of Console)
+					if (temp[j] == "k") {
+						enablePanel("console");
+					} else
+					// if its all (HTML, CSS, JavaScript and Console)
+					if (param[1] == "all") {
+						// then enable the default panels
+						enableDefaultPanels();
+						// and the console
+						enablePanel("console");
+					}
+				}
+			} else
+			// if the selected parameter is "data"
+			if (param[0] == "data") {
+				// TODO:
+				// get enabled editors
+				// AJAX load of data
+				// localStorage backup of data
+			} else
+			// if the selected parameter is "data"
+			if (param[0] == "auth") {
+				// TODO:
+			} else
+			// if the selected parameter is "fullscreen"
+			if (param[0] == "fullscreen") {
+				// TODO, think of a way to enable the editors after disabling the fullscreen mode
+				toggleFullscreen();
+			}
+		}
+	}
+
+	/* *******************************************************
+		Editors
+	******************************************************* */
 
 		// initialize editors to targeted ids
 		var editors = {
@@ -520,9 +453,9 @@ $(function () {
 		// set the Default theme
 		setTheme(appSession.settings.editor.theme);
 
-		/* *******************************************************
-			Startup
-		******************************************************* */
+	/* *******************************************************
+		Startup
+	******************************************************* */
 
 		if(localStorage.getItem("user_id") !== null){
 			$("#ucp").removeClass("hidden");
@@ -530,9 +463,9 @@ $(function () {
 			$("#auth").addClass("hidden");
 		}
 
-		/* *******************************************************
-			Events
-		******************************************************* */
+	/* *******************************************************
+		Events
+	******************************************************* */
 
 		// when the themeLoaded event happens on the editors
 		editors.html.renderer.addEventListener("themeLoaded" , function(e) {
@@ -917,7 +850,7 @@ $(function () {
 				var zippedContent = '<!doctype html><html><head><meta charset="utf-8"><title>' + appSession.settings.title + '</title><meta name="description" content="'+appSession.settings.description+'"><meta name="author" content="' + appSession.settings.author + '">' + externalStyle + styleString + '</head><body>' + content + externalScript + scriptString + '</body></html>';
 
 				// prettify ugly HTML
-				zippedContent = style_html(zippedContent, {
+				zippedContent = htmlBeautify(zippedContent, {
 					'brace_style': 'collapse',
 					'indent_size': 1,
 					'indent_char': '\t',
@@ -1025,11 +958,12 @@ $(function () {
 			// hide the overlay
 			$("#overlay").hide();
 		});
-	});
 
-	// google Analytics
-	var _gaq=[['_setAccount','UA-38829096-1'],['_trackPageview']];
-	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-	s.parentNode.insertBefore(g,s);}(document,'script'));
+	/* *******************************************************
+		google Analytics
+	******************************************************* */
+		var _gaq=[['_setAccount','UA-38829096-1'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s);}(document,'script'));
 });
