@@ -1,10 +1,40 @@
 require.config({
 	paths: {
-		jquery: 'libs/jquery-1.9.1.min'
+		jquery: 'libs/jquery-1.9.1.min',
+		htmlBeautify: 'libs/beautify-html',
+		cssBeautify: 'libs/beautify-css',
+		jsBeautify: 'libs/beautify',
+		marked : 'libs/marked',
+		less : 'libs/less',
+		jsZip : 'libs/jszip',
+		select2 : 'libs/select2'
+	},
+	shim: {
+		'htmlBeautify' : {
+			exports : 'htmlBeautify'
+		},
+		'cssBeautify' : {
+			exports : 'cssBeautify'
+		},
+		'jsBeautify' : {
+			exports : 'jsBeautify'
+		},
+		'marked' : {
+			exports : 'marked'
+		},
+		'less' : {
+			exports : 'less'
+		},
+		'jsZip' : {
+			exports : 'jsZip'
+		},
+		'select2' : {
+			exports : 'select2'
+		}
 	}
 });
 
-require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParser) {
+require(['jquery', 'appSession', 'urlParser', 'select2'], function ($, appSession, urlParser, 'select2') {
 
 	/* *******************************************************
 		Functions
@@ -52,7 +82,7 @@ require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParse
 	}
 
 	function prettify() {
-		require(['libs/beautify', 'libs/beautify-css', 'libs/beautify-html'], function () {
+		require(['htmlBeautify', 'cssBeautify', 'jsBeautify'], function (htmlBeautify, cssBeautify, jsBeautify) {
 			// if the selected markup type is HTML
 			if ($('#markupSettings').val() === 'html') {
 				// then beautify the HTML value using the html beautifing library with the specified options
@@ -735,7 +765,9 @@ require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParse
 		var content = editors.html.getValue();
 		var style;
 
-		require(['libs/marked', 'libs/less', 'libs/beautify-html', 'libs/jszip'], function (marked) {
+
+		// TODO: seperate unused libraries
+		require(['marked', 'less', 'htmlBeautify', 'jsZip'], function (marked, less, htmlBeautify, jsZip) {
 			if ($('#markupSettings').val() === 'markdown') {
 				content = marked(editors.html.getValue());
 			}
@@ -806,7 +838,6 @@ require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParse
 
 			// height fix
 			$('iframe').css('height', '99%');
-
 
 			// Create zip file
 			var zip = new JSZip();
@@ -900,23 +931,21 @@ require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParse
 			$('#options [name=showInvisibles]').prop('checked', isTrue(appSession.settings.editor.showInvisibles));
 			$('#options [name=behavioursEnabled]').prop('checked', isTrue(appSession.settings.editor.behavioursEnabled));
 
-			require(['libs/select2'], function () {
-				$('[name=fontSize]').select2({
-					'width': '100%'
-				});
+			$('[name=fontSize]').select2({
+				'width': '100%'
+			});
 
-				$('[name=tabSize]').select2({
-					'width': '100%'
-				});
+			$('[name=tabSize]').select2({
+				'width': '100%'
+			});
 
-				$('#theme').select2({
-					'width': '100%'
-				});
+			$('#theme').select2({
+				'width': '100%'
+			});
 
-				$('#library').select2({
-					placeholder: 'Select external Libraries',
-					'width': '100%'
-				});
+			$('#library').select2({
+				placeholder: 'Select external Libraries',
+				'width': '100%'
 			});
 		}
 
