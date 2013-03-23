@@ -1,3 +1,0 @@
-[submodule "assets/js/ace"]
-	path = assets/js/ace
-	url = git://github.com/varemenos/codemagic-ace.git
