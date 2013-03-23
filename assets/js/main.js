@@ -468,6 +468,23 @@ require(['jquery', 'appSession', 'urlParser', 'select2'], function ($, appSessio
 		$('#auth').addClass('hidden');
 	}
 
+	$('[name=fontSize]').select2({
+		'width': '100%'
+	});
+
+	$('[name=tabSize]').select2({
+		'width': '100%'
+	});
+
+	$('#theme').select2({
+		'width': '100%'
+	});
+
+	$('#library').select2({
+		placeholder: 'Select external Libraries',
+		'width': '100%'
+	});
+
 	/* *******************************************************
 		Events
 	******************************************************* */
@@ -930,23 +947,6 @@ require(['jquery', 'appSession', 'urlParser', 'select2'], function ($, appSessio
 			$('#options [name=fontSize]').val(appSession.settings.editor.fontSize);
 			$('#options [name=showInvisibles]').prop('checked', isTrue(appSession.settings.editor.showInvisibles));
 			$('#options [name=behavioursEnabled]').prop('checked', isTrue(appSession.settings.editor.behavioursEnabled));
-
-			$('[name=fontSize]').select2({
-				'width': '100%'
-			});
-
-			$('[name=tabSize]').select2({
-				'width': '100%'
-			});
-
-			$('#theme').select2({
-				'width': '100%'
-			});
-
-			$('#library').select2({
-				placeholder: 'Select external Libraries',
-				'width': '100%'
-			});
 		}
 
 		setTimeout(function () {
