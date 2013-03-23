@@ -4,7 +4,7 @@ require.config({
 	}
 });
 
-require(['jquery', 'appSession', 'loc'], function ($, appSession, loc) {
+require(['jquery', 'appSession', 'urlParser'], function ($, appSession, urlParser) {
 
 	/* *******************************************************
 		Functions
@@ -278,10 +278,9 @@ require(['jquery', 'appSession', 'loc'], function ($, appSession, loc) {
 	/* *******************************************************
 		Uri parsing
 	******************************************************* */
-		// TODO, document the url parsing
 
 	// if the query string is empty
-	if (loc.search.string === '') {
+	if (urlParser.search.string === '') {
 		// then its the frontpage, so enable the default panels
 		enableDefaultPanels();
 	} else {
