@@ -35,7 +35,7 @@ require.config({
 	}
 });
 
-require(['jquery', 'appSession', 'urlParser', 'select2'], function ($, appSession, urlParser, 'select2') {
+require(['jquery', 'appSession', 'urlParser', 'select2'], function ($, appSession, urlParser, select2) {
 
 	/* *******************************************************
 		Functions
