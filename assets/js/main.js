@@ -1,4 +1,5 @@
 require.config({
+	urlArgs: 'v=0.4.2.14',
 	paths: {
 		jquery: 'libs/jquery-1.9.1.min',
 		htmlBeautify: 'libs/beautify-html',
