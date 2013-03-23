@@ -30,7 +30,7 @@ require.config({
 			exports : 'jsZip'
 		},
 		'select2' : {
-			deps : 'jquery',
+			deps : ['jquery'],
 			exports : 'select2'
 		}
 	}
