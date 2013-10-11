@@ -1,0 +1,44 @@
+// TODO: make it work for any amount of spans
+// REQUIRES: a `div` and `3 * span` inside of that `div`
+// A mixin that generates CSS for an animated loading element
+// @mixin loading
+// @category objects
+// @param $width {Number} is the value that defines the loading element's size (defaults to 1.5em)
+// @param $style {Number} is the value that defines the loading's style (defaults to style #1) (currently there are only 2 styles available)
+// @param $color {String} is the value that defines the loading's color (defaults to #09f)
+// @usage:
+// .loading1{
+//	=loading(1.5em);
+// }
+// .loading2{
+//	=loading(1.5em, 2);
+// }
+@import "../generic/_keyframes";
+@import "../generic/_animation";
+@import "../generic/_animation-delay";
+@import "../generic/_transform";
+
+@mixin loading($width: 1.5em, $style: 1, $color: #09f){
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border: solid $width;
+	@include border-radius($width*10);
+	@if($style == 1){
+		border-color: $color transparent $color transparent;
+	}@else{
+		border-color: $color transparent transparent transparent;
+	}
+
+	@include animation(loadingSpin 1s linear infinite);
+}
+
+@include keyframes(loadingSpin){
+	0%: {
+		@include transform(rotate(0deg));
+	}
+	100%: {
+		@include transform(rotate(360deg));
+	}
+}

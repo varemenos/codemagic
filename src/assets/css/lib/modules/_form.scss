@@ -1,0 +1,134 @@
+@import "../generic/borderbox";
+@import "../generic/border-radius";
+@import "../generic/_box-shadow";
+@import "../generic/transition";
+@import "../generic/clearfix";
+
+// A mixin that generates CSS for a vertical form
+// @mixin vertical-form
+// @category objects
+// @usage:
+// .vertical-form{
+// 	=vertical-form;
+// }
+@mixin vertical-form{
+	& > input,
+	& > label,
+	& > textarea,
+	& > select,
+	& > progress,
+	& > output,
+	& > meter,
+	& > keygen{
+		padding: 0.5em 0;
+	}
+
+	& label,
+	& input,
+	& select,
+	& textarea{
+		width: 100%;
+		margin-bottom: 1em;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+
+	& label > input[type="radio"],
+	& label > input[type="checkbox"]{
+		vertical-align: baseline;
+		width: auto;
+	}
+}
+
+input,
+label,
+textarea,
+select,
+progress,
+output,
+meter,
+keygen{
+	@include borderbox;
+	padding: 0.5em;
+	display: inline-block;
+	@include transition(150ms linear border-color);
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=date]:focus,
+input[type=month]:focus,
+input[type=time]:focus,
+input[type=datetime]:focus,
+input[type=datetime-local]:focus,
+input[type=week]:focus,
+input[type=number]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=color]:focus,
+select:focus,
+textarea:focus{
+	outline: 0;
+	border-color: #09f;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=date],
+input[type=month],
+input[type=time],
+input[type=datetime],
+input[type=datetime-local],
+input[type=week],
+input[type=number],
+input[type=search],
+input[type=tel],
+input[type=color],
+textarea,
+select{
+	background-color: #fff;
+	border: 1px solid #ccc;
+	@include border-radius(0);
+	@include box-shadow(0 1px 5px #ccc inset);
+}
+
+// Form Helpers
+
+[required]:focus:invalid,
+.invalid{
+	outline: 0;
+	border-color: red !important;
+}
+
+[required]:focus:valid,
+.valid{
+	outline: 0;
+	border-color: green !important;
+}
+
+[disabled],
+.disabled{
+	opacity: 0.5;
+
+	&:hover{
+		cursor: not-allowed !important;
+	}
+}
+
+.resize--vertical{
+	resize: vertical;
+}
+
+.resize--horizontal{
+	resize: horizontal;
+}
+
+.resize--both{
+	resize: both;
+}

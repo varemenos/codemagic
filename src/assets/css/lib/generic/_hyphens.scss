@@ -1,0 +1,13 @@
+// A mixin that generates CSS prefixes for hyphens
+// @mixin hyphens
+// @category prefixes
+// @param $val {String} hyphens's valid value
+// @usage:
+// .an-element{
+// 	=hyphens(auto);
+// }
+@mixin hyphens($val){
+	-moz-hyphens: $val;
+	-webkit-hyphens: $val;
+	hyphens: $val;
+}

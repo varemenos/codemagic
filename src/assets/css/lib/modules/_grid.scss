@@ -1,0 +1,85 @@
+/* *******************************************
+veGrid - Grid System by Adonis K.
+******************************************* */
+
+@import "../generic/borderbox";
+@import "../generic/clearfix";
+// A mixin that generates CSS for a grid system
+// @mixin grid
+// @category objects
+// @param $N {Number} is the value that defines the grid's amount of columns (defaults to a 12-column grid system)
+// @param $gutter {Number} is the value that defines the grid's gutter spacing (defaults to 0)
+// @usage:
+// .grid{
+// 	=grid(16, 1em);
+// }
+@mixin grid($N : false, $gutter : 0){
+	// if no $N was selected, create a 12-column grid
+	@if($N == false){
+		$N : 12;
+	}
+
+	// left-edge-case : if(i - 1 == 0) then convert that value to 1
+	$last : 1;
+	@if($N - 1 != 0){
+		$last : $N - 1;
+	}
+
+	// loop through the numbers given and generate column unit classes
+	@for $i from 1 through $last{
+		.col-#{$i}-#{$N}{
+			width: percentage($i / $N);
+		}
+	}
+
+	.grid{
+		@include borderbox;
+		@include clearfix;
+		display: block;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	.row{
+		@include borderbox;
+		@include clearfix;
+		display: block;
+
+		@if($gutter != 0){
+			padding-bottom: $gutter;
+
+			&:last-child{
+				padding-bottom: 0;
+			}
+		}
+
+		& > *{
+			@include borderbox;
+			display: block;
+			float: left;
+
+			@if($gutter != 0){
+				padding-right: $gutter;
+
+				&:last-child{
+					padding-right: 0;
+				}
+			}
+
+			@media only screen and (max-width: 1023px){
+				width: 100%;
+				float: none;
+				padding: 0;
+
+				@if($gutter != 0){
+					padding-bottom: $gutter;
+
+					&:last-child{
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

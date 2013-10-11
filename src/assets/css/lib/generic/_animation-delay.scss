@@ -1,0 +1,14 @@
+// A mixin that generates CSS prefixes for animation-delay
+// @mixin animation-delay
+// @category prefixes
+// @param $val {String} animation-delay's valid value
+// @usage:
+// .an-element{
+// 	=animation-delay(3s, 4s);
+// }
+@mixin animation-delay($val...){
+	-webkit-animation-delay: $val;
+	-moz-animation-delay: $val;
+	-o-animation-delay: $val;
+	animation-delay: $val;
+}

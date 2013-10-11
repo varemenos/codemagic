@@ -1,0 +1,19 @@
+@import "_background-clip";
+
+// A mixin that generates CSS prefixes for border-radius
+// @mixin border-radius
+// @category prefixes
+// @param $val {String} border-radius's valid value
+// @usage:
+// .an-element{
+// 	=border-radius(5px top right);
+// }
+@mixin border-radius($val...){
+	-webkit-border-radius: $val;
+	-moz-border-radius: $val;
+	border-radius: $val;
+
+	// Sometimes you can see a background-color "leak" outside of a border when border-radius is present.
+	// To prevent this you use background-clip
+	@include background-clip(padding-box);
+}

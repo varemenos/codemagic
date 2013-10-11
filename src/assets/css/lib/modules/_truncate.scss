@@ -1,0 +1,14 @@
+// A mixin that generates CSS for an effect added to a string containing element whose text will be truncated and then an extra character of ellipsis will be added.
+// @mixin truncate
+// @category effects
+// @param $width {Number} is the value that defines where the text will be truncated (defaults to 100%)
+// @usage:
+// .truncate{
+// 	=truncate(2em);
+// }
+@mixin truncate($width: 100%){
+	width: $width;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

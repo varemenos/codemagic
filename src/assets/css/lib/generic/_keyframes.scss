@@ -1,0 +1,34 @@
+// A mixin that generates CSS prefixes for keyframes
+// @mixin keyframes
+// @category prefixes
+// @param $animation {String} is the value that defines the name of the animation's keyframes
+// @usage:
+// @include keyframes(animationName){
+// 	0%: {
+// 		@include transform(rotate(0deg));
+// 	}
+// 	100%: {
+// 		@include transform(rotate(360deg));
+// 	}
+// }
+// .an-element{
+// 	@include animation(animationName 1s linear infinite);
+// }
+
+@mixin keyframes($animation){
+	@-webkit-keyframes $animation{
+		@content;
+	}
+	@-moz-keyframes $animation{
+		@content;
+	}
+	@-ms-keyframes $animation{
+		@content;
+	}
+	@-o-keyframes $animation{
+		@content;
+	}
+	@keyframes $animation{
+		@content;
+	}
+}

@@ -1,0 +1,22 @@
+// A mixin that generates CSS prefixes for webfonts downloaded from Font Squirrel
+// @mixin font-face
+// @category prefixes
+// @param $name {String} is the value that defines the font-face's name when being used by font, font-family etc
+// @param $url {String} is the value that defines the location of the wefont files that should include the filename but not the file prefix
+// @usage:
+// =font-face("Ubuntu Dark", "http://varemenos.com/assets/fonts/Ubuntu/Ubuntu Dark");
+// body{
+// 	font-family: "Ubuntu Dark";
+// }
+@mixin font-face($name, $url){
+	@font-face{
+		font-family: $name;
+		src: url($url + '.eot');
+		src: url($url + '.eot?#iefix') format('embedded-opentype'),
+			 url($url + '.woff') format('woff'),
+			 url($url + '.ttf') format('truetype'),
+			 url($url + '.svg#' + $name) format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}

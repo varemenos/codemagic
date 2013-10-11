@@ -1,0 +1,15 @@
+// A mixin that generates CSS prefixes for transition
+// @mixin transition
+// @category prefixes
+// @param $val {String} transition's valid value
+// @usage:
+// .an-element{
+// 	=transition(500ms all ease-in-out);
+// }
+@mixin transition($val...){
+	-webkit-transition: $val;
+	-moz-transition: $val;
+	-o-transition: $val;
+	-ms-transition: $val;
+	transition: $val;
+}

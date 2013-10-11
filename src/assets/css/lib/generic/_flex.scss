@@ -1,0 +1,46 @@
+// A mixin that generates CSS prefixes for "display: flex;"
+// @mixin display-flex
+// @category prefixes
+// @usage:
+// .an-element{
+//  =display-flex;
+// }
+@mixin display-flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// A mixin that generates CSS prefixes for flex (required, to support older syntax)
+// @mixin flex
+// @category prefixes
+// @param $width {Number} is the value that defines the width of the old syntax's flex width value
+// @usage:
+// .an-element{
+//  =flex(5em);
+// }
+@mixin flex($width){
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  width: $width; // required width for older syntax
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+// A mixin that generates CSS prefixes for a flexboxed element's order
+// @mixin order
+// @category prefixes
+// @param $order {Number} is the value that defines the element's flexbox order
+// @usage:
+// .an-element{
+//  =order(2);
+// }
+@mixin order($order){
+  -webkit-box-ordinal-group: $order;
+  -moz-box-ordinal-group: $order;
+  -ms-flex-order: $order;
+  -webkit-order: $order;
+  order: $order;
+}

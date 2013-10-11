@@ -1,0 +1,80 @@
+@import "../generic/_border-radius";
+@import "../generic/_transition";
+@import "../generic/_box-shadow";
+@import "../generic/_transform";
+
+// A mixin that generates CSS for a styled button
+// @category objects
+// @mixin button
+// @param $font-color {String} is the value that defines the button's font color
+// @param $bg-color {String} is the value that defines the button's background color
+// @param $radius {Number} is the value that defines the button's border radius (default value is 0)
+// @usage:
+// .blue-flat-button{
+//	=button(#fff, #09f, 0);
+// }
+// .blue-curved-button{
+//	=button(#fff, #09f, 2px);
+// }
+// .white-flat-button{
+//	=button(#222, #fff, 0);
+// }
+// .white-curved-button{
+//	=button(#222, #fff, 2px);
+// }
+// .dark-blue-flat-button{
+//	=button(#fff, #458, 0);
+// }
+// .dark-blue-curved-button{
+//	=button(#fff, #458, 2px);
+// }
+@mixin button($font-color, $bg-color, $radius: 0){
+	position: relative;
+	display: inline-block;
+	padding: 0.5em 1em;
+	color: $font-color;
+	text-decoration: none;
+	background-color: $bg-color;
+	border: 1px solid darken($bg-color, 10%);
+	@include border-radius($radius);
+	@include transition(150ms ease-in-out background-color, 150ms ease-in-out box-shadow);
+
+	&:hover,
+	&:focus{
+		cursor: pointer;
+		@if(lightness($bg-color) > 50%) {
+			@if(lightness($bg-color) > 75%) {
+				background-color: darken($bg-color, 5%);
+			}@else{
+				background-color: darken($bg-color, 10%);
+			}
+		}@else {
+			background-color: lighten($bg-color, 15%);
+		}
+	}
+
+	&:active{
+		cursor: pointer;
+		@if(lightness($bg-color) > 50%) {
+			@include box-shadow(0 0 3px rgba(black, 0.125), 0 0 0.5em rgba(black, 0.125) inset);
+		}@else {
+			@include box-shadow(0 0 3px $bg-color, 0 0 0.5em rgba(black, 0.25) inset);
+		}
+	}
+}
+
+.button--xsmall{
+	font-size: 70%;
+}
+
+.button--small{
+	font-size: 85%;
+}
+
+.button--large{
+	font-size: 110%;
+}
+
+.button--xlarge{
+	font-size: 125%;
+}

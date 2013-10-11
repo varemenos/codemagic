@@ -1,0 +1,14 @@
+// A mixin that generates CSS prefixes for animation
+// @mixin animation
+// @category prefixes
+// @param $val {String} animation's valid value
+// @usage:
+// .an-element{
+// 	=animation(doSomethin 1s linear infinite);
+// }
+@mixin animation($val...){
+	-webkit-animation: $val;
+	-moz-animation: $val;
+	-o-animation: $val;
+	animation: $val;
+}

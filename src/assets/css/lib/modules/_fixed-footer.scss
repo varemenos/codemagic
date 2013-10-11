@@ -1,0 +1,13 @@
+// A mixin that generates CSS for a footer that is fixed on the bottom of the page (Don't forget to add a bottom margin to the previous element to avoid overlapping the footer)
+// @mixin fixed-footer
+// @category objects
+// @usage:
+// .fixed-footer{
+// 	=fixed-footer;
+// }
+@mixin fixed-footer{
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	width:100%;
+}
