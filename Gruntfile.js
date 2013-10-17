@@ -8,24 +8,15 @@ module.exports = function (grunt) {
 			src: 'src',
 			css: 'assets/css',
 			js: 'assets/js',
-			dev: 'dev/<%= vars.version %>',
-			dist: 'dist/<%= vars.version %>'
+			build: 'build'
 		},
 		copy: {
-			dev: {
+			build: {
 				files: [{
 					expand: true,
 					cwd: '<%= dirs.src %>/',
 					src: ['**'],
-					dest: '<%= dirs.dev %>/'
-				}]
-			},
-			dist: {
-				files: [{
-					expand: true,
-					cwd: '<%= dirs.src %>/',
-					src: ['**'],
-					dest: '<%= dirs.dist %>/'
+					dest: '<%= dirs.build %>/'
 				}]
 			}
 		},
@@ -33,17 +24,20 @@ module.exports = function (grunt) {
 			options: {
 				seperator: ';',
 			},
-			dev: {
+			build: {
 				src: [
-					'<%= dirs.dev %>/<%= dirs.js %>/script.js'
+					'<%= dirs.build %>/<%= dirs.js %>/libs/jquery.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/underscore.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/backbone.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/emmet.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/utils.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/routers/router.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/views/header.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/views/codemagic.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/views/home.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/main.js'
 				],
-				dest: '<%= dirs.dev %>/<%= dirs.js %>/script-<%= vars.version %>.js'
-			},
-			dist: {
-				src: [
-					'<%= dirs.dist %>/<%= dirs.js %>/script.js'
-				],
-				dest: '<%= dirs.dist %>/<%= dirs.js %>/script-<%= vars.version %>.js'
+				dest: '<%= dirs.build %>/<%= dirs.js %>/script.js'
 			}
 		},
 		sass: {
@@ -57,10 +51,10 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '<%= dirs.dev %>/<%= dirs.css %>/',
+					cwd: '<%= dirs.build %>/<%= dirs.css %>/',
 					src: '*.scss',
-					dest: '<%= dirs.dev %>/<%= dirs.css %>/',
-					ext: '-<%= vars.version %>.css'
+					dest: '<%= dirs.build %>/<%= dirs.css %>/',
+					ext: '.css'
 				}]
 			},
 			dist: {
@@ -71,67 +65,28 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '<%= dirs.dist %>/<%= dirs.css %>/',
+					cwd: '<%= dirs.build %>/<%= dirs.css %>/',
 					src: '*.scss',
-					dest: '<%= dirs.dist %>/<%= dirs.css %>/',
-					ext: '-<%= vars.version %>.min.css'
+					dest: '<%= dirs.build %>/<%= dirs.css %>/',
+					ext: '.min.css'
 				}]
 			}
 		},
 		clean: {
-			dev: ['<%= dirs.dev %>/'],
-			dist: ['<%= dirs.dist %>/'],
-			devCleanup: [
-				'<%= dirs.dev %>/<%= dirs.css %>/lib',
-				'<%= dirs.dev %>/<%= dirs.css %>/style.scss',
-				'<%= dirs.dev %>/<%= dirs.js %>/backbone.js',
-				'<%= dirs.dev %>/<%= dirs.js %>/jquery.js',
-				'<%= dirs.dev %>/<%= dirs.js %>/underscore.js',
-				'<%= dirs.dev %>/<%= dirs.js %>/main.js',
-				'<%= dirs.dev %>/index.html.tpl'
-			],
-			distCleanup: [
-				'<%= dirs.dist %>/<%= dirs.css %>/lib',
-				'<%= dirs.dist %>/<%= dirs.css %>/style.scss',
-				'<%= dirs.dist %>/<%= dirs.js %>/backbone.js',
-				'<%= dirs.dist %>/<%= dirs.js %>/jquery.js',
-				'<%= dirs.dist %>/<%= dirs.js %>/underscore.js',
-				'<%= dirs.dist %>/<%= dirs.js %>/main.js',
-				'<%= dirs.dist %>/<%= dirs.js %>/script-<%= vars.version %>.js',
-				'<%= dirs.dist %>/index.html.tpl'
+			build: ['<%= dirs.build %>/'],
+			buildCleanup: [
+				'<%= dirs.build %>/<%= dirs.css %>/lib',
+				'<%= dirs.build %>/<%= dirs.css %>/style.scss',
+				'<%= dirs.build %>/<%= dirs.js %>/app',
+				'<%= dirs.build %>/<%= dirs.js %>/libs',
+				'<%= dirs.build %>/index.html.tpl'
 			]
 		},
 		uglify: {
 			options: {},
-			dist: {
+			build: {
 				files: {
-					'<%= dirs.dist %>/<%= dirs.js %>/script-<%= vars.version %>.min.js': ['<%= dirs.dist %>/<%= dirs.js %>/script-<%= vars.version %>.js']
-				}
-			}
-		},
-		template: {
-			dev: {
-				options: {
-					data: {
-						version: '<%= vars.version %>',
-						type: '',
-						env: 'dev'
-					}
-				},
-				files: {
-					'<%= dirs.dev %>/index.html': ['<%= dirs.src %>/index.html.tpl']
-				}
-			},
-			dist: {
-				options: {
-					data: {
-						version: '<%= vars.version %>',
-						type: '.min',
-						env: 'dist'
-					}
-				},
-				files: {
-					'<%= dirs.dist %>/index.html': ['<%= dirs.src %>/index.html.tpl']
+					'<%= dirs.build %>/<%= dirs.js %>/script.min.js': ['<%= dirs.build %>/<%= dirs.js %>/script.js']
 				}
 			}
 		},
@@ -139,28 +94,36 @@ module.exports = function (grunt) {
 			options: {
 				livereload: true
 			},
-			dev: {
-				files: ['<%= dirs.src =>/<%= css %>/*.scss'],
-				tasks : ['sass:dev']
-			},
-			dist: {
-				files: ['<%= dirs.src =>/<%= css %>/*.scss'],
-				tasks : ['sass:dist']
+			files: {
+				files: ['<%= dirs.src %>/**/**.*'],
+				tasks : ['dev']
+			}
+		},
+		connect: {
+			server: {
+				options: {
+					port: 80,
+					base: './build',
+					hostname: '*',
+					keepalive: true,
+					livereload: true,
+					open: 'http://localhost'
+				}
 			}
 		}
 	});
 
 	// load tasks
-	grunt.loadNpmTasks('grunt-template');
-	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// default task
-	grunt.registerTask('dev',['clean:dev', 'copy:dev', 'concat:dev', 'sass:dev', 'template:dev', 'clean:devCleanup']);
-	grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'concat:dist', 'sass:dist', 'uglify:dist', 'template:dist', 'clean:distCleanup']);
-	grunt.registerTask('default', ['dev']);
+	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'clean:buildCleanup']);
+	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'clean:buildCleanup']);
+	grunt.registerTask('default', ['watch:files']);
 };

@@ -12,5 +12,4 @@ Thumbs.db
 .sass-cache
 node_modules
 bower_components
-/dist
-/dev
+/build
