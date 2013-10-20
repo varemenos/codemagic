@@ -68,7 +68,7 @@ module.exports = function (grunt) {
 					cwd: '<%= dirs.build %>/<%= dirs.css %>/',
 					src: '*.scss',
 					dest: '<%= dirs.build %>/<%= dirs.css %>/',
-					ext: '.min.css'
+					ext: '.css'
 				}]
 			}
 		},
@@ -121,6 +121,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-devtools');
 
 	// default task
 	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'clean:buildCleanup']);
