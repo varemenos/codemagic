@@ -3,11 +3,12 @@ var app = app || {};
 (function () {
 	app.AppRouter = Backbone.Router.extend({
 		routes: {
-			'': 'home',
+			'': 'new',
+			'new/': 'new',
 			'about/': 'about'
 		},
-		home: function (){
-			app.homeView = new app.HomeView();
+		new: function (){
+			app.newView = new app.NewView();
 		},
 		about: function (){
 			app.aboutView = new app.AboutView();

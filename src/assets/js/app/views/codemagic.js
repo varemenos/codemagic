@@ -23,6 +23,7 @@ var app = app || {};
 
 				$('#result iframe').remove();
 
+				// TODO: write the lines below in JQuery
 				var iframe = document.createElement('iframe');
 
 				iframeContainer.appendChild(iframe);
@@ -31,6 +32,8 @@ var app = app || {};
 				iDoc.open();
 				iDoc.write(result);
 				iDoc.close();
+
+				$('iframe').height(Math.max($('#editors').height(), $('iframe').height()));
 			},
 			initialize: function () {
 				this.template = _.template($('#codemagic-template').html());
@@ -52,23 +55,19 @@ var app = app || {};
 						html : {
 							state : true,
 							mode : 'html',
-							height: 200,
 							content : ''
 						},
 						css : {
 							state : true,
 							mode : 'css',
-							height: 200,
 							content : ''
 						},
 						js : {
 							state : true,
-							height: 200,
 							content : ''
 						},
 						console : {
-							state : false,
-							height: 200
+							state : false
 						},
 						theme : app.utils.getSettings('editor.theme') || 'tomorrow',
 						tabSize : parseInt(app.utils.getSettings('editor.tabSize'), 10) || 4,

@@ -4,10 +4,53 @@
 @import "lib/modules/_button";
 @import "lib/modules/_loading";
 @import "lib/generic/_font-face";
+@import "_font-awesome";
 
-// generate a 12-column grid with 1em gutter spacing
-@include grid(12, 1em);
+$color: #222;
+$bg-color: #eee;
+$color-inv: invert(#222);
+$bg-color-inv: invert(#eee);
+$size: 1rem;
+$small: $size/1.5;
+$large: $size*1.5;
+$xsmall: $size/2;
+$xlarge: $size*2;
 
+@include grid(12, $size);
+
+body{
+	color: $color;
+	background-color: $bg-color;
+	padding-bottom: $size;
+}
+
+header{
+	display: block;
+	width: 100%;
+	padding: 0;
+	background-color: lighten($bg-color, 50%);
+}
+
+#editors{
+	padding: 0 $size;
+}
+
+.editor-module{
+	margin-bottom: $size;
+	border: 1px solid darken($bg-color, 5%);
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+.editor-config{
+	padding: $xsmall;
+
+	span{
+		font-weight: bold;
+	}
+}
 
 .editor-wrap{
 	@include borderbox;
@@ -20,9 +63,51 @@
 	height: 100%;
 }
 
+.resizer{
+	height: $size;
+	width: 100%;
+	cursor: pointer;
+	text-align: center;
+	background-color: darken($bg-color, 5%);
+}
+
+.resizer--icon{
+	display: inline-block;
+	cursor: pointer;
+	@include transform(rotate(90deg));
+}
+
 #result{
+	padding-right: $size;
+
 	iframe{
 		width: 100%;
+		height: 100%;
+		background-color: lighten($bg-color, 15%);
 		border: none;
+	}
+}
+
+.btn{
+	padding: $small $size;
+	font-weight: bold;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	border-right: 1px solid darken($bg-color, 5%);
+
+	// &:focus,
+	&:hover{
+		background-color: $bg-color;
+	}
+
+	&.placeholder{
+		cursor: initial;
+		padding-left: initial;
+
+		// &:focus,
+		&:hover{
+			background-color: transparent;
+		}
 	}
 }

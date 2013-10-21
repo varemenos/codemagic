@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/app/routers/router.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/header.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/codemagic.js',
-					'<%= dirs.build %>/<%= dirs.js %>/app/views/home.js',
+					'<%= dirs.build %>/<%= dirs.js %>/app/views/new.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/main.js'
 				],
 				dest: '<%= dirs.build %>/<%= dirs.js %>/script.js'

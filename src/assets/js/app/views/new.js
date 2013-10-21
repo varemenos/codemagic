@@ -4,7 +4,7 @@ var app = app || {};
 	$(function () {
 		'use strict';
 
-		app.HomeView = Backbone.View.extend({
+		app.NewView = Backbone.View.extend({
 			el: 'body',
 			events : {
 			},

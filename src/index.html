@@ -18,22 +18,65 @@
 		<script src="assets/js/script.js"></script>
 
 		<script type="text/template" id="codemagic-template">
-			<header class="row">
-				<nav>
-					<button id="home">Home</button>
-					<button id="update">Update</button>
-				</nav>
-			</header>
+			<div class="row">
+				<header>
+					<nav>
+						<button id="home" class="btn">codeMagic.gr</button><button class="placeholder btn">&nbsp;</button><button class="btn">HTML</button><button class="btn">CSS</button><button class="btn">JS</button><button class="placeholder btn">&nbsp;</button><button id="share" class="btn"><i class="icon-share"></i></button><button id="fork" class="btn"><i class="icon-food"></i></button><button id="fullscreen" class="btn"><i class="icon-fullscreen"></i></button><button id="save" class="btn"><i class="icon-save"></i></button><button id="download" class="btn"><i class="icon-download-alt"></i></button><button class="placeholder btn">&nbsp;</button><button id="settings" class="btn"><i class="icon-cog"></i></button><button id="prettify" class="btn"><i class="icon-magic"></i></button><button id="update" class="btn"><i class="icon-play"></i></button>
+					</nav>
+				</header>
+			</div>
 			<div class="row">
 				<section id="editors" class="col-6-12">
-					<div class="editor-wrap">
-						<div id="html-editor" class="editor"></div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span>HTML</span>
+								<i class="icon-cog"></i>
+							</div>
+							<div class="float--right">
+								<i class="icon-fullscreen"></i>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="html-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+						<span class="resizer--icon">&#8942;</span>
+						</div>
 					</div>
-					<div class="editor-wrap">
-						<div id="css-editor" class="editor"></div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span>CSS</span>
+								<i class="icon-cog"></i>
+							</div>
+							<div class="float--right">
+								<i class="icon-fullscreen"></i>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="css-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+						<span class="resizer--icon">&#8942;</span>
+						</div>
 					</div>
-					<div class="editor-wrap">
-						<div id="js-editor" class="editor"></div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span>JS</span>
+								<i class="icon-cog"></i>
+							</div>
+							<div class="float--right">
+								<i class="icon-fullscreen"></i>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="js-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+						<span class="resizer--icon">&#8942;</span>
+						</div>
 					</div>
 				</section>
 				<section id="result" class="col-6-12">
