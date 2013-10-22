@@ -7,7 +7,48 @@ var app = app || {};
 		app.CodemagicView = Backbone.View.extend({
 			el: '#container',
 			events : {
-				'click #update': 'updateResults'
+				'click #update': 'updateResults',
+				'click #fullscreen': 'toggleFullscreen',
+				'click .editor-fullscreen-toggle': 'editorFullscreen'
+			},
+			toggleFullscreen: function () {
+				if ($('#fullscreen').hasClass('enabled')) {
+					$('#fullscreen').removeClass('enabled');
+					$('#editors').show();
+					$('#result').css({'width': '50%', 'padding-left': '0'});
+				} else {
+					$('#fullscreen').addClass('enabled');
+					$('#editors').hide();
+					$('#result').css({'width': '100%', 'padding-left': '1rem'});
+				}
+			},
+			editorFullscreen: function (e) {
+				var temp = $(e.currentTarget).attr('id');
+				temp = temp.replace('-editor-fullscreen-toggle', '') + '-editor';
+				var target = document.getElementById(temp);
+
+				if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+					if (target.requestFullscreen) {
+						target.requestFullscreen();
+					} else
+					if (target.mozRequestFullScreen) {
+						target.mozRequestFullScreen();
+					} else
+					if (target.webkitRequestFullscreen) {
+						target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				}
+				else {
+					if (document.cancelFullScreen) {
+						document.cancelFullScreen();
+					}
+					else if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					}
+					else if (document.webkitCancelFullScreen) {
+						document.webkitCancelFullScreen();
+					}
+				}
 			},
 			updateResults: function () {
 				var content = app.editors.html.getValue();
@@ -54,7 +95,6 @@ var app = app || {};
 
 				app.session = {
 					settings : {
-						fullscreen : false,
 						title : 'codeMagic',
 						description : '',
 						author : '',
@@ -73,7 +113,8 @@ var app = app || {};
 							content : ''
 						},
 						console : {
-							state : false
+							state : false,
+							content : ''
 						},
 						theme : app.utils.getSettings('editor.theme') || 'tomorrow',
 						tabSize : parseInt(app.utils.getSettings('editor.tabSize'), 10) || 4,
@@ -83,18 +124,6 @@ var app = app || {};
 						fontSize : parseInt(app.utils.getSettings('editor.fontSize'), 10) || 12,
 						showInvisibles : app.utils.getSettings('editor.showInvisibles') || false,
 						behavioursEnabled : app.utils.getSettings('editor.behavioursEnabled') || true
-					},
-					authenticate : {
-						endpoint : 'https://accounts.google.com/o/oauth2/auth',
-						response_type : 'token',
-						client_id : '1785061010-1osqu1jsk03f033ehv2268jjtiung7h8.apps.googleusercontent.com',
-						redirect_uri : 'http://codemagic.gr',
-						scope : [
-							'https://www.googleapis.com/auth/userinfo.profile',
-							'https://www.googleapis.com/auth/drive'
-						],
-						state : '?auth',
-						approval_prompt : 'auto'
 					}
 				};
 

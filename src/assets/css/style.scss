@@ -9,8 +9,8 @@
 
 $color: #222;
 $bg-color: #eee;
-$color-inv: invert(#222);
-$bg-color-inv: invert(#eee);
+$color-inv: invert($color);
+$bg-color-inv: invert($bg-color);
 $size: 1rem;
 $small: $size/1.5;
 $large: $size*1.5;
@@ -30,6 +30,7 @@ header{
 	width: 100%;
 	padding: 0;
 	background-color: lighten($bg-color, 50%);
+	@include box-shadow(0 1px 2px darken($bg-color, 10%));
 }
 
 #editors{
@@ -92,8 +93,20 @@ header{
 	}
 }
 
-.btn{
+.editor-options-toggle,
+.editor-fullscreen-toggle{
+	display: inline-block;
+	padding: 0;
+	color: $color;
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+
+.nav-btn{
+	display: inline-block;
 	padding: $small $size;
+	vertical-align: middle;
 	font-weight: bold;
 	color: $color;
 	background-color: transparent;
@@ -109,6 +122,7 @@ header{
 	&.placeholder{
 		cursor: initial;
 		padding-left: initial;
+		@include user-select(none);
 
 		// &:focus,
 		&:hover{
