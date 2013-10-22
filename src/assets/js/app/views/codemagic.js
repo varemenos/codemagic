@@ -38,6 +38,12 @@ var app = app || {};
 			initialize: function () {
 				this.template = _.template($('#codemagic-template').html());
 				this.render();
+
+				// populate editors with example content
+				app.editors.htmlSession.setValue('<h1>Hello World</h1>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nobis, inventore, cupiditate, itaque quae quas commodi reprehenderit expedita aliquid nulla vero voluptatem esse modi quasi similique atque sequi tempore dolore ut nesciunt aliquam quidem dolorum ipsa totam eaque accusamus odit maiores fugiat incidunt iste. Itaque necessitatibus cupiditate consequatur vitae maxime.</p>');
+				app.editors.cssSession.setValue('body{ margin: 0; padding: 1rem; }\n\nh1{\n	margin-top: 0;\n	color: #666;\n}\n\np{\n	color: #999;\n}');
+				app.editors.jsSession.setValue('var x = document.querySelector("p");\nx.style.textAlign = "justify";');
+				this.updateResults();
 			},
 			render: function () {
 				this.$el.append(this.template());
@@ -74,7 +80,7 @@ var app = app || {};
 						showPrintMargin : app.utils.getSettings('editor.showPrintMargin') || false,
 						useWrapMode : app.utils.getSettings('editor.useWrapMode') || true,
 						useWorker : true,
-						fontSize : parseInt(app.utils.getSettings('editor.fontSize'), 10) || 16,
+						fontSize : parseInt(app.utils.getSettings('editor.fontSize'), 10) || 12,
 						showInvisibles : app.utils.getSettings('editor.showInvisibles') || false,
 						behavioursEnabled : app.utils.getSettings('editor.behavioursEnabled') || true
 					},

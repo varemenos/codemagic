@@ -1,4 +1,5 @@
 @import "lib/generic/_base";
+@import "lib/generic/_user-select";
 @import "lib/modules/_form";
 @import "lib/modules/_grid";
 @import "lib/modules/_button";
@@ -38,6 +39,7 @@ header{
 .editor-module{
 	margin-bottom: $size;
 	border: 1px solid darken($bg-color, 5%);
+	@include border-radius(0 0 5px 5px);
 
 	&:last-child{
 		margin-bottom: 0;
@@ -66,15 +68,17 @@ header{
 .resizer{
 	height: $size;
 	width: 100%;
-	cursor: pointer;
+	cursor: ns-resize;
 	text-align: center;
 	background-color: darken($bg-color, 5%);
+	@include border-radius(0 0 5px 5px);
 }
 
 .resizer--icon{
 	display: inline-block;
-	cursor: pointer;
+	cursor: ns-resize;
 	@include transform(rotate(90deg));
+	@include user-select(none);
 }
 
 #result{
