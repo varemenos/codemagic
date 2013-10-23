@@ -78,8 +78,7 @@ module.exports = function (grunt) {
 				'<%= dirs.build %>/<%= dirs.css %>/lib',
 				'<%= dirs.build %>/<%= dirs.css %>/style.scss',
 				'<%= dirs.build %>/<%= dirs.js %>/app',
-				'<%= dirs.build %>/<%= dirs.js %>/libs',
-				'<%= dirs.build %>/index.html.tpl'
+				'<%= dirs.build %>/<%= dirs.js %>/libs'
 			]
 		},
 		uglify: {
@@ -97,6 +96,19 @@ module.exports = function (grunt) {
 			files: {
 				files: ['<%= dirs.src %>/**/**.*'],
 				tasks : ['dev']
+			}
+		},
+		htmlmin: {
+			build: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true,
+					collapseBooleanAttributes: true
+				},
+				files: {
+					'<%= dirs.build %>/index.html': '<%= dirs.build %>/index.html',
+					'<%= dirs.build %>/404.html': '<%= dirs.build %>/404.html'
+				}
 			}
 		},
 		connect: {
@@ -121,10 +133,11 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-devtools');
 
 	// default task
-	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'clean:buildCleanup']);
-	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'clean:buildCleanup']);
+	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
+	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'htmlmin:build', 'clean:buildCleanup']);
 	grunt.registerTask('default', ['watch:files']);
 };

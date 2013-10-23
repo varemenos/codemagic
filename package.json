@@ -14,6 +14,7 @@
     "grunt-contrib-sass": "~0.5.0",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-connect": "~0.5.0",
-    "grunt-devtools": "~0.2.1"
+    "grunt-devtools": "~0.2.1",
+    "grunt-contrib-htmlmin": "~0.1.3"
   }
 }

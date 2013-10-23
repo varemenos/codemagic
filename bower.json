@@ -8,6 +8,7 @@
     "ace-builds": "master"
   },
   "devDependencies": {
-    "font-awesome": "~3.2.1"
+    "font-awesome": "~4.0.0",
+    "requirejs": "~2.1.9"
   }
 }

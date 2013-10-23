@@ -9,7 +9,74 @@ var app = app || {};
 			events : {
 				'click #update': 'updateResults',
 				'click #fullscreen': 'toggleFullscreen',
-				'click .editor-fullscreen-toggle': 'editorFullscreen'
+				'click .editor-fullscreen-toggle': 'editorFullscreen',
+				'mousedown .resizer': 'resizeInitialize',
+				'mouseup': 'resizeFinalize',
+				'mousemove': 'resizeRefresh',
+				'click .editor-options-toggle': 'toggleTargetedEditorOptions',
+				'change .codeChoice': 'toggleSelectedEditorOptions',
+				'click .editor-toggle': 'toggleEditorState'
+			},
+			toggleEditorState: function (selector) {
+				var target;
+				if(selector instanceof Array){
+					for (var i = 0; i < selector.length; i++) {
+						$(selector[i]).toggleClass('enabled');
+						$('#' + selector[i] + '-editor').parents('.editor-module').toggleClass('enabled');
+						$('#' + selector[i] + '-editor-toggle').toggleClass('enabled');
+					}
+					target = false;
+				}else if(typeof selector === 'object'){
+					target = $(selector.currentTarget).prop('id').replace('-editor-toggle', '');
+				}else{
+					target = selector;
+				}
+
+				if(target !== false){
+					$('#' + target + '-editor-toggle').toggleClass('enabled');
+					$('#' + target + '-editor').parents('.editor-module').toggleClass('enabled');
+					app.utils.toggleEditorState(target);
+				}
+			},
+			toggleSelectedEditorOptions: function (e) {
+				var value = $(e.currentTarget).val();
+				var editorTarget = $(e.currentTarget).parent();
+				var target = editorTarget.parent().find('.editor-option-title');
+				$(target).html(value);
+				this.toggleTargetedEditorOptions(e);
+				app.utils.setEditorMode(editorTarget.prop('id').replace('-editor-options', ''), value.toLowerCase());
+			},
+			toggleTargetedEditorOptions: function (e) {
+				if($(e.currentTarget).prop('tagName') === 'SELECT'){
+					this.toggleEditorOptions($(e.currentTarget).parent());
+				}else{
+					this.toggleEditorOptions($(e.currentTarget).next());
+				}
+			},
+			toggleEditorOptions: function (target) {
+				$(target).toggleClass('enabled');
+			},
+			resizeInitialize: function (e) {
+				app.session.resize = e.pageY;
+				app.session.resizeTarget = app.session.resizeTarget || {};
+				app.session.resizeTarget.id = $(e.currentTarget).prev().find('.editor');
+				app.session.resizeTarget.id = app.session.resizeTarget.id.prop('id');
+				app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).parent().height();
+			},
+			resizeRefresh: function (e) {
+				if (app.session.resize) {
+					$('#' + app.session.resizeTarget.id).parent().height(app.session.resizeTarget.height + e.pageY - app.session.resize);
+					app.utils.updateLayout(app.editors);
+				}
+			},
+			resizeFinalize: function () {
+				app.session.resize = false;
+				if(typeof app.session.resizeTarget !== 'undefined'){
+					if(typeof app.session.resizeTarget.height !== 'undefined'){
+						app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
+					}
+				}
+				app.utils.updateLayout(app.editors);
 			},
 			toggleFullscreen: function () {
 				if ($('#fullscreen').hasClass('enabled')) {
@@ -23,7 +90,7 @@ var app = app || {};
 				}
 			},
 			editorFullscreen: function (e) {
-				var temp = $(e.currentTarget).attr('id');
+				var temp = $(e.currentTarget).prop('id');
 				temp = temp.replace('-editor-fullscreen-toggle', '') + '-editor';
 				var target = document.getElementById(temp);
 
@@ -83,7 +150,7 @@ var app = app || {};
 				// populate editors with example content
 				app.editors.htmlSession.setValue('<h1>Hello World</h1>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nobis, inventore, cupiditate, itaque quae quas commodi reprehenderit expedita aliquid nulla vero voluptatem esse modi quasi similique atque sequi tempore dolore ut nesciunt aliquam quidem dolorum ipsa totam eaque accusamus odit maiores fugiat incidunt iste. Itaque necessitatibus cupiditate consequatur vitae maxime.</p>');
 				app.editors.cssSession.setValue('body{ margin: 0; padding: 1rem; }\n\nh1{\n	margin-top: 0;\n	color: #666;\n}\n\np{\n	color: #999;\n}');
-				app.editors.jsSession.setValue('var x = document.querySelector("p");\nx.style.textAlign = "justify";');
+				app.editors.jsSession.setValue('var x = document.querySelector("p");\nx.style.textAlign = "justify";\nx.style.textIndent= "1rem";');
 				this.updateResults();
 			},
 			render: function () {
@@ -172,6 +239,8 @@ var app = app || {};
 
 				// set the Default theme
 				app.utils.setTheme(app.editors, app.session.settings.theme);
+
+				this.toggleEditorState(['html', 'css', 'js']);
 
 				return this;
 			}

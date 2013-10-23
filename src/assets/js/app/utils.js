@@ -52,7 +52,6 @@ var app = app || {};
 		};
 
 		app.utils.resizeEditors = function (editors, callback) {
-			// force-trigger a resize of the editors
 			editors.html.resize();
 			editors.css.resize();
 			editors.js.resize();
@@ -62,16 +61,49 @@ var app = app || {};
 			}
 		};
 
-		app.utils.setTheme = function (editors, theme, callback) {
-			// save the selected theme
-			app.session.settings.theme = theme;
+		app.utils.updateLayout = function (editors, callback) {
+			app.utils.resizeEditors(editors);
 
-			// set the selected theme as the new theme for the editor.
+			if (typeof callback == 'function') {
+				callback();
+			}
+		};
+
+		app.utils.setTheme = function (editors, theme, callback) {
 			editors.html.setTheme('ace/theme/' + theme);
 			editors.css.setTheme('ace/theme/' + theme);
 			editors.js.setTheme('ace/theme/' + theme);
 
+			app.session.settings.theme = theme;
 			app.utils.setSettings('editor.theme', theme);
+
+			if (typeof callback == 'function') {
+				callback();
+			}
+		};
+
+		app.utils.setEditorMode = function (target, mode, callback) {
+			app.session.settings[target].mode = mode;
+
+			app.utils.setSettings(target + '.mode', mode);
+
+			if(mode === 'coffeescript'){
+				mode = 'coffee';
+			}
+
+			app.editors[target + 'Session'].setMode('ace/mode/' + mode);
+
+			if (typeof callback == 'function') {
+				callback();
+			}
+		};
+
+		app.utils.toggleEditorState = function (target, callback) {
+			var state = false;
+			if($('#' + target + '-editor-toggle').hasClass('enabled')){
+				state = true;
+			}
+			app.session.settings[target].state = state;
 
 			if (typeof callback == 'function') {
 				callback();

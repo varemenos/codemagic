@@ -21,7 +21,7 @@
 			<div class="row">
 				<header>
 					<nav>
-						<button id="home" class="nav-btn">codeMagic.gr</button><span class="placeholder nav-btn">&nbsp;</span><button class="nav-btn">HTML</button><button class="nav-btn">CSS</button><button class="nav-btn">JS</button><span class="placeholder nav-btn">&nbsp;</span><button id="share" class="nav-btn"><i class="icon-share"></i></button><button id="fork" class="nav-btn"><i class="icon-food"></i></button><button id="fullscreen" class="nav-btn"><i class="icon-fullscreen"></i></button><button id="save" class="nav-btn"><i class="icon-save"></i></button><button id="download" class="nav-btn"><i class="icon-download-alt"></i></button><span class="placeholder nav-btn">&nbsp;</span><button id="settings" class="nav-btn"><i class="icon-cog"></i></button><button id="prettify" class="nav-btn"><i class="icon-magic"></i></button><button id="update" class="nav-btn"><i class="icon-play"></i></button>
+						<button id="home" class="nav-btn">codeMagic.gr</button><span class="placeholder nav-btn">&nbsp;</span><button id="html-editor-toggle" class="nav-btn editor-toggle">HTML</button><button id="css-editor-toggle" class="nav-btn editor-toggle">CSS</button><button id="js-editor-toggle" class="nav-btn editor-toggle">JS</button><span class="placeholder nav-btn">&nbsp;</span><button id="share" class="nav-btn"><i class="fa fa-share"></i></button><button id="fork" class="nav-btn"><i class="fa fa-cutlery"></i></button><button id="fullscreen" class="nav-btn"><i class="fa fa-fullscreen"></i></button><button id="save" class="nav-btn"><i class="fa fa-save"></i></button><button id="download" class="nav-btn"><i class="fa fa-download"></i></button><span class="placeholder nav-btn">&nbsp;</span><button id="settings" class="nav-btn"><i class="fa fa-cog"></i></button><button id="prettify" class="nav-btn"><i class="fa fa-magic"></i></button><button id="update" class="nav-btn"><i class="fa fa-play"></i></button>
 					</nav>
 				</header>
 			</div>
@@ -30,11 +30,19 @@
 					<div class="editor-module">
 						<div class="editor-config clearfix">
 							<div class="float--left">
-								<span>HTML</span>
-								<button class="editor-options-toggle"><i class="icon-cog"></i></button>
+								<span class="editor-option-title">HTML</span>
+								<button class="editor-options-toggle"><i class="fa fa-cog"></i></button>
+								<div id="html-editor-options" class="editor-options">
+									<select name="markupChoice" class="codeChoice">
+										<option value="HTML">HTML</option>
+										<option value="HAML">HAML</option>
+										<option value="Markdown">Markdown</option>
+										option
+									</select>
+								</div>
 							</div>
 							<div class="float--right">
-								<button id="html-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="icon-fullscreen"></i></button>
+								<button id="html-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="fa fa-fullscreen"></i></button>
 							</div>
 						</div>
 						<div class="editor-wrap">
@@ -47,11 +55,21 @@
 					<div class="editor-module">
 						<div class="editor-config clearfix">
 							<div class="float--left">
-								<span>CSS</span>
-								<button class="editor-options-toggle"><i class="icon-cog"></i></button>
+								<span class="editor-option-title">CSS</span>
+								<button class="editor-options-toggle"><i class="fa fa-cog"></i></button>
+								<div id="css-editor-options" class="editor-options">
+									<select name="styleChoice" class="codeChoice">
+										<option value="CSS">CSS</option>
+										<option value="LESS">LESS</option>
+										<option value="SCSS">SCSS</option>
+										<option value="SASS">SASS</option>
+										<option value="STYLUS">STYLUS</option>
+										option
+									</select>
+								</div>
 							</div>
 							<div class="float--right">
-								<button id="css-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="icon-fullscreen"></i></button>
+								<button id="css-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="fa fa-fullscreen"></i></button>
 							</div>
 						</div>
 						<div class="editor-wrap">
@@ -64,11 +82,18 @@
 					<div class="editor-module">
 						<div class="editor-config clearfix">
 							<div class="float--left">
-								<span>JS</span>
-								<button class="editor-options-toggle"><i class="icon-cog"></i></button>
+								<span class="editor-option-title">JS</span>
+								<button class="editor-options-toggle"><i class="fa fa-cog"></i></button>
+								<div id="js-editor-options" class="editor-options">
+									<select name="markupChoice" class="codeChoice">
+										<option value="JavaScript">JavaScript</option>
+										<option value="CoffeeScript">CoffeeScript</option>
+										option
+									</select>
+								</div>
 							</div>
 							<div class="float--right">
-								<button id="js-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="icon-fullscreen"></i></button>
+								<button id="js-editor-fullscreen-toggle" class="editor-fullscreen-toggle"><i class="fa fa-fullscreen"></i></button>
 							</div>
 						</div>
 						<div class="editor-wrap">

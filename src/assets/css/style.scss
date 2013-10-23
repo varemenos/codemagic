@@ -1,6 +1,5 @@
 @import "lib/generic/_base";
 @import "lib/generic/_user-select";
-@import "lib/modules/_form";
 @import "lib/modules/_grid";
 @import "lib/modules/_button";
 @import "lib/modules/_loading";
@@ -35,9 +34,27 @@ header{
 
 #editors{
 	padding: 0 $size;
+
+	::-webkit-scrollbar {
+		width: auto;
+	}
+
+	::-webkit-scrollbar-track {
+		background: $bg-color;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: darken($bg-color, 15%);
+	}
+
+	::-webkit-scrollbar-corner,
+	::-webkit-scrollbar-thumb:window-inactive {
+		background: $bg-color;
+	}
 }
 
 .editor-module{
+	display: none;
 	margin-bottom: $size;
 	border: 1px solid darken($bg-color, 5%);
 	@include border-radius(0 0 5px 5px);
@@ -45,13 +62,45 @@ header{
 	&:last-child{
 		margin-bottom: 0;
 	}
+
+	&.enabled{
+		display: block;
+	}
 }
 
 .editor-config{
+	position: relative;
 	padding: $xsmall;
+
+	.editor-options-toggle,
+	.editor-fullscreen-toggle{
+		display: inline-block;
+		padding: 0;
+		color: $color;
+		background-color: transparent;
+		outline: none;
+		border: 1px solid transparent;
+	}
 
 	span{
 		font-weight: bold;
+	}
+}
+
+.editor-options{
+	display: none;
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: $size;
+	background-color: $bg-color;
+	border: 1px solid darken($bg-color, 5%);
+	@include borderbox;
+
+	&.enabled{
+		display: inline-block;
 	}
 }
 
@@ -71,7 +120,6 @@ header{
 	width: 100%;
 	cursor: ns-resize;
 	text-align: center;
-	background-color: darken($bg-color, 5%);
 	@include border-radius(0 0 5px 5px);
 }
 
@@ -83,6 +131,7 @@ header{
 }
 
 #result{
+	float: right;
 	padding-right: $size;
 
 	iframe{
@@ -91,16 +140,6 @@ header{
 		background-color: lighten($bg-color, 15%);
 		border: none;
 	}
-}
-
-.editor-options-toggle,
-.editor-fullscreen-toggle{
-	display: inline-block;
-	padding: 0;
-	color: $color;
-	background-color: transparent;
-	outline: none;
-	border: none;
 }
 
 .nav-btn{
@@ -129,4 +168,13 @@ header{
 			background-color: transparent;
 		}
 	}
+
+	&.enabled{
+		@include box-shadow(0 6px 12px $bg-color inset);
+	}
+}
+
+-webkit-full-screen #editors > section {
+        width: 100% !important;
+        height: 100% !important;
 }
