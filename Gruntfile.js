@@ -50,11 +50,7 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: [{
-					expand: true,
-					cwd: '<%= dirs.build %>/<%= dirs.css %>/',
-					src: '*.scss',
-					dest: '<%= dirs.build %>/<%= dirs.css %>/',
-					ext: '.css'
+					'<%= dirs.build %>/<%= dirs.css %>/style.css': '<%= dirs.build %>/<%= dirs.css %>/style.scss'
 				}]
 			},
 			dist: {
@@ -64,11 +60,7 @@ module.exports = function (grunt) {
 					banner: "By Adonis K.\n%TODO%"
 				},
 				files: [{
-					expand: true,
-					cwd: '<%= dirs.build %>/<%= dirs.css %>/',
-					src: '*.scss',
-					dest: '<%= dirs.build %>/<%= dirs.css %>/',
-					ext: '.css'
+					'<%= dirs.build %>/<%= dirs.css %>/style.css': '<%= dirs.build %>/<%= dirs.css %>/style.scss'
 				}]
 			}
 		},
@@ -76,7 +68,7 @@ module.exports = function (grunt) {
 			build: ['<%= dirs.build %>/'],
 			buildCleanup: [
 				'<%= dirs.build %>/<%= dirs.css %>/lib',
-				'<%= dirs.build %>/<%= dirs.css %>/style.scss',
+				'<%= dirs.build %>/<%= dirs.css %>/*.scss',
 				'<%= dirs.build %>/<%= dirs.js %>/app',
 				'<%= dirs.build %>/<%= dirs.js %>/libs'
 			]
@@ -85,7 +77,7 @@ module.exports = function (grunt) {
 			options: {},
 			build: {
 				files: {
-					'<%= dirs.build %>/<%= dirs.js %>/script.min.js': ['<%= dirs.build %>/<%= dirs.js %>/script.js']
+					'<%= dirs.build %>/<%= dirs.js %>/script.js': ['<%= dirs.build %>/<%= dirs.js %>/script.js']
 				}
 			}
 		},
