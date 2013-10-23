@@ -5,6 +5,7 @@
 @import "lib/modules/_loading";
 @import "lib/generic/_font-face";
 @import "_font-awesome";
+@import "_hint";
 
 $color: #222;
 $bg-color: #eee;
@@ -147,13 +148,15 @@ header{
 	padding: $small $size;
 	vertical-align: middle;
 	font-weight: bold;
-	color: $color;
 	background-color: transparent;
 	outline: none;
 	border: none;
 	border-right: 1px solid darken($bg-color, 5%);
 
-	// &:focus,
+	span{
+		color: lighten($color, 55%);
+	}
+
 	&:hover{
 		background-color: $bg-color;
 	}
@@ -163,14 +166,16 @@ header{
 		padding-left: initial;
 		@include user-select(none);
 
-		// &:focus,
 		&:hover{
 			background-color: transparent;
 		}
 	}
 
 	&.enabled{
-		@include box-shadow(0 6px 12px $bg-color inset);
+		span{
+			color: $color;
+			// @include box-shadow(0 6px 12px $bg-color inset);
+		}
 	}
 }
 

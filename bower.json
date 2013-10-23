@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "font-awesome": "~4.0.0",
-    "requirejs": "~2.1.9"
+    "requirejs": "~2.1.9",
+    "hint.css": "~1.3.0"
   }
 }
