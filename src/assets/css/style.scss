@@ -154,6 +154,7 @@ header{
 	border-right: 1px solid darken($bg-color, 5%);
 
 	span{
+		@include transition(color 150ms);
 		color: lighten($color, 55%);
 	}
 
