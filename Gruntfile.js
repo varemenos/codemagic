@@ -30,6 +30,9 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/libs/underscore.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/backbone.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/emmet.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-html.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-css.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/utils.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/routers/router.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/header.js',
@@ -46,7 +49,6 @@ module.exports = function (grunt) {
 			},
 			dev: {
 				options: {
-					// sourcemap: true,
 					style: 'expanded'
 				},
 				files: [{
@@ -55,7 +57,6 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				options: {
-					// sourcemap: false,
 					style: 'compressed',
 					banner: "By Adonis K.\n%TODO%"
 				},

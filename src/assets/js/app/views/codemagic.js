@@ -7,6 +7,7 @@ $(function () {
 		el: '#container',
 		events : {
 			'click #update': 'updateResults',
+			'click #prettify': 'prettify',
 			'click #fullscreen': 'toggleFullscreen',
 			'click .editor-fullscreen-toggle': 'editorFullscreen',
 			'mousedown .resizer': 'resizeInitialize',
@@ -15,6 +16,44 @@ $(function () {
 			'click .editor-options-toggle': 'toggleTargetedEditorOptions',
 			'change .codeChoice': 'toggleSelectedEditorOptions',
 			'click .editor-toggle': 'toggleEditorState'
+		},
+		prettify: function () {
+			if ($('#markupChoice').val() === 'HTML') {
+				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), {
+					'brace_style': 'collapse',
+					'indent_size': 1,
+					'indent_char': '\t',
+					'unformatted': []
+				}));
+
+				app.editors.htmlSession.selection.moveCursorFileStart();
+			}
+
+			if ($('#styleChoice').val() === 'CSS') {
+				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), {
+					'indent_size': 1,
+					'indent_char': '\t'
+				}));
+
+				app.editors.cssSession.selection.moveCursorFileStart();
+			}
+
+			if ($('#scriptChoice').val() === 'JavaScript') {
+				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), {
+					'indent_size': 1,
+					'indent_char': '\t',
+					'preserve_newlines': false,
+					'jslint_happy': true,
+					'brace_style': 'collapse',
+					'keep_array_indentation': false,
+					'keep_function_indentation': false,
+					'eval_code': false,
+					'unescape_strings': false,
+					'break_chained_methods': false
+				}));
+
+				app.editors.jsSession.selection.moveCursorFileStart();
+			}
 		},
 		toggleEditorState: function (selector) {
 			var target;
