@@ -18,11 +18,16 @@ $(function () {
 			'click .editor-toggle': 'toggleEditorState'
 		},
 		prettify: function () {
+			// parameterize these depending on the editor's settings
+			// https://github.com/einars/js-beautify#options
 			if ($('#markupChoice').val() === 'HTML') {
 				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), {
 					'brace_style': 'collapse',
 					'indent_size': 1,
 					'indent_char': '\t',
+					'preserve-newlines': true,
+					'max-preserve-newlines': 1,
+					'wrap-line-length': 0,
 					'unformatted': []
 				}));
 
@@ -32,6 +37,9 @@ $(function () {
 			if ($('#styleChoice').val() === 'CSS') {
 				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), {
 					'indent_size': 1,
+					'preserve-newlines': true,
+					'max-preserve-newlines': 1,
+					'wrap-line-length': 0,
 					'indent_char': '\t'
 				}));
 
@@ -42,7 +50,7 @@ $(function () {
 				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), {
 					'indent_size': 1,
 					'indent_char': '\t',
-					'preserve_newlines': false,
+					'preserve_newlines': true,
 					'jslint_happy': true,
 					'brace_style': 'collapse',
 					'keep_array_indentation': false,
@@ -156,8 +164,30 @@ $(function () {
 			}
 		},
 		updateResults: function () {
-			var content = app.editors.html.getValue();
-			var style = app.editors.css.getValue();
+			var content;
+			if ($('#markupChoice').val() === 'Markdown') {
+				content = marked(app.editors.html.getValue());
+			}else{
+				content = app.editors.html.getValue();
+			}
+			var style;
+
+			if ($('#styleChoice').val() === 'LESS') {
+				var parser = new(less.Parser)();
+
+				parser.parse(app.editors.css.getValue(), function (e, tree) {
+					if (e) {
+						// TODO: error handling in console
+						// $('#console-editor').append('<code>> ' + e.message + '</code><br>');
+						console.log(e);
+					}
+					style = tree.toCSS();
+				});
+			} else {
+				style = app.editors.css.getValue();
+			}
+
+
 			var script = app.editors.js.getValue();
 
 			var head = '<!doctype html><html><head><meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author"><style>' + style + '</style></head>';
