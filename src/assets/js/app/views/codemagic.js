@@ -28,7 +28,8 @@ $(function () {
 					'preserve-newlines': true,
 					'max-preserve-newlines': 1,
 					'wrap-line-length': 0,
-					'unformatted': []
+					'unformatted': [],
+					'indent-inner-html': true
 				}));
 
 				app.editors.htmlSession.selection.moveCursorFileStart();
@@ -36,11 +37,13 @@ $(function () {
 
 			if ($('#styleChoice').val() === 'CSS') {
 				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), {
+					'brace_style': 'collapse',
 					'indent_size': 1,
+					'indent_char': '\t',
 					'preserve-newlines': true,
 					'max-preserve-newlines': 1,
 					'wrap-line-length': 0,
-					'indent_char': '\t'
+					'unformatted': []
 				}));
 
 				app.editors.cssSession.selection.moveCursorFileStart();
@@ -164,6 +167,8 @@ $(function () {
 			}
 		},
 		updateResults: function () {
+			$('#console-editor').html('');
+
 			var content, style, script;
 			if ($('#markupChoice').val() === 'Markdown') {
 				content = marked(app.editors.html.getValue());
