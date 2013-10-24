@@ -1,6 +1,6 @@
 var app = app || {};
 
-(function () {
+$(function () {
 	app.AppRouter = Backbone.Router.extend({
 		routes: {
 			'': 'new',
@@ -14,4 +14,4 @@ var app = app || {};
 			app.aboutView = new app.AboutView();
 		}
 	});
-})();
+});
