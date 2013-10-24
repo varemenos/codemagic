@@ -89,6 +89,7 @@ header{
 }
 
 .editor-options{
+	@include borderbox;
 	display: none;
 	position: absolute;
 	z-index: 5;
@@ -98,7 +99,6 @@ header{
 	padding: $size;
 	background-color: $bg-color;
 	border: 1px solid darken($bg-color, 5%);
-	@include borderbox;
 
 	&.enabled{
 		display: inline-block;
@@ -129,6 +129,19 @@ header{
 	cursor: ns-resize;
 	@include transform(rotate(90deg));
 	@include user-select(none);
+}
+
+#console{
+	@include borderbox;
+	padding: 0 $size;
+	width: 100%;
+}
+
+#console-editor{
+	@include borderbox;
+	font-size: $small;
+	background-color: lighten($bg-color, 50%);
+	padding: $size;
 }
 
 #result{
@@ -178,6 +191,10 @@ header{
 			// @include box-shadow(0 6px 12px $bg-color inset);
 		}
 	}
+}
+
+.js-error {
+	color: #da0000;
 }
 
 -webkit-full-screen #editors > section {

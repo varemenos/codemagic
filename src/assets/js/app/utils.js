@@ -60,6 +60,22 @@ $(function () {
 		}
 	};
 
+	app.utils.consoleLog = function (log, callback) {
+		$('#console .editor-module').show();
+		$('#console-editor').append('<code class="js-error">&gt; ' + log + '</code>');
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.getZippedProject = function (editors, callback) {
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
 	app.utils.updateLayout = function (editors, callback) {
 		app.utils.resizeEditors(editors);
 

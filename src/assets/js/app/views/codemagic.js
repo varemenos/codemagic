@@ -74,7 +74,7 @@ $(function () {
 				target = false;
 			}else if(typeof selector === 'object'){
 				target = $(selector.currentTarget).prop('id').replace('-editor-toggle', '');
-			}else{
+			} else {
 				target = selector;
 			}
 
@@ -95,7 +95,7 @@ $(function () {
 		toggleTargetedEditorOptions: function (e) {
 			if($(e.currentTarget).prop('tagName') === 'SELECT'){
 				this.toggleEditorOptions($(e.currentTarget).parent());
-			}else{
+			} else {
 				this.toggleEditorOptions($(e.currentTarget).next());
 			}
 		},
@@ -164,13 +164,12 @@ $(function () {
 			}
 		},
 		updateResults: function () {
-			var content;
+			var content, style, script;
 			if ($('#markupChoice').val() === 'Markdown') {
 				content = marked(app.editors.html.getValue());
-			}else{
+			} else {
 				content = app.editors.html.getValue();
 			}
-			var style;
 
 			if ($('#styleChoice').val() === 'LESS') {
 				var parser = new(less.Parser)();
@@ -178,19 +177,30 @@ $(function () {
 				parser.parse(app.editors.css.getValue(), function (e, tree) {
 					if (e) {
 						// TODO: error handling in console
-						// $('#console-editor').append('<code>> ' + e.message + '</code><br>');
+						$('#console-editor').append('<code>> ' + e.message + '</code><br>');
 						console.log(e);
 					}
 					style = tree.toCSS();
 				});
+			} else if ($('#styleChoice').val() === 'SASS' || $('#styleChoice').val() === 'SCSS') {
+				app.utils.consoleLog('SASS/SCSS support is not ready yet');
+			} else if ($('#styleChoice').val() === 'STYLUS') {
+				app.utils.consoleLog('STYLUS support is not ready yet');
 			} else {
 				style = app.editors.css.getValue();
 			}
 
+			if ($('#styleChoice').val() === 'CoffeeScript') {
+			} else {
+				script = app.editors.js.getValue();
+			}
 
-			var script = app.editors.js.getValue();
+			// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
+			var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").style.display = "block";parent.document.querySelector("#console-editor-toggle").classList.add("enabled");parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")};';
+			logger += 'console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item))';
+			logger += '{count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
 
-			var head = '<!doctype html><html><head><meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author"><style>' + style + '</style></head>';
+			var head = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author"><style>' + style + '</style></head>';
 			var body = '<body>' + content + '<script>' + script + '</script></body></html>';
 
 			var result = head + body;
@@ -199,7 +209,7 @@ $(function () {
 
 			$('#result iframe').remove();
 
-			// TODO: write the lines below in JQuery
+			// TODO: write the lines below in JQuery (if performance and stability allow it)
 			var iframe = document.createElement('iframe');
 
 			iframeContainer.appendChild(iframe);
