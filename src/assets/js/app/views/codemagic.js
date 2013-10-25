@@ -99,6 +99,9 @@ $(function () {
 		toggleTargetedEditorOptions: function (e) {
 			if($(e.currentTarget).prop('tagName') === 'SELECT'){
 				this.toggleEditorOptions($(e.currentTarget).parent());
+			} else if(e.container !== undefined){
+				var temp = $(e.container).prop('id').replace('-editor', '');
+				this.toggleEditorOptions($('#' + temp + '-editor-options'));
 			} else {
 				this.toggleEditorOptions($(e.currentTarget).next());
 			}
@@ -334,6 +337,17 @@ $(function () {
 					},
 					exec: function (e) {
 						app.codemagicView.updateResults();
+					},
+					readOnly: true
+				});
+				editor.commands.addCommand({
+					name: 'toggleEditorOptions',
+					bindKey: {
+						win: 'Ctrl-Alt-O',
+						mac: 'Command-Alt-O'
+					},
+					exec: function (e) {
+						app.codemagicView.toggleTargetedEditorOptions(e);
 					},
 					readOnly: true
 				});
