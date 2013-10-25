@@ -5,7 +5,11 @@
 @import "lib/modules/_loading";
 @import "lib/generic/_font-face";
 @import "_font-awesome";
-@import "_hint";
+
+
+@media only screen and (min-width: 1024px){
+	@import "_hint";
+}
 
 $color: #222;
 $bg-color: #eee;
@@ -23,6 +27,8 @@ body{
 	color: $color;
 	background-color: $bg-color;
 	padding-bottom: $size;
+	overflow-x: auto;
+	overflow-y: scroll;
 }
 
 header{
@@ -135,6 +141,10 @@ header{
 	@include borderbox;
 	padding: 0 $size;
 	width: 100%;
+
+	.editor-module{
+		margin-top: $size;
+	}
 }
 
 #console-editor{
@@ -147,6 +157,17 @@ header{
 #result{
 	float: right;
 	padding-right: $size;
+
+	@media only screen and (max-width: 1023px){
+		padding-top: $size;
+		padding-left: $size;
+	}
+
+	&.fullscreen{
+		width: 100%;
+		padding-top: 0;
+		padding-left: $size;
+	}
 
 	iframe{
 		width: 100%;
@@ -191,6 +212,10 @@ header{
 			// @include box-shadow(0 6px 12px $bg-color inset);
 		}
 	}
+}
+
+.no-padding-bottom{
+	padding-bottom: 0;
 }
 
 .js-error {
