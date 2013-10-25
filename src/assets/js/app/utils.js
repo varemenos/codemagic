@@ -61,7 +61,7 @@ $(function () {
 	};
 
 	app.utils.consoleLog = function (log, callback) {
-		$('#console .editor-module').show();
+		$('#console .editor-module').addClass('enabled');
 		$('#console-editor').append('<code class="js-error">&gt; ' + log + '</code>');
 
 		if (typeof callback == 'function') {

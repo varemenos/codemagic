@@ -171,9 +171,16 @@ $(function () {
 		updateResults: function () {
 			$('#console-editor').html('');
 
-			var content, style, script;
+			var content = '';
+			var style= '';
+			var script= '';
+
 			if ($('#markupChoice').val() === 'Markdown') {
 				content = marked(app.editors.html.getValue());
+			} else if ($('#markupChoice').val() === 'HAML') {
+				app.utils.consoleLog('HAML support is not ready yet');
+			} else if ($('#markupChoice').val() === 'Jade') {
+				app.utils.consoleLog('Jade support is not ready yet');
 			} else {
 				content = app.editors.html.getValue();
 			}
@@ -203,7 +210,7 @@ $(function () {
 			}
 
 			// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
-			var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");parent.document.querySelector("#console-editor-toggle").classList.add("enabled");parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code><br>")};';
+			var logger = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");parent.document.querySelector("#console-editor-toggle").classList.add("enabled");parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
 			logger += 'console.log=function(){var str="",count=0;for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item))';
 			logger += '{count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
 
@@ -211,6 +218,7 @@ $(function () {
 			var body = '<body>' + content + '<script>' + script + '</script></body></html>';
 
 			var result = head + body;
+
 
 			var iframeContainer = document.getElementById('result');
 
