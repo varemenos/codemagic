@@ -4,6 +4,7 @@ $(function () {
 	'use strict';
 
 	app.CodemagicView = Backbone.View.extend({
+		that: this,
 		el: '#container',
 		events : {
 			'click #update': 'updateResults',
@@ -141,9 +142,14 @@ $(function () {
 			}
 		},
 		editorFullscreen: function (e) {
-			var temp = $(e.currentTarget).prop('id');
-			temp = temp.replace('-editor-fullscreen-toggle', '') + '-editor';
-			var target = document.getElementById(temp);
+			var target;
+			if(e.container !== undefined){
+				target = $(e.container).prop('id');
+			}else{
+				target = $(e.currentTarget).prop('id');
+				target = target.replace('-editor-fullscreen-toggle', '') + '-editor';
+			}
+			target = document.getElementById(target);
 
 			if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
 				if (target.requestFullscreen) {
@@ -304,11 +310,23 @@ $(function () {
 			app.editors.cssSession = app.editors.css.getSession();
 			app.editors.jsSession = app.editors.js.getSession();
 
-			ace.require("ace/ext/emmet");
-			ace.require("ace/ext/language_tools");
+			app.emmet = ace.require('ace/ext/emmet');
+			app.language_tools = ace.require('ace/ext/language_tools');
 
-			_.each([app.editors.html, app.editors.css, app.editors.js], function(item) {
-				item.setOptions({
+			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+				editor.commands.removeCommand('showSettingsMenu');
+				editor.commands.addCommand({
+					name: 'fullscreen',
+					bindKey: {
+						win: 'Ctrl-Shift-F',
+						mac: 'Command-Shift-F'
+					},
+					exec: function (e) {
+						app.codemagicView.editorFullscreen(e);
+					},
+					readOnly: true
+				});
+				editor.setOptions({
 					enableSnippets: true,
 					enableLiveAutoComplete: true,
 					enableBasicAutocompletion: true,
