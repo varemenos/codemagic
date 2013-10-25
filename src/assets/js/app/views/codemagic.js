@@ -326,6 +326,17 @@ $(function () {
 					},
 					readOnly: true
 				});
+				editor.commands.addCommand({
+					name: 'updateResults',
+					bindKey: {
+						win: 'Ctrl-Enter',
+						mac: 'Command-Enter'
+					},
+					exec: function (e) {
+						app.codemagicView.updateResults();
+					},
+					readOnly: true
+				});
 				editor.setOptions({
 					enableSnippets: true,
 					enableLiveAutoComplete: true,
