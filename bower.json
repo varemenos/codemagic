@@ -11,7 +11,5 @@
     "jszip": "~1.0.0",
     "less": "~1.5.0",
     "chosen": "~1.0.0"
-  },
-  "devDependencies": {
   }
 }
