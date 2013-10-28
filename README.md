@@ -1,7 +1,5 @@
 # codeMagic
 
-=========
-
 ## About
 
 [codeMagic](http://codemagic.gr) is an online playground IDE for HTML, CSS, Javascript. It includes a built-in console and various other features!
