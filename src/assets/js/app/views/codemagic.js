@@ -4,7 +4,6 @@ $(function () {
 	'use strict';
 
 	app.CodemagicView = Backbone.View.extend({
-		that: this,
 		el: '#container',
 		events : {
 			'click #update': 'updateResults',
