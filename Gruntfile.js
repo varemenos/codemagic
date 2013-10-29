@@ -1,4 +1,7 @@
 module.exports = function (grunt) {
+	// load tasks
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		vars: {
@@ -119,17 +122,6 @@ module.exports = function (grunt) {
 			}
 		}
 	});
-
-	// load tasks
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-devtools');
 
 	// default task
 	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
