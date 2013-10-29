@@ -19,7 +19,7 @@ $(function () {
 			'click .editor-toggle': 'toggleEditorState'
 		},
 		prettify: function () {
-			// parameterize these depending on the editor's settings
+			// TODO: parameterize these depending on the editor's settings
 			// https://github.com/einars/js-beautify#options
 			if ($('#markupChoice').val() === 'HTML') {
 				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), {
@@ -284,6 +284,7 @@ $(function () {
 			app.editors.cssSession = app.editors.css.getSession();
 			app.editors.jsSession = app.editors.js.getSession();
 
+			ace.config.set("basePath", "assets/js/ace");
 			app.emmet = ace.require('ace/ext/emmet');
 			app.language_tools = ace.require('ace/ext/language_tools');
 

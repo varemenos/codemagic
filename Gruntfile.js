@@ -43,6 +43,9 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/header.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/codemagic.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/new.js',
+					'<%= dirs.build %>/<%= dirs.js %>/ace/ace.js',
+					'<%= dirs.build %>/<%= dirs.js %>/ace/ext-emmet.js',
+					'<%= dirs.build %>/<%= dirs.js %>/ace/ext-language_tools.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/main.js'
 				],
 				dest: '<%= dirs.build %>/<%= dirs.js %>/script.js'
@@ -62,8 +65,7 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				options: {
-					style: 'compressed',
-					banner: "By Adonis K.\n%TODO%"
+					style: 'compressed'
 				},
 				files: [{
 					'<%= dirs.build %>/<%= dirs.css %>/style.css': '<%= dirs.build %>/<%= dirs.css %>/style.scss'
