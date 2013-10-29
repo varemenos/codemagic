@@ -134,15 +134,8 @@ $(function () {
 			$('#editors').css('padding-bottom', '0');
 		},
 		toggleFullscreen: function () {
-			if ($('#fullscreen').hasClass('enabled')) {
-				$('#fullscreen').removeClass('enabled');
-				$('#editors').show();
-				$('#result').removeClass('fullscreen');
-			} else {
-				$('#fullscreen').addClass('enabled');
-				$('#editors').hide();
-				$('#result').addClass('fullscreen');
-			}
+			var target = document.querySelector('#result iframe');
+			app.utils.toggleFullscreenMode(target);
 		},
 		editorFullscreen: function (e) {
 			var target;
@@ -153,29 +146,7 @@ $(function () {
 				target = target.replace('-editor-fullscreen-toggle', '') + '-editor';
 			}
 			target = document.getElementById(target);
-
-			if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
-				if (target.requestFullscreen) {
-					target.requestFullscreen();
-				} else
-				if (target.mozRequestFullScreen) {
-					target.mozRequestFullScreen();
-				} else
-				if (target.webkitRequestFullscreen) {
-					target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-				}
-			}
-			else {
-				if (document.cancelFullScreen) {
-					document.cancelFullScreen();
-				}
-				else if (document.mozCancelFullScreen) {
-					document.mozCancelFullScreen();
-				}
-				else if (document.webkitCancelFullScreen) {
-					document.webkitCancelFullScreen();
-				}
-			}
+			app.utils.toggleFullscreenMode(target);
 		},
 		updateResults: function () {
 			$('#console-editor').html('');

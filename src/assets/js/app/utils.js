@@ -124,4 +124,33 @@ $(function () {
 			callback();
 		}
 	};
+
+	app.utils.toggleFullscreenMode = function (target, callback) {
+		if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+			if (target.requestFullscreen) {
+				target.requestFullscreen();
+			} else
+			if (target.mozRequestFullScreen) {
+				target.mozRequestFullScreen();
+			} else
+			if (target.webkitRequestFullscreen) {
+				target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+			}
+		}
+		else {
+			if (document.cancelFullScreen) {
+				document.cancelFullScreen();
+			}
+			else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			}
+			else if (document.webkitCancelFullScreen) {
+				document.webkitCancelFullScreen();
+			}
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
 });
