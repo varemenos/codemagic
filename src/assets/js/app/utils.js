@@ -76,6 +76,112 @@ $(function () {
 		}
 	};
 
+	app.utils.generateLogger = function (callback) {
+		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
+		var result = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");';
+		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
+		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
+		result += 'console.log=function(){var str="",count=0;for(var i=0;';
+		result += 'i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;';
+		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
+		result += 'if(count===0){str="Object {}";count=0}}else str=arguments[i];';
+		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
+	app.utils.generateContent = function (callback) {
+		var result = '';
+		if ($('#markupChoice').val() === 'Markdown') {
+			result = marked(app.editors.html.getValue());
+		} else if ($('#markupChoice').val() === 'HAML') {
+			app.utils.consoleLog('HAML support is not ready yet');
+		} else if ($('#markupChoice').val() === 'Jade') {
+			app.utils.consoleLog('Jade support is not ready yet');
+		} else {
+			result = app.editors.html.getValue();
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
+	app.utils.generateStyle = function (callback) {
+		var result = '';
+
+		if ($('#styleChoice').val() === 'Less') {
+			var parser = new(less.Parser)();
+
+			parser.parse(app.editors.css.getValue(), function (e, tree) {
+				if (e) {
+					// TODO: error handling in console
+					$('#console-editor').append('<code>> ' + e.message + '</code><br>');
+					console.log(e);
+				}
+				result = tree.toCSS();
+			});
+		} else if ($('#styleChoice').val() === 'SASS' || $('#styleChoice').val() === 'SCSS') {
+			app.utils.consoleLog('SASS/SCSS support is not ready yet');
+		} else if ($('#styleChoice').val() === 'Stylus') {
+			app.utils.consoleLog('Stylus support is not ready yet');
+		} else {
+			result = app.editors.css.getValue();
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
+	app.utils.generateScript = function (callback) {
+		var result = '';
+
+		if ($('#scriptChoice').val() === 'CoffeeScript') {
+		} else {
+			result = app.editors.js.getValue();
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
+	app.utils.generateHead = function (callback) {
+		var style = app.utils.generateStyle();
+		var logger = app.utils.generateLogger();
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author"><style>' + style + '</style></head>';
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
+	app.utils.generateBody = function (style, callback) {
+		var content = app.utils.generateContent();
+		var script= app.utils.generateScript();
+		var head = app.utils.generateHead();
+		var result = head + '<body>' + content + '<script>' + script + '</script></body></html>';
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
 	app.utils.updateLayout = function (editors, callback) {
 		app.utils.resizeEditors(editors);
 
