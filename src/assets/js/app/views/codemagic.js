@@ -168,17 +168,11 @@ $(function () {
 			$('iframe').height(Math.max($('#editors').height(), $('iframe').height()));
 		},
 		initialize: function () {
-			this.template = _.template($('#codemagic-template').html());
-			this.render();
+			this.headerTemplate = _.template($('#header-template').html());
+			this.appTemplate = _.template($('#codemagic-template').html());
 
-			// populate editors with example content
-			app.editors.htmlSession.setValue('<h1>Hello World</h1>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nobis, inventore, cupiditate, itaque quae quas commodi reprehenderit expedita aliquid nulla vero voluptatem esse modi quasi similique atque sequi tempore dolore ut nesciunt aliquam quidem dolorum ipsa totam eaque accusamus odit maiores fugiat incidunt iste. Itaque necessitatibus cupiditate consequatur vitae maxime.</p>');
-			app.editors.cssSession.setValue('body{ margin: 0; padding: 1rem; }\n\nh1{\n	margin-top: 0;\n	color: #666;\n}\n\np{\n	color: #999;\n}');
-			app.editors.jsSession.setValue('var x = document.querySelector("p");\nx.style.textAlign = "justify";\nx.style.textIndent= "1rem";');
-			this.updateResults();
-		},
-		render: function () {
-			this.$el.append(this.template());
+			this.$el.append(this.headerTemplate());
+			this.$el.append(this.appTemplate());
 
 			/* *******************************************************
 				Editors
@@ -201,6 +195,7 @@ $(function () {
 					},
 					js : {
 						state : true,
+						mode : 'javascript',
 						content : ''
 					},
 					console : {
@@ -236,8 +231,9 @@ $(function () {
 			app.editors.jsSession = app.editors.js.getSession();
 
 			ace.config.set("basePath", "assets/js/ace");
-			app.emmet = ace.require('ace/ext/emmet');
-			app.language_tools = ace.require('ace/ext/language_tools');
+			app.ace = app.ace || {};
+			app.ace.emmet = ace.require('ace/ext/emmet');
+			app.ace.language_tools = ace.require('ace/ext/language_tools');
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
 				editor.commands.removeCommand('showSettingsMenu');
@@ -291,16 +287,18 @@ $(function () {
 				});
 			});
 
-			// editor syntax highlighting modes
 			app.editors.htmlSession.setMode('ace/mode/' + app.session.settings.html.mode);
 			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
-			app.editors.jsSession.setMode('ace/mode/javascript');
+			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
 
-			// set the Default theme
 			app.utils.setTheme(app.editors, app.session.settings.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
 
+			this.render();
+			this.updateResults();
+		},
+		render: function () {
 			return this;
 		}
 	});

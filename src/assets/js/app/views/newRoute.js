@@ -4,14 +4,14 @@ $(function () {
 	'use strict';
 
 	app.NewView = Backbone.View.extend({
-		el: 'body',
+		el: '#container',
 		events : {
 		},
 		initialize: function () {
 			this.render();
 		},
 		render: function () {
-			this.$el.find('#container').empty();
+			this.$el.empty();
 			app.codemagicView = new app.CodemagicView();
 			return this;
 		}

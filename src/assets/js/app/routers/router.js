@@ -6,14 +6,16 @@ $(function () {
 	app.AppRouter = Backbone.Router.extend({
 		routes: {
 			'': 'new',
+			'new': 'new',
 			'new/': 'new',
-			'about/': 'about'
-		},
-		new: function (){
-			app.newView = new app.NewView();
+			'about': 'about',
+			'about/': 'about',
 		},
 		about: function (){
 			app.aboutView = new app.AboutView();
+		},
+		new: function (){
+			app.newView = new app.NewView();
 		}
 	});
 });
