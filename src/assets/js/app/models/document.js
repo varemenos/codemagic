@@ -4,5 +4,6 @@ $(function () {
 	'use strict';
 
 	app.Document = Backbone.Model.extend({
+		urlRoot: 'documents'
 	});
 });

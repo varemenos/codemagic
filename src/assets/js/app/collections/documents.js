@@ -3,7 +3,8 @@ var app = app || {};
 $(function () {
 	'use strict';
 
-	app.DocumentList = Backbone.Collection.extend({
+	app.Documents = Backbone.Collection.extend({
+		url: 'documents',
 		model: Document
 	});
 });
