@@ -1,6 +1,8 @@
 var app = app || {};
 
 $(function () {
+	'use strict';
+
 	app.utils = {};
 
 	app.utils.isTrue = function (x, callback) {

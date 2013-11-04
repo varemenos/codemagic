@@ -1,6 +1,8 @@
 var app = app || {};
 
 $(function () {
+	'use strict';
+
 	app.AppRouter = Backbone.Router.extend({
 		routes: {
 			'': 'new',
