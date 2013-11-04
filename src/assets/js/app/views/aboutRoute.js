@@ -13,8 +13,10 @@ $(function () {
 		render: function () {
 			this.$el.empty();
 			this.headerTemplate = _.template($('#header-template').html());
+			this.aboutTemplate = _.template($('#about-template').html());
 
 			this.$el.append(this.headerTemplate());
+			this.$el.append(this.aboutTemplate());
 			return this;
 		}
 	});

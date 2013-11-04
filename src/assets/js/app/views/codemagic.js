@@ -148,24 +148,13 @@ $(function () {
 			app.utils.toggleFullscreenMode(target);
 		},
 		updateResults: function () {
-			$('#console-editor').html('');
-			var result = app.utils.generateHead() + app.utils.generateBody();
+			var result = app.utils.generateResult();
 
-			var iframeContainer = document.getElementById('result');
+			var iframe = document.querySelector('#result iframe');
+			$(iframe).empty();
 
-			$('#result iframe').remove();
-
-			// TODO: write the lines below in JQuery (if performance and stability allow it)
-			var iframe = document.createElement('iframe');
-
-			iframeContainer.appendChild(iframe);
-
-			var iDoc = iframe.contentDocument;
-			iDoc.open();
-			iDoc.write(result);
-			iDoc.close();
-
-			$('iframe').height(Math.max($('#editors').height(), $('iframe').height()));
+			app.utils.consoleClear();
+			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
 			this.headerTemplate = _.template($('#header-template').html());
@@ -174,9 +163,10 @@ $(function () {
 			this.$el.append(this.headerTemplate());
 			this.$el.append(this.appTemplate());
 
-			/* *******************************************************
-				Editors
-			******************************************************* */
+			ace.config.set("basePath", "assets/js/ace");
+			app.ace = app.ace || {};
+			app.ace.emmet = ace.require('ace/ext/emmet');
+			app.ace.language_tools = ace.require('ace/ext/language_tools');
 
 			app.session = {
 				settings : {
@@ -229,11 +219,9 @@ $(function () {
 			app.editors.htmlSession = app.editors.html.getSession();
 			app.editors.cssSession = app.editors.css.getSession();
 			app.editors.jsSession = app.editors.js.getSession();
-
-			ace.config.set("basePath", "assets/js/ace");
-			app.ace = app.ace || {};
-			app.ace.emmet = ace.require('ace/ext/emmet');
-			app.ace.language_tools = ace.require('ace/ext/language_tools');
+			app.editors.htmlSession.setMode('ace/mode/' + app.session.settings.html.mode);
+			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
+			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
 				editor.commands.removeCommand('showSettingsMenu');
@@ -271,19 +259,20 @@ $(function () {
 					readOnly: true
 				});
 				editor.setOptions({
+					// TODO: give the user the option to toggle these via the settings
 					enableSnippets: true,
 					enableLiveAutoComplete: true,
 					enableBasicAutocompletion: true,
-					showPrintMargin: app.session.settings.showPrintMargin,
 					useSoftTabs: false,
+					highlightActiveLine: false,
+					enableEmmet: true,
 					fontSize: app.session.settings.fontSize,
+					showPrintMargin: app.session.settings.showPrintMargin,
 					showInvisibles: app.session.settings.showInvisibles,
 					behavioursEnabled: app.session.settings.behavioursEnabled,
 					tabSize: app.session.settings.tabSize,
 					wrap: app.session.settings.useWrapMode,
-					useWorker: app.session.settings.useWorker,
-					highlightActiveLine: false,
-					enableEmmet: true
+					useWorker: app.session.settings.useWorker
 				});
 			});
 

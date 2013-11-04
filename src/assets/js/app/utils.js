@@ -62,6 +62,59 @@ $(function () {
 		}
 	};
 
+	app.utils.em2px = function (callback) {
+		var div = $('<div style="width: 1em;"></div>').appendTo('body');
+		var em = div.width();
+		div.remove();
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return em;
+	};
+
+	app.utils.rem2px = function (callback) {
+		var div = $('<div style="width: 1rem;"></div>').appendTo('body');
+		var rem = div.width();
+		div.remove();
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return rem;
+	};
+
+	app.utils.setIframeHeight = function (iframe, callback) {
+		$(iframe).height(Math.max($('#editors').height(), $(iframe).height()));
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.write2iframe = function (iframe, result, callback) {
+		var iframeDocument = iframe.contentDocument;
+		iframeDocument.open();
+		iframeDocument.write(result);
+		iframeDocument.close();
+
+		app.utils.setIframeHeight(iframe);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.consoleClear = function (callback) {
+		$('#console-editor').html('');
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
 	app.utils.consoleLog = function (log, callback) {
 		$('#console .editor-module').addClass('enabled');
 		$('#console-editor').append('<code class="js-error">&gt; ' + log + '</code>');
@@ -78,7 +131,18 @@ $(function () {
 		}
 	};
 
+	app.utils.generateResult = function (callback) {
+		var result = app.utils.generateHead() + app.utils.generateBody();
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
 	app.utils.generateLogger = function (callback) {
+		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
 		var result = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");';
 		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
@@ -123,7 +187,7 @@ $(function () {
 
 			parser.parse(app.editors.css.getValue(), function (e, tree) {
 				if (e) {
-					// TODO: error handling in console
+					// TODO: better error handling in console
 					$('#console-editor').append('<code>> ' + e.message + '</code><br>');
 					console.log(e);
 				}
