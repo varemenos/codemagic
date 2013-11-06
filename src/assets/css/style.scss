@@ -34,11 +34,16 @@ header{
 	padding: 0;
 	background-color: lighten($bg-color, 50%);
 	@include box-shadow(0 1px 2px darken($bg-color, 10%));
+	@include user-select(none);
 }
 
 #editors{
 	padding: 0 $size;
 	@include transition(150ms ease);
+
+	&.enlarged{
+		padding-bottom: 30%;
+	}
 
 	::-webkit-scrollbar {
 		width: auto;
@@ -76,6 +81,7 @@ header{
 .editor-config{
 	position: relative;
 	padding: $xsmall;
+	@include user-select(none);
 
 	.editor-options-toggle,
 	.editor-fullscreen-toggle{
@@ -121,6 +127,8 @@ header{
 }
 
 .resizer{
+	position: relative;
+	z-index: 10;
 	height: $size;
 	width: 100%;
 	cursor: ns-resize;

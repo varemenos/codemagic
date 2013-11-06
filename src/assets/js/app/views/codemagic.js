@@ -117,20 +117,22 @@ $(function () {
 		},
 		resizeRefresh: function (e) {
 			if (app.session.resize) {
-				$('#editors').css('padding-bottom', '30%');
+				$('#editors').addClass('enlarged');
 				$('#' + app.session.resizeTarget.id).parent().height(app.session.resizeTarget.height + e.pageY - app.session.resize);
 				app.utils.updateLayout(app.editors);
 			}
 		},
 		resizeFinalize: function () {
-			app.session.resize = false;
-			if(typeof app.session.resizeTarget !== 'undefined'){
-				if(typeof app.session.resizeTarget.height !== 'undefined'){
-					app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
+			if (app.session.resize) {
+				if(typeof app.session.resizeTarget !== 'undefined'){
+					if(typeof app.session.resizeTarget.height !== 'undefined'){
+						app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
+					}
 				}
+				app.utils.updateLayout(app.editors);
+				$('#editors').removeClass('enlarged');
 			}
-			app.utils.updateLayout(app.editors);
-			$('#editors').css('padding-bottom', '0');
+			app.session.resize = false;
 		},
 		toggleFullscreen: function () {
 			var target = document.querySelector('#result iframe');
