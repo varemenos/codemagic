@@ -3,7 +3,7 @@ var app = app || {};
 $(function () {
 	'use strict';
 
-	app.NewView = Backbone.View.extend({
+	app.LoginView = Backbone.View.extend({
 		el: '#container',
 		events : {
 		},
@@ -13,7 +13,9 @@ $(function () {
 		render: function () {
 			this.$el.empty();
 			app.headerView = new app.HeaderView();
-			app.codemagicView = new app.CodemagicView();
+			this.template = _.template($('#login-template').html());
+
+			this.$el.append(this.template());
 			return this;
 		}
 	});

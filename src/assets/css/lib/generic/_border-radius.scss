@@ -6,7 +6,7 @@
 // @param $val {String} border-radius's valid value
 // @usage:
 // .an-element{
-// 	=border-radius(5px top right);
+// 	=border-radius(5px 0 0 5px);
 // }
 @mixin border-radius($val...){
 	-webkit-border-radius: $val;

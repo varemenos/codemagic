@@ -159,13 +159,11 @@ $(function () {
 			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
-			this.headerTemplate = _.template($('#header-template').html());
-			this.appTemplate = _.template($('#codemagic-template').html());
+			this.template = _.template($('#codemagic-template').html());
 
-			this.$el.append(this.headerTemplate());
-			this.$el.append(this.appTemplate());
+			this.$el.append(this.template());
 
-			ace.config.set("basePath", "assets/js/ace");
+			ace.config.set('basePath', 'assets/js/ace');
 			app.ace = app.ace || {};
 			app.ace.emmet = ace.require('ace/ext/emmet');
 			app.ace.language_tools = ace.require('ace/ext/language_tools');
