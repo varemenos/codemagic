@@ -231,19 +231,6 @@ header{
 
 // Static page style
 
-#container{
-	@include transform-origin(top center);
-}
-
-@include keyframes(animate){
-	0%: {
-		transform: scale(1);
-	}
-	100%: {
-		transform: scale(0);
-	}
-};
-
 .page{
 	margin: $size;
 	padding: $size;
