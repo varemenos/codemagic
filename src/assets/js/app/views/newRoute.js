@@ -11,8 +11,6 @@ $(function () {
 			this.render();
 		},
 		render: function () {
-			this.$el.empty();
-			app.headerView = new app.HeaderView();
 			app.codemagicView = new app.CodemagicView();
 			return this;
 		}

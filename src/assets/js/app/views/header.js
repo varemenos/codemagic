@@ -17,7 +17,7 @@ $(function () {
 			this.render();
 		},
 		render: function () {
-			this.$el.empty();
+			this.$el.empty().unbind();
 			this.template = _.template($('#header-template').html());
 
 			this.$el.append(this.template());

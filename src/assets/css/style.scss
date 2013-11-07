@@ -232,7 +232,8 @@ header{
 // Static page style
 
 .page{
-	margin: $size;
+	max-width: 1140px;
+	margin: $size auto;
 	padding: $size;
 	background-color: lighten($bg-color, 15%);
 }
