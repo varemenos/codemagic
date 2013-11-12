@@ -165,9 +165,9 @@ $(function () {
 		if ($('#markupChoice').val() === 'Markdown') {
 			result = marked(app.editors.html.getValue());
 		} else if ($('#markupChoice').val() === 'HAML') {
-			app.utils.consoleLog('HAML support is not ready yet');
+			app.utils.consoleLog('HAML support is not ready to use yet.');
 		} else if ($('#markupChoice').val() === 'Jade') {
-			app.utils.consoleLog('Jade support is not ready yet');
+			app.utils.consoleLog('Jade support is not ready to use yet.');
 		} else {
 			result = app.editors.html.getValue();
 		}
@@ -194,9 +194,9 @@ $(function () {
 				result = tree.toCSS();
 			});
 		} else if ($('#styleChoice').val() === 'SASS' || $('#styleChoice').val() === 'SCSS') {
-			app.utils.consoleLog('SASS/SCSS support is not ready yet');
+			app.utils.consoleLog('SASS/SCSS support is not ready to use yet.');
 		} else if ($('#styleChoice').val() === 'Stylus') {
-			app.utils.consoleLog('Stylus support is not ready yet');
+			app.utils.consoleLog('Stylus support is not ready to use yet.');
 		} else {
 			result = app.editors.css.getValue();
 		}
@@ -212,6 +212,7 @@ $(function () {
 		var result = '';
 
 		if ($('#scriptChoice').val() === 'CoffeeScript') {
+			app.utils.consoleLog('CoffeeScript support is not ready to use yet.');
 		} else {
 			result = app.editors.js.getValue();
 		}
