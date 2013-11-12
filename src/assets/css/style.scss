@@ -46,6 +46,10 @@ header{
 		padding-bottom: 30%;
 	}
 
+	&.widescreen{
+		@include transform(translateX(-100%));
+	}
+
 	::-webkit-scrollbar {
 		width: auto;
 	}
@@ -166,6 +170,11 @@ header{
 	float: right;
 	padding-right: $size;
 	@include transition(150ms ease);
+
+	&.widescreen{
+		padding-left: $size;
+		width: 100%;
+	}
 
 	@media only screen and (max-width: 1023px){
 		padding-top: $size;

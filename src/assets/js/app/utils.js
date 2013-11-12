@@ -325,4 +325,31 @@ $(function () {
 			callback();
 		}
 	};
+
+	app.utils.toggleWidescreenMode = function (target, callback) {
+		var editors = $('#editors');
+		var result = $('#result');
+
+		var state = !editors.hasClass('widescreen');
+
+		if(state){
+			editors.addClass('widescreen');
+
+			window.setTimeout(function () {
+				editors.hide();
+				result.addClass('widescreen');
+			}, 250);
+		} else {
+			result.removeClass('widescreen');
+
+			window.setTimeout(function () {
+				editors.show();
+				editors.removeClass('widescreen');
+			}, 250);
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
 });

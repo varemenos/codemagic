@@ -9,6 +9,7 @@ $(function () {
 			'click #update': 'updateResults',
 			'click #prettify': 'prettify',
 			'click #fullscreen': 'toggleFullscreen',
+			'click #wide': 'toggleWidescreen',
 			'click .editor-fullscreen-toggle': 'editorFullscreen',
 			'mousedown .resizer': 'resizeInitialize',
 			'mouseup': 'resizeFinalize',
@@ -137,6 +138,10 @@ $(function () {
 		toggleFullscreen: function () {
 			var target = document.querySelector('#result iframe');
 			app.utils.toggleFullscreenMode(target);
+		},
+		toggleWidescreen: function () {
+			var target = document.querySelector('#result iframe');
+			app.utils.toggleWidescreenMode(target);
 		},
 		editorFullscreen: function (e) {
 			var target;
