@@ -191,7 +191,7 @@ header{
 	}
 }
 
-.popup-wrap{
+#overlay{
 	@include borderbox;
 	position: fixed;
 	display: none;
@@ -199,24 +199,30 @@ header{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 999;
+	z-index: 998;
 	padding: $size;
 	background-color: rgba(0, 0, 0, 0.1);
+}
 
-	.popup{
-		// TODO: fix positioning (try viewing it at a small-width display, the settings cut off the screen)
-		position: relative;
-		@include borderbox;
-		padding: $xxlarge $size $size $size;
-		background-color: lighten($bg-color, 50%);
-		@include box-shadow(0 1px 2px darken($bg-color, 10%));
-	}
+.popup{
+	// TODO: fix positioning (try viewing it at a small-width display, the settings cut off the screen)
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	@include borderbox;
+	margin: $xlarge;
+	padding: $xxlarge $size $size $size;
+	background-color: lighten($bg-color, 50%);
+	@include box-shadow(0 1px 2px darken($bg-color, 10%));
+}
 
-	.popup-close{
-		position: absolute;
-		top: $size;
-		right: $size;
-	}
+.popup-close{
+	position: absolute;
+	top: $size;
+	right: $size;
 }
 
 #settings-modal{
@@ -241,6 +247,7 @@ header{
 			@include borderbox;
 			display: block;
 			width: 100%;
+			padding: $xsmall;
 			background-color: lighten($bg-color, 50%);
 			border: 1px solid darken($bg-color, 5%);
 		}

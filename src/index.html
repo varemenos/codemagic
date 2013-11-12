@@ -156,203 +156,200 @@
 					<iframe></iframe>
 				</section>
 			</div>
-			<div id="settings-modal-wrap" class="popup-wrap">
-				<div id="settings-modal" class="popup">
-					<div class="grid">
-						<div class="row">
-							<div class="col-4-12">
-								<label class="settings-option vertical-spacing">
-									<span>Title:</span>
-									<input type="text" name="pageTitle" value="">
-								</label>
-								<label class="settings-option vertical-spacing">
-									<span>Author:</span>
-									<input type="text" name="pageAuthor" value="">
-								</label>
-							</div>
-							<div class="col-8-12">
-								<label class="settings-option">
-									<span>Description:</span>
-									<textarea name="pageDescription" rows="8"></textarea>
-								</label>
-							</div>
+			<div id="settings-modal" class="popup">
+				<div class="grid">
+					<div class="row">
+						<div class="col-4-12">
+							<label class="settings-option vertical-spacing">
+								<span>Title:</span>
+								<input type="text" name="pageTitle" value="">
+							</label>
+							<label class="settings-option vertical-spacing">
+								<span>Author:</span>
+								<input type="text" name="pageAuthor" value="">
+							</label>
 						</div>
-						<div class="row">
-							<div class="col-4-12">
-								<label class="settings-option">
-									<span>Theme:</span>
-									<select id="theme" name="theme">
-										<optgroup label="Bright">
-											<option value="chrome">Chrome</option>
-											<option value="clouds">Clouds</option>
-											<option value="crimson_editor">Crimson Editor</option>
-											<option value="dawn">Dawn</option>
-											<option value="dreamweaver">Dreamweaver</option>
-											<option value="eclipse">Eclipse</option>
-											<option value="github">GitHub</option>
-											<option value="solarized_light">Solarized Light</option>
-											<option value="textmate">TextMate</option>
-											<option value="tomorrow">Tomorrow</option>
-											<option value="xcode">XCode</option>
-										</optgroup>
-										<optgroup label="Dark">
-											<option value="ambiance">Ambiance</option>
-											<option value="chaos">Chaos</option>
-											<option value="clouds_midnight">clouds_midnight</option>
-											<option value="cobalt">cobalt</option>
-											<option value="idle_fingers">idle_fingers</option>
-											<option value="kr_theme">krTheme</option>
-											<option value="merbivore">merbivore</option>
-											<option value="merbivore_soft">merbivore_soft</option>
-											<option value="mono_industrial">mono_industrial</option>
-											<option value="monokai">monokai</option>
-											<option value="pastel_on_dark">pastel_on_dark</option>
-											<option value="solarized_dark">solarized_dark</option>
-											<option value="twilight">twilight</option>
-											<option value="tomorrow_night" selected>tomorrow_night</option>
-											<option value="tomorrow_night_blue">tomorrow_night_blue</option>
-											<option value="tomorrow_night_bright">tomorrow_night_bright</option>
-											<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
-											<option value="vibrant_ink">vibrant_ink</option>
-										</optgroup>
-									</select>
-								</label>
-							</div>
-							<div class="col-4-12">
-								<label class="settings-option">
-									<span>Font Size:</span>
-									<select name="fontSize">
-										<option value="10">10px</option>
-										<option value="11">11px</option>
-										<option value="12" selected>12px</option>
-										<option value="13">13px</option>
-										<option value="14">14px</option>
-										<option value="15">15px</option>
-										<option value="16">16px</option>
-										<option value="17">17px</option>
-										<option value="18">18px</option>
-										<option value="19">19px</option>
-										<option value="20">20px</option>
-										<option value="21">21px</option>
-										<option value="22">22px</option>
-										<option value="23">23px</option>
-										<option value="24">24px</option>
-										<option value="25">25px</option>
-										<option value="26">26px</option>
-										<option value="27">27px</option>
-										<option value="28">28px</option>
-										<option value="29">29px</option>
-										<option value="30">30px</option>
-										<option value="31">31px</option>
-										<option value="32">32px</option>
-									</select>
-								</label>
-							</div>
-							<div class="col-4-12">
-								<label class="settings-option">
-									<span>Tab Size:</span>
-									<select name="tabSize">
-										<option value="2">2px</option>
-										<option value="4" selected>4px</option>
-										<option value="8">8px</option>
-									</select>
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3-12">
-								<label class="settings-option">
-									<span>Auto-complete:</span>
-									<input type="checkbox" name="behavioursEnabled" checked>
-								</label>
-							</div>
-							<div class="col-3-12">
-								<label class="settings-option">
-									<span>Line Wrapping:</span>
-									<input type="checkbox" name="useWrapMode" checked>
-								</label>
-							</div>
-							<div class="col-3-12">
-								<label class="settings-option">
-									<span>Vertical Rule:</span>
-									<input type="checkbox" name="showPrintMargin">
-								</label>
-							</div>
-							<div class="col-3-12">
-								<label class="settings-option">
-									<span>Invisible Characters:</span>
-									<input type="checkbox" name="showInvisibles">
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6-12">
-								<label class="settings-option">
-									<span>External CSS Libraries:</span>
-									<select name="csslibrary" multiple>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
-											<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
-											<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css">FontAwesome 3.0.2</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css">Twitter Bootstrap CSS 2.3.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 2.3.0 (No Icons)</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 2.3.0 (responsive)</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
-									</select>
-								</label>
-							</div>
-							<div class="col-6-12">
-								<label class="settings-option">
-									<span>External JS Libraries:</span>
-									<select name="jslibrary" multiple>
-											<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" selected>JQuery 1.9.1</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js">JQueryUI 1.10.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.4.0/coffee-script.min.js">CoffeeScript 1.4.0</option>
-											<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
-											<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js">Backbone.js 0.9.10</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js">Twitter Bootstrap JS 2.3.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
-											<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
-									</select>
-								</label>
-							</div>
+						<div class="col-8-12">
+							<label class="settings-option">
+								<span>Description:</span>
+								<textarea name="pageDescription" rows="8"></textarea>
+							</label>
 						</div>
 					</div>
-
-					<button id="settings-modal-close" class="popup-close"><i class="fa fa-times"></i></button>
+					<div class="row">
+						<div class="col-4-12">
+							<label class="settings-option">
+								<span>Theme:</span>
+								<select id="theme" name="theme">
+									<optgroup label="Bright">
+										<option value="chrome">Chrome</option>
+										<option value="clouds">Clouds</option>
+										<option value="crimson_editor">Crimson Editor</option>
+										<option value="dawn">Dawn</option>
+										<option value="dreamweaver">Dreamweaver</option>
+										<option value="eclipse">Eclipse</option>
+										<option value="github">GitHub</option>
+										<option value="solarized_light">Solarized Light</option>
+										<option value="textmate">TextMate</option>
+										<option value="tomorrow">Tomorrow</option>
+										<option value="xcode">XCode</option>
+									</optgroup>
+									<optgroup label="Dark">
+										<option value="ambiance">Ambiance</option>
+										<option value="chaos">Chaos</option>
+										<option value="clouds_midnight">clouds_midnight</option>
+										<option value="cobalt">cobalt</option>
+										<option value="idle_fingers">idle_fingers</option>
+										<option value="kr_theme">krTheme</option>
+										<option value="merbivore">merbivore</option>
+										<option value="merbivore_soft">merbivore_soft</option>
+										<option value="mono_industrial">mono_industrial</option>
+										<option value="monokai">monokai</option>
+										<option value="pastel_on_dark">pastel_on_dark</option>
+										<option value="solarized_dark">solarized_dark</option>
+										<option value="twilight">twilight</option>
+										<option value="tomorrow_night" selected>tomorrow_night</option>
+										<option value="tomorrow_night_blue">tomorrow_night_blue</option>
+										<option value="tomorrow_night_bright">tomorrow_night_bright</option>
+										<option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
+										<option value="vibrant_ink">vibrant_ink</option>
+									</optgroup>
+								</select>
+							</label>
+						</div>
+						<div class="col-4-12">
+							<label class="settings-option">
+								<span>Font Size:</span>
+								<select name="fontSize">
+									<option value="10">10px</option>
+									<option value="11">11px</option>
+									<option value="12" selected>12px</option>
+									<option value="13">13px</option>
+									<option value="14">14px</option>
+									<option value="15">15px</option>
+									<option value="16">16px</option>
+									<option value="17">17px</option>
+									<option value="18">18px</option>
+									<option value="19">19px</option>
+									<option value="20">20px</option>
+									<option value="21">21px</option>
+									<option value="22">22px</option>
+									<option value="23">23px</option>
+									<option value="24">24px</option>
+									<option value="25">25px</option>
+									<option value="26">26px</option>
+									<option value="27">27px</option>
+									<option value="28">28px</option>
+									<option value="29">29px</option>
+									<option value="30">30px</option>
+									<option value="31">31px</option>
+									<option value="32">32px</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-4-12">
+							<label class="settings-option">
+								<span>Tab Size:</span>
+								<select name="tabSize">
+									<option value="2">2px</option>
+									<option value="4" selected>4px</option>
+									<option value="8">8px</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3-12">
+							<label class="settings-option">
+								<span>Auto-complete:</span>
+								<input type="checkbox" name="behavioursEnabled" checked>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option">
+								<span>Line Wrapping:</span>
+								<input type="checkbox" name="useWrapMode" checked>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option">
+								<span>Vertical Rule:</span>
+								<input type="checkbox" name="showPrintMargin">
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option">
+								<span>Invisible Characters:</span>
+								<input type="checkbox" name="showInvisibles">
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6-12">
+							<label class="settings-option">
+								<span>External CSS Libraries:</span>
+								<select name="csslibrary" multiple>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
+										<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
+										<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css">FontAwesome 3.0.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css">Twitter Bootstrap CSS 2.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 2.3.0 (No Icons)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 2.3.0 (responsive)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-6-12">
+							<label class="settings-option">
+								<span>External JS Libraries:</span>
+								<select name="jslibrary" multiple>
+										<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" selected>JQuery 1.9.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js">JQueryUI 1.10.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.4.0/coffee-script.min.js">CoffeeScript 1.4.0</option>
+										<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
+										<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js">Backbone.js 0.9.10</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js">Twitter Bootstrap JS 2.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
+								</select>
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div id="share-modal-wrap" class="popup-wrap">
-				<div id="share-modal" class="popup">
-					<a href="./" class="facebook" title="Share on Facebook" target="_blank">
-						<i class="fa fa-facebook-square"></i><span>Share on Facebook</span>
-					</a>
-					<a href="./" class="twitter" title="Tweet on Twitter" target="_blank">
-						<i class="fa fa-twitter-square"></i><span>Tweet on Twitter</span>
-					</a>
-					<a href="./" class="google-plus" title="Share on Google+" target="_blank">
-						<i class="fa fa-google-plus-square"></i><span>Share on Google+</span>
-					</a>
-					<a href="./" class="linkedin" title="Share on LinkedIn" target="_blank">
-						<i class="fa fa-linkedin-square"></i><span>Share on LinkedIn</span>
-					</a>
-					<a href="./" class="pinterest" title="Share on Pinterest" target="_blank">
-						<i class="fa fa-pinterest-square"></i><span>Share on Pinterest</span>
-					</a>
 
-					<button id="share-modal-close" class="popup-close"><i class="fa fa-times"></i></button>
-				</div>
+				<button id="settings-modal-close" class="popup-close"><i class="fa fa-times"></i></button>
 			</div>
+			<div id="share-modal" class="popup">
+				<a href="./" class="facebook" title="Share on Facebook" target="_blank">
+					<i class="fa fa-facebook-square"></i><span>Share on Facebook</span>
+				</a>
+				<a href="./" class="twitter" title="Tweet on Twitter" target="_blank">
+					<i class="fa fa-twitter-square"></i><span>Tweet on Twitter</span>
+				</a>
+				<a href="./" class="google-plus" title="Share on Google+" target="_blank">
+					<i class="fa fa-google-plus-square"></i><span>Share on Google+</span>
+				</a>
+				<a href="./" class="linkedin" title="Share on LinkedIn" target="_blank">
+					<i class="fa fa-linkedin-square"></i><span>Share on LinkedIn</span>
+				</a>
+				<a href="./" class="pinterest" title="Share on Pinterest" target="_blank">
+					<i class="fa fa-pinterest-square"></i><span>Share on Pinterest</span>
+				</a>
+
+				<button id="share-modal-close" class="popup-close"><i class="fa fa-times"></i></button>
+			</div>
+			<div id="overlay"></div>
 		</script>
 	</body>
 </html>

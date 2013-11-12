@@ -11,6 +11,7 @@ $(function () {
 			'click #settings': 'popupOpen',
 			'click #share': 'popupOpen',
 			'click .popup-close': 'popupClose',
+			'click #overlay': 'popupClose',
 			'click #fullscreen': 'toggleFullscreen',
 			'click #wide': 'toggleWidescreen',
 			'click .editor-fullscreen-toggle': 'editorFullscreen',
@@ -22,11 +23,18 @@ $(function () {
 			'click .editor-toggle': 'toggleEditorState'
 		},
 		popupOpen: function (e) {
-			var target = '#' + $(e.currentTarget).prop('id') + '-modal-wrap';
+			var target = '#' + $(e.currentTarget).prop('id') + '-modal';
+			$("#overlay").fadeIn(150);
 			$(target).fadeIn(150);
 		},
 		popupClose: function (e) {
-			var target = '#' + $(e.currentTarget).prop('id').replace('-close', '-wrap');
+			var target = '#' + $(e.currentTarget).prop('id').replace('-close', '');
+
+			if(target === '#overlay'){
+				target = '.popup';
+			}
+
+			$("#overlay").fadeOut(150);
 			$(target).fadeOut(150);
 		},
 		prettify: function () {
