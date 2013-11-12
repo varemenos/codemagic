@@ -19,6 +19,7 @@ $small: $size/1.5;
 $large: $size*1.5;
 $xsmall: $size/2;
 $xlarge: $size*2;
+$xxlarge: $size*4;
 
 @include grid(12, $size);
 
@@ -206,7 +207,7 @@ header{
 		// TODO: fix positioning (try viewing it at a small-width display, the settings cut off the screen)
 		position: relative;
 		@include borderbox;
-		padding: $size;
+		padding: $xxlarge $size $size $size;
 		background-color: lighten($bg-color, 50%);
 		@include box-shadow(0 1px 2px darken($bg-color, 10%));
 	}
