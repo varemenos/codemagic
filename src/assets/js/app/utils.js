@@ -208,6 +208,21 @@ $(function () {
 		return result;
 	};
 
+	app.utils.generateExternalStyle = function (callback) {
+		var items = $("select[name=csslibrary]").val();
+		var result = '';
+
+		for (var i = 0; i < items.length; i++) {
+			result+= '<link rel="stylesheet" href="'+ items[i] + '">';
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
 	app.utils.generateScript = function (callback) {
 		var result = '';
 
@@ -224,10 +239,26 @@ $(function () {
 		return result;
 	};
 
+	app.utils.generateExternalScript = function (callback) {
+		var items = $("select[name=jslibrary]").val();
+		var result = '';
+
+		for (var i = 0; i < items.length; i++) {
+			result+= '<script src="'+ items[i] + '"></script>';
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+
+		return result;
+	};
+
 	app.utils.generateHead = function (callback) {
 		var style = app.utils.generateStyle();
+		var externalStyle = app.utils.generateExternalStyle();
 		var logger = app.utils.generateLogger();
-		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author"><style>' + style + '</style></head>';
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle +'<style>' + style + '</style></head>';
 
 		if (typeof callback == 'function') {
 			callback();
@@ -239,8 +270,9 @@ $(function () {
 	app.utils.generateBody = function (style, callback) {
 		var content = app.utils.generateContent();
 		var script= app.utils.generateScript();
+		var externalScript = app.utils.generateExternalScript();
 		var head = app.utils.generateHead();
-		var result = head + '<body>' + content + '<script>' + script + '</script></body></html>';
+		var result = head + '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
 		if (typeof callback == 'function') {
 			callback();
