@@ -26,7 +26,7 @@ veGrid - Grid System by Adonis K.
 	}
 
 	// loop through the numbers given and generate column unit classes
-	@for $i from 1 through $last{
+	@for $i from 1 through ($last + 1){
 		.col-#{$i}-#{$N}{
 			width: percentage($i / $N);
 		}

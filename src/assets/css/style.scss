@@ -2,6 +2,7 @@
 @import "lib/generic/_helpers";
 @import "lib/modules/_grid";
 @import "_font-awesome";
+@import "_selectize.default";
 
 // codeMagic style
 
@@ -186,6 +187,113 @@ header{
 		height: 100%;
 		background-color: lighten($bg-color, 15%);
 		border: none;
+	}
+}
+
+.popup-wrap{
+	@include borderbox;
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	padding: $size;
+	background-color: rgba(0, 0, 0, 0.1);
+
+	.popup{
+		// TODO: fix positioning (try viewing it at a small-width display, the settings cut off the screen)
+		position: relative;
+		@include borderbox;
+		padding: $size;
+		background-color: lighten($bg-color, 50%);
+		@include box-shadow(0 1px 2px darken($bg-color, 10%));
+	}
+
+	.popup-close{
+		position: absolute;
+		top: $size;
+		right: $size;
+	}
+}
+
+#settings-modal{
+	label{
+		@include borderbox;
+		display: block;
+		width: 100%;
+		padding: $small;
+		background-color: lighten($bg-color, 5%);
+		border: 1px solid $bg-color;
+
+		&.vertical-spacing{
+			margin-bottom: $size;
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+
+		& > input[type=text],
+		& > textarea{
+			@include borderbox;
+			display: block;
+			width: 100%;
+			background-color: lighten($bg-color, 50%);
+			border: 1px solid darken($bg-color, 5%);
+		}
+
+		& > input[type=checkbox]{
+			vertical-align: text-bottom;
+		}
+
+		&:focus,
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
+
+#share-modal{
+	// TODO: variabilize colors
+	padding: $size $size $small $size;
+
+	a,
+	a:visited{
+		display: inline-block;
+		text-decoration: none;
+		color: #222;
+		margin-right: $small;
+		margin-bottom: $small;
+		background-color: #eee;
+		border: 1px solid #ccc;
+		@include box-shadow(0 0 3px #ccc);
+
+		i{
+			border-right: 1px solid #ccc;
+		}
+
+		i,
+		span{
+			padding: $small;
+		}
+	}
+
+	a.twitter i{ color: #1ab2e8; }
+	a.linkedin i{ color: #0073b2; }
+	a.pinterest i{ color: #cc2127; }
+	a.google-plus i{ color: #dd4b39; }
+	a.facebook i{ color: #3b5998; }
+
+	a:focus,
+	a:hover{
+		background-color: #fff;
+		border: 1px solid #f90;
+		@include box-shadow(0 0 3px #f90);
+		i{
+			border-right: 1px solid #f90;
+		}
 	}
 }
 

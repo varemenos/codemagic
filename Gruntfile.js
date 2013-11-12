@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/libs/underscore.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/backbone.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/emmet.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/selectize.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-html.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-css.js',

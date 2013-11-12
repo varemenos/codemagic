@@ -8,6 +8,9 @@ $(function () {
 		events : {
 			'click #update': 'updateResults',
 			'click #prettify': 'prettify',
+			'click #settings': 'popupOpen',
+			'click #share': 'popupOpen',
+			'click .popup-close': 'popupClose',
 			'click #fullscreen': 'toggleFullscreen',
 			'click #wide': 'toggleWidescreen',
 			'click .editor-fullscreen-toggle': 'editorFullscreen',
@@ -17,6 +20,14 @@ $(function () {
 			'click .editor-options-toggle': 'toggleTargetedEditorOptions',
 			'change .codeChoice': 'toggleSelectedEditorOptions',
 			'click .editor-toggle': 'toggleEditorState'
+		},
+		popupOpen: function (e) {
+			var target = '#' + $(e.currentTarget).prop('id') + '-modal-wrap';
+			$(target).fadeIn(150);
+		},
+		popupClose: function (e) {
+			var target = '#' + $(e.currentTarget).prop('id').replace('-close', '-wrap');
+			$(target).fadeOut(150);
 		},
 		prettify: function () {
 			// TODO: parameterize these depending on the editor's settings
@@ -288,6 +299,13 @@ $(function () {
 			app.utils.setTheme(app.editors, app.session.settings.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
+
+			$(".codeChoice").selectize({
+				create: false
+			});
+			$("#settings-modal select").selectize({
+				create: false
+			});
 
 			this.render();
 			this.updateResults();
