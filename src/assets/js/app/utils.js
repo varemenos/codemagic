@@ -17,6 +17,18 @@ $(function () {
 		}
 	};
 
+	app.utils.updateShareUrls = function (callback) {
+		$('#share-modal').find('a.twitter').attr('href', 'http://twitter.com/home?status=' + app.session.settings.title + ' ' + window.location.href + ' from @code_Magic');
+		$('#share-modal').find('a.facebook').attr('href', 'http://www.facebook.com/sharer.php?u=' + window.location.href);
+		$('#share-modal').find('a.google-plus').attr('href', 'https://plus.google.com/share?url=' + window.location.href + '&title=' + app.session.settings.title);
+		$('#share-modal').find('a.linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title=' + app.session.settings.title + '&summary=' + app.session.settings.description + '&source=http://codeMagic.gr');
+		$('#share-modal').find('a.pinterest').attr('href', 'http://pinterest.com/pin/create/bookmarklet/?url=' + window.location.href + '&is_video=false&description=' + app.session.settings.title);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
 	app.utils.resizeEditors = function (editors, callback) {
 		editors.html.resize();
 		editors.css.resize();

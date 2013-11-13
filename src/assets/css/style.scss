@@ -232,15 +232,9 @@ header{
 	z-index: 999;
 	@include borderbox;
 	margin: $xlarge;
-	padding: $xxlarge $size $size $size;
+	padding: $size;
 	background-color: lighten($bg-color, 50%);
 	@include box-shadow(0 1px 2px darken($bg-color, 10%));
-}
-
-.popup-close{
-	position: absolute;
-	top: $size;
-	right: $size;
 }
 
 #settings-modal{
@@ -294,14 +288,16 @@ header{
 #share-modal{
 	// TODO: variabilize colors
 	padding: $size $size $small $size;
+	text-align: center;
 
 	a,
 	a:visited{
 		display: inline-block;
-		text-decoration: none;
-		color: #222;
 		margin-right: $small;
 		margin-bottom: $small;
+		color: #222;
+		text-align: left;
+		text-decoration: none;
 		background-color: #eee;
 		border: 1px solid #ccc;
 		@include box-shadow(0 0 3px #ccc);
@@ -313,6 +309,10 @@ header{
 		i,
 		span{
 			padding: $small;
+		}
+
+		@media only screen and (max-width: 1023px){
+			display: block;
 		}
 	}
 

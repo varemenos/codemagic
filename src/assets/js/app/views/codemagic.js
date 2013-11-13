@@ -49,9 +49,11 @@ $(function () {
 			}
 		},
 		popupOpen: function (e) {
-			var target = '#' + $(e.currentTarget).prop('id') + '-modal';
-			$("#overlay").fadeIn(150);
-			$(target).fadeIn(150);
+			app.utils.updateShareUrls(function () {
+				var target = '#' + $(e.currentTarget).prop('id') + '-modal';
+				$("#overlay").fadeIn(150);
+				$(target).slideDown(250);
+			});
 		},
 		popupClose: function (e) {
 			var target = '#' + $(e.currentTarget).prop('id').replace('-close', '');
@@ -60,8 +62,8 @@ $(function () {
 				target = '.popup';
 			}
 
-			$("#overlay").fadeOut(150);
-			$(target).fadeOut(150);
+			$("#overlay").fadeOut(250);
+			$(target).slideUp(150);
 		},
 		prettify: function () {
 			// TODO: parameterize these depending on the editor's settings
