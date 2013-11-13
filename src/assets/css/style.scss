@@ -51,6 +51,10 @@ header{
 
 	&.hideEditors{
 		@include transform(translateX(-100%));
+
+		@media only screen and (max-width: 1023px){
+			@include transform(translateY(-100%));
+		}
 	}
 
 	&.hideResult{
@@ -186,6 +190,10 @@ header{
 
 	&.hideResult{
 		@include transform(translateX(100%));
+
+		@media only screen and (max-width: 1023px){
+			@include transform(translateY(100%));
+		}
 	}
 
 	@media only screen and (max-width: 1023px){
