@@ -13,14 +13,40 @@ $(function () {
 			'click .popup-close': 'popupClose',
 			'click #overlay': 'popupClose',
 			'click #fullscreen': 'toggleFullscreen',
-			'click #wide': 'toggleWidescreen',
+			'click #hide-editors': 'toggleHideEditors',
+			'click #hide-result': 'toggleHideResult',
 			'click .editor-fullscreen-toggle': 'editorFullscreen',
 			'mousedown .resizer': 'resizeInitialize',
 			'mouseup': 'resizeFinalize',
 			'mousemove': 'resizeRefresh',
 			'click .editor-options-toggle': 'toggleTargetedEditorOptions',
 			'change .codeChoice': 'toggleSelectedEditorOptions',
-			'click .editor-toggle': 'toggleEditorState'
+			'click .editor-toggle': 'toggleEditorState',
+			'change .settings-option-input input[type=text]': 'updateSettings',
+			'change .settings-option-checkbox input[type=checkbox]': 'updateSettings',
+			'change .settings-option-textarea textarea': 'updateSettings',
+			'change .settings-option-select select': 'updateSettings'
+		},
+		updateSettings: function (e) {
+			var target = $(e.currentTarget);
+			var targetName = target.prop('name');
+			var result;
+
+			if(targetName === 'theme'){
+				result = target.val();
+				app.utils.setTheme(result);
+			} else if ($(target).prop('type') === 'checkbox'){
+				result = $(target).is(':checked');
+				app.utils.setOption(targetName, result);
+			} else if ($(target).prop('type') === 'text'){
+				result = target.val();
+				app.utils.setOption(targetName, result);
+			} else if ($(target).is('select')){
+				result = ($(target).find('option').filter(':selected')).val();
+				app.utils.setOption(targetName, result);
+			} else {
+				console.log('other target');
+			}
 		},
 		popupOpen: function (e) {
 			var target = '#' + $(e.currentTarget).prop('id') + '-modal';
@@ -158,9 +184,13 @@ $(function () {
 			var target = document.querySelector('#result iframe');
 			app.utils.toggleFullscreenMode(target);
 		},
-		toggleWidescreen: function () {
+		toggleHideEditors: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleWidescreenMode(target);
+			app.utils.toggleHideEditorsMode(target);
+		},
+		toggleHideResult: function () {
+			var target = document.querySelector('#result iframe');
+			app.utils.toggleHideResultMode(target);
 		},
 		editorFullscreen: function (e) {
 			var target;
@@ -192,60 +222,60 @@ $(function () {
 			app.ace.emmet = ace.require('ace/ext/emmet');
 			app.ace.language_tools = ace.require('ace/ext/language_tools');
 
-			app.session = {
-				settings : {
-					title : 'codeMagic',
-					description : '',
-					author : '',
-					html : {
-						state : true,
-						mode : 'html',
-						content : ''
-					},
-					css : {
-						state : true,
-						mode : 'css',
-						content : ''
-					},
-					js : {
-						state : true,
-						mode : 'javascript',
-						content : ''
-					},
-					console : {
-						state : false,
-						content : ''
-					},
-					theme : app.utils.getSettings('editor.theme') || 'tomorrow',
-					tabSize : parseInt(app.utils.getSettings('editor.tabSize'), 10) || 4,
-					showPrintMargin : app.utils.getSettings('editor.showPrintMargin') || false,
-					useWrapMode : app.utils.getSettings('editor.useWrapMode') || true,
-					useWorker : true,
-					fontSize : parseInt(app.utils.getSettings('editor.fontSize'), 10) || 12,
-					showInvisibles : app.utils.getSettings('editor.showInvisibles') || false,
-					behavioursEnabled : app.utils.getSettings('editor.behavioursEnabled') || true
-				}
+			app.session = {};
+			app.session.settings = {};
+
+			app.session.settings = {
+				html : {
+					state : true,
+					mode : 'html',
+					content : ''
+				},
+				css : {
+					state : true,
+					mode : 'css',
+					content : ''
+				},
+				js : {
+					state : true,
+					mode : 'javascript',
+					content : ''
+				},
+				console : {
+					state : false,
+					content : ''
+				},
+				title : '',
+				description : '',
+				author : '',
+				theme : app.utils.getSettings('theme') || 'tomorrow',
+				tabSize : parseInt(app.utils.getSettings('tabSize'), 10) || 4,
+				showPrintMargin : app.utils.getSettings('showPrintMargin') || false,
+				wrap : app.utils.getSettings('wrap') || true,
+				useWorker : true,
+				fontSize : parseInt(app.utils.getSettings('fontSize'), 10) || 12,
+				showInvisibles : app.utils.getSettings('showInvisibles') || false,
+				behavioursEnabled : app.utils.getSettings('behavioursEnabled') || true,
+				enableSnippets: app.utils.getSettings('enableSnippets') || true,
+				enableLiveAutoComplete: app.utils.getSettings('enableLiveAutoComplete') || true,
+				enableBasicAutocompletion: app.utils.getSettings('enableBasicAutocompletion') || true,
+				useSoftTabs: app.utils.getSettings('useSoftTabs') || false,
+				highlightActiveLine: app.utils.getSettings('highlightActiveLine') || false,
+				enableEmmet: app.utils.getSettings('enableEmmet') || true,
 			};
 
-			app.utils.setSettings('editor.theme', app.session.settings.theme);
-			app.utils.setSettings('editor.tabSize', app.session.settings.tabSize);
-			app.utils.setSettings('editor.showPrintMargin', app.session.settings.showPrintMargin);
-			app.utils.setSettings('editor.useWrapMode', app.session.settings.useWrapMode);
-			app.utils.setSettings('editor.useWorker', app.session.settings.useWorker);
-			app.utils.setSettings('editor.fontSize', app.session.settings.fontSize);
-			app.utils.setSettings('editor.showInvisibles', app.session.settings.showInvisibles);
-			app.utils.setSettings('editor.behavioursEnabled', app.session.settings.behavioursEnabled);
+			$('.settings-option [name=theme] option').prop('selected', false);
+			$('.settings-option [name=theme] option[value=' + app.session.settings.theme + ']').prop('selected', true);
+
+			$('.settings-option [name=fontSize] option').prop('selected', false);
+			$('.settings-option [name=fontSize] option[value=' + app.session.settings.fontSize + ']').prop('selected', true);
 
 			app.editors = {};
-			app.editors.html = ace.edit('html-editor');
-			app.editors.css = ace.edit('css-editor');
-			app.editors.js = ace.edit('js-editor');
-			app.editors.htmlSession = app.editors.html.getSession();
-			app.editors.cssSession = app.editors.css.getSession();
-			app.editors.jsSession = app.editors.js.getSession();
-			app.editors.htmlSession.setMode('ace/mode/' + app.session.settings.html.mode);
-			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
-			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
+			_.each(['html', 'css', 'js'], function(selector) {
+				app.editors[selector] = ace.edit(selector + '-editor');
+				app.editors[selector + 'Session'] = app.editors[selector].getSession();
+				app.editors[selector + 'Session'].setMode('ace/mode/' + app.session.settings[selector].mode);
+			});
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
 				editor.commands.removeCommand('showSettingsMenu');
@@ -304,7 +334,7 @@ $(function () {
 			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
 			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
 
-			app.utils.setTheme(app.editors, app.session.settings.theme);
+			app.utils.setTheme(app.session.settings.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
 

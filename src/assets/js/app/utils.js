@@ -17,41 +17,6 @@ $(function () {
 		}
 	};
 
-	app.utils.setSettings = function (target, val, callback) {
-		target = 'codemagic.settings.' + target;
-
-		localStorage.setItem(target, val);
-
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
-	app.utils.getSettings = function (target) {
-		target = 'codemagic.settings.' + target;
-		var value = localStorage.getItem(target);
-
-		if(value === 'true'){
-			return true;
-		}
-		if(value === 'false'){
-			return false;
-		}
-		if(value === 'undefined'){
-			return undefined;
-		}
-		if(value === 'null'){
-			return null;
-		}
-		if(value === 'NaN'){
-			return NaN;
-		}
-		if(!isNaN(value)){
-			return parseInt(value, 10);
-		}
-		return value;
-	};
-
 	app.utils.resizeEditors = function (editors, callback) {
 		editors.html.resize();
 		editors.css.resize();
@@ -144,7 +109,7 @@ $(function () {
 	app.utils.generateLogger = function (callback) {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
-		var result = '<script>var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");';
+		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");';
 		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
 		result += 'console.log=function(){var str="",count=0;for(var i=0;';
@@ -189,7 +154,6 @@ $(function () {
 				if (e) {
 					// TODO: better error handling in console
 					$('#console-editor').append('<code>> ' + e.message + '</code><br>');
-					console.log(e);
 				}
 				result = tree.toCSS();
 			});
@@ -213,7 +177,7 @@ $(function () {
 		var result = '';
 
 		for (var i = 0; i < items.length; i++) {
-			result+= '<link rel="stylesheet" href="'+ items[i] + '">';
+			result+= '<link href="'+ items[i] + '">';
 		}
 
 		if (typeof callback == 'function') {
@@ -267,12 +231,11 @@ $(function () {
 		return result;
 	};
 
-	app.utils.generateBody = function (style, callback) {
+	app.utils.generateBody = function (callback) {
 		var content = app.utils.generateContent();
 		var script= app.utils.generateScript();
 		var externalScript = app.utils.generateExternalScript();
-		var head = app.utils.generateHead();
-		var result = head + '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
+		var result = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
 		if (typeof callback == 'function') {
 			callback();
@@ -289,13 +252,12 @@ $(function () {
 		}
 	};
 
-	app.utils.setTheme = function (editors, theme, callback) {
-		editors.html.setTheme('ace/theme/' + theme);
-		editors.css.setTheme('ace/theme/' + theme);
-		editors.js.setTheme('ace/theme/' + theme);
+	app.utils.setTheme = function (theme, callback) {
+		_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+			editor.setTheme('ace/theme/' + theme);
+		});
 
-		app.session.settings.theme = theme;
-		app.utils.setSettings('editor.theme', theme);
+		app.utils.setSettings('theme', theme);
 
 		if (typeof callback == 'function') {
 			callback();
@@ -316,6 +278,56 @@ $(function () {
 		if (typeof callback == 'function') {
 			callback();
 		}
+	};
+
+	app.utils.setOption = function (option, value, callback) {
+		console.log(option + ' : ' + value);
+
+		var result = {};
+		result[option] = value;
+
+		_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+			editor.setOptions(result);
+		});
+
+		app.utils.setSettings(option, value);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.setSettings = function (target, val, callback) {
+		app.session.settings[target] = val;
+
+		target = 'codemagic.settings.' + target;
+		localStorage.setItem(target, val);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.getSettings = function (target) {
+		var value = localStorage.getItem('codemagic.settings.' + target);
+		var result = value;
+
+		if(value === 'true'){
+			result = true;
+		} else  if(value === 'false'){
+			result = false;
+		} else  if(value === 'undefined'){
+			result = undefined;
+		} else  if(value === 'null'){
+			result = null;
+		} else  if(value === 'NaN'){
+			result = NaN;
+		} else  if(!isNaN(value)){
+			result = parseInt(value, 10);
+		}
+
+		app.session.settings[target] = result;
+		return result;
 	};
 
 	app.utils.toggleEditorState = function (target, callback) {
@@ -359,25 +371,62 @@ $(function () {
 		}
 	};
 
-	app.utils.toggleWidescreenMode = function (target, callback) {
+	app.utils.toggleHideEditorsMode = function (target, callback) {
 		var editors = $('#editors');
 		var result = $('#result');
 
-		var state = !editors.hasClass('widescreen');
+		var state1 = !editors.hasClass('hideEditors');
+		var state2 = result.hasClass('hideResult');
 
-		if(state){
-			editors.addClass('widescreen');
+		if(state1){
+			editors.addClass('hideEditors');
+
+			if(state2){
+				app.utils.toggleHideResultMode();
+			}
 
 			window.setTimeout(function () {
 				editors.hide();
-				result.addClass('widescreen');
+				result.addClass('hideEditors');
 			}, 250);
 		} else {
-			result.removeClass('widescreen');
+			result.removeClass('hideEditors');
 
 			window.setTimeout(function () {
 				editors.show();
-				editors.removeClass('widescreen');
+				editors.removeClass('hideEditors');
+			}, 250);
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.toggleHideResultMode = function (target, callback) {
+		var editors = $('#editors');
+		var result = $('#result');
+
+		var state = !result.hasClass('hideResult');
+		var state2 = result.hasClass('hideEditors');
+
+		if(state){
+			result.addClass('hideResult');
+
+			if(state2){
+				app.utils.toggleHideEditorsMode();
+			}
+
+			window.setTimeout(function () {
+				result.hide();
+				editors.addClass('hideResult');
+			}, 250);
+		} else {
+			editors.removeClass('hideResult');
+
+			window.setTimeout(function () {
+				result.show();
+				result.removeClass('hideResult');
 			}, 250);
 		}
 

@@ -43,13 +43,18 @@ header{
 #editors{
 	padding: 0 $size;
 	@include transition(150ms ease);
+	@include transform(translateX(0));
 
 	&.enlarged{
 		padding-bottom: 30%;
 	}
 
-	&.widescreen{
+	&.hideEditors{
 		@include transform(translateX(-100%));
+	}
+
+	&.hideResult{
+		width: 100%;
 	}
 
 	::-webkit-scrollbar {
@@ -172,10 +177,15 @@ header{
 	float: right;
 	padding-right: $size;
 	@include transition(150ms ease);
+	@include transform(translateX(0));
 
-	&.widescreen{
+	&.hideEditors{
 		padding-left: $size;
 		width: 100%;
+	}
+
+	&.hideResult{
+		@include transform(translateX(100%));
 	}
 
 	@media only screen and (max-width: 1023px){
@@ -234,6 +244,11 @@ header{
 		background-color: lighten($bg-color, 5%);
 		border: 1px solid $bg-color;
 
+		&:focus,
+		&:hover{
+			cursor: pointer;
+		}
+
 		&.vertical-spacing{
 			margin-bottom: $size;
 
@@ -256,9 +271,14 @@ header{
 			vertical-align: text-bottom;
 		}
 
-		&:focus,
-		&:hover{
-			cursor: pointer;
+		&.settings-option-input,
+		&.settings-option-select,
+		&.settings-option-textarea{
+			& span{
+				display: inline-block;
+				padding-bottom: $xsmall;
+				vertical-align: middle;
+			}
 		}
 	}
 }
@@ -354,6 +374,20 @@ header{
 	width: 100% !important;
 	height: 100% !important;
 }
+
+// overriding font icon on media query
+@media only screen and (max-width: 1023px){
+	.fa-toggle-right:before,
+	.fa-caret-square-o-right:before {
+		content: "\f151";
+	}
+
+	.fa-toggle-left:before,
+	.fa-caret-square-o-left:before {
+		content: "\f150";
+	}
+}
+
 
 // Static page style
 
