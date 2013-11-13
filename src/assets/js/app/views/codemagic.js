@@ -32,7 +32,7 @@ $(function () {
 			var targetName = target.prop('name');
 			var result;
 
-			if(targetName === 'theme'){
+			if (targetName === 'theme'){
 				result = target.val();
 				app.utils.setTheme(result);
 			} else if ($(target).prop('type') === 'checkbox'){
@@ -56,9 +56,14 @@ $(function () {
 			});
 		},
 		popupClose: function (e) {
-			var target = '#' + $(e.currentTarget).prop('id').replace('-close', '');
+			var target;
+			if ($(e.currentTarget).is('button')){
+				target = '#' + $(e.currentTarget).parent().prop('id').replace('-modal', '') + '-modal';
+			} else {
+				target = '#' + $(e.currentTarget).prop('id').replace('-modal', '');
+			}
 
-			if(target === '#overlay'){
+			if (target === '#overlay'){
 				target = '.popup';
 			}
 
@@ -116,20 +121,20 @@ $(function () {
 		},
 		toggleEditorState: function (selector) {
 			var target;
-			if(selector instanceof Array){
+			if (selector instanceof Array){
 				for (var i = 0; i < selector.length; i++) {
 					$(selector[i]).toggleClass('enabled');
 					$('#' + selector[i] + '-editor').closest('.editor-module').toggleClass('enabled');
 					$('#' + selector[i] + '-editor-toggle').toggleClass('enabled');
 				}
 				target = false;
-			}else if(typeof selector === 'object'){
+			}else if (typeof selector === 'object'){
 				target = $(selector.currentTarget).prop('id').replace('-editor-toggle', '');
 			} else {
 				target = selector;
 			}
 
-			if(target !== false){
+			if (target !== false){
 				$('#' + target + '-editor-toggle').toggleClass('enabled');
 				$('#' + target + '-editor').closest('.editor-module').toggleClass('enabled');
 				app.utils.toggleEditorState(target);
@@ -144,9 +149,9 @@ $(function () {
 			app.utils.setEditorMode(editorTarget.prop('id').replace('-editor-options', ''), value.toLowerCase());
 		},
 		toggleTargetedEditorOptions: function (e) {
-			if($(e.currentTarget).prop('tagName') === 'SELECT'){
+			if ($(e.currentTarget).prop('tagName') === 'SELECT'){
 				this.toggleEditorOptions($(e.currentTarget).parent());
-			} else if(e.container !== undefined){
+			} else if (e.container !== undefined){
 				var temp = $(e.container).prop('id').replace('-editor', '');
 				this.toggleEditorOptions($('#' + temp + '-editor-options'));
 			} else {
@@ -172,8 +177,8 @@ $(function () {
 		},
 		resizeFinalize: function () {
 			if (app.session.resize) {
-				if(typeof app.session.resizeTarget !== 'undefined'){
-					if(typeof app.session.resizeTarget.height !== 'undefined'){
+				if (typeof app.session.resizeTarget !== 'undefined'){
+					if (typeof app.session.resizeTarget.height !== 'undefined'){
 						app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
 					}
 				}
@@ -196,7 +201,7 @@ $(function () {
 		},
 		editorFullscreen: function (e) {
 			var target;
-			if(e.container !== undefined){
+			if (e.container !== undefined){
 				target = $(e.container).prop('id');
 			}else{
 				target = $(e.currentTarget).prop('id');

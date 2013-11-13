@@ -6,9 +6,9 @@ $(function () {
 	app.utils = {};
 
 	app.utils.isTrue = function (x, callback) {
-		if(typeof x !== 'boolean'){
+		if (typeof x !== 'boolean'){
 			return x === 'true';
-		}else{
+		} else {
 			return x;
 		}
 
@@ -125,9 +125,9 @@ $(function () {
 		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
 		result += 'console.log=function(){var str="",count=0;for(var i=0;';
-		result += 'i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;';
+		result += 'i<arguments.length;i++){if (typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)){count++;';
 		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
-		result += 'if(count===0){str="Object {}";count=0}}else str=arguments[i];';
+		result += 'if (count===0){str="Object {}";count=0}} else str=arguments[i];';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
 
 		if (typeof callback == 'function') {
@@ -281,7 +281,7 @@ $(function () {
 
 		app.utils.setSettings(target + '.mode', mode);
 
-		if(mode === 'coffeescript'){
+		if (mode === 'coffeescript'){
 			mode = 'coffee';
 		}
 
@@ -324,17 +324,17 @@ $(function () {
 		var value = localStorage.getItem('codemagic.settings.' + target);
 		var result = value;
 
-		if(value === 'true'){
+		if (value === 'true'){
 			result = true;
-		} else  if(value === 'false'){
+		} else  if (value === 'false'){
 			result = false;
-		} else  if(value === 'undefined'){
+		} else  if (value === 'undefined'){
 			result = undefined;
-		} else  if(value === 'null'){
+		} else  if (value === 'null'){
 			result = null;
-		} else  if(value === 'NaN'){
+		} else  if (value === 'NaN'){
 			result = NaN;
-		} else  if(!isNaN(value)){
+		} else  if (!isNaN(value)){
 			result = parseInt(value, 10);
 		}
 
@@ -344,7 +344,7 @@ $(function () {
 
 	app.utils.toggleEditorState = function (target, callback) {
 		var state = false;
-		if($('#' + target + '-editor-toggle').hasClass('enabled')){
+		if ($('#' + target + '-editor-toggle').hasClass('enabled')){
 			state = true;
 		}
 		app.session.settings[target].state = state;
@@ -390,10 +390,10 @@ $(function () {
 		var state1 = !editors.hasClass('hideEditors');
 		var state2 = result.hasClass('hideResult');
 
-		if(state1){
+		if (state1){
 			editors.addClass('hideEditors');
 
-			if(state2){
+			if (state2){
 				app.utils.toggleHideResultMode();
 			}
 
@@ -422,10 +422,10 @@ $(function () {
 		var state = !result.hasClass('hideResult');
 		var state2 = result.hasClass('hideEditors');
 
-		if(state){
+		if (state){
 			result.addClass('hideResult');
 
-			if(state2){
+			if (state2){
 				app.utils.toggleHideEditorsMode();
 			}
 
