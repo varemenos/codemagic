@@ -6,7 +6,7 @@ $(function () {
 	app.utils = {};
 
 	app.utils.isTrue = function (x, callback) {
-		if (typeof x !== 'boolean'){
+		if (typeof x !== 'boolean') {
 			return x === 'true';
 		} else {
 			return x;
@@ -15,6 +15,26 @@ $(function () {
 		if (typeof callback == 'function') {
 			callback();
 		}
+	};
+
+	app.utils.normalizeValue = function (value) {
+		var result = value;
+
+		if (value === 'true') {
+			result = true;
+		} else  if (value === 'false') {
+			result = false;
+		} else  if (value === 'undefined') {
+			result = undefined;
+		} else  if (value === 'null') {
+			result = null;
+		} else  if (value === 'NaN') {
+			result = NaN;
+		} else  if (!isNaN(value)) {
+			result = parseInt(value, 10);
+		}
+
+		return result;
 	};
 
 	app.utils.updateShareUrls = function (callback) {
@@ -39,26 +59,18 @@ $(function () {
 		}
 	};
 
-	app.utils.em2px = function (callback) {
+	app.utils.em2px = function () {
 		var div = $('<div style="width: 1em;"></div>').appendTo('body');
 		var em = div.width();
 		div.remove();
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return em;
 	};
 
-	app.utils.rem2px = function (callback) {
+	app.utils.rem2px = function () {
 		var div = $('<div style="width: 1rem;"></div>').appendTo('body');
 		var rem = div.width();
 		div.remove();
-
-		if (typeof callback == 'function') {
-			callback();
-		}
 
 		return rem;
 	};
@@ -108,36 +120,28 @@ $(function () {
 		}
 	};
 
-	app.utils.generateResult = function (callback) {
+	app.utils.generateResult = function () {
 		var result = app.utils.generateHead() + app.utils.generateBody();
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateLogger = function (callback) {
+	app.utils.generateLogger = function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
-		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");';
+		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
 		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
-		result += 'console.log=function(){var str="",count=0;for(var i=0;';
-		result += 'i<arguments.length;i++){if (typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)){count++;';
+		result += 'console.log=function() {var str="",count=0;for(var i=0;';
+		result += 'i<arguments.length;i++) {if (typeof arguments[i]=="object") {str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)) {count++;';
 		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
-		result += 'if (count===0){str="Object {}";count=0}} else str=arguments[i];';
+		result += 'if (count===0) {str="Object {}";count=0}} else str=arguments[i];';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
-
-		if (typeof callback == 'function') {
-			callback();
-		}
 
 		return result;
 	};
 
-	app.utils.generateContent = function (callback) {
+	app.utils.generateContent = function () {
 		var result = '';
 		if ($('#markupChoice').val() === 'Markdown') {
 			result = marked(app.editors.html.getValue());
@@ -149,14 +153,10 @@ $(function () {
 			result = app.editors.html.getValue();
 		}
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateStyle = function (callback) {
+	app.utils.generateStyle = function () {
 		var result = '';
 
 		if ($('#styleChoice').val() === 'Less') {
@@ -177,14 +177,10 @@ $(function () {
 			result = app.editors.css.getValue();
 		}
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateExternalStyle = function (callback) {
+	app.utils.generateExternalStyle = function () {
 		var items = $("select[name=csslibrary]").val();
 		var result = '';
 
@@ -192,14 +188,10 @@ $(function () {
 			result+= '<link href="'+ items[i] + '">';
 		}
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateScript = function (callback) {
+	app.utils.generateScript = function () {
 		var result = '';
 
 		if ($('#scriptChoice').val() === 'CoffeeScript') {
@@ -208,14 +200,10 @@ $(function () {
 			result = app.editors.js.getValue();
 		}
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateExternalScript = function (callback) {
+	app.utils.generateExternalScript = function () {
 		var items = $("select[name=jslibrary]").val();
 		var result = '';
 
@@ -223,35 +211,23 @@ $(function () {
 			result+= '<script src="'+ items[i] + '"></script>';
 		}
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateHead = function (callback) {
+	app.utils.generateHead = function () {
 		var style = app.utils.generateStyle();
 		var externalStyle = app.utils.generateExternalStyle();
 		var logger = app.utils.generateLogger();
 		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle +'<style>' + style + '</style></head>';
 
-		if (typeof callback == 'function') {
-			callback();
-		}
-
 		return result;
 	};
 
-	app.utils.generateBody = function (callback) {
+	app.utils.generateBody = function () {
 		var content = app.utils.generateContent();
 		var script= app.utils.generateScript();
 		var externalScript = app.utils.generateExternalScript();
 		var result = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
-
-		if (typeof callback == 'function') {
-			callback();
-		}
 
 		return result;
 	};
@@ -281,7 +257,7 @@ $(function () {
 
 		app.utils.setSettings(target + '.mode', mode);
 
-		if (mode === 'coffeescript'){
+		if (mode === 'coffeescript') {
 			mode = 'coffee';
 		}
 
@@ -293,58 +269,84 @@ $(function () {
 	};
 
 	app.utils.setOption = function (option, value, callback) {
-		console.log(option + ' : ' + value);
-
 		var result = {};
-		result[option] = value;
 
-		_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
-			editor.setOptions(result);
+		if (option !== 'csslibrary' && option !== 'jslibrary') {
+			result[option] = value;
+
+			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+				editor.setOptions(result);
+			});
+
+			app.utils.setSettings(option, value);
+		}
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	app.utils.setSettings = function (option, val, callback) {
+		app.session.settings[option] = val;
+		option = 'codemagic.settings.' + option;
+		localStorage.setItem(option, val);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
+	// TODO: fix this, implement another working  version of this or discard it
+	app.utils.setInitialSettings = function (callback) {
+		var options = app.utils.getAllSettings();
+
+		_.each(Object.keys(options), function (option) {
+			var target = $('[name='+option+']');
+			if(target.is('input')){
+				if(target.attr('type') === 'checkbox'){
+					target.prop('checked', options[option]);
+				} else {
+					target.val(options[option]);
+				}
+			} else if (target.is('select')) {
+				target.find('option').prop('selected', false);
+				target.find('option[value='+options[option]+']').prop('selected', true);
+			}
 		});
 
-		app.utils.setSettings(option, value);
-
 		if (typeof callback == 'function') {
 			callback();
 		}
 	};
 
-	app.utils.setSettings = function (target, val, callback) {
-		app.session.settings[target] = val;
+	app.utils.getAllSettings = function () {
+		var keys = Object.keys(localStorage);
+		var result = {}, temp;
 
-		target = 'codemagic.settings.' + target;
-		localStorage.setItem(target, val);
-
-		if (typeof callback == 'function') {
-			callback();
+		for (var i = 0; i < keys.length; i++) {
+			temp = localStorage.getItem(keys[i]);
+			result[keys[i].replace('codemagic.settings.', '')] = app.utils.normalizeValue(temp);
 		}
+
+		return result;
 	};
 
-	app.utils.getSettings = function (target) {
-		var value = localStorage.getItem('codemagic.settings.' + target);
-		var result = value;
+	app.utils.getSettings = function (option) {
+		var result;
 
-		if (value === 'true'){
-			result = true;
-		} else  if (value === 'false'){
-			result = false;
-		} else  if (value === 'undefined'){
-			result = undefined;
-		} else  if (value === 'null'){
-			result = null;
-		} else  if (value === 'NaN'){
-			result = NaN;
-		} else  if (!isNaN(value)){
-			result = parseInt(value, 10);
+		if (option !== 'csslibrary' && option !== 'jslibrary') {
+			result = localStorage.getItem('codemagic.settings.' + option);
+			result = app.utils.normalizeValue(result);
+
+			app.session.settings[option] = result;
 		}
 
-		app.session.settings[target] = result;
 		return result;
 	};
 
 	app.utils.toggleEditorState = function (target, callback) {
 		var state = false;
-		if ($('#' + target + '-editor-toggle').hasClass('enabled')){
+		if ($('#' + target + '-editor-toggle').hasClass('enabled')) {
 			state = true;
 		}
 		app.session.settings[target].state = state;
@@ -390,10 +392,10 @@ $(function () {
 		var state1 = !editors.hasClass('hideEditors');
 		var state2 = result.hasClass('hideResult');
 
-		if (state1){
+		if (state1) {
 			editors.addClass('hideEditors');
 
-			if (state2){
+			if (state2) {
 				app.utils.toggleHideResultMode();
 			}
 
@@ -422,10 +424,10 @@ $(function () {
 		var state = !result.hasClass('hideResult');
 		var state2 = result.hasClass('hideEditors');
 
-		if (state){
+		if (state) {
 			result.addClass('hideResult');
 
-			if (state2){
+			if (state2) {
 				app.utils.toggleHideEditorsMode();
 			}
 
