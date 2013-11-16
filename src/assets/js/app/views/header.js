@@ -13,14 +13,14 @@ $(function () {
 			var id = $(e.currentTarget).prop('id');
 			app.router.navigate(id, {trigger: true});
 		},
-		initialize: function () {
-			this.render();
+		initialize: function (params) {
+			this.render(params);
 		},
-		render: function () {
+		render: function (params) {
 			this.$el.empty().unbind();
 			this.template = _.template($('#header-template').html());
 
-			this.$el.append(this.template());
+			this.$el.append(this.template({page: params.page}));
 		}
 	});
 });
