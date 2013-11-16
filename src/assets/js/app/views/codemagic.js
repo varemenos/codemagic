@@ -11,6 +11,7 @@ $(function () {
 			'click #settings': 'popupOpen',
 			'click #share': 'popupOpen',
 			'click .popup-close': 'popupClose',
+			'click .editor-options-close': 'editorsOptionsClose',
 			'click #overlay': 'popupClose',
 			'click #fullscreen': 'toggleFullscreen',
 			'click #hide-editors': 'toggleHideEditors',
@@ -69,6 +70,10 @@ $(function () {
 
 			$("#overlay").fadeOut(250);
 			$(target).slideUp(150);
+		},
+		editorsOptionsClose: function (e) {
+			var target = $(e.currentTarget).closest('.editor-options');
+			this.toggleEditorOptions(target);
 		},
 		prettify: function () {
 			// TODO: parameterize these depending on the editor's settings
@@ -146,7 +151,7 @@ $(function () {
 			var target = editorTarget.parent().find('.editor-option-title');
 			$(target).html(value);
 			this.toggleTargetedEditorOptions(e);
-			app.utils.setEditorMode(editorTarget.prop('id').replace('-editor-options', ''), value.toLowerCase());
+			app.utils.setEditorMode(editorTarget.closest('.editor-options').prop('id').replace('-editor-options', ''), value.toLowerCase());
 		},
 		toggleTargetedEditorOptions: function (e) {
 			if ($(e.currentTarget).prop('tagName') === 'SELECT'){

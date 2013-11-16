@@ -247,6 +247,13 @@ header{
 	@include box-shadow(0 1px 2px darken($bg-color, 15%));
 }
 
+.editor-options-close{
+	@include borderbox;
+	padding: $xsmall;
+	@include gradient(#fefefe, #f2f2f2, 'vertical');
+	border: 1px solid #b8b8b8;
+}
+
 #settings-modal{
 	label{
 		@include borderbox;
