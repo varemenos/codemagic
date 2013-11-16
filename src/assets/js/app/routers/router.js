@@ -8,12 +8,19 @@ $(function () {
 			'': 'new',
 			'new': 'new',
 			'new/': 'new',
+			'home': 'home',
+			'home/': 'home',
 			'about': 'about',
 			'about/': 'about',
 			'login': 'login',
 			'login/': 'login',
 			'information': 'information',
 			'information/': 'information',
+		},
+		home: function (){
+			app.currentPage = 'home';
+			app.headerView = new app.HeaderView({page: 'home'});
+			app.loginView = new app.HomeView();
 		},
 		login: function (){
 			app.currentPage = 'login';
