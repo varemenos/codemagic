@@ -124,7 +124,7 @@ header{
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: $size;
+	padding: $xsmall;
 	background-color: $bg-color;
 	border: 1px solid darken($bg-color, 5%);
 
@@ -289,7 +289,7 @@ header{
 			border: 1px solid darken($bg-color, 5%);
 		}
 
-		& > input[type=checkbox]{
+		&.settings-option-checkbox input{
 			vertical-align: middle;
 		}
 
@@ -391,6 +391,10 @@ header{
 
 .no-padding-bottom{
 	padding-bottom: 0;
+}
+
+.no-margin{
+	margin: 0;
 }
 
 .js-error {

@@ -39,8 +39,10 @@ $(function () {
 				'behavioursEnabled',
 				'wrap',
 				'enableEmmet',
+				'enableLiveAutoComplete',
 				'useSoftTabs',
 				'showGutter',
+				'showFoldWidgets',
 				'showPrintMargin',
 				'showInvisibles'
 			];
@@ -48,10 +50,8 @@ $(function () {
 			if (targetName === 'theme') {
 				result = target.val();
 				app.utils.setTheme(result);
-			} else if (targetName === 'title') {
+			} else if (targetName === 'title' || targetName === 'author' || targetName === 'description') {
 				app.utils.setSettings();
-			} else if (targetName === 'author' || targetName === 'description') {
-			} else if (targetName === 'useTabs') {
 			} else if ($.inArray(targetName, editorOptions) !== -1) {
 				if ($(target).prop('type') === 'checkbox'){
 					result = $(target).is(':checked');
