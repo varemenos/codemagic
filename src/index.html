@@ -193,31 +193,110 @@
 			<div id="settings-modal" class="popup">
 				<div class="grid">
 					<div class="row">
-						<h4 class="no-margin">Details</h4>
+						<h4 class="settings-title">Details</h4>
 					</div>
 					<div class="row">
 						<div class="col-4-12">
 							<!-- TODO: Load all saved settings/info from saved data when backend is implemented -->
 							<label class="settings-option settings-option-input vertical-spacing">
-								<span>Title:</span>
+								<span>Title</span>
 								<input type="text" name="title" value="">
 							</label>
 							<label class="settings-option settings-option-input vertical-spacing">
-								<span>Author:</span>
+								<span>Author</span>
 								<input type="text" name="author" value="">
 							</label>
 						</div>
 						<div class="col-8-12">
 							<label class="settings-option settings-option-textarea">
-								<span>Description:</span>
-								<textarea name="description" rows="8"></textarea>
+								<span>Description</span>
+								<textarea name="description" rows="6"></textarea>
 							</label>
 						</div>
 					</div>
 					<div class="row">
+						<h4 class="settings-title">Libraries</h4>
+					</div>
+					<div class="row">
+						<div class="col-6-12">
+							<label class="settings-option settings-option-select">
+								<span>External CSS Libraries</span>
+								<!-- TODO: update libraries -->
+								<select name="csslibrary" multiple>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
+										<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
+										<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css">FontAwesome 3.0.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css">Twitter Bootstrap CSS 2.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 2.3.0 (No Icons)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 2.3.0 (responsive)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-6-12">
+							<label class="settings-option settings-option-select">
+								<span>External JS Libraries</span>
+								<!-- TODO: update libraries -->
+								<select name="jslibrary" multiple>
+										<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" selected>JQuery 1.9.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js">JQueryUI 1.10.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.4.0/coffee-script.min.js">CoffeeScript 1.4.0</option>
+										<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
+										<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js">Backbone.js 0.9.10</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js">Twitter Bootstrap JS 2.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="settings-title">Plugins</h4>
+					</div>
+					<div class="row">
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableEmmet" checked>
+								<span>Emmet Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="useWorker" checked>
+								<span>Code-Linting Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableBasicAutocompletion" checked>
+								<span>Auto-Complete Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableSnippets" checked>
+								<span>Snippets Plugin</span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="settings-title">Behavior & Appearance</h4>
+					</div>
+					<div class="row">
 						<div class="col-4-12">
 							<label class="settings-option settings-option-select">
-								<span>Theme:</span>
+								<span>Theme</span>
 								<select name="theme">
 									<optgroup label="Bright">
 										<option value="chrome">Chrome</option>
@@ -257,7 +336,7 @@
 						</div>
 						<div class="col-4-12">
 							<label class="settings-option settings-option-select">
-								<span>Font Size:</span>
+								<span>Font Size</span>
 								<select name="fontSize">
 									<option value="10">10px</option>
 									<option value="11">11px</option>
@@ -366,7 +445,7 @@
 						<!-- TODO: Give the users the option to switch between tabs and spaces -->
 						<div class="col-4-12">
 							<label class="settings-option settings-option-select">
-								<span>Tab Size:</span>
+								<span>Tab Size</span>
 								<select name="tabSize">
 									<option value="2">2px</option>
 									<option value="4" selected>4px</option>
@@ -374,38 +453,6 @@
 								</select>
 							</label>
 						</div>
-					</div>
-					<div class="row">
-						<h4 class="no-margin">Plugins</h4>
-					</div>
-					<div class="row">
-						<div class="col-3-12">
-							<label class="settings-option settings-option-checkbox">
-								<input type="checkbox" name="enableEmmet" checked>
-								<span>Emmet Plugin</span>
-							</label>
-						</div>
-						<div class="col-3-12">
-							<label class="settings-option settings-option-checkbox">
-								<input type="checkbox" name="useWorker" checked>
-								<span>Code-Linting Plugin</span>
-							</label>
-						</div>
-						<div class="col-3-12">
-							<label class="settings-option settings-option-checkbox">
-								<input type="checkbox" name="enableBasicAutocompletion" checked>
-								<span>Auto-Complete Plugin</span>
-							</label>
-						</div>
-						<div class="col-3-12">
-							<label class="settings-option settings-option-checkbox">
-								<input type="checkbox" name="enableSnippets" checked>
-								<span>Snippets Plugin</span>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<h4 class="no-margin">Behavior & Appearance</h4>
 					</div>
 					<div class="row">
 						<div class="col-3-12">
@@ -456,53 +503,6 @@
 							<label class="settings-option settings-option-checkbox">
 								<input type="checkbox" name="showInvisibles">
 								<span>Invisible Chars</span>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<h4 class="no-margin">Libraries</h4>
-					</div>
-					<div class="row">
-						<div class="col-6-12">
-							<label class="settings-option settings-option-select">
-								<span>External CSS Libraries:</span>
-								<!-- TODO: update libraries -->
-								<select name="csslibrary" multiple>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" selected>Normalize.css 2.1.0</option>
-										<option value="http://necolas.github.com/normalize.css/1.1.0/normalize.css">Normalize.css 1.1.0</option>
-										<option value="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.8.1</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css">FontAwesome 3.0.2</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css">Twitter Bootstrap CSS 2.3.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 2.3.0 (No Icons)</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 2.3.0 (responsive)</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
-								</select>
-							</label>
-						</div>
-						<div class="col-6-12">
-							<label class="settings-option settings-option-select">
-								<span>External JS Libraries:</span>
-								<!-- TODO: update libraries -->
-								<select name="jslibrary" multiple>
-										<option value="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" selected>JQuery 1.9.1</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js">JQueryUI 1.10.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.4.0/coffee-script.min.js">CoffeeScript 1.4.0</option>
-										<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
-										<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS 1.0.4</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">Raphael 2.1.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js">RequireJS 2.1.4</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js">Backbone.js 0.9.10</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js">Twitter Bootstrap JS 2.3.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js">Zepto 1.0</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js">Underscore.js 1.4.4</option>
-										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/javascripts/foundation.min.js">Foundation JS 3.2.5</option>
-								</select>
 							</label>
 						</div>
 					</div>

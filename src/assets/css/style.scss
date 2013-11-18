@@ -305,6 +305,16 @@ header{
 	}
 }
 
+.settings-title{
+	@include borderbox;
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: $small;
+	background-color: lighten($bg-color, 4%);
+	border: 1px solid darken($bg-color, 2.5%);
+}
+
 #share-modal{
 	// TODO: variabilize colors
 	padding: $size $size $small $size;
