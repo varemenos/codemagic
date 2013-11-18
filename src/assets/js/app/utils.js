@@ -64,7 +64,7 @@ $(function () {
 		var em = div.width();
 		div.remove();
 
-		return em;
+		return parseInt(em, 10);
 	};
 
 	app.utils.rem2px = function () {
@@ -72,11 +72,12 @@ $(function () {
 		var rem = div.width();
 		div.remove();
 
-		return rem;
+		return parseInt(rem, 10);
 	};
 
 	app.utils.setIframeHeight = function (iframe, callback) {
-		$(iframe).height(Math.max($('#editors').height(), $(iframe).height()));
+		var height = Math.max($('#editors').height(), $(iframe).height()) - (app.utils.rem2px() * 0.25);
+		$(iframe).height(height);
 
 		if (typeof callback == 'function') {
 			callback();
@@ -232,8 +233,8 @@ $(function () {
 		return result;
 	};
 
-	app.utils.updateLayout = function (editors, callback) {
-		app.utils.resizeEditors(editors);
+	app.utils.updateLayout = function (callback) {
+		app.utils.resizeEditors(app.editors);
 
 		if (typeof callback == 'function') {
 			callback();

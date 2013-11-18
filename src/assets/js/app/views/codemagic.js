@@ -33,21 +33,44 @@ $(function () {
 			var targetName = target.prop('name');
 			var result;
 
-			if (targetName === 'theme'){
+			var editorOptions = [
+				'fontSize',
+				'tabSize',
+				'behavioursEnabled',
+				'wrap',
+				'enableEmmet',
+				'useSoftTabs',
+				'showGutter',
+				'showPrintMargin',
+				'showInvisibles'
+			];
+
+			if (targetName === 'theme') {
 				result = target.val();
 				app.utils.setTheme(result);
-			} else if ($(target).prop('type') === 'checkbox'){
-				result = $(target).is(':checked');
-				app.utils.setOption(targetName, result);
-			} else if ($(target).prop('type') === 'text'){
-				result = target.val();
-				app.utils.setOption(targetName, result);
-			} else if ($(target).is('select')){
-				result = ($(target).find('option').filter(':selected')).val();
-				app.utils.setOption(targetName, result);
-			} else {
-				console.log('other target');
+			} else if (targetName === 'title') {
+				app.utils.setSettings();
+			} else if (targetName === 'author' || targetName === 'description') {
+			} else if (targetName === 'useTabs') {
+			} else if ($.inArray(targetName, editorOptions) !== -1) {
+				if ($(target).prop('type') === 'checkbox'){
+					result = $(target).is(':checked');
+					app.utils.setOption(targetName, result);
+				} else if ($(target).prop('type') === 'text'){
+					result = target.val();
+					app.utils.setOption(targetName, result);
+				} else if ($(target).is('select')){
+					result = ($(target).find('option').filter(':selected')).val();
+					if (targetName === 'fontSize') {
+						result = parseInt(result, 10);
+					}
+					console.log(result, targetName);
+					app.utils.setOption(targetName, result);
+				} else {
+					console.log('other target');
+				}
 			}
+			app.utils.updateLayout();
 		},
 		popupOpen: function (e) {
 			app.utils.updateShareUrls(function () {
@@ -58,13 +81,13 @@ $(function () {
 		},
 		popupClose: function (e) {
 			var target;
-			if ($(e.currentTarget).is('button')){
+			if ($(e.currentTarget).is('button')) {
 				target = '#' + $(e.currentTarget).parent().prop('id').replace('-modal', '') + '-modal';
 			} else {
 				target = '#' + $(e.currentTarget).prop('id').replace('-modal', '');
 			}
 
-			if (target === '#overlay'){
+			if (target === '#overlay') {
 				target = '.popup';
 			}
 
@@ -78,68 +101,70 @@ $(function () {
 		prettify: function () {
 			// TODO: parameterize these depending on the editor's settings
 			// https://github.com/einars/js-beautify#options
-			if ($('#markupChoice').val() === 'HTML') {
-				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), {
+			app.session.prettify = app.session.prettify || {};
+
+			_.each(['html', 'css', 'js'], function (i) {
+				app.session.prettify[i] = {
 					'brace_style': 'collapse',
 					'indent_size': 1,
 					'indent_char': '\t',
-					'preserve-newlines': true,
-					'max-preserve-newlines': 1,
-					'wrap-line-length': 0,
-					'unformatted': [],
-					'indent-inner-html': true
-				}));
+					'preserve-newlines': true
+				};
+			});
 
+			$.extend(app.session.prettify.html, {
+				'max-preserve-newlines': 1,
+				'wrap-line-length': 0,
+				'unformatted': [],
+				'indent-inner-html': true
+			});
+
+			$.extend(app.session.prettify.css, {
+				'max-preserve-newlines': 1,
+				'wrap-line-length': 0,
+				'unformatted': []
+			});
+
+			$.extend(app.session.prettify.js, {
+				'jslint_happy': true,
+				'keep_array_indentation': false,
+				'keep_function_indentation': false,
+				'eval_code': false,
+				'unescape_strings': false,
+				'break_chained_methods': false
+			});
+
+			if ($('#markupChoice').val() === 'HTML') {
+				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), app.session.prettify.html));
 				app.editors.htmlSession.selection.moveCursorFileStart();
 			}
 
 			if ($('#styleChoice').val() === 'CSS') {
-				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), {
-					'brace_style': 'collapse',
-					'indent_size': 1,
-					'indent_char': '\t',
-					'preserve-newlines': true,
-					'max-preserve-newlines': 1,
-					'wrap-line-length': 0,
-					'unformatted': []
-				}));
-
+				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), app.session.prettify.css));
 				app.editors.cssSession.selection.moveCursorFileStart();
 			}
 
 			if ($('#scriptChoice').val() === 'JavaScript') {
-				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), {
-					'indent_size': 1,
-					'indent_char': '\t',
-					'preserve_newlines': true,
-					'jslint_happy': true,
-					'brace_style': 'collapse',
-					'keep_array_indentation': false,
-					'keep_function_indentation': false,
-					'eval_code': false,
-					'unescape_strings': false,
-					'break_chained_methods': false
-				}));
-
+				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), app.session.prettify.js));
 				app.editors.jsSession.selection.moveCursorFileStart();
 			}
 		},
 		toggleEditorState: function (selector) {
 			var target;
-			if (selector instanceof Array){
+			if (selector instanceof Array) {
 				for (var i = 0; i < selector.length; i++) {
 					$(selector[i]).toggleClass('enabled');
 					$('#' + selector[i] + '-editor').closest('.editor-module').toggleClass('enabled');
 					$('#' + selector[i] + '-editor-toggle').toggleClass('enabled');
 				}
 				target = false;
-			}else if (typeof selector === 'object'){
+			}else if (typeof selector === 'object') {
 				target = $(selector.currentTarget).prop('id').replace('-editor-toggle', '');
 			} else {
 				target = selector;
 			}
 
-			if (target !== false){
+			if (target !== false) {
 				$('#' + target + '-editor-toggle').toggleClass('enabled');
 				$('#' + target + '-editor').closest('.editor-module').toggleClass('enabled');
 				app.utils.toggleEditorState(target);
@@ -154,9 +179,9 @@ $(function () {
 			app.utils.setEditorMode(editorTarget.closest('.editor-options').prop('id').replace('-editor-options', ''), value.toLowerCase());
 		},
 		toggleTargetedEditorOptions: function (e) {
-			if ($(e.currentTarget).prop('tagName') === 'SELECT'){
+			if ($(e.currentTarget).prop('tagName') === 'SELECT') {
 				this.toggleEditorOptions($(e.currentTarget).parent());
-			} else if (e.container !== undefined){
+			} else if (e.container !== undefined) {
 				var temp = $(e.container).prop('id').replace('-editor', '');
 				this.toggleEditorOptions($('#' + temp + '-editor-options'));
 			} else {
@@ -169,8 +194,7 @@ $(function () {
 		resizeInitialize: function (e) {
 			app.session.resize = e.pageY;
 			app.session.resizeTarget = app.session.resizeTarget || {};
-			app.session.resizeTarget.id = $(e.currentTarget).prev().find('.editor');
-			app.session.resizeTarget.id = app.session.resizeTarget.id.prop('id');
+			app.session.resizeTarget.id = $(e.currentTarget).prev().find('.editor').prop('id');
 			app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).parent().height();
 		},
 		resizeRefresh: function (e) {
@@ -182,8 +206,8 @@ $(function () {
 		},
 		resizeFinalize: function () {
 			if (app.session.resize) {
-				if (typeof app.session.resizeTarget !== 'undefined'){
-					if (typeof app.session.resizeTarget.height !== 'undefined'){
+				if (typeof app.session.resizeTarget !== 'undefined') {
+					if (typeof app.session.resizeTarget.height !== 'undefined') {
 						app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
 					}
 				}
@@ -206,7 +230,7 @@ $(function () {
 		},
 		editorFullscreen: function (e) {
 			var target;
-			if (e.container !== undefined){
+			if (e.container !== undefined) {
 				target = $(e.container).prop('id');
 			}else{
 				target = $(e.currentTarget).prop('id');

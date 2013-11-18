@@ -144,7 +144,7 @@ header{
 .editor-wrap{
 	@include borderbox;
 	position: relative;
-	height: 200px;
+	height: 195px;
 }
 
 .editor{
@@ -290,7 +290,7 @@ header{
 		}
 
 		& > input[type=checkbox]{
-			vertical-align: text-bottom;
+			vertical-align: middle;
 		}
 
 		&.settings-option-input,
