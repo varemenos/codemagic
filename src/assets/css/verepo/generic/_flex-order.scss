@@ -1,0 +1,16 @@
+// A mixin that generates CSS prefixes for a flexboxed element's order
+// @mixin order
+// @category prefixes
+// @param $order {Number} is the value that defines the element's flexbox order
+// @usage:
+// @import verepo/generic/_flex-order
+// .an-element{
+//  =order(2);
+// }
+@mixin order($order){
+  -webkit-box-ordinal-group: $order;
+  -moz-box-ordinal-group: $order;
+  -ms-flex-order: $order;
+  -webkit-order: $order;
+  order: $order;
+}

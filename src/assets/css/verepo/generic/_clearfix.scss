@@ -1,0 +1,24 @@
+// TODO: Make it smarter by checking if the user wants to support older browsers (and then including a detailed version that supports those browsers)
+// A mixin that generates CSS for an element that requires "clear-fixing"
+// @mixin clearfix
+// @category objects
+// @usage:
+// @import verepo/generic/_clearfix
+// .an-element{
+// 	=clearfix;
+// }
+@mixin clearfix{
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	& {
+		*zoom: 1;
+	}
+}

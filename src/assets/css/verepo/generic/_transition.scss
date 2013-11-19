@@ -3,6 +3,7 @@
 // @category prefixes
 // @param $val {String} transition's valid value
 // @usage:
+// @import verepo/generic/_transition
 // .an-element{
 // 	=transition(500ms all ease-in-out);
 // }

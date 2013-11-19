@@ -4,7 +4,9 @@
 // @mixin border-radius
 // @category prefixes
 // @param $val {String} border-radius's valid value
+// @import verepo/generic/_border-radius
 // @usage:
+// @import verepo/generic/border-radius
 // .an-element{
 // 	=border-radius(5px 0 0 5px);
 // }

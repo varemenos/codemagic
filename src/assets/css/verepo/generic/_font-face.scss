@@ -4,6 +4,7 @@
 // @param $name {String} is the value that defines the font-face's name when being used by font, font-family etc
 // @param $url {String} is the value that defines the location of the wefont files that should include the filename but not the file prefix
 // @usage:
+// @import verepo/generic/_font-face
 // =font-face("Ubuntu Dark", "http://varemenos.com/assets/fonts/Ubuntu/Ubuntu Dark");
 // body{
 // 	font-family: "Ubuntu Dark";

@@ -11,7 +11,7 @@
     "jszip": "~1.0.0",
     "less": "~1.5.0",
     "chosen": "~1.0.0",
-    "verepo": "~1.0.10",
+    "verepo": "~2.0.0",
     "js-beautify": "~1.4.2",
     "selectize": "~0.8.2"
   }

@@ -6,6 +6,7 @@
 // @param $color2 {String} is the value that defines the gradient's 2nd color
 // @param $type {String} is the value that defines the gradient's type [vertical, radial]
 // @usage:
+// @import verepo/generic/_gradient
 // .an-element{
 // 	=gradient(#222, #000, radial);
 // }

@@ -1,0 +1,17 @@
+// A mixin that generates CSS prefixes for "display: flex;"
+// @mixin display-flex
+// @category prefixes
+// @usage:
+// @import verepo/generic/_display-flex
+// .an-element{
+//  =display-flex;
+//  =flex(a-width-value);
+//  =order(the-order-value);
+// }
+@mixin display-flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
