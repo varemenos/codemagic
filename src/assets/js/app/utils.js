@@ -85,6 +85,19 @@ $(function () {
 		}
 	};
 
+	app.utils.write2iframe = function (iframe, result, callback) {
+		var iframeDocument = iframe.contentDocument;
+		iframeDocument.open();
+		iframeDocument.write(result);
+		iframeDocument.close();
+
+		app.utils.setIframeHeight(iframe);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
+	};
+
 	app.utils.consoleClear = function (callback) {
 		$('#console-editor').html('');
 
@@ -103,22 +116,33 @@ $(function () {
 	};
 
 	app.utils.getZippedProject = function (editors, callback) {
-
 		if (typeof callback == 'function') {
 			callback();
 		}
 	};
 
-	app.utils.generateLogger = function () {
-		// TODO: better error handling and object debugging
-		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
-		var result = 'console.codemagicLogger=console.log;window.eval={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");parent.document.querySelector("#console-editor-toggle").classList.add("enabled");parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};console.log=function(){console.codemagicLogger.apply(this,arguments);var str="",count=0;';
-		result += 'for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};';
+	app.utils.generateResult = function () {
+		var result = app.utils.generateHead() + app.utils.generateBody();
 
 		return result;
 	};
 
-	app.utils.generateMarkup = function () {
+	app.utils.generateLogger = function () {
+		// TODO: better error handling and object debugging
+		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
+
+		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
+		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
+		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
+		result += 'console.log=function() {var str="",count=0;for(var i=0;';
+		result += 'i<arguments.length;i++) {if (typeof arguments[i]=="object") {str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)) {count++;';
+		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
+		result += 'if (count===0) {str="Object {}";count=0}} else str=arguments[i];';
+		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+		return result;
+	};
+
+	app.utils.generateContent = function () {
 		var result = '';
 		if ($('#markupChoice').val() === 'Markdown') {
 			result = marked(app.editors.html.getValue());
@@ -191,48 +215,22 @@ $(function () {
 		return result;
 	};
 
-	app.utils.generateResult = function (callback) {
-		app.session.content = {};
-		var utils = app.utils;
-		var content = app.session.content;
+	app.utils.generateHead = function () {
+		var style = app.utils.generateStyle();
+		var externalStyle = app.utils.generateExternalStyle();
+		var logger = app.utils.generateLogger();
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle +'<style>' + style + '</style></head>';
 
-		var iframe = {};
+		return result;
+	};
 
-		utils.consoleClear();
+	app.utils.generateBody = function () {
+		var content = app.utils.generateContent();
+		var script= app.utils.generateScript();
+		var externalScript = app.utils.generateExternalScript();
+		var result = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
 
-		content.title = $('#settings-modal [name=title]').val() || 'codeMagic';
-		content.author = $('#settings-modal [name=author]').val() || 'Anonymous';
-		content.description = $('#settings-modal [name=description]').val();
-		content.logger = utils.generateLogger();
-		content.markup = utils.generateMarkup();
-		content.style = utils.generateStyle();
-		content.externalStyle = utils.generateExternalStyle();
-		content.script= utils.generateScript();
-		content.externalScript = utils.generateExternalScript();
-
-		iframe.doc = $('#result > iframe').contents();
-		iframe.html = iframe.doc.find('html');
-		iframe.head = iframe.html.find('head');
-		iframe.body = iframe.html.find('body');
-
-		iframe.head.html('');
-		iframe.body.html('');
-
-		// iframe.head.append('<script>' + content.logger + '</script>');
-		iframe.head.append('<meta charset="utf-8">');
-		iframe.head.append('<title>' + content.title + '</title>');
-		iframe.head.append('<meta name="description" content="' + content.description +'">');
-		iframe.head.append('<meta name="author" content="' + content.author + '">');
-		iframe.head.append(content.externalStyle);
-		iframe.head.append('<style>' + content.style + '</style>');
-
-		iframe.body.append(content.markup);
-		iframe.body.append(content.externalScript);
-		iframe.body.append('<script>' + content.script + '</script>');
-
-		if (typeof callback == 'function') {
-			callback();
-		}
+		return result;
 	};
 
 	app.utils.updateLayout = function (callback) {
