@@ -3,6 +3,8 @@ var app = app || {};
 $(function () {
 	'use strict';
 
+	var utils = app.utils;
+
 	app.CodemagicView = Backbone.View.extend({
 		el: '#container',
 		events : {
@@ -49,31 +51,31 @@ $(function () {
 
 			if (targetName === 'theme') {
 				result = target.val();
-				app.utils.setTheme(result);
+				utils.setTheme(result);
 			} else if (targetName === 'title' || targetName === 'author' || targetName === 'description') {
-				app.utils.setSettings();
+				utils.setSettings();
 			} else if ($.inArray(targetName, editorOptions) !== -1) {
 				if ($(target).prop('type') === 'checkbox'){
 					result = $(target).is(':checked');
-					app.utils.setOption(targetName, result);
+					utils.setOption(targetName, result);
 				} else if ($(target).prop('type') === 'text'){
 					result = target.val();
-					app.utils.setOption(targetName, result);
+					utils.setOption(targetName, result);
 				} else if ($(target).is('select')){
 					result = ($(target).find('option').filter(':selected')).val();
 					if (targetName === 'fontSize') {
 						result = parseInt(result, 10);
 					}
 					console.log(result, targetName);
-					app.utils.setOption(targetName, result);
+					utils.setOption(targetName, result);
 				} else {
 					console.log('other target');
 				}
 			}
-			app.utils.updateLayout();
+			utils.updateLayout();
 		},
 		popupOpen: function (e) {
-			app.utils.updateShareUrls(function () {
+			utils.updateShareUrls(function () {
 				var target = '#' + $(e.currentTarget).prop('id') + '-modal';
 				$("#overlay").fadeIn(150);
 				$(target).slideDown(250);
@@ -167,7 +169,7 @@ $(function () {
 			if (target !== false) {
 				$('#' + target + '-editor-toggle').toggleClass('enabled');
 				$('#' + target + '-editor').closest('.editor-module').toggleClass('enabled');
-				app.utils.toggleEditorState(target);
+				utils.toggleEditorState(target);
 			}
 		},
 		toggleSelectedEditorOptions: function (e) {
@@ -176,7 +178,7 @@ $(function () {
 			var target = editorTarget.parent().find('.editor-option-title');
 			$(target).html(value);
 			this.toggleTargetedEditorOptions(e);
-			app.utils.setEditorMode(editorTarget.closest('.editor-options').prop('id').replace('-editor-options', ''), value.toLowerCase());
+			utils.setEditorMode(editorTarget.closest('.editor-options').prop('id').replace('-editor-options', ''), value.toLowerCase());
 		},
 		toggleTargetedEditorOptions: function (e) {
 			if ($(e.currentTarget).prop('tagName') === 'SELECT') {
@@ -201,7 +203,7 @@ $(function () {
 			if (app.session.resize) {
 				$('#editors').addClass('enlarged');
 				$('#' + app.session.resizeTarget.id).parent().height(app.session.resizeTarget.height + e.pageY - app.session.resize);
-				app.utils.updateLayout(app.editors);
+				utils.updateLayout(app.editors);
 			}
 		},
 		resizeFinalize: function () {
@@ -211,22 +213,22 @@ $(function () {
 						app.session.resizeTarget.height = $('#' + app.session.resizeTarget.id).height();
 					}
 				}
-				app.utils.updateLayout(app.editors);
+				utils.updateLayout(app.editors);
 				$('#editors').removeClass('enlarged');
 			}
 			app.session.resize = false;
 		},
 		toggleFullscreen: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleFullscreenMode(target);
+			utils.toggleFullscreenMode(target);
 		},
 		toggleHideEditors: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideEditorsMode(target);
+			utils.toggleHideEditorsMode(target);
 		},
 		toggleHideResult: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideResultMode(target);
+			utils.toggleHideResultMode(target);
 		},
 		editorFullscreen: function (e) {
 			var target;
@@ -237,16 +239,12 @@ $(function () {
 				target = target.replace('-editor-fullscreen-toggle', '') + '-editor';
 			}
 			target = document.getElementById(target);
-			app.utils.toggleFullscreenMode(target);
+			utils.toggleFullscreenMode(target);
 		},
 		updateResults: function () {
-			var result = app.utils.generateResult();
-
-			var iframe = document.querySelector('#result iframe');
-			$(iframe).empty();
-
-			app.utils.consoleClear();
-			app.utils.write2iframe(iframe, result);
+			utils.generateResult(function () {
+				utils.setIframeHeight(document.querySelector('#result iframe'));
+			});
 		},
 		initialize: function () {
 			this.template = _.template($('#codemagic-template').html());
@@ -284,20 +282,20 @@ $(function () {
 				title : '',
 				description : '',
 				author : '',
-				theme : app.utils.getSettings('theme') || 'tomorrow',
-				tabSize : parseInt(app.utils.getSettings('tabSize'), 10) || 4,
-				showPrintMargin : app.utils.getSettings('showPrintMargin') || false,
-				wrap : app.utils.getSettings('wrap') || true,
+				theme : utils.getSettings('theme') || 'tomorrow',
+				tabSize : parseInt(utils.getSettings('tabSize'), 10) || 4,
+				showPrintMargin : utils.getSettings('showPrintMargin') || false,
+				wrap : utils.getSettings('wrap') || true,
 				useWorker : true,
-				fontSize : parseInt(app.utils.getSettings('fontSize'), 10) || 12,
-				showInvisibles : app.utils.getSettings('showInvisibles') || false,
-				behavioursEnabled : app.utils.getSettings('behavioursEnabled') || true,
-				enableSnippets: app.utils.getSettings('enableSnippets') || true,
-				enableLiveAutoComplete: app.utils.getSettings('enableLiveAutoComplete') || true,
-				enableBasicAutocompletion: app.utils.getSettings('enableBasicAutocompletion') || true,
-				useSoftTabs: app.utils.getSettings('useSoftTabs') || false,
-				highlightActiveLine: app.utils.getSettings('highlightActiveLine') || false,
-				enableEmmet: app.utils.getSettings('enableEmmet') || true,
+				fontSize : parseInt(utils.getSettings('fontSize'), 10) || 12,
+				showInvisibles : utils.getSettings('showInvisibles') || false,
+				behavioursEnabled : utils.getSettings('behavioursEnabled') || true,
+				enableSnippets: utils.getSettings('enableSnippets') || true,
+				enableLiveAutoComplete: utils.getSettings('enableLiveAutoComplete') || true,
+				enableBasicAutocompletion: utils.getSettings('enableBasicAutocompletion') || true,
+				useSoftTabs: utils.getSettings('useSoftTabs') || false,
+				highlightActiveLine: utils.getSettings('highlightActiveLine') || false,
+				enableEmmet: utils.getSettings('enableEmmet') || true,
 			};
 
 			$('.settings-option [name=theme] option').prop('selected', false);
@@ -370,7 +368,7 @@ $(function () {
 			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
 			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
 
-			app.utils.setTheme(app.session.settings.theme);
+			utils.setTheme(app.session.settings.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
 

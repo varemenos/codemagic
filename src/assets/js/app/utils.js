@@ -76,21 +76,9 @@ $(function () {
 	};
 
 	app.utils.setIframeHeight = function (iframe, callback) {
+		// TODO: make this work properly
 		var height = Math.max($('#editors').height(), $(iframe).height()) - (app.utils.rem2px() * 0.25);
 		$(iframe).height(height);
-
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
-	app.utils.write2iframe = function (iframe, result, callback) {
-		var iframeDocument = iframe.contentDocument;
-		iframeDocument.open();
-		iframeDocument.write(result);
-		iframeDocument.close();
-
-		app.utils.setIframeHeight(iframe);
 
 		if (typeof callback == 'function') {
 			callback();
@@ -121,12 +109,6 @@ $(function () {
 		}
 	};
 
-	app.utils.generateResult = function () {
-		var result = app.utils.generateHead() + app.utils.generateBody();
-
-		return result;
-	};
-
 	app.utils.generateLogger = function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
@@ -142,7 +124,7 @@ $(function () {
 		return result;
 	};
 
-	app.utils.generateContent = function () {
+	app.utils.generateMarkup = function () {
 		var result = '';
 		if ($('#markupChoice').val() === 'Markdown') {
 			result = marked(app.editors.html.getValue());
@@ -215,22 +197,48 @@ $(function () {
 		return result;
 	};
 
-	app.utils.generateHead = function () {
-		var style = app.utils.generateStyle();
-		var externalStyle = app.utils.generateExternalStyle();
-		var logger = app.utils.generateLogger();
-		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle +'<style>' + style + '</style></head>';
+	app.utils.generateResult = function (callback) {
+		app.session.content = {};
+		var utils = app.utils;
+		var content = app.session.content;
 
-		return result;
-	};
+		var iframe = {};
 
-	app.utils.generateBody = function () {
-		var content = app.utils.generateContent();
-		var script= app.utils.generateScript();
-		var externalScript = app.utils.generateExternalScript();
-		var result = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
+		utils.consoleClear();
 
-		return result;
+		content.title = $('#settings-modal [name=title]').val() || 'codeMagic';
+		content.author = $('#settings-modal [name=author]').val() || 'Anonymous';
+		content.description = $('#settings-modal [name=description]').val();
+		content.logger = utils.generateLogger();
+		content.markup = utils.generateMarkup();
+		content.style = utils.generateStyle();
+		content.externalStyle = utils.generateExternalStyle();
+		content.script= utils.generateScript();
+		content.externalScript = utils.generateExternalScript();
+
+		iframe.doc = $('#result > iframe').contents();
+		iframe.html = iframe.doc.find('html');
+		iframe.head = iframe.html.find('head');
+		iframe.body = iframe.html.find('body');
+
+		iframe.head.html('');
+		iframe.body.html('');
+
+		// iframe.head.append(content.logger);
+		iframe.head.append('<meta charset="utf-8">');
+		iframe.head.append('<title>' + content.title + '</title>');
+		iframe.head.append('<meta name="description" content="' + content.description +'">');
+		iframe.head.append('<meta name="author" content="' + content.author + '">');
+		iframe.head.append(content.externalStyle);
+		iframe.head.append('<style>' + content.style + '</style>');
+
+		iframe.body.append(content.markup);
+		iframe.body.append(content.externalScript);
+		iframe.body.append('<script>' + content.script + '</script>');
+
+		if (typeof callback == 'function') {
+			callback();
+		}
 	};
 
 	app.utils.updateLayout = function (callback) {
