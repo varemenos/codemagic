@@ -66,7 +66,6 @@ $(function () {
 					if (targetName === 'fontSize') {
 						result = parseInt(result, 10);
 					}
-					console.log(result, targetName);
 					utils.setOption(targetName, result);
 				} else {
 					console.log('other target');
