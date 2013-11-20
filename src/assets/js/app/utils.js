@@ -112,14 +112,8 @@ $(function () {
 	app.utils.generateLogger = function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
-		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
-		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
-		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
-		result += 'console.log=function() {var str="",count=0;for(var i=0;';
-		result += 'i<arguments.length;i++) {if (typeof arguments[i]=="object") {str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)) {count++;';
-		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
-		result += 'if (count===0) {str="Object {}";count=0}} else str=arguments[i];';
-		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+		var result = 'console.codemagicLogger=console.log;window.eval={};window.onerror=function(msg,url,line){parent.document.querySelector("#console .editor-module").classList.add("enabled");parent.document.querySelector("#console-editor-toggle").classList.add("enabled");parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};console.log=function(){console.codemagicLogger.apply(this,arguments);var str="",count=0;';
+		result += 'for(var i=0;i<arguments.length;i++){if(typeof arguments[i]=="object"){str="Object {<br>";for(var item in arguments[i])if(arguments[i].hasOwnProperty(item)){count++;str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";if(count===0){str="Object {}";count=0}}else str=arguments[i];parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};';
 
 		return result;
 	};
@@ -224,7 +218,7 @@ $(function () {
 		iframe.head.html('');
 		iframe.body.html('');
 
-		// iframe.head.append(content.logger);
+		// iframe.head.append('<script>' + content.logger + '</script>');
 		iframe.head.append('<meta charset="utf-8">');
 		iframe.head.append('<title>' + content.title + '</title>');
 		iframe.head.append('<meta name="description" content="' + content.description +'">');
