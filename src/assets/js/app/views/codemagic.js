@@ -64,12 +64,8 @@ $(function () {
 					if (targetName === 'fontSize') {
 						result = parseInt(result, 10);
 					}
-<<<<<<< HEAD
 					utils.setOption(targetName, result);
-=======
-					console.log(result, targetName);
 					app.utils.setOption(targetName, result);
->>>>>>> parent of 2eb10ae... updated iframe updating system to a more sophosticated one
 				} else {
 					console.log('other target');
 				}
