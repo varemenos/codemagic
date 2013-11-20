@@ -173,14 +173,14 @@ $(function () {
 		toggleSelectedEditorOptions: function (e) {
 			var value = $(e.currentTarget).val();
 			var editorTarget = $(e.currentTarget).parent();
-			var target = editorTarget.parent().find('.editor-option-title');
-			$(target).html(value);
+			var target = editorTarget.closest('.editor-options').prop("id").replace("-editor-options", "");
+			$('#' + target + '-option-title').html(value);
 			this.toggleTargetedEditorOptions(e);
 			app.utils.setEditorMode(editorTarget.closest('.editor-options').prop('id').replace('-editor-options', ''), value.toLowerCase());
 		},
 		toggleTargetedEditorOptions: function (e) {
 			if ($(e.currentTarget).prop('tagName') === 'SELECT') {
-				this.toggleEditorOptions($(e.currentTarget).parent());
+				this.toggleEditorOptions($(e.currentTarget).closest('.editor-options'));
 			} else if (e.container !== undefined) {
 				var temp = $(e.container).prop('id').replace('-editor', '');
 				this.toggleEditorOptions($('#' + temp + '-editor-options'));
