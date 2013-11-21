@@ -186,7 +186,7 @@ $(function () {
 		var result = '';
 
 		for (var i = 0; i < items.length; i++) {
-			result+= '<link href="'+ items[i] + '">';
+			result+= '<link rel="stylesheet" href="'+ items[i] + '">';
 		}
 
 		return result;
