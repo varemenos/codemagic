@@ -438,4 +438,8 @@ header{
 	margin: $size auto;
 	padding: $size;
 	background-color: lighten($bg-color, 15%);
+
+	p{
+		line-height: $large;
+	}
 }

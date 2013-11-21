@@ -34,17 +34,21 @@ $(function () {
 			var result;
 
 			var editorOptions = [
-				'fontSize',
 				'tabSize',
-				'behavioursEnabled',
+				'showPrintMargin',
 				'wrap',
-				'enableEmmet',
+				'useWorker',
+				'fontSize',
+				'showInvisibles',
+				'behavioursEnabled',
+				'enableSnippets',
 				'enableLiveAutoComplete',
+				'enableBasicAutocompletion',
 				'useSoftTabs',
+				'highlightActiveLine',
+				'enableEmmet',
 				'showGutter',
 				'showFoldWidgets',
-				'showPrintMargin',
-				'showInvisibles'
 			];
 
 			if (targetName === 'theme') {
@@ -298,6 +302,8 @@ $(function () {
 				useSoftTabs: app.utils.getSettings('useSoftTabs') || false,
 				highlightActiveLine: app.utils.getSettings('highlightActiveLine') || false,
 				enableEmmet: app.utils.getSettings('enableEmmet') || true,
+				showGutter: app.utils.getSettings('showGutter') || true,
+				showFoldWidgets: app.utils.getSettings('showFoldWidgets') || true,
 			};
 
 			$('.settings-option [name=theme] option').prop('selected', false);
@@ -349,20 +355,21 @@ $(function () {
 					readOnly: true
 				});
 				editor.setOptions({
-					// TODO: give the user the option to toggle these via the settings
-					enableSnippets: true,
-					enableLiveAutoComplete: true,
-					enableBasicAutocompletion: true,
-					useSoftTabs: false,
-					highlightActiveLine: false,
-					enableEmmet: true,
-					fontSize: app.session.settings.fontSize,
+					tabSize: app.session.settings.tabSize,
 					showPrintMargin: app.session.settings.showPrintMargin,
+					wrap: app.session.settings.wrap,
+					useWorker: app.session.settings.useWorker,
+					fontSize: app.session.settings.fontSize,
 					showInvisibles: app.session.settings.showInvisibles,
 					behavioursEnabled: app.session.settings.behavioursEnabled,
-					tabSize: app.session.settings.tabSize,
-					wrap: app.session.settings.useWrapMode,
-					useWorker: app.session.settings.useWorker
+					enableSnippets: app.session.settings.enableSnippets,
+					enableLiveAutoComplete: app.session.settings.enableLiveAutoComplete,
+					enableBasicAutocompletion: app.session.settings.enableBasicAutocompletion,
+					useSoftTabs: app.session.settings.useSoftTabs,
+					highlightActiveLine: app.session.settings.highlightActiveLine,
+					enableEmmet: app.session.settings.enableEmmet,
+					showGutter: app.session.settings.showGutter,
+					showFoldWidgets: app.session.settings.showFoldWidgets,
 				});
 			});
 

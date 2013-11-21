@@ -287,46 +287,14 @@ $(function () {
 		}
 	};
 
-	app.utils.setSettings = function (option, val, callback) {
-		app.session.settings[option] = val;
-		option = 'codemagic.settings.' + option;
-		localStorage.setItem(option, val);
-
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
-	// TODO: fix this, implement another working  version of this or discard it
-	app.utils.setInitialSettings = function (callback) {
-		var options = app.utils.getAllSettings();
-
-		_.each(Object.keys(options), function (option) {
-			var target = $('[name='+option+']');
-			if(target.is('input')){
-				if(target.attr('type') === 'checkbox'){
-					target.prop('checked', options[option]);
-				} else {
-					target.val(options[option]);
-				}
-			} else if (target.is('select')) {
-				target.find('option').prop('selected', false);
-				target.find('option[value='+options[option]+']').prop('selected', true);
-			}
-		});
-
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
 	app.utils.getAllSettings = function () {
 		var keys = Object.keys(localStorage);
-		var result = {}, temp;
+		var result = {};
+		var value;
 
 		for (var i = 0; i < keys.length; i++) {
-			temp = localStorage.getItem(keys[i]);
-			result[keys[i].replace('codemagic.settings.', '')] = app.utils.normalizeValue(temp);
+			value = localStorage.getItem(keys[i]);
+			result[keys[i].replace('codemagic.settings.', '')] = app.utils.normalizeValue(value);
 		}
 
 		return result;
@@ -343,6 +311,16 @@ $(function () {
 		}
 
 		return result;
+	};
+
+	app.utils.setSettings = function (option, val, callback) {
+		app.session.settings[option] = val;
+		option = 'codemagic.settings.' + option;
+		localStorage.setItem(option, val);
+
+		if (typeof callback == 'function') {
+			callback();
+		}
 	};
 
 	app.utils.toggleEditorState = function (target, callback) {
