@@ -1,0 +1,17 @@
+// Generate helper classes for floating elements.
+// @mixin float
+// @category helpers
+// @param $direction {String} is the value that defines the align class' direction.
+// @param $important {String} is the value that declares whether the float will be forced via !important or not.
+// @usage:
+// =float(right);
+// =float(left, important);
+@mixin float($direction, $important: false){
+	.float--#{$direction}{
+		@if $important{
+			float: $direction !important;
+		} @else {
+			float: $direction;
+		}
+	}
+}

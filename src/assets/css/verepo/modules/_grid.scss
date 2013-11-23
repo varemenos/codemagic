@@ -1,12 +1,6 @@
-/* *******************************************
-veGrid - Grid System by Adonis K.
-******************************************* */
-
-@import "../generic/borderbox";
-@import "../generic/clearfix";
 // A mixin that generates CSS for a grid system
 // @mixin grid
-// @category objects
+// @category modules
 // @param $N {Number} is the value that defines the grid's amount of columns (defaults to a 12-column grid system)
 // @param $gutter {Number} is the value that defines the grid's gutter spacing (defaults to 0)
 // @usage:

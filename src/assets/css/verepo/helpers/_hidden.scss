@@ -1,0 +1,15 @@
+// A mixin that generates CSS for hidden
+// @mixin hidden
+// @category helpers
+// @usage:
+// .hidden{
+// 	=hidden;
+// }
+@mixin hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+%hidden{
+	@include hidden;
+}

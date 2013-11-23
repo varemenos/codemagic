@@ -1,13 +1,12 @@
-@import "verepo/generic/_base";
-@import "verepo/generic/_normalize";
-@import "verepo/generic/_helpers";
-@import "verepo/modules/_grid";
+@import "verepo/_verepo";
 @import "_font-awesome";
 @import "_selectize.default";
 
 // =============================
 // codeMagic style
 // =============================
+
+@include normalize;
 
 @media only screen and (min-width: 1024px){
 	@import "_hint";

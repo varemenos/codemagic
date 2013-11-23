@@ -1,0 +1,13 @@
+// A mixin that generates CSS prefixes for background-clip
+// @mixin background-clip
+// @category prefixes
+// @param $val {String} background-clip's valid value
+// @usage:
+// .an-element{
+// 	=background-clip(padding-box);
+// }
+@mixin background-clip($val...){
+	-webkit-background-clip: $val;
+	-moz-background-clip: $val;
+	background-clip: $val;
+}

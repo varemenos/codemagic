@@ -1,0 +1,15 @@
+// A mixin that generates CSS prefixes for transform
+// @mixin transform
+// @category prefixes
+// @param $val {String} transform's valid value
+// @usage:
+// .an-element{
+// 	=transform(rotateX(20deg));
+// }
+@mixin transform($val...){
+	-webkit-transform: $val;
+	-moz-transform: $val;
+	-o-transform: $val;
+	-ms-transform: $val;
+	transform: $val;
+}

@@ -1,0 +1,13 @@
+// A mixin that generates CSS prefixes for box-shadow
+// @mixin box-shadow
+// @category prefixes
+// @param $val {String} box-shadow's valid value
+// @usage:
+// .an-element{
+// 	=box-shadow(0 0 5px #222);
+// }
+@mixin box-shadow($val...){
+	-webkit-box-shadow: $val;
+	-moz-box-shadow: $val;
+	box-shadow: $val;
+}

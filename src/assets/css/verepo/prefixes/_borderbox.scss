@@ -1,0 +1,13 @@
+// A mixin that generates CSS prefixes for box-sizing's border-box
+// @mixin borderbox
+// @category prefixes
+// @usage:
+// .an-element{
+// 	=borderbox;
+// }
+@mixin borderbox{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}

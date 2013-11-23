@@ -1,0 +1,14 @@
+// A mixin that generates CSS prefixes for box-sizing
+// @mixin box-sizing
+// @category prefixes
+// @param $val {String} box-sizing's valid value
+// @usage:
+// .an-element{
+// 	=box-sizing(padding-box);
+// }
+@mixin box-sizing($val){
+	-webkit-box-sizing: $val;
+	-moz-box-sizing: $val;
+	-ms-box-sizing: $val;
+	box-sizing: $val;
+}

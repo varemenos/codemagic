@@ -1,0 +1,14 @@
+// A mixin that generates CSS for invisible
+// @mixin invisible
+// @category helpers
+// @usage:
+// .invisible{
+// 	=invisible;
+// }
+@mixin invisible {
+	visibility: hidden;
+}
+
+%invisible{
+	@include invisible;
+}
