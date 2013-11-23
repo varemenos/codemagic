@@ -123,11 +123,24 @@ module.exports = function (grunt) {
 					open: 'http://localhost'
 				}
 			}
+		},
+		bump: {
+			options: {
+				createTag: true,
+				tagName: 'v%VERSION%',
+				tagMessage: 'v%VERSION%',
+				commit: false,
+				push: false,
+				files: [
+					'package.json',
+					'bower.json',
+				]
+			}
 		}
 	});
 
 	// default task
-	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
+	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup', 'bump']);
 	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'htmlmin:build', 'clean:buildCleanup']);
 	grunt.registerTask('default', ['watch:files']);
 };
