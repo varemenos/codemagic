@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 		},
 		sass: {
 			options: {
-					unixNewlines: true
+				unixNewlines: true
 			},
 			dev: {
 				options: {
@@ -129,6 +129,7 @@ module.exports = function (grunt) {
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'v%VERSION%',
+				commitMessage: 'v%VERSION%',
 				commit: false,
 				push: false,
 				files: [

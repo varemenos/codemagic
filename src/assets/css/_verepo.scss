@@ -1,0 +1,1480 @@
+/*! veRepo.scss v%VERSION% | MIT License | https://github.com/varemenos/verepo */
+
+// A function that convert pixels into em values
+// @function px2em
+// @category functions
+// @param $pixels {Number} the value in pixels you want to convert into em
+// @param $base {Number} the base value for em, defaults to 16
+// @usage:
+// .a{
+// 	padding: px2em(12); // padding: 0.75em;
+// }
+@function px2em($pixels, $base: 16) {
+	@return ($pixels / $base) * 1em;
+}
+
+// A function that strips the unit off the value you input
+// @function unitless
+// @category functions
+// @param $value {Number} the value you want to remove the unit from
+// @usage:
+// .a{
+// 	padding:#{unitless(1em)}rem; // padding: 1rem;
+// }
+@function unitless($value){
+	@return $value/($value*0+1);
+}
+
+// A mixin that generates CSS prefixes for animation-delay
+// @mixin animation-delay
+// @category prefixes
+// @param $val {String} animation-delay's valid value
+// @usage:
+// .an-element{
+// 	=animation-delay(3s, 4s);
+// }
+@mixin animation-delay($val...){
+	-webkit-animation-delay: $val;
+	-moz-animation-delay: $val;
+	-o-animation-delay: $val;
+	animation-delay: $val;
+}
+
+// A mixin that generates CSS prefixes for animation
+// @mixin animation
+// @category prefixes
+// @param $val {String} animation's valid value
+// @usage:
+// .an-element{
+// 	=animation(doSomethin 1s linear infinite);
+// }
+@mixin animation($val...){
+	-webkit-animation: $val;
+	-moz-animation: $val;
+	-o-animation: $val;
+	animation: $val;
+}
+
+// A mixin that generates CSS prefixes for background-clip
+// @mixin background-clip
+// @category prefixes
+// @param $val {String} background-clip's valid value
+// @usage:
+// .an-element{
+// 	=background-clip(padding-box);
+// }
+@mixin background-clip($val...){
+	-webkit-background-clip: $val;
+	-moz-background-clip: $val;
+	background-clip: $val;
+}
+
+// A mixin that generates CSS prefixes for border-radius
+// @mixin border-radius
+// @category prefixes
+// @param $val {String} border-radius's valid value
+// @import verepo/generic/_border-radius
+// @usage:
+// .an-element{
+// 	=border-radius(5px 0 0 5px);
+// }
+@mixin border-radius($val...){
+	-webkit-border-radius: $val;
+	-moz-border-radius: $val;
+	border-radius: $val;
+}
+
+// A mixin that generates CSS prefixes for box-sizing's border-box
+// @mixin borderbox
+// @category prefixes
+// @usage:
+// .an-element{
+// 	=borderbox;
+// }
+@mixin borderbox{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// A mixin that generates CSS prefixes for box-shadow
+// @mixin box-shadow
+// @category prefixes
+// @param $val {String} box-shadow's valid value
+// @usage:
+// .an-element{
+// 	=box-shadow(0 0 5px #222);
+// }
+@mixin box-shadow($val...){
+	-webkit-box-shadow: $val;
+	-moz-box-shadow: $val;
+	box-shadow: $val;
+}
+
+// A mixin that generates CSS prefixes for box-sizing
+// @mixin box-sizing
+// @category prefixes
+// @param $val {String} box-sizing's valid value
+// @usage:
+// .an-element{
+// 	=box-sizing(padding-box);
+// }
+@mixin box-sizing($val){
+	-webkit-box-sizing: $val;
+	-moz-box-sizing: $val;
+	-ms-box-sizing: $val;
+	box-sizing: $val;
+}
+
+// A mixin that generates CSS prefixes for flex (required, to support older syntax)
+// @mixin flex
+// @category prefixes
+// @param $width {Number} is the value that defines the width of the old syntax's flex width value
+// @usage:
+// .an-element{
+//  =flex(5em);
+// }
+@mixin flex($width){
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	width: $width; // required width for older syntax
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+// A mixin that generates CSS prefixes for a flexboxed element's order
+// @mixin order
+// @category prefixes
+// @param $order {Number} is the value that defines the element's flexbox order
+// @usage:
+// .an-element{
+//  =order(2);
+// }
+@mixin order($order){
+	-webkit-box-ordinal-group: $order;
+	-moz-box-ordinal-group: $order;
+	-ms-flex-order: $order;
+	-webkit-order: $order;
+	order: $order;
+}
+
+// A mixin that generates CSS prefixes for "display: flex;"
+// @mixin display-flex
+// @category prefixes
+// @usage:
+// .an-element{
+//  =display-flex;
+// }
+@mixin display-flex{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+// A mixin that generates CSS prefixes for webfonts downloaded from Font Squirrel
+// @mixin font-face
+// @category prefixes
+// @param $name {String} is the value that defines the font-face's name when being used by font, font-family etc
+// @param $url {String} is the value that defines the location of the wefont files that should include the filename but not the file prefix
+// @usage:
+// =font-face("Ubuntu Dark", "http://varemenos.com/assets/fonts/Ubuntu/Ubuntu Dark");
+// body{
+// 	font-family: "Ubuntu Dark";
+// }
+@mixin font-face($name, $url){
+	@font-face{
+		font-family: $name;
+		src: url($url + '.eot');
+		src: url($url + '.eot?#iefix') format('embedded-opentype'),
+			 url($url + '.woff') format('woff'),
+			 url($url + '.ttf') format('truetype'),
+			 url($url + '.svg#' + $name) format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+// A mixin that generates CSS prefixes for 2-color gradients
+// @mixin gradient
+// @category prefixes
+// @param $color1 {String} is the value that defines the gradient's 1st color
+// @param $color2 {String} is the value that defines the gradient's 2nd color
+// @param $type {String} is the value that defines the gradient's type [vertical, radial]
+// @usage:
+// .an-element{
+// 	=gradient(#222, #000, radial);
+// }
+// TODO: make it more flexible
+@mixin gradient($color1, $color2, $type:''){
+	@if($type == vertical){
+		background: $color1;
+		background: -moz-linear-gradient(top,  $color1 0%, $color2 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color1), color-stop(100%,$color2));
+		background: -webkit-linear-gradient(top,  $color1 0%,$color2 100%);
+		background: -o-linear-gradient(top,  $color1 0%,$color2 100%);
+		background: -ms-linear-gradient(top,  $color1 0%,$color2 100%);
+		background: linear-gradient(to bottom,  $color1 0%,$color2 100%);
+	}@else if($type == radial){
+		background: $color1;
+		background: -moz-radial-gradient(center, ellipse cover,  $color1 0%, $color2 100%);
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$color1), color-stop(100%,$color2));
+		background: -webkit-radial-gradient(center, ellipse cover,  $color1 0%,$color2 100%);
+		background: -o-radial-gradient(center, ellipse cover,  $color1 0%,$color2 100%);
+		background: -ms-radial-gradient(center, ellipse cover,  $color1 0%,$color2 100%);
+		background: radial-gradient(ellipse at center,  $color1 0%,$color2 100%);
+	}@else{
+		background: $color1;
+		background: -moz-linear-gradient(left, $color1 0%, $color2 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,$color1), color-stop(100%,$color2));
+		background: -webkit-linear-gradient(left, $color1 0%,$color2 100%);
+		background: -o-linear-gradient(left, $color1 0%,$color2 100%);
+		background: -ms-linear-gradient(left, $color1 0%,$color2 100%);
+		background: linear-gradient(right, $color1 0%,$color2 100%);
+	}
+}
+
+// A mixin that generates CSS prefixes for hyphens
+// @mixin hyphens
+// @category prefixes
+// @param $val {String} hyphens's valid value
+// @usage:
+// .an-element{
+// 	=hyphens(auto);
+// }
+@mixin hyphens($val){
+	-moz-hyphens: $val;
+	-webkit-hyphens: $val;
+	hyphens: $val;
+}
+
+// A mixin that generates CSS prefixes for keyframes
+// @mixin keyframes
+// @category prefixes
+// @param $animation {String} is the value that defines the name of the animation's keyframes
+// @usage:
+// =keyframes(animationName){
+// 	0%: {
+// 		=transform(rotate(0deg));
+// 	}
+// 	100%: {
+// 		=transform(rotate(360deg));
+// 	}
+// }
+// .an-element{
+// 	=animation(animationName 1s linear infinite);
+// }
+@mixin keyframes($animation){
+	@-webkit-keyframes $animation{
+		@content;
+	}
+	@-moz-keyframes $animation{
+		@content;
+	}
+	@-ms-keyframes $animation{
+		@content;
+	}
+	@-o-keyframes $animation{
+		@content;
+	}
+	@keyframes $animation{
+		@content;
+	}
+}
+
+// A mixin that generates CSS prefixes for transform-origin
+// @mixin transform-origin
+// @category prefixes
+// @param $val {String} transform-origin's valid value
+// @usage:
+// .an-element{
+// 	=transform-origin(top center);
+// }
+@mixin transform-origin($val...){
+	-webkit-transform-origin: $val;
+	-moz-transform-origin: $val;
+	-o-transform-origin: $val;
+	-ms-transform-origin: $val;
+	transform-origin: $val;
+}
+
+// A mixin that generates CSS prefixes for transform
+// @mixin transform
+// @category prefixes
+// @param $val {String} transform's valid value
+// @usage:
+// .an-element{
+// 	=transform(rotateX(20deg));
+// }
+@mixin transform($val...){
+	-webkit-transform: $val;
+	-moz-transform: $val;
+	-o-transform: $val;
+	-ms-transform: $val;
+	transform: $val;
+}
+
+// A mixin that generates CSS prefixes for transition
+// @mixin transition
+// @category prefixes
+// @param $val {String} transition's valid value
+// @usage:
+// .an-element{
+// 	=transition(500ms all ease-in-out);
+// }
+@mixin transition($val...){
+	-webkit-transition: $val;
+	-moz-transition: $val;
+	-o-transition: $val;
+	-ms-transition: $val;
+	transition: $val;
+}
+
+// A mixin that generates CSS prefixes for user-select
+// @mixin user-select
+// @category prefixes
+// @param $val {String} user-select's valid value
+// @usage:
+// .an-element{
+// 	=user-select(none);
+// }
+@mixin user-select($val...){
+	-webkit-touch-callout: $val;
+	-webkit-user-select: $val;
+	-khtml-user-select: $val;
+	-moz-user-select: $val;
+	-ms-user-select: $val;
+	user-select: $val;
+}
+
+// Generate helper classes for aligning elements.
+// @mixin align
+// @category helpers
+// @param $direction {String} is the value that defines the align class' direction.
+// @param $important {String} is the value that declares whether the align will be forced via !important or not.
+// @usage:
+// =align(right);
+// =align(left, important);
+@mixin align($direction, $important: false){
+	.align--#{$direction}{
+		@if $important{
+			text-align: $direction !important;
+		} @else {
+			text-align: $direction;
+		}
+	}
+}
+
+// A mixin that generates CSS for an element that requires "clear-fixing"
+// @mixin clearfix
+// @category helpers
+// @usage:
+// .an-element{
+// 	=clearfix;
+// }
+@mixin clearfix{
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	& {
+		*zoom: 1;
+	}
+}
+
+%clearfix {
+	@include clearfix;
+}
+
+// Generate helper classes for floating elements.
+// @mixin float
+// @category helpers
+// @param $direction {String} is the value that defines the align class' direction.
+// @param $important {String} is the value that declares whether the float will be forced via !important or not.
+// @usage:
+// =float(right);
+// =float(left, important);
+@mixin float($direction, $important: false){
+	.float--#{$direction}{
+		@if $important{
+			float: $direction !important;
+		} @else {
+			float: $direction;
+		}
+	}
+}
+
+// A mixin that generates CSS for hidden
+// @mixin hidden
+// @category helpers
+// @usage:
+// .hidden{
+// 	=hidden;
+// }
+@mixin hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+%hidden{
+	@include hidden;
+}
+
+// A mixin that generates CSS for invisible
+// @mixin invisible
+// @category helpers
+// @usage:
+// .invisible{
+// 	=invisible;
+// }
+@mixin invisible {
+	visibility: hidden;
+}
+
+%invisible{
+	@include invisible;
+}
+
+// A mixin that generates CSS for image replacement
+// @mixin ir
+// @category helpers
+// @usage:
+// .image-replacement{
+// 	=ir;
+// }
+@mixin ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	*text-indent: -9999px;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 0;
+		height: 150%;
+	}
+}
+
+%ir{
+	@include ir;
+}
+
+// A mixin that generates CSS for visuallyhidden
+// @mixin visuallyhidden
+// @category helpers
+// @usage:
+// .visuallyhidden{
+// 	=visuallyhidden;
+// }
+@mixin visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+
+	&.focusable:active,
+	&.focusable:focus {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	}
+}
+
+%visuallyhidden{
+	@include visuallyhidden;
+}
+
+
+// A mixin that generates CSS for a styled blockquote
+// @mixin blockquote
+// @category layout
+// @param $border-color {String} is the value that defines the blockquote's border color
+// @usage:
+// .blockquote{
+// 	=blockquote(#ccc);
+// }
+@mixin blockquote($border-color){
+	margin: 0;
+	padding: 0 0 0 0.5em;
+	border-left: 0.25em solid $border-color;
+
+	& > *{
+		margin: 0.5em 0;
+		padding: 0.25em 0;
+	}
+
+	& > p{
+		text-indent: 1em;
+	}
+
+	& cite{
+			font-style: italic;
+	}
+
+	& cite:before {
+		content: "\2014 \2009";
+	}
+}
+
+// A mixin that generates CSS for a styled button
+// @category layout
+// @mixin button
+// @param $font-color {String} is the value that defines the button's font color
+// @param $bg-color {String} is the value that defines the button's background color
+// @param $radius {Number} is the value that defines the button's border radius (default value is 0)
+// @usage:
+// .blue-flat-button{
+//	=button(#fff, #09f, 0);
+// }
+// .blue-curved-button{
+//	=button(#fff, #09f, 2px);
+// }
+// .white-flat-button{
+//	=button(#222, #fff, 0);
+// }
+// .white-curved-button{
+//	=button(#222, #fff, 2px);
+// }
+// .dark-blue-flat-button{
+//	=button(#fff, #458, 0);
+// }
+// .dark-blue-curved-button{
+//	=button(#fff, #458, 2px);
+// }
+@mixin button($font-color, $bg-color, $radius: 0){
+	position: relative;
+	display: inline-block;
+	padding: 0.5em 1em;
+	color: $font-color;
+	text-decoration: none;
+	background-color: $bg-color;
+	border: 1px solid darken($bg-color, 10%);
+	@include border-radius($radius);
+	@include transition(150ms ease-in-out background-color, 150ms ease-in-out box-shadow);
+
+	&:hover,
+	&:focus{
+		cursor: pointer;
+		@if(lightness($bg-color) > 50%) {
+			@if(lightness($bg-color) > 75%) {
+				background-color: darken($bg-color, 5%);
+			}@else{
+				background-color: darken($bg-color, 10%);
+			}
+		}@else {
+			background-color: lighten($bg-color, 15%);
+		}
+	}
+
+	&:active{
+		cursor: pointer;
+		@if(lightness($bg-color) > 50%) {
+			@include box-shadow(0 0 3px rgba(black, 0.125), 0 0 0.5em rgba(black, 0.125) inset);
+		}@else {
+			@include box-shadow(0 0 3px $bg-color, 0 0 0.5em rgba(black, 0.25) inset);
+		}
+	}
+
+	&.xsmall{
+		font-size: 70%;
+	}
+
+	&.small{
+		font-size: 85%;
+	}
+
+	&.large{
+		font-size: 115%;
+	}
+
+	&.xlarge{
+		font-size: 130%;
+	}
+}
+
+// A mixin that generates CSS for a footer that is fixed on the bottom of the page (Don't forget to add a bottom margin to the previous element to avoid overlapping the footer)
+// @mixin fixed-footer
+// @category layout
+// @usage:
+// .fixed-footer{
+// 	=fixed-footer;
+// }
+@mixin fixed-footer{
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	width:100%;
+}
+
+// A mixin that generates CSS for a footer that is fixed on the bottom of the page (Don't forget to add a bottom margin to the previous element to avoid overlapping the footer)
+// @mixin form
+// @category layout
+// @usage:
+// .form{
+// 	=form;
+// }
+@mixin form{
+	input,
+	label,
+	textarea,
+	select,
+	progress,
+	output,
+	meter,
+	keygen{
+		@include borderbox;
+		padding: 0.5em;
+		display: inline-block;
+		@include transition(150ms linear border-color);
+	}
+
+	input[type=text]:focus,
+	input[type=password]:focus,
+	input[type=email]:focus,
+	input[type=url]:focus,
+	input[type=date]:focus,
+	input[type=month]:focus,
+	input[type=time]:focus,
+	input[type=datetime]:focus,
+	input[type=datetime-local]:focus,
+	input[type=week]:focus,
+	input[type=number]:focus,
+	input[type=search]:focus,
+	input[type=tel]:focus,
+	input[type=color]:focus,
+	select:focus,
+	textarea:focus{
+		outline: 0;
+		border-color: #09f;
+	}
+
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	input[type=url],
+	input[type=date],
+	input[type=month],
+	input[type=time],
+	input[type=datetime],
+	input[type=datetime-local],
+	input[type=week],
+	input[type=number],
+	input[type=search],
+	input[type=tel],
+	input[type=color],
+	textarea,
+	select{
+		background-color: #fff;
+		border: 1px solid #ccc;
+		@include border-radius(0);
+		@include box-shadow(0 1px 5px #ccc inset);
+	}
+
+	// Form Helpers
+	[required]:focus:invalid,
+	.invalid{
+		outline: 0;
+		border-color: red !important;
+	}
+
+	[required]:focus:valid,
+	.valid{
+		outline: 0;
+		border-color: green !important;
+	}
+
+	[disabled],
+	.disabled{
+		opacity: 0.5;
+
+		&:hover{
+			cursor: not-allowed !important;
+		}
+	}
+
+	.resize--vertical{
+		resize: vertical;
+	}
+
+	.resize--horizontal{
+		resize: horizontal;
+	}
+
+	.resize--both{
+		resize: both;
+	}
+}
+
+%form{
+	@include form;
+}
+
+// A mixin that generates CSS for a vertical form
+// @mixin vertical-form
+// @category layout
+// @usage:
+// .vertical-form{
+// 	=vertical-form;
+// }
+@mixin vertical-form{
+	@extend %form;
+
+	& > input,
+	& > label,
+	& > textarea,
+	& > select,
+	& > progress,
+	& > output,
+	& > meter,
+	& > keygen{
+		padding: 0.5em 0;
+	}
+
+	& label,
+	& input,
+	& select,
+	& textarea{
+		width: 100%;
+		margin-bottom: 1em;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+
+	& label > input[type="radio"],
+	& label > input[type="checkbox"]{
+		vertical-align: baseline;
+		width: auto;
+	}
+}
+
+// A mixin that generates CSS for unstyled lists
+// @mixin unstyled-list
+// @category layout
+// @param $gutter {Number} is the value that defines the grid's gutter spacing (defaults to 0)
+// @usage:
+// .my-list{
+// 	=unstyled-list;
+// }
+@mixin unstyled-list{
+	list-style: none;
+	list-position: outside;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+%unstyled-list{
+	@include unstyled-list;
+}
+
+// A mixin that generates CSS for floated lists
+// @mixin floated-list
+// @category layout
+// @param $spacing {Number} is the value that defines the floated-list's spacing (defaults to 0)
+// @param $direction {String} is the value that defines the floated-list's direction (defaults to left) [left, right]
+// @usage:
+// .my-list{
+// 	=floated-list;
+// }
+@mixin floated-list($spacing: false, $direction: left){
+	@include unstyled-list;
+	@include clearfix;
+
+	& > li {
+		float: $direction;
+	}
+
+	@if $spacing{
+		& > li + li{
+			margin-#{$direction}: $spacing;
+		}
+	}
+}
+
+%floated-list{
+	@include floated-list;
+}
+
+// A mixin that generates CSS for inline lists
+// @mixin inline-list
+// @category layout
+// @param $spacing {Number} is the value that defines the inline-list's spacing (defaults to 0)
+// @param $direction {String} is the value that defines the inline-list's direction (defaults to left) [left, right]
+// @usage:
+// .my-list{
+// 	=inline-list;
+// }
+@mixin inline-list($spacing: false, $direction: left){
+	@include unstyled-list;
+
+	& > li {
+		display: inline-block;
+	}
+
+	@if $spacing{
+		& > li + li{
+			margin-#{$direction}: $spacing;
+		}
+	}
+}
+
+%inline-list{
+	@include inline-list;
+}
+
+// A mixin that generates CSS for an animated loading element (REQUIRES: a `div` and `3 * span` elements inside of that `div`)
+// @mixin loading
+// @category layout
+// @param $width {Number} is the value that defines the loading element's size (defaults to 1.5em)
+// @param $style {Number} is the value that defines the loading's style (defaults to style #1) (currently there are only 2 styles available)
+// @param $color {String} is the value that defines the loading's color (defaults to #09f)
+// @usage:
+// .loading1{
+//	=loading(1.5em);
+// }
+// .loading2{
+//	=loading(1.5em, 2);
+// }
+// TODO: make it work for any amount of spans
+@mixin loading($width: 1.5em, $style: 1, $color: #09f){
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border: solid $width;
+	@include border-radius($width*10);
+	@if($style == 1){
+		border-color: $color transparent $color transparent;
+	}@else{
+		border-color: $color transparent transparent transparent;
+	}
+
+	@include animation(loadingSpin 1s linear infinite);
+
+	@include keyframes(loadingSpin){
+		0%: {
+			@include transform(rotate(0deg));
+		}
+		100%: {
+			@include transform(rotate(360deg));
+		}
+	}
+}
+
+// A mixin that generates CSS for a triangle
+// @mixin triangle
+// @category layout
+// @param $size {Number} is the value that defines the triangle's size
+// @param $color {String} is the value that defines the triangle's color
+// @param $direction {String} is the value that defines the triangle's directions color [top, left, bottom, right, top left, bottom left, bottom right, top right, left right, top bottom, top left right, bottom left right, top bottom left, top bottom right]
+// @usage:
+// .triangle-top{
+//	=triangle(30px, #0099ff, top);
+// }
+// .triangle-left{
+//	=triangle(30px, #0099ff, left);
+// }
+// .triangle-bottom{
+//	=triangle(30px, #0099ff, bottom);
+// }
+// .triangle-right{
+//	=triangle(30px, #0099ff, right);
+// }
+// .triangle-topleft{
+//	=triangle(30px, #0099ff, top left);
+// }
+// .triangle-bottomleft{
+//	=triangle(30px, #0099ff, bottom left);
+// }
+// .triangle-bottomright{
+//	=triangle(30px, #0099ff, bottom right);
+// }
+// .triangle-topright{
+//	=triangle(30px, #0099ff, top right);
+// }
+// .triangle-leftright{
+//	=triangle(30px, #0099ff, left right);
+// }
+// .triangle-topbottom{
+//	=triangle(30px, #0099ff, top bottom);
+// }
+// .triangle-topleftright{
+//	=triangle(30px, #0099ff, top left right);
+// }
+// .triangle-bottomleftright{
+//	=triangle(30px, #0099ff, bottom left right);
+// }
+// .triangle-topbottomleft{
+//	=triangle(30px, #0099ff, top bottom left);
+// }
+// .triangle-topbottomright{
+//	=triangle(30px, #0099ff, top bottom right);
+// }
+@mixin triangle($size, $color, $direction){
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border: solid $size;
+
+	$direction: "#{$direction}";
+
+	@if($direction == "top"){
+		border-color: $color transparent transparent transparent;
+	}@else if($direction == "bottom"){
+		border-color: transparent transparent $color transparent;
+	}@else if($direction == "left"){
+		border-color: transparent transparent transparent $color;
+	}@else if($direction == "right"){
+		border-color: transparent $color transparent transparent;
+	}@else if($direction == "top left" or $direction == "left top"){
+		border-color: $color transparent transparent $color;
+	}@else if($direction == "bottom left" or $direction == "left bottom"){
+		border-color: transparent transparent $color $color;
+	}@else if($direction == "top right" or $direction == "right top"){
+		border-color: $color $color transparent transparent;
+	}@else if($direction == "bottom right" or $direction == "right bottom"){
+		border-color: transparent $color $color transparent;
+	}@else if($direction == "top bottom" or $direction == "bottom top"){
+		border-color: $color transparent $color transparent;
+	}@else if($direction == "left right" or $direction == "right left"){
+		border-color: transparent $color transparent $color;
+	}@else if($direction == "top bottom left" or $direction == "top left bottom" or $direction == "bottom top left" or $direction == "bottom left top" or $direction == "left top bottom" or $direction == "left bottom top"){
+		border-color: $color transparent $color $color;
+	}@else if($direction == "top bottom right" or $direction == "top right bottom" or $direction == "bottom top right" or $direction == "bottom right top" or $direction == "right top bottom" or $direction == "left bottom top"){
+		border-color: $color $color $color transparent;
+	}@else if($direction == "left right top" or $direction == "left top right" or $direction == "right left top" or $direction == "right top left" or $direction == "top left right" or $direction == "top right left"){
+		border-color: $color $color transparent $color;
+	}@else if($direction == "left right bottom" or $direction == "left bottom right" or $direction == "right left bottom" or $direction == "right bottom left" or $direction == "bottom left right" or $direction == "bottom right left"){
+		border-color: transparent $color $color $color;
+	}
+}
+
+// A mixin that generates CSS for an effect added to a string containing element whose text will be truncated and then an extra character of ellipsis will be added.
+// @mixin truncate
+// @category layout
+// @param $width {Number} is the value that defines where the text will be truncated (defaults to 100%)
+// @usage:
+// .truncate{
+// 	=truncate(2em);
+// }
+@mixin truncate($width: 100%){
+	width: $width;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// A mixin that generates CSS for a grid system
+// @mixin grid
+// @category modules
+// @param $N {Number} is the value that defines the grid's amount of columns (defaults to a 12-column grid system)
+// @param $gutter {Number} is the value that defines the grid's gutter spacing (defaults to 0)
+// @usage:
+// .grid{
+// 	=grid(16, 1em);
+// }
+@mixin grid($N : false, $gutter : 0){
+	// if no $N was selected, create a 12-column grid
+	@if($N == false){
+		$N : 12;
+	}
+
+	// left-edge-case : if(i - 1 == 0) then convert that value to 1
+	$last : 1;
+	@if($N - 1 != 0){
+		$last : $N - 1;
+	}
+
+	// loop through the numbers given and generate column unit classes
+	@for $i from 1 through ($last + 1){
+		.col-#{$i}-#{$N}{
+			width: percentage($i / $N);
+		}
+	}
+
+	.grid{
+		@include borderbox;
+		@include clearfix;
+		display: block;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	.row{
+		@include borderbox;
+		@include clearfix;
+		display: block;
+
+		@if($gutter != 0){
+			padding-bottom: $gutter;
+
+			&:last-child{
+				padding-bottom: 0;
+			}
+		}
+
+		& > *{
+			@include borderbox;
+			display: block;
+			float: left;
+
+			@if($gutter != 0){
+				padding-right: $gutter;
+
+				&:last-child{
+					padding-right: 0;
+				}
+			}
+
+			@media only screen and (max-width: 1023px){
+				width: 100%;
+				float: none;
+				padding: 0;
+
+				@if($gutter != 0){
+					padding-bottom: $gutter;
+
+					&:last-child{
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Normalize.css
+// @mixin normalize
+// @category modules
+// @usage:
+// =normalize;
+@mixin normalize{
+	/* normalize.css v2.1.3 | MIT License | git.io/normalize */
+
+	/* ==========================================================================
+		 HTML5 display definitions
+		 ========================================================================== */
+
+	/**
+	 * Correct `block` display not defined in IE 8/9.
+	 */
+
+	article,
+	aside,
+	details,
+	figcaption,
+	figure,
+	footer,
+	header,
+	hgroup,
+	main,
+	nav,
+	section,
+	summary {
+			display: block;
+	}
+
+	/**
+	 * Correct `inline-block` display not defined in IE 8/9.
+	 */
+
+	audio,
+	canvas,
+	video {
+			display: inline-block;
+	}
+
+	/**
+	 * Prevent modern browsers from displaying `audio` without controls.
+	 * Remove excess height in iOS 5 devices.
+	 */
+
+	audio:not([controls]) {
+			display: none;
+			height: 0;
+	}
+
+	/**
+	 * Address `[hidden]` styling not present in IE 8/9.
+	 * Hide the `template` element in IE, Safari, and Firefox < 22.
+	 */
+
+	[hidden],
+	template {
+			display: none;
+	}
+
+	/* ==========================================================================
+		 Base
+		 ========================================================================== */
+
+	/**
+	 * 1. Set default font family to sans-serif.
+	 * 2. Prevent iOS text size adjust after orientation change, without disabling
+	 *    user zoom.
+	 */
+
+	html {
+			font-family: sans-serif; /* 1 */
+			-ms-text-size-adjust: 100%; /* 2 */
+			-webkit-text-size-adjust: 100%; /* 2 */
+	}
+
+	/**
+	 * Remove default margin.
+	 */
+
+	body {
+			margin: 0;
+	}
+
+	/* ==========================================================================
+		 Links
+		 ========================================================================== */
+
+	/**
+	 * Remove the gray background color from active links in IE 10.
+	 */
+
+	a {
+			background: transparent;
+	}
+
+	/**
+	 * Address `outline` inconsistency between Chrome and other browsers.
+	 */
+
+	a:focus {
+			outline: thin dotted;
+	}
+
+	/**
+	 * Improve readability when focused and also mouse hovered in all browsers.
+	 */
+
+	a:active,
+	a:hover {
+			outline: 0;
+	}
+
+	/* ==========================================================================
+		 Typography
+		 ========================================================================== */
+
+	/**
+	 * Address variable `h1` font-size and margin within `section` and `article`
+	 * contexts in Firefox 4+, Safari 5, and Chrome.
+	 */
+
+	h1 {
+			font-size: 2em;
+			margin: 0.67em 0;
+	}
+
+	/**
+	 * Address styling not present in IE 8/9, Safari 5, and Chrome.
+	 */
+
+	abbr[title] {
+			border-bottom: 1px dotted;
+	}
+
+	/**
+	 * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+	 */
+
+	b,
+	strong {
+			font-weight: bold;
+	}
+
+	/**
+	 * Address styling not present in Safari 5 and Chrome.
+	 */
+
+	dfn {
+			font-style: italic;
+	}
+
+	/**
+	 * Address differences between Firefox and other browsers.
+	 */
+
+	hr {
+			-moz-box-sizing: content-box;
+			box-sizing: content-box;
+			height: 0;
+	}
+
+	/**
+	 * Address styling not present in IE 8/9.
+	 */
+
+	mark {
+			background: #ff0;
+			color: #000;
+	}
+
+	/**
+	 * Correct font family set oddly in Safari 5 and Chrome.
+	 */
+
+	code,
+	kbd,
+	pre,
+	samp {
+			font-family: monospace, serif;
+			font-size: 1em;
+	}
+
+	/**
+	 * Improve readability of pre-formatted text in all browsers.
+	 */
+
+	pre {
+			white-space: pre-wrap;
+	}
+
+	/**
+	 * Set consistent quote types.
+	 */
+
+	q {
+			quotes: "\201C" "\201D" "\2018" "\2019";
+	}
+
+	/**
+	 * Address inconsistent and variable font size in all browsers.
+	 */
+
+	small {
+			font-size: 80%;
+	}
+
+	/**
+	 * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+	 */
+
+	sub,
+	sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+			vertical-align: baseline;
+	}
+
+	sup {
+			top: -0.5em;
+	}
+
+	sub {
+			bottom: -0.25em;
+	}
+
+	/* ==========================================================================
+		 Embedded content
+		 ========================================================================== */
+
+	/**
+	 * Remove border when inside `a` element in IE 8/9.
+	 */
+
+	img {
+			border: 0;
+	}
+
+	/**
+	 * Correct overflow displayed oddly in IE 9.
+	 */
+
+	svg:not(:root) {
+			overflow: hidden;
+	}
+
+	/* ==========================================================================
+		 Figures
+		 ========================================================================== */
+
+	/**
+	 * Address margin not present in IE 8/9 and Safari 5.
+	 */
+
+	figure {
+			margin: 0;
+	}
+
+	/* ==========================================================================
+		 Forms
+		 ========================================================================== */
+
+	/**
+	 * Define consistent border, margin, and padding.
+	 */
+
+	fieldset {
+			border: 1px solid #c0c0c0;
+			margin: 0 2px;
+			padding: 0.35em 0.625em 0.75em;
+	}
+
+	/**
+	 * 1. Correct `color` not being inherited in IE 8/9.
+	 * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+	 */
+
+	legend {
+			border: 0; /* 1 */
+			padding: 0; /* 2 */
+	}
+
+	/**
+	 * 1. Correct font family not being inherited in all browsers.
+	 * 2. Correct font size not being inherited in all browsers.
+	 * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+	 */
+
+	button,
+	input,
+	select,
+	textarea {
+			font-family: inherit; /* 1 */
+			font-size: 100%; /* 2 */
+			margin: 0; /* 3 */
+	}
+
+	/**
+	 * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+	 * the UA stylesheet.
+	 */
+
+	button,
+	input {
+			line-height: normal;
+	}
+
+	/**
+	 * Address inconsistent `text-transform` inheritance for `button` and `select`.
+	 * All other form control elements do not inherit `text-transform` values.
+	 * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+	 * Correct `select` style inheritance in Firefox 4+ and Opera.
+	 */
+
+	button,
+	select {
+			text-transform: none;
+	}
+
+	/**
+	 * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+	 *    and `video` controls.
+	 * 2. Correct inability to style clickable `input` types in iOS.
+	 * 3. Improve usability and consistency of cursor style between image-type
+	 *    `input` and others.
+	 */
+
+	button,
+	html input[type="button"], /* 1 */
+	input[type="reset"],
+	input[type="submit"] {
+			-webkit-appearance: button; /* 2 */
+			cursor: pointer; /* 3 */
+	}
+
+	/**
+	 * Re-set default cursor for disabled elements.
+	 */
+
+	button[disabled],
+	html input[disabled] {
+			cursor: default;
+	}
+
+	/**
+	 * 1. Address box sizing set to `content-box` in IE 8/9/10.
+	 * 2. Remove excess padding in IE 8/9/10.
+	 */
+
+	input[type="checkbox"],
+	input[type="radio"] {
+			box-sizing: border-box; /* 1 */
+			padding: 0; /* 2 */
+	}
+
+	/**
+	 * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+	 * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+	 *    (include `-moz` to future-proof).
+	 */
+
+	input[type="search"] {
+			-webkit-appearance: textfield; /* 1 */
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box; /* 2 */
+			box-sizing: content-box;
+	}
+
+	/**
+	 * Remove inner padding and search cancel button in Safari 5 and Chrome
+	 * on OS X.
+	 */
+
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-decoration {
+			-webkit-appearance: none;
+	}
+
+	/**
+	 * Remove inner padding and border in Firefox 4+.
+	 */
+
+	button::-moz-focus-inner,
+	input::-moz-focus-inner {
+			border: 0;
+			padding: 0;
+	}
+
+	/**
+	 * 1. Remove default vertical scrollbar in IE 8/9.
+	 * 2. Improve readability and alignment in all browsers.
+	 */
+
+	textarea {
+			overflow: auto; /* 1 */
+			vertical-align: top; /* 2 */
+	}
+
+	/* ==========================================================================
+		 Tables
+		 ========================================================================== */
+
+	/**
+	 * Remove most spacing between table cells.
+	 */
+
+	table {
+			border-collapse: collapse;
+			border-spacing: 0;
+	}
+}
