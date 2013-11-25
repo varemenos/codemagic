@@ -8,6 +8,13 @@
 
 @include normalize;
 
+@include float(left, true);
+@include float(right, true);
+
+@include align(left);
+@include align(right);
+@include align(justify);
+
 @media only screen and (min-width: 1024px){
 	@import "_hint";
 }
