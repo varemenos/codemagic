@@ -10,10 +10,16 @@
 
 @include float(left, true);
 @include float(right, true);
+@include float(none, true);
 
 @include align(left);
 @include align(right);
+@include align(center);
 @include align(justify);
+
+.clearfix{
+	@include clearfix;
+}
 
 @media only screen and (min-width: 1024px){
 	@import "_hint";
