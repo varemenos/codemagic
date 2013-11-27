@@ -75,23 +75,11 @@ $(function () {
 		return parseInt(rem, 10);
 	};
 
-	app.utils.setIframeHeight = function (iframe, callback) {
-		// TODO: make this work properly
-		var height = Math.max($('#editors').height(), $(iframe).height()) - (app.utils.rem2px() * 0.25);
-		$(iframe).height(height);
-
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
 	app.utils.write2iframe = function (iframe, result, callback) {
 		var iframeDocument = iframe.contentDocument;
 		iframeDocument.open();
 		iframeDocument.write(result);
 		iframeDocument.close();
-
-		app.utils.setIframeHeight(iframe);
 
 		if (typeof callback == 'function') {
 			callback();

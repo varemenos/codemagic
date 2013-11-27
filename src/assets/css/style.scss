@@ -38,10 +38,25 @@ $xxlarge: $size*4;
 
 @include grid(12, $size);
 
+html,
+body{
+	height: 100%;
+}
+
+#container{
+	height: 95%;
+	height: calc(100% - 1.5rem);
+}
+
+.full-height-row{
+	height: 95%;
+	height: calc(100% - 2.5rem);
+}
+
 body{
 	color: $color;
 	background-color: $bg-color;
-	padding-bottom: $size;
+	// padding-bottom: $size;
 	overflow-x: auto;
 	overflow-y: scroll;
 }
@@ -202,6 +217,7 @@ header{
 
 #result{
 	float: right;
+	height: 100%;
 	padding-right: $size;
 	@include transition(150ms ease);
 	@include transform(translateX(0));
