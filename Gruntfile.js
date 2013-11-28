@@ -126,22 +126,26 @@ module.exports = function (grunt) {
 		},
 		bump: {
 			options: {
+				files: [
+					'package.json',
+					'bower.json',
+				],
+				commitFiles: [
+					'package.json',
+					'bower.json',
+				],
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'v%VERSION%',
 				commitMessage: 'v%VERSION%',
-				commit: false,
-				push: false,
-				files: [
-					'package.json',
-					'bower.json',
-				]
+				commit: true,
+				push: true,
 			}
 		}
 	});
 
 	// default task
-	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup', 'bump']);
+	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
 	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'htmlmin:build', 'clean:buildCleanup']);
 	grunt.registerTask('default', ['watch:files']);
 };
