@@ -103,14 +103,14 @@ $(function () {
 		}
 	};
 
-	app.utils.getZippedProject = function (editors, callback) {
-		if (typeof callback == 'function') {
-			callback();
-		}
-	};
-
 	app.utils.generateResult = function () {
 		var result = app.utils.generateHead() + app.utils.generateBody();
+
+		return result;
+	};
+
+	app.utils.generateZippedResult = function () {
+		var result = app.utils.generateZippedHead() + app.utils.generateZippedBody();
 
 		return result;
 	};
@@ -207,7 +207,15 @@ $(function () {
 		var style = app.utils.generateStyle();
 		var externalStyle = app.utils.generateExternalStyle();
 		var logger = app.utils.generateLogger();
-		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle +'<style>' + style + '</style></head>';
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle + '<style>' + style + '</style></head>';
+
+		return result;
+	};
+
+	app.utils.generateZippedHead = function () {
+		var style = '<link rel="stylesheet" href="style.css">';
+		var externalStyle = app.utils.generateExternalStyle();
+		var result = '<!doctype html><html><head><meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle + style + '</head>';
 
 		return result;
 	};
@@ -217,6 +225,16 @@ $(function () {
 		var script= app.utils.generateScript();
 		var externalScript = app.utils.generateExternalScript();
 		var result = '<body>' + content + externalScript + '<script>' + script + '</script></body></html>';
+
+		return result;
+	};
+
+
+	app.utils.generateZippedBody = function () {
+		var content = app.utils.generateContent();
+		var script= '<script src="script.js"></script>';
+		var externalScript = app.utils.generateExternalScript();
+		var result = '<body>' + content + externalScript + script + '</body></html>';
 
 		return result;
 	};

@@ -8,6 +8,7 @@ $(function () {
 		events : {
 			'click #update': 'updateResults',
 			'click #prettify': 'prettify',
+			'click #download': 'download',
 			'click #settings': 'popupOpen',
 			'click #share': 'popupOpen',
 			'click .popup-close': 'popupClose',
@@ -101,42 +102,30 @@ $(function () {
 			var target = $(e.currentTarget).closest('.editor-options');
 			this.toggleEditorOptions(target);
 		},
+		download: function () {
+			var zip = new JSZip();
+
+			var style = app.utils.generateStyle();
+			var script = app.utils.generateScript();
+
+			// generate index.html file's string and prettify ugly HTML
+			var zippedContent = html_beautify(app.utils.generateZippedResult(), app.session.prettify.html);
+
+			// convert strings to files and add them in zip
+			zip.file('index.html', zippedContent);
+
+			// if style or script strings are empty, don't create files inside the zip
+			if(style !== ''){
+				zip.file('style.css', style);
+			}
+			if(script !== ''){
+				zip.file('script.js', script);
+			}
+
+			// add zip base64 href attribute in the download button
+			$('#download').attr('href', 'data:application/zip;base64,' + zip.generate());
+		},
 		prettify: function () {
-			// TODO: parameterize these depending on the editor's settings
-			// https://github.com/einars/js-beautify#options
-			app.session.prettify = app.session.prettify || {};
-
-			_.each(['html', 'css', 'js'], function (i) {
-				app.session.prettify[i] = {
-					'brace_style': 'collapse',
-					'indent_size': 1,
-					'indent_char': '\t',
-					'preserve-newlines': true
-				};
-			});
-
-			$.extend(app.session.prettify.html, {
-				'max-preserve-newlines': 1,
-				'wrap-line-length': 0,
-				'unformatted': [],
-				'indent-inner-html': true
-			});
-
-			$.extend(app.session.prettify.css, {
-				'max-preserve-newlines': 1,
-				'wrap-line-length': 0,
-				'unformatted': []
-			});
-
-			$.extend(app.session.prettify.js, {
-				'jslint_happy': true,
-				'keep_array_indentation': false,
-				'keep_function_indentation': false,
-				'eval_code': false,
-				'unescape_strings': false,
-				'break_chained_methods': false
-			});
-
 			if ($('#markupChoice').val() === 'HTML') {
 				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), app.session.prettify.html));
 				app.editors.htmlSession.selection.moveCursorFileStart();
@@ -385,6 +374,41 @@ $(function () {
 			});
 			$("#settings-modal select").selectize({
 				create: false
+			});
+
+			// TODO: parameterize these depending on the editor's settings
+			// https://github.com/einars/js-beautify#options
+			app.session.prettify = app.session.prettify || {};
+
+			_.each(['html', 'css', 'js'], function (i) {
+				app.session.prettify[i] = {
+					'brace_style': 'collapse',
+					'indent_size': 1,
+					'indent_char': '\t',
+					'preserve-newlines': true
+				};
+			});
+
+			$.extend(app.session.prettify.html, {
+				'max-preserve-newlines': 1,
+				'wrap-line-length': 0,
+				'unformatted': [],
+				'indent-inner-html': true
+			});
+
+			$.extend(app.session.prettify.css, {
+				'max-preserve-newlines': 1,
+				'wrap-line-length': 0,
+				'unformatted': []
+			});
+
+			$.extend(app.session.prettify.js, {
+				'jslint_happy': true,
+				'keep_array_indentation': false,
+				'keep_function_indentation': false,
+				'eval_code': false,
+				'unescape_strings': false,
+				'break_chained_methods': false
 			});
 
 			this.render();

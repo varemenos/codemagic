@@ -402,12 +402,18 @@ header{
 	border: none;
 	border-right: 1px solid darken($bg-color, 5%);
 
+	&,
+	&:visited{
+		color: $color;
+	}
+
 	span{
 		@include transition(color 150ms);
 		color: lighten($color, 55%);
 	}
 
 	&:hover{
+		cursor: pointer;
 		background-color: $bg-color;
 	}
 
