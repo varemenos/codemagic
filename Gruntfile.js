@@ -140,6 +140,7 @@ module.exports = function (grunt) {
 				commitMessage: 'v%VERSION%',
 				commit: true,
 				push: true,
+				pushTo: 'origin',
 			}
 		}
 	});
