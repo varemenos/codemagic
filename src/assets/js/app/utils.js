@@ -5,16 +5,16 @@ $(function () {
 
 	app.utils = {};
 
-	app.utils.isTrue = function (x, callback) {
-		if (typeof x !== 'boolean') {
-			return x === 'true';
+	app.utils.isTrue = function (value) {
+		if (typeof value !== 'boolean') {
+			return value === 'true';
 		} else {
-			return x;
+			return value;
 		}
+	};
 
-		if (typeof callback == 'function') {
-			callback();
-		}
+	app.utils.safeFilename = function (value) {
+		return value.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 	};
 
 	app.utils.normalizeValue = function (value) {
@@ -173,8 +173,10 @@ $(function () {
 		var items = $("select[name=csslibrary]").val();
 		var result = '';
 
-		for (var i = 0; i < items.length; i++) {
-			result+= '<link rel="stylesheet" href="'+ items[i] + '">';
+		if(items){
+			for (var i = 0; i < items.length; i++) {
+				result+= '<link rel="stylesheet" href="'+ items[i] + '">';
+			}
 		}
 
 		return result;

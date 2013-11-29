@@ -56,7 +56,7 @@ $(function () {
 				result = target.val();
 				app.utils.setTheme(result);
 			} else if (targetName === 'title' || targetName === 'author' || targetName === 'description') {
-				app.utils.setSettings();
+				app.utils.setSettings(targetName, target.val());
 			} else if ($.inArray(targetName, editorOptions) !== -1) {
 				if ($(target).prop('type') === 'checkbox'){
 					result = $(target).is(':checked');
@@ -124,6 +124,11 @@ $(function () {
 
 			// add zip base64 href attribute in the download button
 			$('#download').attr('href', 'data:application/zip;base64,' + zip.generate());
+
+			var title = $('input[name=title]').val();
+			if(title !== ''){
+				$('#download').attr('download', app.utils.safeFilename(title) + '.zip');
+			}
 		},
 		prettify: function () {
 			if ($('#markupChoice').val() === 'HTML') {
