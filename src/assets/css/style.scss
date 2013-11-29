@@ -110,8 +110,6 @@ header{
 
 .editor-module{
 	display: none;
-	margin-bottom: $size;
-	border: 1px solid darken($bg-color, 5%);
 	@include border-radius(0 0 5px 5px);
 
 	&:last-child{
@@ -125,7 +123,7 @@ header{
 
 .editor-config{
 	position: relative;
-	padding: $xsmall;
+	padding-bottom: $xsmall;
 	@include user-select(none);
 
 	.editor-options-toggle,
