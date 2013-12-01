@@ -1,6 +1,6 @@
 {
   "name": "codemagic",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "repository": {
     "type": "git",
     "url": "git@github.com:varemenos/codemagic.git"
