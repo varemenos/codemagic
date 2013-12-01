@@ -123,8 +123,8 @@ $(function () {
 			// add zip base64 href attribute in the download button
 			$('#download').attr('href', 'data:application/zip;base64,' + zip.generate());
 
-			if(app.session.settings.title !== ''){
-				$('#download').attr('download', app.utils.safeFilename(app.session.settings.title) + '.zip');
+			if(app.session.title !== ''){
+				$('#download').attr('download', app.utils.safeFilename(app.session.title) + '.zip');
 			}
 		},
 		prettify: function () {
@@ -253,9 +253,9 @@ $(function () {
 			app.ace.language_tools = ace.require('ace/ext/language_tools');
 
 			app.session = {};
-			app.session.settings = {};
+			app.session = {};
 
-			app.session.settings = {
+			app.session = {
 				html : {
 					state : true,
 					mode : 'html',
@@ -297,16 +297,16 @@ $(function () {
 			};
 
 			$('.settings-option [name=theme] option').prop('selected', false);
-			$('.settings-option [name=theme] option[value=' + app.session.settings.theme + ']').prop('selected', true);
+			$('.settings-option [name=theme] option[value=' + app.session.theme + ']').prop('selected', true);
 
 			$('.settings-option [name=fontSize] option').prop('selected', false);
-			$('.settings-option [name=fontSize] option[value=' + app.session.settings.fontSize + ']').prop('selected', true);
+			$('.settings-option [name=fontSize] option[value=' + app.session.fontSize + ']').prop('selected', true);
 
 			app.editors = {};
 			_.each(['html', 'css', 'js'], function(selector) {
 				app.editors[selector] = ace.edit(selector + '-editor');
 				app.editors[selector + 'Session'] = app.editors[selector].getSession();
-				app.editors[selector + 'Session'].setMode('ace/mode/' + app.session.settings[selector].mode);
+				app.editors[selector + 'Session'].setMode('ace/mode/' + app.session[selector].mode);
 			});
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
@@ -345,29 +345,29 @@ $(function () {
 					readOnly: true
 				});
 				editor.setOptions({
-					tabSize: app.session.settings.tabSize,
-					showPrintMargin: app.session.settings.showPrintMargin,
-					wrap: app.session.settings.wrap,
-					useWorker: app.session.settings.useWorker,
-					fontSize: app.session.settings.fontSize,
-					showInvisibles: app.session.settings.showInvisibles,
-					behavioursEnabled: app.session.settings.behavioursEnabled,
-					enableSnippets: app.session.settings.enableSnippets,
-					enableLiveAutoComplete: app.session.settings.enableLiveAutoComplete,
-					enableBasicAutocompletion: app.session.settings.enableBasicAutocompletion,
-					useSoftTabs: app.session.settings.useSoftTabs,
-					highlightActiveLine: app.session.settings.highlightActiveLine,
-					enableEmmet: app.session.settings.enableEmmet,
-					showGutter: app.session.settings.showGutter,
-					showFoldWidgets: app.session.settings.showFoldWidgets,
+					tabSize: app.session.tabSize,
+					showPrintMargin: app.session.showPrintMargin,
+					wrap: app.session.wrap,
+					useWorker: app.session.useWorker,
+					fontSize: app.session.fontSize,
+					showInvisibles: app.session.showInvisibles,
+					behavioursEnabled: app.session.behavioursEnabled,
+					enableSnippets: app.session.enableSnippets,
+					enableLiveAutoComplete: app.session.enableLiveAutoComplete,
+					enableBasicAutocompletion: app.session.enableBasicAutocompletion,
+					useSoftTabs: app.session.useSoftTabs,
+					highlightActiveLine: app.session.highlightActiveLine,
+					enableEmmet: app.session.enableEmmet,
+					showGutter: app.session.showGutter,
+					showFoldWidgets: app.session.showFoldWidgets,
 				});
 			});
 
-			app.editors.htmlSession.setMode('ace/mode/' + app.session.settings.html.mode);
-			app.editors.cssSession.setMode('ace/mode/' + app.session.settings.css.mode);
-			app.editors.jsSession.setMode('ace/mode/' + app.session.settings.js.mode);
+			app.editors.htmlSession.setMode('ace/mode/' + app.session.html.mode);
+			app.editors.cssSession.setMode('ace/mode/' + app.session.css.mode);
+			app.editors.jsSession.setMode('ace/mode/' + app.session.js.mode);
 
-			app.utils.setTheme(app.session.settings.theme);
+			app.utils.setTheme(app.session.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
 

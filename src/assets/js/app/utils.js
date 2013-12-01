@@ -11,6 +11,19 @@ $(function () {
 		}
 	};
 
+	app.utils.getParams = function () {
+		var params = {};
+		var queryString = location.search.substring(1); // For # params use location.hash
+		var regex = /([^&=]+)=([^&]*)/g;
+		var m;
+
+		while (m = regex.exec(queryString)) {
+			params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+		}
+
+		return params;
+	}
+
 	app.utils.safeFilename = function (value) {
 		return value.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 	};
@@ -36,11 +49,11 @@ $(function () {
 	};
 
 	app.utils.updateShareUrls = function (callback) {
-		$('#share-modal').find('a.twitter').attr('href', 'http://twitter.com/home?status=' + app.session.settings.title + ' ' + window.location.href + ' from @code_Magic');
+		$('#share-modal').find('a.twitter').attr('href', 'http://twitter.com/home?status=' + app.session.title + ' ' + window.location.href + ' from @code_Magic');
 		$('#share-modal').find('a.facebook').attr('href', 'http://www.facebook.com/sharer.php?u=' + window.location.href);
-		$('#share-modal').find('a.google-plus').attr('href', 'https://plus.google.com/share?url=' + window.location.href + '&title=' + app.session.settings.title);
-		$('#share-modal').find('a.linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title=' + app.session.settings.title + '&summary=' + app.session.settings.description + '&source=http://codeMagic.gr');
-		$('#share-modal').find('a.pinterest').attr('href', 'http://pinterest.com/pin/create/bookmarklet/?url=' + window.location.href + '&is_video=false&description=' + app.session.settings.title);
+		$('#share-modal').find('a.google-plus').attr('href', 'https://plus.google.com/share?url=' + window.location.href + '&title=' + app.session.title);
+		$('#share-modal').find('a.linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title=' + app.session.title + '&summary=' + app.session.description + '&source=http://codeMagic.gr');
+		$('#share-modal').find('a.pinterest').attr('href', 'http://pinterest.com/pin/create/bookmarklet/?url=' + window.location.href + '&is_video=false&description=' + app.session.title);
 
 		if (typeof callback == 'function') {
 			callback();
@@ -207,7 +220,7 @@ $(function () {
 		var style = app.utils.generateStyle();
 		var externalStyle = app.utils.generateExternalStyle();
 		var logger = app.utils.generateLogger();
-		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + app.session.settings.title + '</title><meta name="description" content="' + app.session.settings.description + '"><meta name="author" content="' + app.session.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + app.session.title + '</title><meta name="description" content="' + app.session.description + '"><meta name="author" content="' + app.session.author + '">' + externalStyle + '<style>' + style + '</style></head>';
 
 		return result;
 	};
@@ -215,7 +228,7 @@ $(function () {
 	app.utils.generateZippedHead = function () {
 		var style = '<link rel="stylesheet" href="style.css">';
 		var externalStyle = app.utils.generateExternalStyle();
-		var result = '<!doctype html><html><head><meta charset="utf-8"><title>' + app.session.settings.title + '</title><meta name="description" content="' + app.session.settings.description + '"><meta name="author" content="' + app.session.settings.author + '">' + externalStyle + style + '</head>';
+		var result = '<!doctype html><html><head><meta charset="utf-8"><title>' + app.session.title + '</title><meta name="description" content="' + app.session.description + '"><meta name="author" content="' + app.session.author + '">' + externalStyle + style + '</head>';
 
 		return result;
 	};
@@ -260,7 +273,7 @@ $(function () {
 	};
 
 	app.utils.setEditorMode = function (target, mode, callback) {
-		app.session.settings[target].mode = mode;
+		app.session[target].mode = mode;
 
 		app.utils.setSettings(target + '.mode', mode);
 
@@ -313,14 +326,14 @@ $(function () {
 			result = localStorage.getItem('codemagic.' + option);
 			result = app.utils.normalizeValue(result);
 
-			app.session.settings[option] = result;
+			app.session[option] = result;
 		}
 
 		return result;
 	};
 
 	app.utils.setSettings = function (option, val, callback) {
-		app.session.settings[option] = val;
+		app.session[option] = val;
 		option = 'codemagic.' + option;
 		localStorage.setItem(option, val);
 
@@ -334,7 +347,7 @@ $(function () {
 		if ($('#' + target + '-editor-toggle').hasClass('enabled')) {
 			state = true;
 		}
-		app.session.settings[target].state = state;
+		app.session[target].state = state;
 
 		if (typeof callback == 'function') {
 			callback();

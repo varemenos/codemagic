@@ -8,6 +8,7 @@ app.mvc.collections = app.mvc.collections || {};
 $(function () {
 	'use strict';
 
+	app.urlParams = app.utils.getParams();
 	app.mvc.router = new app.mvc.routes.AppRouter();
 	Backbone.history.start();
 });
