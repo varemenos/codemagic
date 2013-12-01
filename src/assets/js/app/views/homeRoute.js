@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.HomeView = Backbone.View.extend({
+	app.mvc.views.HomeView = Backbone.View.extend({
 		el: '#container',
 		events : {
 		},

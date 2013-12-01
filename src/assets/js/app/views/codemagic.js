@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.CodemagicView = Backbone.View.extend({
+	app.mvc.views.CodemagicView = Backbone.View.extend({
 		el: '#container',
 		events : {
 			'click #update': 'updateResults',
@@ -109,7 +107,7 @@ $(function () {
 			var script = app.utils.generateScript();
 
 			// generate index.html file's string and prettify ugly HTML
-			var zippedContent = html_beautify(app.utils.generateZippedResult(), app.session.prettify.html);
+			var zippedContent = html_beautify(app.utils.generateZippedResult(), app.prettify.html);
 
 			// convert strings to files and add them in zip
 			zip.file('index.html', zippedContent);
@@ -125,24 +123,23 @@ $(function () {
 			// add zip base64 href attribute in the download button
 			$('#download').attr('href', 'data:application/zip;base64,' + zip.generate());
 
-			var title = $('input[name=title]').val();
-			if(title !== ''){
-				$('#download').attr('download', app.utils.safeFilename(title) + '.zip');
+			if(app.session.settings.title !== ''){
+				$('#download').attr('download', app.utils.safeFilename(app.session.settings.title) + '.zip');
 			}
 		},
 		prettify: function () {
 			if ($('#markupChoice').val() === 'HTML') {
-				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), app.session.prettify.html));
+				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), app.prettify.html));
 				app.editors.htmlSession.selection.moveCursorFileStart();
 			}
 
 			if ($('#styleChoice').val() === 'CSS') {
-				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), app.session.prettify.css));
+				app.editors.cssSession.setValue(css_beautify(app.editors.cssSession.getValue(), app.prettify.css));
 				app.editors.cssSession.selection.moveCursorFileStart();
 			}
 
 			if ($('#scriptChoice').val() === 'JavaScript') {
-				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), app.session.prettify.js));
+				app.editors.jsSession.setValue(js_beautify(app.editors.jsSession.getValue(), app.prettify.js));
 				app.editors.jsSession.selection.moveCursorFileStart();
 			}
 		},
@@ -321,7 +318,7 @@ $(function () {
 						mac: 'Command-Shift-F'
 					},
 					exec: function (e) {
-						app.codemagicView.editorFullscreen(e);
+						app.mvc.views.codemagicView.editorFullscreen(e);
 					},
 					readOnly: true
 				});
@@ -332,7 +329,7 @@ $(function () {
 						mac: 'Command-Enter'
 					},
 					exec: function (e) {
-						app.codemagicView.updateResults();
+						app.mvc.views.codemagicView.updateResults();
 					},
 					readOnly: true
 				});
@@ -343,7 +340,7 @@ $(function () {
 						mac: 'Command-Alt-O'
 					},
 					exec: function (e) {
-						app.codemagicView.toggleTargetedEditorOptions(e);
+						app.mvc.views.codemagicView.toggleTargetedEditorOptions(e);
 					},
 					readOnly: true
 				});
@@ -383,10 +380,10 @@ $(function () {
 
 			// TODO: parameterize these depending on the editor's settings
 			// https://github.com/einars/js-beautify#options
-			app.session.prettify = app.session.prettify || {};
+			app.prettify = app.prettify || {};
 
 			_.each(['html', 'css', 'js'], function (i) {
-				app.session.prettify[i] = {
+				app.prettify[i] = {
 					'brace_style': 'collapse',
 					'indent_size': 1,
 					'indent_char': '\t',
@@ -394,20 +391,20 @@ $(function () {
 				};
 			});
 
-			$.extend(app.session.prettify.html, {
+			$.extend(app.prettify.html, {
 				'max-preserve-newlines': 1,
 				'wrap-line-length': 0,
 				'unformatted': [],
 				'indent-inner-html': true
 			});
 
-			$.extend(app.session.prettify.css, {
+			$.extend(app.prettify.css, {
 				'max-preserve-newlines': 1,
 				'wrap-line-length': 0,
 				'unformatted': []
 			});
 
-			$.extend(app.session.prettify.js, {
+			$.extend(app.prettify.js, {
 				'jslint_happy': true,
 				'keep_array_indentation': false,
 				'keep_function_indentation': false,

@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.AppRouter = Backbone.Router.extend({
+	app.mvc.routes.AppRouter = Backbone.Router.extend({
 		routes: {
 			'': 'new',
 			'new': 'new',
@@ -18,29 +16,29 @@ $(function () {
 			'information/': 'information',
 		},
 		home: function (){
-			app.currentPage = 'home';
-			app.headerView = new app.HeaderView({page: 'home'});
-			app.loginView = new app.HomeView();
+			app.mvc.currentPage = 'home';
+			app.mvc.views.headerView = new app.mvc.views.HeaderView({page: 'home'});
+			app.mvc.views.loginView = new app.mvc.views.HomeView();
 		},
 		login: function (){
-			app.currentPage = 'login';
-			app.headerView = new app.HeaderView({page: 'login'});
-			app.loginView = new app.LoginView();
+			app.mvc.currentPage = 'login';
+			app.mvc.views.headerView = new app.mvc.views.HeaderView({page: 'login'});
+			app.mvc.views.loginView = new app.mvc.views.LoginView();
 		},
 		information: function (){
-			app.currentPage = 'information';
-			app.headerView = new app.HeaderView({page: 'information'});
-			app.informationView = new app.InformationView();
+			app.mvc.currentPage = 'information';
+			app.mvc.views.headerView = new app.mvc.views.HeaderView({page: 'information'});
+			app.mvc.views.informationView = new app.mvc.views.InformationView();
 		},
 		about: function (){
-			app.currentPage = 'about';
-			app.headerView = new app.HeaderView({page: 'about'});
-			app.aboutView = new app.AboutView();
+			app.mvc.currentPage = 'about';
+			app.mvc.views.headerView = new app.mvc.views.HeaderView({page: 'about'});
+			app.mvc.views.aboutView = new app.mvc.views.AboutView();
 		},
 		new: function (){
-			app.currentPage = 'new';
-			app.headerView = new app.HeaderView({page: 'codemagic'});
-			app.newView = new app.NewView();
+			app.mvc.currentPage = 'new';
+			app.mvc.views.headerView = new app.mvc.views.HeaderView({page: 'codemagic'});
+			app.mvc.views.newView = new app.mvc.views.NewView();
 		}
 	});
 });

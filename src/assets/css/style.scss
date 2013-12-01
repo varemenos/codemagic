@@ -315,6 +315,10 @@ header{
 			border: 1px solid darken($bg-color, 5%);
 		}
 
+		&.settings-option-checkbox{
+			@include user-select(none);
+		}
+
 		&.settings-option-checkbox input{
 			vertical-align: middle;
 		}

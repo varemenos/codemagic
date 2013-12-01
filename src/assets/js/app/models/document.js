@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.Document = Backbone.Model.extend({
+	app.mvc.models.Document = Backbone.Model.extend({
 		urlRoot: 'documents'
 	});
 });

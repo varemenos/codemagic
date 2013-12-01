@@ -1,5 +1,3 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
@@ -209,7 +207,7 @@ $(function () {
 		var style = app.utils.generateStyle();
 		var externalStyle = app.utils.generateExternalStyle();
 		var logger = app.utils.generateLogger();
-		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle + '<style>' + style + '</style></head>';
+		var result = '<!doctype html><html><head>' + logger + '<meta charset="utf-8"><title>' + app.session.settings.title + '</title><meta name="description" content="' + app.session.settings.description + '"><meta name="author" content="' + app.session.settings.author + '">' + externalStyle + '<style>' + style + '</style></head>';
 
 		return result;
 	};
@@ -217,7 +215,7 @@ $(function () {
 	app.utils.generateZippedHead = function () {
 		var style = '<link rel="stylesheet" href="style.css">';
 		var externalStyle = app.utils.generateExternalStyle();
-		var result = '<!doctype html><html><head><meta charset="utf-8"><title>Title</title><meta name="description" content="Description"><meta name="author" content="Author">' + externalStyle + style + '</head>';
+		var result = '<!doctype html><html><head><meta charset="utf-8"><title>' + app.session.settings.title + '</title><meta name="description" content="' + app.session.settings.description + '"><meta name="author" content="' + app.session.settings.author + '">' + externalStyle + style + '</head>';
 
 		return result;
 	};
@@ -302,7 +300,7 @@ $(function () {
 
 		for (var i = 0; i < keys.length; i++) {
 			value = localStorage.getItem(keys[i]);
-			result[keys[i].replace('codemagic.settings.', '')] = app.utils.normalizeValue(value);
+			result[keys[i].replace('codemagic.', '')] = app.utils.normalizeValue(value);
 		}
 
 		return result;
@@ -312,7 +310,7 @@ $(function () {
 		var result;
 
 		if (option !== 'csslibrary' && option !== 'jslibrary') {
-			result = localStorage.getItem('codemagic.settings.' + option);
+			result = localStorage.getItem('codemagic.' + option);
 			result = app.utils.normalizeValue(result);
 
 			app.session.settings[option] = result;
@@ -323,7 +321,7 @@ $(function () {
 
 	app.utils.setSettings = function (option, val, callback) {
 		app.session.settings[option] = val;
-		option = 'codemagic.settings.' + option;
+		option = 'codemagic.' + option;
 		localStorage.setItem(option, val);
 
 		if (typeof callback == 'function') {

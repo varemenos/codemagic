@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.HeaderView = Backbone.View.extend({
+	app.mvc.views.HeaderView = Backbone.View.extend({
 		el: '#container',
 		events: {
 			'click .navigating-btn': 'navigate',
@@ -11,7 +9,7 @@ $(function () {
 		navigate: function (e) {
 			// TODO: validate id
 			var id = $(e.currentTarget).prop('id');
-			app.router.navigate(id, {trigger: true});
+			app.mvc.router.navigate(id, {trigger: true});
 		},
 		initialize: function (params) {
 			this.render(params);

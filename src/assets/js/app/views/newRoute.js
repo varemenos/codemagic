@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.NewView = Backbone.View.extend({
+	app.mvc.views.NewView = Backbone.View.extend({
 		el: '#container',
 		events : {
 		},
@@ -11,7 +9,7 @@ $(function () {
 			this.render();
 		},
 		render: function () {
-			app.codemagicView = new app.CodemagicView();
+			app.mvc.views.codemagicView = new app.mvc.views.CodemagicView();
 			return this;
 		}
 	});

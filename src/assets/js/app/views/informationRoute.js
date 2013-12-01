@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.InformationView = Backbone.View.extend({
+	app.mvc.views.InformationView = Backbone.View.extend({
 		el: '#container',
 		events : {
 		},

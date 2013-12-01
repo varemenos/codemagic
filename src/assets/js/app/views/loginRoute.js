@@ -1,9 +1,7 @@
-var app = app || {};
-
 $(function () {
 	'use strict';
 
-	app.LoginView = Backbone.View.extend({
+	app.mvc.views.LoginView = Backbone.View.extend({
 		el: '#container',
 		events : {
 		},
