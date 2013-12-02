@@ -22,7 +22,13 @@ $(function () {
 		}
 
 		return params;
-	}
+	};
+
+	app.utils.getState = function () {
+		var state = Math.random().toString(36).substring(2);
+
+		return state;
+	};
 
 	app.utils.safeFilename = function (value) {
 		return value.replace(/[^a-z0-9]/gi, '_').toLowerCase();
