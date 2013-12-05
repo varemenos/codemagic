@@ -42,15 +42,17 @@ $(function () {
 			localStorage.removeItem('codemagic.auth.state');
 
 			$.ajax({
-				type: 'post',
 				crossDomain:true,
-				dataType: "jsonp",
-				url: 'https://github.com/login/oauth/access_token?',
+				dataType: "json",
+				headers: {
+					'Accept': 'application/json'
+				},
+				url: '/:8000/ghauth',
 				data: {
 					'client_id': 'dda706afb25722f3f8a1',
-					'client_secret': 'a7b5617070d07a757d2f9b5a2da0f3702dd018f0',
 					'code': app.utils.getParams().code,
-					'redirect_uri': 'http://codemagic.gr#ghauth/'
+					'redirect_uri': 'http://codemagic.gr/#/ghauth/',
+					'state': state
 				},
 				success: function (data, status, jqxhr) {
 					console.log(data, status, jqxhr);

@@ -13,6 +13,22 @@ module.exports = function (grunt) {
 			js: 'assets/js',
 			build: 'build'
 		},
+		availabletasks: {
+			options: {
+				filter: 'exclude',
+				tasks: [
+					'clean',
+					'concat',
+					'copy',
+					'htmlmin',
+					'sass',
+					'uglify',
+					'default',
+					'availabletasks',
+					'_devtools_config'
+				]
+			}
+		},
 		copy: {
 			build: {
 				files: [{
@@ -147,7 +163,8 @@ module.exports = function (grunt) {
 	});
 
 	// default task
-	grunt.registerTask('dev',['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
-	grunt.registerTask('dist', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'htmlmin:build', 'clean:buildCleanup']);
-	grunt.registerTask('default', ['watch:files']);
+	grunt.registerTask('dev', 'Build current project for local testing', ['clean:build', 'copy:build', 'concat:build', 'sass:dev', 'htmlmin:build', 'clean:buildCleanup']);
+	grunt.registerTask('dist', 'Build current project for distribution', ['clean:build', 'copy:build', 'concat:build', 'sass:dist', 'uglify:build', 'htmlmin:build', 'clean:buildCleanup']);
+	grunt.registerTask('tasks', ['availabletasks']);
+	grunt.registerTask('default', ['tasks']);
 };

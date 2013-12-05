@@ -30,7 +30,7 @@
 				<form action="https://github.com/login/oauth/authorize" method="get" accept-charset="utf-8">
 					<input type="hidden" name="client_id" value="dda706afb25722f3f8a1">
 					<input type="hidden" name="redirect_uri" value="http://codemagic.gr#ghauth">
-					<input type="hidden" name="scope" value="gist">
+					<input type="hidden" name="scope" value="gist,user:email">
 					<input type="hidden" name="state" value="">
 					<button type="submit"><i class="fa fa-github"></i> Sign in via Github</button>
 				</form>
@@ -226,7 +226,7 @@
 					</div>
 				</section>
 				<section id="result" class="col-6-12">
-					<iframe></iframe>
+					<iframe name="codeMagic result" sandbox="allow-scripts allow-same-origin allow-pointer-lock" allowfullscreen="true"></iframe>
 				</section>
 			</div>
 			<div id="settings-modal" class="popup">
