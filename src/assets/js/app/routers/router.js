@@ -47,7 +47,7 @@ $(function () {
 				headers: {
 					'Accept': 'application/json'
 				},
-				url: '/:8000/ghauth',
+				url: ':8000/ghauth',
 				data: {
 					'client_id': 'dda706afb25722f3f8a1',
 					'code': app.utils.getParams().code,
