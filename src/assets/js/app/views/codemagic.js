@@ -25,7 +25,7 @@ $(function () {
 			'change .settings-option-input input[type=text]': 'updateSettings',
 			'change .settings-option-checkbox input[type=checkbox]': 'updateSettings',
 			'change .settings-option-textarea textarea': 'updateSettings',
-			'change .settings-option-select select': 'updateSettings'
+			'change .settings-option-select select': 'updateSettings',
 		},
 		updateSettings: function (e) {
 			var target = $(e.currentTarget);
@@ -243,6 +243,15 @@ $(function () {
 			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
+			// TODO: add this event only if the user has unsaved changes
+			$(window).on('beforeunload', function (e) {
+				return 'There are some unsaved changes. If you accept you will lose all your unsaved work!';
+			});
+
+			// TODO: do something on unload
+			// $(window).on('unload', function (e) {
+			// });
+
 			this.template = _.template($('#codemagic-template').html());
 
 			this.$el.append(this.template());

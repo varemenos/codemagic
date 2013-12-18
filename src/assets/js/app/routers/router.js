@@ -42,12 +42,14 @@ $(function () {
 			localStorage.removeItem('codemagic.auth.state');
 
 			$.ajax({
-				crossDomain:true,
-				dataType: "json",
+				// crossDomain: true,
+				dataType: 'jsonp',
+				// type: 'POST',
+				// contentType: 'application/json',
 				headers: {
 					'Accept': 'application/json'
 				},
-				url: 'http://codemagic.gr:8000/ghauth',
+				url: 'http://codemagic.gr:3000/ghauth/?callback',
 				data: {
 					'client_id': 'dda706afb25722f3f8a1',
 					'code': app.utils.getParams().code,
@@ -55,8 +57,13 @@ $(function () {
 					'state': state
 				},
 				success: function (data, status, jqxhr) {
-					console.log(data, status, jqxhr);
+					console.log('Success!');
+					console.log(data, status);
 					// var access_token = localStorage.setItem('access_token');
+				},
+				error: function (jqxhr, status, error) {
+					console.log('Error!');
+					console.log(status, error);
 				}
 			});
 		},
