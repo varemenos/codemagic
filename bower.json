@@ -1,6 +1,6 @@
 {
   "name": "codemagic",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "dependencies": {
     "jquery": "~2.0.3",
     "backbone": "~1.1.0",
