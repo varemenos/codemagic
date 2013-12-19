@@ -4,6 +4,7 @@ app.mvc.routes = app.mvc.routes || {};
 app.mvc.views = app.mvc.views || {};
 app.mvc.models = app.mvc.models || {};
 app.mvc.collections = app.mvc.collections || {};
+app.session = app.session || {};
 
 $(function () {
 	'use strict';

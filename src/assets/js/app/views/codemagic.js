@@ -243,9 +243,16 @@ $(function () {
 			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
-			// TODO: add this event only if the user has unsaved changes
+			app.unsavedWorkLock = false;
+
+			// TODO: remove this event after the user saves
 			$(window).on('beforeunload', function (e) {
-				return 'There are some unsaved changes. If you accept you will lose all your unsaved work!';
+				if(app.unsavedWorkLock){
+					// why this mess? read here: https://developer.mozilla.org/en-US/docs/Web/Reference/Events/beforeunload
+					var msg = 'There are some unsaved changes. If you accept you will lose all your unsaved work!';
+					(e || window.event).returnValue = msg;
+					return msg;
+				}
 			});
 
 			// TODO: do something on unload
@@ -260,9 +267,6 @@ $(function () {
 			app.ace = app.ace || {};
 			app.ace.emmet = ace.require('ace/ext/emmet');
 			app.ace.language_tools = ace.require('ace/ext/language_tools');
-
-			app.session = {};
-			app.session = {};
 
 			app.session = {
 				html : {
@@ -305,11 +309,17 @@ $(function () {
 				showFoldWidgets: app.utils.getSettings('showFoldWidgets') || true,
 			};
 
+			// Manually select the selected property for the select tags because of this bug of selectize
+			// TODO: find issue url and add here
+			// TODO: find a way to fix this mess, either by having the selectize bug fixed, by choosing a different tool for the job or by nip-tucking it somehow
 			$('.settings-option [name=theme] option').prop('selected', false);
 			$('.settings-option [name=theme] option[value=' + app.session.theme + ']').prop('selected', true);
 
 			$('.settings-option [name=fontSize] option').prop('selected', false);
 			$('.settings-option [name=fontSize] option[value=' + app.session.fontSize + ']').prop('selected', true);
+
+			$('.settings-option [name=tabSize] option').prop('selected', false);
+			$('.settings-option [name=tabSize] option[value=' + app.session.tabSize + ']').prop('selected', true);
 
 			app.editors = {};
 			_.each(['html', 'css', 'js'], function(selector) {
@@ -319,6 +329,10 @@ $(function () {
 			});
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+				editor.once('change', function() {
+					app.unsavedWorkLock = true;
+				});
+
 				editor.commands.removeCommand('showSettingsMenu');
 				editor.commands.addCommand({
 					name: 'fullscreen',
