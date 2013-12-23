@@ -127,13 +127,17 @@ header{
 	@include user-select(none);
 
 	.editor-options-toggle,
-	.editor-fullscreen-toggle{
+	.editor-extras-toggle{
 		display: inline-block;
 		padding: 0;
 		color: $color;
 		background: transparent;
 		outline: none;
 		border: 1px solid transparent;
+	}
+
+	.editor-extras-toggle{
+		margin-left: 0.5rem;
 	}
 
 	span{
