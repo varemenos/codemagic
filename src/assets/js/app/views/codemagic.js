@@ -69,7 +69,7 @@ $(function () {
 					}
 					app.utils.setOption(targetName, result);
 				} else {
-					console.log('other target');
+					throw new Error("unknown target at updateSettings()");
 				}
 			}
 			app.utils.updateLayout();
