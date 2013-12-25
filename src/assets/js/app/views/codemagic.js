@@ -128,6 +128,13 @@ $(function () {
 			}
 		},
 		prettify: function () {
+			_.each(['html', 'css', 'js'], function (i) {
+				app.prettify[i] = {
+					'indent_size': app.utils.tabsOrSpaces('size'),
+					'indent_char': app.utils.tabsOrSpaces('char'),
+				};
+			});
+
 			if ($('#markupChoice').val() === 'HTML') {
 				app.editors.htmlSession.setValue(html_beautify(app.editors.htmlSession.getValue(), app.prettify.html));
 				app.editors.htmlSession.selection.moveCursorFileStart();
@@ -212,15 +219,21 @@ $(function () {
 		},
 		toggleFullscreen: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleFullscreenMode(target);
+			app.utils.toggleFullscreenMode(target, function () {
+				app.utils.resizeEditors();
+			});
 		},
 		toggleHideEditors: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideEditorsMode(target);
+			app.utils.toggleHideEditorsMode(target, function () {
+				app.utils.resizeEditors();
+			});
 		},
 		toggleHideResult: function () {
 			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideResultMode(target);
+			app.utils.toggleHideResultMode(target, function () {
+				app.utils.resizeEditors();
+			});
 		},
 		editorFullscreen: function (e) {
 			var target;
@@ -408,9 +421,9 @@ $(function () {
 			_.each(['html', 'css', 'js'], function (i) {
 				app.prettify[i] = {
 					'brace_style': 'collapse',
-					'indent_size': 1,
-					'indent_char': '\t',
-					'preserve-newlines': true
+					'indent_size': app.utils.tabsOrSpaces('size'),
+					'indent_char': app.utils.tabsOrSpaces('char'),
+					'preserve-newlines': true,
 				};
 			});
 
@@ -418,22 +431,22 @@ $(function () {
 				'max-preserve-newlines': 1,
 				'wrap-line-length': 0,
 				'unformatted': [],
-				'indent-inner-html': true
+				'indent-inner-html': true,
 			});
 
 			$.extend(app.prettify.css, {
 				'max-preserve-newlines': 1,
 				'wrap-line-length': 0,
-				'unformatted': []
+				'unformatted': [],
 			});
 
 			$.extend(app.prettify.js, {
-				'jslint_happy': true,
 				'keep_array_indentation': false,
 				'keep_function_indentation': false,
 				'eval_code': false,
 				'unescape_strings': false,
-				'break_chained_methods': false
+				'break_chained_methods': false,
+				'space_before_conditional': true,
 			});
 
 			this.render();

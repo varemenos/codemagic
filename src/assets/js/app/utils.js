@@ -66,10 +66,12 @@ $(function () {
 		}
 	};
 
-	app.utils.resizeEditors = function (editors, callback) {
-		editors.html.resize();
-		editors.css.resize();
-		editors.js.resize();
+	app.utils.resizeEditors = function (callback) {
+		app.editors.html.resize();
+		app.editors.css.resize();
+		app.editors.js.resize();
+
+		console.log('triggered resizeEditors');
 
 		if (typeof callback == 'function') {
 			callback();
@@ -259,7 +261,7 @@ $(function () {
 	};
 
 	app.utils.updateLayout = function (callback) {
-		app.utils.resizeEditors(app.editors);
+		app.utils.resizeEditors();
 
 		if (typeof callback == 'function') {
 			callback();
@@ -348,6 +350,31 @@ $(function () {
 		}
 	};
 
+	app.utils.tabsOrSpaces = function (choice) {
+		var result;
+		var error = new Error('choice must be either "size" or "char"');
+
+		if (app.session.useSoftTabs){
+			if (choice === 'size') {
+				result = app.session.tabSize;
+			} else if (choice === 'char') {
+				result = ' ';
+			} else {
+				throw error;
+			}
+		} else {
+			if (choice === 'size') {
+				result = 1;
+			} else if (choice === 'char') {
+				result = '\t';
+			} else {
+				throw error;
+			}
+		}
+
+		return result;
+	};
+
 	app.utils.toggleEditorState = function (target, callback) {
 		var state = false;
 		if ($('#' + target + '-editor-toggle').hasClass('enabled')) {
@@ -408,6 +435,10 @@ $(function () {
 			window.setTimeout(function () {
 				editors.hide();
 				result.addClass('hideEditors');
+
+				if (typeof callback == 'function') {
+					callback();
+				}
 			}, 250);
 		} else {
 			result.removeClass('hideEditors');
@@ -415,11 +446,11 @@ $(function () {
 			window.setTimeout(function () {
 				editors.show();
 				editors.removeClass('hideEditors');
-			}, 250);
-		}
 
-		if (typeof callback == 'function') {
-			callback();
+				if (typeof callback == 'function') {
+					callback();
+				}
+			}, 250);
 		}
 	};
 
@@ -440,6 +471,12 @@ $(function () {
 			window.setTimeout(function () {
 				result.hide();
 				editors.addClass('hideResult');
+
+				console.log('hiding result');
+
+				if (typeof callback == 'function') {
+					callback();
+				}
 			}, 250);
 		} else {
 			editors.removeClass('hideResult');
@@ -447,11 +484,12 @@ $(function () {
 			window.setTimeout(function () {
 				result.show();
 				result.removeClass('hideResult');
-			}, 250);
-		}
 
-		if (typeof callback == 'function') {
-			callback();
+
+				if (typeof callback == 'function') {
+					callback();
+				}
+			}, 250);
 		}
 	};
 });
