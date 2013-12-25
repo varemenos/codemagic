@@ -71,8 +71,6 @@ $(function () {
 		app.editors.css.resize();
 		app.editors.js.resize();
 
-		console.log('triggered resizeEditors');
-
 		if (typeof callback == 'function') {
 			callback();
 		}
@@ -138,7 +136,7 @@ $(function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
 
-		var result = '<script>window.eval = {};var console={};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
+		var result = '<script>window.eval = {};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
 		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
 		result += 'console.log=function() {var str="",count=0;for(var i=0;';
@@ -472,8 +470,6 @@ $(function () {
 				result.hide();
 				editors.addClass('hideResult');
 
-				console.log('hiding result');
-
 				if (typeof callback == 'function') {
 					callback();
 				}
@@ -484,7 +480,6 @@ $(function () {
 			window.setTimeout(function () {
 				result.show();
 				result.removeClass('hideResult');
-
 
 				if (typeof callback == 'function') {
 					callback();
