@@ -198,16 +198,6 @@ header{
 	@include user-select(none);
 }
 
-#console{
-	@include borderbox;
-	padding: 0 $size;
-	width: 100%;
-
-	.editor-module{
-		margin-top: $size;
-	}
-}
-
 #console-editor{
 	@include borderbox;
 	overflow: auto;
@@ -437,10 +427,6 @@ header{
 			color: $color;
 		}
 	}
-}
-
-.no-padding-bottom{
-	padding-bottom: 0;
 }
 
 .no-margin{
