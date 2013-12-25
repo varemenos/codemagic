@@ -16,7 +16,7 @@
 
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(factory);
+		define('sifter', factory);
 	} else if (typeof exports === 'object') {
 		module.exports = factory();
 	} else {
@@ -464,7 +464,7 @@
 
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(factory);
+		define('microplugin', factory);
 	} else if (typeof exports === 'object') {
 		module.exports = factory();
 	} else {
@@ -583,7 +583,7 @@
 }));
 
 /**
- * selectize.js (v0.8.2)
+ * selectize.js (v0.8.4)
  * Copyright (c) 2013 Brian Reavis & contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -603,7 +603,7 @@
 
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['jquery','sifter','microplugin'], factory);
+		define('selectize', ['jquery','sifter','microplugin'], factory);
 	} else {
 		root.Selectize = factory(root.jQuery, root.Sifter, root.MicroPlugin);
 	}
@@ -1461,8 +1461,7 @@
 					self.advanceSelection(1, e);
 					return;
 				case KEY_TAB:
-					if (self.settings.create && $.trim(self.$control_input.val()).length) {
-						self.createItem();
+					if (self.settings.create && self.createItem()) {
 						e.preventDefault();
 					}
 					return;
@@ -1554,6 +1553,10 @@
 			self.isFocused = false;
 			if (self.ignoreFocus) return;
 	
+			if (self.settings.create && self.settings.createOnBlur) {
+				self.createItem();
+			}
+	
 			self.close();
 			self.setTextboxValue('');
 			self.setActiveItem(null);
@@ -1595,6 +1598,7 @@
 			} else {
 				value = $target.attr('data-value');
 				if (value) {
+					self.lastQuery = null;
 					self.setTextboxValue('');
 					self.addItem(value);
 					if (!self.settings.hideSelected && e.type && /mouse/.test(e.type)) {
@@ -1795,12 +1799,15 @@
 		 * Selects all items (CTRL + A).
 		 */
 		selectAll: function() {
-			this.$activeItems = Array.prototype.slice.apply(this.$control.children(':not(input)').addClass('active'));
-			if (this.$activeItems.length) {
-				this.hideInput();
-				this.close();
+			var self = this;
+			if (self.settings.mode === 'single') return;
+	
+			self.$activeItems = Array.prototype.slice.apply(self.$control.children(':not(input)').addClass('active'));
+			if (self.$activeItems.length) {
+				self.hideInput();
+				self.close();
 			}
-			this.focus();
+			self.focus();
 		},
 	
 		/**
@@ -2345,12 +2352,14 @@
 		 *
 		 * Once this completes, it will be added
 		 * to the item list.
+		 *
+		 * @return {boolean}
 		 */
 		createItem: function() {
 			var self  = this;
 			var input = $.trim(self.$control_input.val() || '');
 			var caret = self.caretPos;
-			if (!input.length) return;
+			if (!input.length) return false;
 			self.lock();
 	
 			var setup = (typeof self.settings.create === 'function') ? this.settings.create : function(input) {
@@ -2378,6 +2387,8 @@
 			if (typeof output !== 'undefined') {
 				create(output);
 			}
+	
+			return true;
 		},
 	
 		/**
@@ -2625,6 +2636,7 @@
 			}
 	
 			self.showInput();
+			self.positionDropdown();
 			self.refreshOptions(true);
 	
 			// select previous option
@@ -2864,6 +2876,7 @@
 		persist: true,
 		diacritics: true,
 		create: false,
+		createOnBlur: false,
 		highlight: true,
 		openOnFocus: true,
 		maxOptions: 1000,

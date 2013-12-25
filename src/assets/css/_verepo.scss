@@ -354,7 +354,7 @@
 // @mixin align
 // @category helpers
 // @param $direction {String} is the value that defines the align class' direction.
-// @param $important {String} is the value that declares whether the align will be forced via !important or not.
+// @param $important {String} is the value that declares whether the align will be forced via !important or not [any value with trigger the effect].
 // @usage:
 // =align(right);
 // =align(left, important);
@@ -384,10 +384,6 @@
 
 	&:after {
 		clear: both;
-	}
-
-	& {
-		*zoom: 1;
 	}
 }
 
@@ -776,7 +772,7 @@
 // }
 @mixin unstyled-list{
 	list-style: none;
-	list-position: outside;
+	list-style-position: outside;
 	list-style-image: none;
 	list-style-type: none;
 	margin: 0;
@@ -842,12 +838,12 @@
 	@include inline-list;
 }
 
-// A mixin that generates CSS for an animated loading element (REQUIRES: a `div` and `3 * span` elements inside of that `div`)
+// A mixin that generates CSS for an animated loading element
 // @mixin loading
 // @category layout
 // @param $width {Number} is the value that defines the loading element's size (defaults to 1.5em)
 // @param $style {Number} is the value that defines the loading's style (defaults to style #1) (currently there are only 2 styles available)
-// @param $color {String} is the value that defines the loading's color (defaults to #09f)
+// @param $color {String} is the value that defines the loading's color (defaults to #ccc)
 // @usage:
 // .loading1{
 //	=loading(1.5em);
@@ -855,8 +851,7 @@
 // .loading2{
 //	=loading(1.5em, 2);
 // }
-// TODO: make it work for any amount of spans
-@mixin loading($width: 1.5em, $style: 1, $color: #09f){
+@mixin loading($width: 1.5em, $style: 1, $color: #666){
 	content: "";
 	display: inline-block;
 	width: 0;
@@ -878,6 +873,45 @@
 		100%: {
 			@include transform(rotate(360deg));
 		}
+	}
+}
+
+// A mixin that generates CSS for a media object
+// @category layout
+// @mixin media
+// @param $direction {String} is the value that defines the media object's direction.
+// @usage:
+// <div class="media">
+// 	<div class="img">
+// 		<img src="http://placekitten.com/50/50">
+// 	</div>
+// 	<div>
+// 		<p>Your content goes here</p>
+// 	</div>
+// </div>
+// .media{
+// 	=media;
+// }
+@mixin media($direction: left){
+	@include clearfix;
+
+	& > .img {
+		float: $direction;
+		display: block;
+		@if $direction == 'right'{
+			margin: 0 0 0 1rem;
+		} @else {
+			margin: 0 1rem 0 0;
+		}
+	}
+
+	& > .img > img {
+		display: block;
+	}
+
+	& > .img + *{
+		display:table-cell;
+		width:10000px;
 	}
 }
 
@@ -1032,6 +1066,19 @@
 
 			&:last-child{
 				padding-bottom: 0;
+				// experimental code is commented-out
+				// display: table-cell;
+				// float: none;
+				// width: auto;
+
+				// &:after{
+				// 	content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+				// 	visibility: hidden;
+				// 	clear: both;
+				// 	height: 0 !important;
+				// 	display: block;
+				// 	line-height: 0;
+				// }
 			}
 		}
 
