@@ -224,14 +224,12 @@ $(function () {
 			});
 		},
 		toggleHideEditors: function () {
-			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideEditorsMode(target, function () {
+			app.utils.toggleHideEditorsMode(function () {
 				app.utils.resizeEditors();
 			});
 		},
 		toggleHideResult: function () {
-			var target = document.querySelector('#result iframe');
-			app.utils.toggleHideResultMode(target, function () {
+			app.utils.toggleHideResultMode(function () {
 				app.utils.resizeEditors();
 			});
 		},
