@@ -416,7 +416,7 @@ $(function () {
 		}
 	};
 
-	app.utils.toggleHideEditorsMode = function (target, callback) {
+	app.utils.toggleHideEditorsMode = function (callback) {
 		var editors = $('#editors');
 		var result = $('#result');
 
@@ -430,29 +430,21 @@ $(function () {
 				app.utils.toggleHideResultMode();
 			}
 
-			window.setTimeout(function () {
-				editors.hide();
-				result.addClass('hideEditors');
-
-				if (typeof callback == 'function') {
-					callback();
-				}
-			}, 250);
+			editors.addClass('hideEditors');
+			result.addClass('hideEditors');
 		} else {
 			result.removeClass('hideEditors');
 
-			window.setTimeout(function () {
-				editors.show();
-				editors.removeClass('hideEditors');
+			editors.removeClass('hideEditors');
+			editors.removeClass('hideEditors');
+		}
 
-				if (typeof callback == 'function') {
-					callback();
-				}
-			}, 250);
+		if (typeof callback == 'function') {
+			callback();
 		}
 	};
 
-	app.utils.toggleHideResultMode = function (target, callback) {
+	app.utils.toggleHideResultMode = function (callback) {
 		var editors = $('#editors');
 		var result = $('#result');
 
@@ -466,25 +458,17 @@ $(function () {
 				app.utils.toggleHideEditorsMode();
 			}
 
-			window.setTimeout(function () {
-				result.hide();
-				editors.addClass('hideResult');
-
-				if (typeof callback == 'function') {
-					callback();
-				}
-			}, 250);
+			result.hide();
+			editors.addClass('hideResult');
 		} else {
 			editors.removeClass('hideResult');
 
-			window.setTimeout(function () {
-				result.show();
-				result.removeClass('hideResult');
+			result.show();
+			result.removeClass('hideResult');
+		}
 
-				if (typeof callback == 'function') {
-					callback();
-				}
-			}, 250);
+		if (typeof callback == 'function') {
+			callback();
 		}
 	};
 });

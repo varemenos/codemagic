@@ -71,19 +71,13 @@ header{
 
 #editors{
 	padding: 0 $size;
-	@include transition(150ms ease);
-	@include transform(translateX(0));
 
 	&.enlarged{
 		padding-bottom: 30%;
 	}
 
 	&.hideEditors{
-		@include transform(translateX(-100%));
-
-		@media only screen and (max-width: 1023px){
-			@include transform(translateY(-100%));
-		}
+		display: none;
 	}
 
 	&.hideResult{
@@ -210,8 +204,6 @@ header{
 	float: right;
 	height: 100%;
 	padding-right: $size;
-	@include transition(150ms ease);
-	@include transform(translateX(0));
 
 	&.hideEditors{
 		padding-left: $size;
@@ -219,11 +211,7 @@ header{
 	}
 
 	&.hideResult{
-		@include transform(translateX(100%));
-
-		@media only screen and (max-width: 1023px){
-			@include transform(translateY(100%));
-		}
+		display: none;
 	}
 
 	@media only screen and (max-width: 1023px){
