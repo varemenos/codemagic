@@ -376,7 +376,8 @@ header{
 }
 
 .nav-btn{
-	display: inline-block;
+	display: block;
+	float: left;
 	padding: $small $size;
 	vertical-align: middle;
 	font-weight: bold;
