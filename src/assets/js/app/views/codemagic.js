@@ -173,6 +173,10 @@ $(function () {
 				$('#' + target + '-editor').closest('.editor-module').toggleClass('enabled');
 				app.utils.toggleEditorState(target);
 			}
+
+			if (!app.editorResizeLock) {
+				this.editorHeightUpdate();
+			}
 		},
 		toggleSelectedEditorOptions: function (e) {
 			var value = $(e.currentTarget).val();
@@ -417,7 +421,11 @@ $(function () {
 			app.editorResizeLock = false;
 			this.editorHeightUpdate();
 			$(window).on('resize', function (e) {
-				app.mvc.views.codemagicView.editorHeightUpdate();
+				if (!app.editorResizeLock) {
+					app.mvc.views.codemagicView.editorHeightUpdate();
+				} else {
+					$(window).off('resize');
+				}
 			});
 
 			$(".codeChoice").selectize({
