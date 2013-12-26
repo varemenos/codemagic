@@ -74,6 +74,9 @@ $(function () {
 			}
 			app.utils.updateLayout();
 		},
+		editorHeightUpdate: function (e) {
+			$(".editor-module.enabled .editor-wrap").height($("#result").height() / $(".editor-module.enabled").length - (2.5 * 16));
+		},
 		popupOpen: function (e) {
 			app.utils.updateShareUrls(function () {
 				var target = '#' + $(e.currentTarget).prop('id') + '-modal';
@@ -193,6 +196,8 @@ $(function () {
 			$(target).toggleClass('enabled');
 		},
 		resizeInitialize: function (e) {
+			app.editorResizeLock = true;
+
 			app.session.resize = e.pageY;
 			app.session.resizeTarget = app.session.resizeTarget || {};
 			app.session.resizeTarget.id = $(e.currentTarget).prev().find('.editor').prop('id');
@@ -257,6 +262,10 @@ $(function () {
 			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
+			this.template = _.template($('#codemagic-template').html());
+
+			this.$el.append(this.template());
+
 			app.unsavedWorkLock = false;
 
 			// TODO: remove this event after the user saves
@@ -272,10 +281,6 @@ $(function () {
 			// TODO: do something on unload
 			// $(window).on('unload', function (e) {
 			// });
-
-			this.template = _.template($('#codemagic-template').html());
-
-			this.$el.append(this.template());
 
 			ace.config.set('basePath', 'assets/js/ace');
 			app.ace = app.ace || {};
@@ -407,6 +412,13 @@ $(function () {
 			app.utils.setTheme(app.session.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
+
+			// editor height setup
+			app.editorResizeLock = false;
+			this.editorHeightUpdate();
+			$(window).on('resize', function (e) {
+				app.mvc.views.codemagicView.editorHeightUpdate();
+			});
 
 			$(".codeChoice").selectize({
 				create: false
