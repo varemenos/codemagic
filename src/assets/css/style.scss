@@ -458,6 +458,10 @@ header{
 	padding: $size;
 	background-color: lighten($bg-color, 15%);
 
+	h1:first-child{
+		margin-top: 0;
+	}
+
 	p{
 		line-height: $large;
 	}
