@@ -76,7 +76,6 @@ $(function () {
 		},
 		editorHeightUpdate: function (e) {
 			$(".editor-module.enabled .editor-wrap").height($("#result").height() / $(".editor-module.enabled").length - (2.5 * 16));
-			app.utils.resizeEditors();
 		},
 		popupOpen: function (e) {
 			app.utils.updateShareUrls(function () {
