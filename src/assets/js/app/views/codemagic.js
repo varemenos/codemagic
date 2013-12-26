@@ -219,6 +219,9 @@ $(function () {
 		},
 		toggleFullscreen: function () {
 			var target = document.querySelector('#result iframe');
+			if ($('#result').hasClass('hideResult')) {
+				app.utils.toggleHideResultMode();
+			}
 			app.utils.toggleFullscreenMode(target, function () {
 				app.utils.resizeEditors();
 			});
