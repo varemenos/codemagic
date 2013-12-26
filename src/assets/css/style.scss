@@ -126,7 +126,7 @@ header{
 		padding: 0;
 		color: $color;
 		background: transparent;
-		outline: none;
+		outline: 0;
 		border: 1px solid transparent;
 	}
 
@@ -381,7 +381,7 @@ header{
 	vertical-align: middle;
 	font-weight: bold;
 	background: transparent;
-	outline: none;
+	outline: 0;
 	border: none;
 	border-right: 1px solid darken($bg-color, 5%);
 
@@ -398,6 +398,12 @@ header{
 	&:hover{
 		cursor: pointer;
 		background-color: $bg-color;
+	}
+
+	&:active,
+	&:focus,
+	&:hover{
+		outline: 0;
 	}
 
 	&.placeholder{
