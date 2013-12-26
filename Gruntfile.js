@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 			build: {
 				files: [{
 					expand: true,
+					dot: true,
 					cwd: '<%= dirs.src %>/',
 					src: ['**'],
 					dest: '<%= dirs.build %>/'
