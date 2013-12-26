@@ -215,8 +215,10 @@ $(function () {
 		var items = $("select[name=jslibrary]").val();
 		var result = '';
 
-		for (var i = 0; i < items.length; i++) {
-			result+= '<script src="'+ items[i] + '"></script>';
+		if (items) {
+			for (var i = 0; i < items.length; i++) {
+				result+= '<script src="'+ items[i] + '"></script>';
+			}
 		}
 
 		return result;
