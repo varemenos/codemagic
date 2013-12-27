@@ -175,7 +175,7 @@ $(function () {
 				app.utils.toggleEditorState(target);
 			}
 
-			if (!app.editorResizeLock) {
+			if (!app.lock.editorResize) {
 				this.editorHeightUpdate();
 			}
 		},
@@ -201,7 +201,7 @@ $(function () {
 			$(target).toggleClass('enabled');
 		},
 		resizeInitialize: function (e) {
-			app.editorResizeLock = true;
+			app.lock.editorResize = true;
 
 			app.session.resize = e.pageY;
 			app.session.resizeTarget = app.session.resizeTarget || {};
@@ -271,11 +271,11 @@ $(function () {
 
 			this.$el.append(this.template());
 
-			app.unsavedWorkLock = false;
+			app.lock.unsavedWork = false;
 
 			// TODO: remove this event after the user saves
 			$(window).on('beforeunload', function (e) {
-				if(app.unsavedWorkLock){
+				if(app.lock.unsavedWork){
 					// why this mess? read here: https://developer.mozilla.org/en-US/docs/Web/Reference/Events/beforeunload
 					var msg = 'There are some unsaved changes. If you accept you will lose all your unsaved work!';
 					(e || window.event).returnValue = msg;
@@ -354,7 +354,7 @@ $(function () {
 
 			_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
 				editor.once('change', function() {
-					app.unsavedWorkLock = true;
+					app.lock.unsavedWork = true;
 				});
 
 				editor.commands.removeCommand('showSettingsMenu');
@@ -419,10 +419,10 @@ $(function () {
 			this.toggleEditorState(['html', 'css', 'js']);
 
 			// editor height setup
-			app.editorResizeLock = false;
+			app.lock.editorResize = false;
 			this.editorHeightUpdate();
 			$(window).on('resize', function (e) {
-				if (!app.editorResizeLock) {
+				if (!app.lock.editorResize) {
 					app.mvc.views.codemagicView.editorHeightUpdate();
 				} else {
 					$(window).off('resize');

@@ -5,6 +5,7 @@ app.mvc.views = app.mvc.views || {};
 app.mvc.models = app.mvc.models || {};
 app.mvc.collections = app.mvc.collections || {};
 app.session = app.session || {};
+app.lock = app.lock || {};
 
 $(function () {
 	'use strict';
