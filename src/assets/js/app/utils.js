@@ -250,7 +250,6 @@ $(function () {
 		return result;
 	};
 
-
 	app.utils.generateZippedBody = function () {
 		var content = app.utils.generateContent();
 		var script= '<script src="script.js"></script>';
