@@ -1,0 +1,562 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>codeMagic.gr</title><meta name="description" content="codeMagic is an online Playground with a really powerful Text Editor for HTML, CSS, Javascript (and derivatives). It includes a built-in console, preprocessors and various other features!"><meta author="Adonis K." content="adonisk.com"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/css/style.css"></head><body><div id="container" class="grid"></div><script src="assets/js/script.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-38829096-1', 'codemagic.gr');
+			ga('send', 'pageview');</script><script type="text/template" id="header-template"><div class="row">
+				<header>
+					<nav class="clearfix">
+						<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
+						<a id="new" href="#new" class="nav-btn navigating-btn hint--bottom" data-hint="New"><i class="fa fa-plus"></i></a>
+						<a id="login" href="#login" class="nav-btn navigating-btn hint--bottom" data-hint="Login"><i class="fa fa-sign-in"></i></a>
+						<a id="about" href="#about" class="nav-btn navigating-btn hint--bottom" data-hint="About"><i class="fa fa-user"></i></a>
+						<a id="information" href="#information" class="nav-btn navigating-btn hint--bottom" data-hint="Information"><i class="fa fa-question-circle"></i></a>
+						<% if(page === 'codemagic'){ %>
+							<span class="placeholder nav-btn">&nbsp;</span>
+							<button id="html-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle HTML panel visibility"><span>HTML</span></button>
+							<button id="css-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle CSS panel visibility"><span>CSS</span></button>
+							<button id="js-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Javascript panel visibility"><span>JS</span></button>
+							<button id="console-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Console panel visibility"><span>Console</span></button>
+							<span class="placeholder nav-btn">&nbsp;</span>
+							<button id="share" class="nav-btn hint--bottom" data-hint="Share"><i class="fa fa-share"></i></button>
+							<button id="fork" class="nav-btn hint--bottom" data-hint="Fork"><i class="fa fa-cutlery"></i></button>
+							<button id="save" class="nav-btn hint--bottom" data-hint="Save"><i class="fa fa-save"></i></button><a id="download" class="nav-btn hint--bottom" data-hint="Download Project as .zip" download="project.zip"><i class="fa fa-download"></i></a>
+							<span class="placeholder nav-btn">&nbsp;</span>
+							<button id="settings" class="nav-btn hint--bottom" data-hint="Settings"><i class="fa fa-cog"></i></button>
+							<button id="hide-editors" class="nav-btn hint--bottom" data-hint="Hide Editors"><i class="fa fa-caret-square-o-left"></i></button>
+							<button id="hide-result" class="nav-btn hint--bottom" data-hint="Hide Result"><i class="fa fa-caret-square-o-right"></i></button>
+							<button id="fullscreen" class="nav-btn hint--bottom" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+							<button id="prettify" class="nav-btn hint--bottom" data-hint="Prettify Code"><i class="fa fa-magic"></i></button>
+							<button id="update" class="nav-btn hint--bottom" data-hint="Execute"><i class="fa fa-play"></i></button>
+						<% } %>
+					</nav>
+				</header>
+			</div></script><script type="text/template" id="login-template"><div id="login" class="page">
+				<h1>Login page</h1>
+				<!--TODO: check whether the user is logged in -->
+				<form action="https://github.com/login/oauth/authorize" method="get" accept-charset="utf-8">
+					<input type="hidden" name="client_id" value="dda706afb25722f3f8a1">
+					<input type="hidden" name="redirect_uri" value="http://codemagic.gr#ghauth">
+					<input type="hidden" name="scope" value="gist,user:email">
+					<input type="hidden" name="state" value="">
+					<button type="submit"><i class="fa fa-github"></i> Sign in via Github</button>
+				</form>
+				<p>Does not work yet</p>
+			</div></script><script type="text/template" id="information-template"><div id="information" class="page">
+				<h1>Information</h1>
+				<p>
+					<a target="_blank" href="https://github.com/varemenos/codemagic" title="Source">Source</a><br>
+					<a target="_blank" href="https://github.com/varemenos/codemagic/issues" title="Report Bugs">Report Bugs</a><br>
+					<a target="_blank" href="https://github.com/varemenos/codemagic#license" title="License">License</a><br>
+					<span>There is a lot to be done (like attribution of libraries used, licensing, TOS etc).</span><br><br>
+					<span>Designed, developed and maintained by <a href="http://varemenos.com" title="Adonis K.">Adonis K.</a>, &copy; 2013</span>
+				</p>
+			</div></script><script type="text/template" id="home-template"><div id="home" class="page">
+				<h1>Home page</h1>
+				<h2>Click the "New" button to get started</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, enim, nostrum debitis doloremque ullam assumenda rem veritatis nisi possimus laudantium quibusdam voluptatem autem delectus ipsa non maiores numquam perferendis saepe dolore vitae minus vel excepturi optio esse recusandae reiciendis quaerat adipisci molestias voluptates dicta! Suscipit, laborum repellat odio dignissimos nemo.</p>
+			</div></script><script type="text/template" id="about-template"><div id="about" class="page">
+				<h1 id="codemagic">codeMagic</h1>
+
+				<h2 id="about">About</h2>
+
+				<p>
+					<a href="http://codemagic.gr">codeMagic</a> is an online Playground with a really powerful Text Editor for HTML, CSS, Javascript (and derivatives).
+				</p>
+
+				<p>It includes a built-in console, preprocessors and various other features!</p>
+
+				<h2 id="features">Features</h2>
+
+				<ol>
+					<li>Markup choices: HTML , Markdown, HAML, Jade</li>
+					<li>Stylesheet choices: CSS, LESS, SASS, Stylus</li>
+					<li>Console</li>
+					<li>Code sharing</li>
+					<li>Code prettifying</li>
+					<li>On-the-fly import of external libraries</li>
+					<li>Project export in a .zip file</li>
+					<li>Tons of built-in shortcuts to make your life easier (for example: Ctrl+Enter updates the result without the need to press the "update" button)</li>
+				</ol>
+
+				<h2 id="support">Support</h2>
+
+				(will change in the future)
+
+				<ul>
+					<li>Chrome 14+</li>
+					<li>Firefox 3.6+</li>
+					<li>Internet Explorer 9+</li>
+					<li>Opera 10+</li>
+					<li>Safari 4+</li>
+				</ul>
+			</div></script><script type="text/template" id="codemagic-template"><div class="row full-height-row">
+				<section id="editors" class="col-6-12">
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span id="html-option-title" class="editor-option-title">HTML</span>
+								<button class="editor-options-toggle hint--right" data-hint="Markup Options"><i class="fa fa-cog"></i></button>
+								<div id="html-editor-options" class="editor-options">
+									<div class="grid">
+										<div class="row">
+											<div class="col-11-12">
+												<select name="markupChoice" id="markupChoice" class="codeChoice">
+													<option value="HTML">HTML</option>
+													<option value="HAML">HAML</option>
+													<option value="Jade">Jade</option>
+													<option value="Markdown">Markdown</option>
+													option
+												</select>
+											</div>
+											<div class="col-1-12 align--right">
+												<button class="editor-options-close"><i class="fa fa-times"></i></button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="float--right">
+								<button id="html-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="html-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+							<span class="resizer--icon">&#8942;</span>
+						</div>
+					</div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span id="css-option-title" class="editor-option-title">CSS</span>
+								<button class="editor-options-toggle hint--right" data-hint="Stylesheet Options"><i class="fa fa-cog"></i></button>
+								<div id="css-editor-options" class="editor-options">
+									<div class="grid">
+										<div class="row">
+											<div class="col-11-12">
+												<select name="styleChoice" id="styleChoice" class="codeChoice">
+													<option value="CSS">CSS</option>
+													<option value="Less">Less</option>
+													<option value="SCSS">SCSS</option>
+													<option value="SASS">SASS</option>
+													<option value="Stylus">Stylus</option>
+													option
+												</select>
+											</div>
+											<div class="col-1-12 align--right">
+												<button class="editor-options-close"><i class="fa fa-times"></i></button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="float--right">
+								<button id="css-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="css-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+						<span class="resizer--icon">&#8942;</span>
+						</div>
+					</div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span id="script-option-title" class="editor-option-title">JS</span>
+								<button class="editor-options-toggle hint--right" data-hint="JavaScript Options"><i class="fa fa-cog"></i></button>
+								<div id="js-editor-options" class="editor-options">
+									<div class="grid">
+										<div class="row">
+											<div class="col-11-12">
+												<select name="scriptChoice" id="scriptChoice" class="codeChoice">
+													<option value="JavaScript">JavaScript</option>
+													<option value="CoffeeScript">CoffeeScript</option>
+													option
+												</select>
+											</div>
+											<div class="col-1-12 align--right">
+												<button class="editor-options-close"><i class="fa fa-times"></i></button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="float--right">
+								<button id="js-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="js-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+							<span class="resizer--icon">&#8942;</span>
+						</div>
+					</div>
+					<div class="editor-module">
+						<div class="editor-config clearfix">
+							<div class="float--left">
+								<span id="console-option-title" class="editor-option-title">Console</span>
+							</div>
+							<div class="float--right">
+								<button id="console-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+							</div>
+						</div>
+						<div class="editor-wrap">
+							<div id="console-editor" class="editor"></div>
+						</div>
+						<div class="resizer">
+							<span class="resizer--icon">&#8942;</span>
+						</div>
+					</div>
+				</section>
+				<section id="result" class="col-6-12">
+					<iframe name="codeMagic result" allowfullscreen="true" seamless></iframe>
+				</section>
+			</div>
+			<div id="settings-modal" class="popup">
+				<div class="grid">
+					<div class="row">
+						<h4 class="settings-title">Details</h4>
+					</div>
+					<div class="row">
+						<div class="col-4-12">
+							<!-- TODO: Load all saved settings/info from saved data when backend is implemented -->
+							<label class="settings-option settings-option-input vertical-spacing">
+								<input type="text" name="title" placeholder="Title">
+							</label>
+							<label class="settings-option settings-option-input vertical-spacing">
+								<input type="text" name="author" placeholder="Author">
+							</label>
+						</div>
+						<div class="col-8-12">
+							<label class="settings-option settings-option-textarea">
+								<textarea name="description" placeholder="Description" rows="6"></textarea>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="settings-title">Libraries</h4>
+					</div>
+					<div class="row">
+						<div class="col-6-12">
+							<label class="settings-option settings-option-select">
+								<span>External CSS Libraries</span>
+								<!-- TODO: update libraries -->
+								<select name="csslibrary" multiple>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.3/normalize.css" selected>Normalize.css 2.1.3</option>
+										<option value="http://necolas.github.com/normalize.css/1.1.3/normalize.css">Normalize.css 1.1.3</option>
+										<option value="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.9.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">animate.css 2.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.1/css/font-awesome.min.css">FontAwesome 4.0.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css">Twitter Bootstrap CSS 3.0.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 3.0.2 (No Icons)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 3.0.2 (responsive)</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.min.css">Foundation CSS 3.2.5</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-6-12">
+							<label class="settings-option settings-option-select">
+								<span>External JS Libraries</span>
+								<!-- TODO: update libraries -->
+								<select name="jslibrary" multiple>
+										<option value="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" selected>JQuery 2.0.3</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" selected>Prefixfree 1.0.7</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js">Modernizr 2.6.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js">JQueryUI 1.10.3</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js">CoffeeScript 1.6.3</option>
+										<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
+										<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js">AngularJS 1.2.1</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js">Raphael 2.1.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/three.js/r61/three.min.js">Three.js r61</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/URI.js/1.7.2/URI.min.js">URI.js 1.7.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js">SyntaxHighlighter 3.0.83</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js">RequireJS 2.1.9</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js">Backbone.js 1.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js">Backbone.js localStorage 1.1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js">Twitter Bootstrap JS 3.0.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js">Zepto 1.0</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js">Underscore.js 1.5.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/4.3.2/javascripts/foundation.min.js">Foundation JS 4.3.2</option>
+										<option value="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js">Knockout JS 3.0.0</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="settings-title">Plugins, Behavior & Appearance</h4>
+					</div>
+					<div class="row">
+						<div class="col-4-12">
+							<label class="settings-option settings-option-select">
+								<span>Theme</span>
+								<select name="theme">
+									<optgroup label="Bright">
+										<option value="chrome">Chrome</option>
+										<option value="clouds">Clouds</option>
+										<option value="crimson_editor">Crimson Editor</option>
+										<option value="dawn">Dawn</option>
+										<option value="dreamweaver">Dreamweaver</option>
+										<option value="eclipse">Eclipse</option>
+										<option value="github">GitHub</option>
+										<option value="katzenmilch">Katzenmilch</option>
+										<option value="kuroir">Kuroir</option>
+										<option value="solarized_light">Solarized Light</option>
+										<option value="textmate">TextMate</option>
+										<option value="tomorrow">Tomorrow</option>
+										<option value="xcode">XCode</option>
+									</optgroup>
+									<optgroup label="Dark">
+										<option value="ambiance">Ambiance</option>
+										<option value="chaos">Chaos</option>
+										<option value="clouds_midnight">Clouds Midnight</option>
+										<option value="cobalt">Cobalt</option>
+										<option value="idle_fingers">Idle Fingers</option>
+										<option value="kr_theme">kr Theme</option>
+										<option value="merbivore">Merbivore</option>
+										<option value="merbivore_soft">Merbivore Soft</option>
+										<option value="mono_industrial">Mono Industrial</option>
+										<option value="monokai">Monokai</option>
+										<option value="pastel_on_dark">Pastel on Dark</option>
+										<option value="solarized_dark">Solarized Dark</option>
+										<option value="terminal">Terminal</option>
+										<option value="tomorrow_night">Tomorrow Night</option>
+										<option value="tomorrow_night_blue">Tomorrow Night Blue</option>
+										<option value="tomorrow_night_bright">Tomorrow Night Bright</option>
+										<option value="tomorrow_night_eighties">Tomorrow Night Eighties</option>
+										<option value="twilight">Twilight</option>
+										<option value="vibrant_ink">Vibrant Ink</option>
+									</optgroup>
+								</select>
+							</label>
+						</div>
+						<div class="col-4-12">
+							<label class="settings-option settings-option-select">
+								<span>Font Size</span>
+								<select name="fontSize">
+									<option value="10">10px</option>
+									<option value="11">11px</option>
+									<option value="12">12px</option>
+									<option value="13">13px</option>
+									<option value="14">14px</option>
+									<option value="15">15px</option>
+									<option value="16">16px</option>
+									<option value="17">17px</option>
+									<option value="18">18px</option>
+									<option value="19">19px</option>
+									<option value="20">20px</option>
+									<option value="21">21px</option>
+									<option value="22">22px</option>
+									<option value="23">23px</option>
+									<option value="24">24px</option>
+									<option value="25">25px</option>
+									<option value="26">26px</option>
+									<option value="27">27px</option>
+									<option value="28">28px</option>
+									<option value="29">29px</option>
+									<option value="30">30px</option>
+									<option value="31">31px</option>
+									<option value="32">32px</option>
+									<option value="33">33px</option>
+									<option value="34">34px</option>
+									<option value="35">35px</option>
+									<option value="36">36px</option>
+									<option value="37">37px</option>
+									<option value="38">38px</option>
+									<option value="39">39px</option>
+									<option value="30">30px</option>
+									<option value="31">31px</option>
+									<option value="32">32px</option>
+									<option value="33">33px</option>
+									<option value="34">34px</option>
+									<option value="35">35px</option>
+									<option value="36">36px</option>
+									<option value="37">37px</option>
+									<option value="38">38px</option>
+									<option value="39">39px</option>
+									<option value="40">40px</option>
+									<option value="41">41px</option>
+									<option value="42">42px</option>
+									<option value="43">43px</option>
+									<option value="44">44px</option>
+									<option value="45">45px</option>
+									<option value="46">46px</option>
+									<option value="47">47px</option>
+									<option value="48">48px</option>
+									<option value="49">49px</option>
+									<option value="50">50px</option>
+									<option value="51">51px</option>
+									<option value="52">52px</option>
+									<option value="53">53px</option>
+									<option value="54">54px</option>
+									<option value="55">55px</option>
+									<option value="56">56px</option>
+									<option value="57">57px</option>
+									<option value="58">58px</option>
+									<option value="59">59px</option>
+									<option value="60">60px</option>
+									<option value="61">61px</option>
+									<option value="62">62px</option>
+									<option value="63">63px</option>
+									<option value="64">64px</option>
+									<option value="65">65px</option>
+									<option value="66">66px</option>
+									<option value="67">67px</option>
+									<option value="68">68px</option>
+									<option value="69">69px</option>
+									<option value="70">70px</option>
+									<option value="71">71px</option>
+									<option value="72">72px</option>
+									<option value="73">73px</option>
+									<option value="74">74px</option>
+									<option value="75">75px</option>
+									<option value="76">76px</option>
+									<option value="77">77px</option>
+									<option value="78">78px</option>
+									<option value="79">79px</option>
+									<option value="80">80px</option>
+									<option value="81">81px</option>
+									<option value="82">82px</option>
+									<option value="83">83px</option>
+									<option value="84">84px</option>
+									<option value="85">85px</option>
+									<option value="86">86px</option>
+									<option value="87">87px</option>
+									<option value="88">88px</option>
+									<option value="89">89px</option>
+									<option value="90">90px</option>
+									<option value="91">91px</option>
+									<option value="92">92px</option>
+									<option value="93">93px</option>
+									<option value="94">94px</option>
+									<option value="95">95px</option>
+									<option value="96">96px</option>
+									<option value="97">97px</option>
+									<option value="98">98px</option>
+									<option value="99">99px</option>
+									<option value="100">100px</option>
+								</select>
+							</label>
+						</div>
+						<!-- TODO: Give the users the option to switch between tabs and spaces -->
+						<div class="col-4-12">
+							<label class="settings-option settings-option-select">
+								<span>Tab Size</span>
+								<select name="tabSize">
+									<option value="2">2px</option>
+									<option value="4">4px</option>
+									<option value="8">8px</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableEmmet" checked>
+								<span>Emmet Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="useWorker" checked>
+								<span>Code-Linting Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableBasicAutocompletion" checked>
+								<span>Auto-Complete Plugin</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableSnippets" checked>
+								<span>Snippets Plugin</span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="enableLiveAutoComplete" checked>
+								<span>Live Auto-Complete</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="behavioursEnabled" checked>
+								<span>Bracket Auto-Pairing</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="useSoftTabs">
+								<span>Indent with Spaces</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="showFoldWidgets" checked>
+								<span>Show Fold-Triangles</span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="showGutter" checked>
+								<span>Show Gutter</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="wrap" checked>
+								<span>Wrap Lines</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="showPrintMargin">
+								<span>Vertical Rule</span>
+							</label>
+						</div>
+						<div class="col-3-12">
+							<label class="settings-option settings-option-checkbox">
+								<input type="checkbox" name="showInvisibles">
+								<span>Invisible Chars</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<button class="popup-close"><i class="fa fa-times"></i> Close</button>
+			</div>
+			<div id="share-modal" class="popup">
+				<div>
+					<a href="./" class="facebook" title="Share on Facebook" target="_blank">
+						<i class="fa fa-facebook-square"></i><span>Share on Facebook</span>
+					</a>
+					<a href="./" class="twitter" title="Tweet on Twitter" target="_blank">
+						<i class="fa fa-twitter-square"></i><span>Tweet on Twitter</span>
+					</a>
+					<a href="./" class="google-plus" title="Share on Google+" target="_blank">
+						<i class="fa fa-google-plus-square"></i><span>Share on Google+</span>
+					</a>
+					<a href="./" class="linkedin" title="Share on LinkedIn" target="_blank">
+						<i class="fa fa-linkedin-square"></i><span>Share on LinkedIn</span>
+					</a>
+					<a href="./" class="pinterest" title="Share on Pinterest" target="_blank">
+						<i class="fa fa-pinterest-square"></i><span>Share on Pinterest</span>
+					</a>
+				</div>
+				<button class="popup-close"><i class="fa fa-times"></i> Close</button>
+			</div>
+			<div id="overlay"></div></script></body></html>
