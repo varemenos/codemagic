@@ -260,8 +260,10 @@ $(function () {
 		updateResults: function () {
 			var result = app.utils.generateResult();
 
+			var iframeContainer = $('#result');
+			iframeContainer.html('<iframe name="codeMagic result" allowfullscreen="true" seamless></iframe>');
+
 			var iframe = document.querySelector('#result iframe');
-			$(iframe).empty();
 
 			app.utils.consoleClear();
 			app.utils.write2iframe(iframe, result);
