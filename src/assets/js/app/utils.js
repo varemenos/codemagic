@@ -153,6 +153,8 @@ $(function () {
 			result = marked(app.editors.html.getValue());
 		} else if ($('#markupChoice').val() === 'HAML') {
 			app.utils.consoleLog('HAML support is not ready to use yet.');
+		} else if ($('#markupChoice').val() === 'Slim') {
+			app.utils.consoleLog('Slim support is not ready to use yet.');
 		} else if ($('#markupChoice').val() === 'Jade') {
 			app.utils.consoleLog('Jade support is not ready to use yet.');
 		} else {
