@@ -265,7 +265,6 @@ $(function () {
 
 			var iframe = document.querySelector('#result iframe');
 
-			app.utils.consoleClear();
 			app.utils.write2iframe(iframe, result);
 		},
 		initialize: function () {
