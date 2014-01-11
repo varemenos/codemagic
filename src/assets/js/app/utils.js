@@ -136,8 +136,7 @@ $(function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
 
-		var result = '<script>window.eval = {};window.onerror=function(msg,url,line) {parent.document.querySelector("#console .editor-module").classList.add("enabled");';
-		result += 'parent.document.querySelector("#console-editor-toggle").classList.add("enabled");';
+		var result = '<script>window.eval = {};window.onerror=function(msg,url,line) {';
 		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
 		result += 'console.log=function() {var str="",count=0;for(var i=0;';
 		result += 'i<arguments.length;i++) {if (typeof arguments[i]=="object") {str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)) {count++;';
