@@ -176,8 +176,12 @@ $(function () {
 				}
 				result = tree.toCSS();
 			});
-		} else if ($('#styleChoice').val() === 'SASS' || $('#styleChoice').val() === 'SCSS') {
-			app.utils.consoleLog('SASS/SCSS support is not ready to use yet.');
+		} else if ($('#styleChoice').val() === 'SCSS') {
+			// TODO: better error handling in console
+			result = Sass.compile(app.editors.css.getValue());
+			if (result.message) {
+				$('#console-editor').append('<code>> ' + result.message + '</code><br>');
+			}
 		} else if ($('#styleChoice').val() === 'Stylus') {
 			app.utils.consoleLog('Stylus support is not ready to use yet.');
 		} else {
