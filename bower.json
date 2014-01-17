@@ -13,6 +13,7 @@
     "chosen": "~1.0.0",
     "verepo": "~0.0.1",
     "js-beautify": "~1.4.2",
-    "selectize": "~0.8.2"
+    "selectize": "~0.8.2",
+    "sass.js": "~0.2.0"
   }
 }

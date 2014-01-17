@@ -181,7 +181,11 @@ $(function () {
 				result = tree.toCSS();
 			});
 		} else if ($('#styleChoice').val() === 'SCSS') {
-			app.utils.consoleLog('SCSS support is not implemented yet.');
+			// TODO: better error handling in console
+			result = Sass.compile(app.editors.css.getValue());
+			if (result.message) {
+				$('#console-editor').append('<code>> ' + result.message + '</code><br>');
+			}
 		} else if ($('#styleChoice').val() === 'Stylus') {
 			app.utils.consoleLog('Stylus support is not implemented yet.');
 		} else {
