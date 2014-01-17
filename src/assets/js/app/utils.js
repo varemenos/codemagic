@@ -149,13 +149,17 @@ $(function () {
 	app.utils.generateContent = function () {
 		var result = '';
 		if ($('#markupChoice').val() === 'Markdown') {
+			marked.setOptions({
+				breaks: true,
+				sanitize: false
+			});
 			result = marked(app.editors.html.getValue());
 		} else if ($('#markupChoice').val() === 'HAML') {
-			app.utils.consoleLog('HAML support is not ready to use yet.');
+			app.utils.consoleLog('HAML support is not implemented yet.');
 		} else if ($('#markupChoice').val() === 'Slim') {
-			app.utils.consoleLog('Slim support is not ready to use yet.');
+			app.utils.consoleLog('Slim support is not implemented yet.');
 		} else if ($('#markupChoice').val() === 'Jade') {
-			app.utils.consoleLog('Jade support is not ready to use yet.');
+			app.utils.consoleLog('Jade support is not implemented yet.');
 		} else {
 			result = app.editors.html.getValue();
 		}
@@ -177,13 +181,9 @@ $(function () {
 				result = tree.toCSS();
 			});
 		} else if ($('#styleChoice').val() === 'SCSS') {
-			// TODO: better error handling in console
-			result = Sass.compile(app.editors.css.getValue());
-			if (result.message) {
-				$('#console-editor').append('<code>> ' + result.message + '</code><br>');
-			}
+			app.utils.consoleLog('SCSS support is not implemented yet.');
 		} else if ($('#styleChoice').val() === 'Stylus') {
-			app.utils.consoleLog('Stylus support is not ready to use yet.');
+			app.utils.consoleLog('Stylus support is not implemented yet.');
 		} else {
 			result = app.editors.css.getValue();
 		}
@@ -208,7 +208,7 @@ $(function () {
 		var result = '';
 
 		if ($('#scriptChoice').val() === 'CoffeeScript') {
-			app.utils.consoleLog('CoffeeScript support is not ready to use yet.');
+			app.utils.consoleLog('CoffeeScript support is not implemented yet.');
 		} else {
 			result = app.editors.js.getValue();
 		}
