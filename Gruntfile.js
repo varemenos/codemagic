@@ -46,6 +46,7 @@ module.exports = function (grunt) {
 			},
 			build: {
 				src: [
+					'<%= dirs.build %>/<%= dirs.js %>/libs/sass.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/jquery.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/underscore.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/backbone.js',
@@ -57,7 +58,6 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/libs/marked.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/jszip.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/less.js',
-					'<%= dirs.build %>/<%= dirs.js %>/libs/sass.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/utils.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/routers/*.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/*.js',
