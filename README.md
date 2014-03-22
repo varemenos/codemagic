@@ -2,7 +2,7 @@
 
 ## About
 
-__[Codemagic.gr](http://codemagic.gr) is a powerful online web-development Code Editor that lives inside your browser__! It's open-source and it follows the philosophy of client-side and fast execution. It's built for creative people who do a lot of web-related experiments and want to test stuff in real-time without the hassle of preparing project files and whatnot. It is also a great place for people to come and learn various web-technologies like HTML, CSS, JS and their derivatives.
+__[Codemagic.gr](http://codemagic.gr) is a powerful online Code Editor for web-development that lives inside your browser__! It's open-source and it follows the philosophy of client-side and fast execution. It's built for creative people who do a lot of web-related experiments and want to test stuff in real-time without the hassle of preparing project files and whatnot. It is also a great place for people to come and learn various web-technologies like HTML, CSS, JS and their derivatives.
 
 ### Web-related Technologies
 
@@ -12,7 +12,7 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online web-development Code 
 
 ## Features:
 
-* As much as possible client-side execution
+* Speed
 * Syntax Highlighting
 * Color Schemes
 * Intelisense (with Ctrl + Space)
