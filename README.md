@@ -10,14 +10,15 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online Code Editor for web-d
 * Stylesheet: CSS, LESS, SASS
 * Script: Javascript
 
-## Features:
+## Feature highlights:
 
 * Speed
 * Syntax Highlighting
 * Color Schemes
 * Intelisense (with Ctrl + Space)
 * Live linting
-* Supports [Emmet](http://emmet.io)'s magic
+* Vim and Emacs keybinding
+* [Emmet](http://emmet.io) magic
 * Multiple cursors and selections
 * Bracket auto-pairing
 * Code-folding
@@ -33,6 +34,14 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online Code Editor for web-d
 * Markup: HAML, Slim, Jade
 * Stylesheet: Stylus
 * Script: CoffeeScript
+
+### Wishlist
+
+* Live-reload
+* Sublime Text keybinding
+* Github-gist and Google Drive integration
+* real-time collaboration
+* Importing projects
 
 ### Abilities:
 
