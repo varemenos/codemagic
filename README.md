@@ -27,7 +27,7 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 * Intelisense (with Ctrl + Space)
 * Live linting
 * Vim and Emacs keybinding
-* [Emmet](http://emmet.io) magic
+* Emmet
 * Multiple cursors and selections
 * Bracket auto-pairing
 * Code-folding
