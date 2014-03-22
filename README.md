@@ -13,7 +13,7 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 * Stylesheet: CSS, LESS, SASS
 * Script: Javascript
 
-### Coming soon Languages
+### Language wishlist
 
 * Markup: HAML, Slim, Jade
 * Stylesheet: Stylus
@@ -43,9 +43,9 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 * `Ctrl` + `Enter` : Executes the code
 
 
-### Wishlist
+### Feature wishlist
 
-* Live-reload
+* Automatic refresh
 * Sublime Text keybinding
 * Github-gist and Google Drive integration
 * real-time collaboration
