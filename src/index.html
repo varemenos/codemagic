@@ -305,7 +305,17 @@
 						<h4 class="settings-title">Plugins, Behavior & Appearance</h4>
 					</div>
 					<div class="row">
-						<div class="col-4-12">
+						<div class="col-3-12">
+							<label class="settings-option settings-option-select">
+								<span>Key Binding</span>
+								<select name="keybinding">
+										<option value="default" selected>Default</option>
+										<option value="vim">Vim</option>
+										<option value="emacs">Emacs</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-3-12">
 							<label class="settings-option settings-option-select">
 								<span>Theme</span>
 								<select name="theme">
@@ -348,7 +358,7 @@
 								</select>
 							</label>
 						</div>
-						<div class="col-4-12">
+						<div class="col-3-12">
 							<label class="settings-option settings-option-select">
 								<span>Font Size</span>
 								<select name="fontSize">
@@ -457,7 +467,7 @@
 							</label>
 						</div>
 						<!-- TODO: Give the users the option to switch between tabs and spaces -->
-						<div class="col-4-12">
+						<div class="col-3-12">
 							<label class="settings-option settings-option-select">
 								<span>Tab Size</span>
 								<select name="tabSize">

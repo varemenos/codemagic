@@ -53,6 +53,18 @@ $(function () {
 			if (targetName === 'theme') {
 				result = target.val();
 				app.utils.setTheme(result);
+			} else if (targetName === 'keybinding') {
+				result = target.val();
+
+				if (result === 'default') {
+					result = null;
+				} else {
+					result = 'ace/keyboard/' + result;
+				}
+
+				_.each([app.editors.html, app.editors.css, app.editors.js], function(editor) {
+					editor.setKeyboardHandler(result);
+				});
 			} else if (targetName === 'title' || targetName === 'author' || targetName === 'description') {
 				app.utils.setSettings(targetName, target.val());
 			} else if ($.inArray(targetName, editorOptions) !== -1) {
