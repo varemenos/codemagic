@@ -25,7 +25,7 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 * Syntax Highlighting
 * Color Schemes
 * Intelisense (with Ctrl + Space)
-* Live linting
+* Realtime linting for HTML, CSS and JavaScript
 * Vim and Emacs keybinding
 * Emmet
 * Multiple cursors and selections
