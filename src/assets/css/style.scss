@@ -317,6 +317,10 @@ header{
 	}
 }
 
+.settings-option-select{
+	width: 100%;
+}
+
 .settings-title{
 	@include borderbox;
 	display: block;

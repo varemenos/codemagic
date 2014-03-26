@@ -445,7 +445,7 @@ $(function () {
 			$(".codeChoice").selectize({
 				create: false
 			});
-			$("#settings-modal select").selectize({
+			$(".settings-option-select select").selectize({
 				create: false
 			});
 
