@@ -449,6 +449,10 @@ $(function () {
 				create: false
 			});
 
+			$('.settings-option-checkbox').iCheck({
+				checkboxClass: 'icheckbox_square-blue',
+			});
+
 			// TODO: parameterize these depending on the editor's settings
 			// https://github.com/einars/js-beautify#options
 			app.prettify = app.prettify || {};

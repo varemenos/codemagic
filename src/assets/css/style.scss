@@ -1,6 +1,7 @@
 @import "_verepo";
 @import "_font-awesome";
 @import "_selectize.default";
+@import "_icheck";
 
 // =============================
 // codeMagic style
@@ -265,14 +266,11 @@ header{
 	@include box-shadow(0 1px 2px darken($bg-color, 15%));
 }
 
-#settings-modal{
 	label{
 		@include borderbox;
 		display: block;
 		width: 100%;
 		padding: $small;
-		background-color: lighten($bg-color, 5%);
-		border: 1px solid $bg-color;
 
 		&:focus,
 		&:hover{
@@ -296,29 +294,36 @@ header{
 			background-color: lighten($bg-color, 50%);
 			border: 1px solid darken($bg-color, 5%);
 		}
-
-		&.settings-option-checkbox{
-			@include user-select(none);
-		}
-
-		&.settings-option-checkbox input{
-			vertical-align: middle;
-		}
-
-		&.settings-option-input,
-		&.settings-option-select,
-		&.settings-option-textarea{
-			& span{
-				display: inline-block;
-				padding-bottom: $xsmall;
-				vertical-align: middle;
-			}
-		}
+	}
+#settings-modal{
+	label{
+		background-color: lighten($bg-color, 5%);
+		border: 1px solid $bg-color;
 	}
 }
 
-.settings-option-select{
-	width: 100%;
+.settings-option-checkbox{
+	@include user-select(none);
+}
+
+.settings-option-checkbox input{
+	vertical-align: middle;
+}
+
+.settings-option-input,
+.settings-option-select,
+.settings-option-textarea{
+	& span{
+		display: inline-block;
+		padding-bottom: $xsmall;
+		vertical-align: middle;
+	}
+}
+
+label{
+	.settings-option-select{
+		width: 100%;
+	}
 }
 
 .settings-title{
