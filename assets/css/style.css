@@ -2659,6 +2659,11 @@ table {
   clear: both;
 }
 
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
 @media only screen and (min-width: 1024px) {
   /*! Hint.css - v1.3.1 - 2013-11-23
   * http://kushagragour.in/lab/hint/
@@ -3630,4 +3635,8 @@ label .settings-option-select {
 }
 .page p {
   line-height: 1.5rem;
+}
+
+#home {
+  text-align: center;
 }
