@@ -169,11 +169,16 @@ $(function () {
 
 	app.utils.generateStyle = function () {
 		var result = '';
+		var styleValue = app.editors.css.getValue();
+
+		if (app.session.css.autoprefixer) {
+			styleValue = autoprefixer().process(styleValue).css;
+		}
 
 		if ($('#styleChoice').val() === 'Less') {
 			var parser = new(less.Parser)();
 
-			parser.parse(app.editors.css.getValue(), function (e, tree) {
+			parser.parse(styleValue, function (e, tree) {
 				if (e) {
 					// TODO: better error handling in console
 					$('#console-editor').append('<code>> ' + e.message + '</code><br>');
@@ -182,14 +187,14 @@ $(function () {
 			});
 		} else if ($('#styleChoice').val() === 'SCSS') {
 			// TODO: better error handling in console
-			result = Sass.compile(app.editors.css.getValue());
+			result = Sass.compile(styleValue);
 			if (result.message) {
 				$('#console-editor').append('<code>> ' + result.message + '</code><br>');
 			}
 		} else if ($('#styleChoice').val() === 'Stylus') {
 			app.utils.consoleLog('Stylus support is not implemented yet.');
 		} else {
-			result = app.editors.css.getValue();
+			result = styleValue;
 		}
 
 		return result;

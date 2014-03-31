@@ -26,6 +26,7 @@ $(function () {
 			'change .settings-option-checkbox input[type=checkbox]': 'updateSettings',
 			'change .settings-option-textarea textarea': 'updateSettings',
 			'change .settings-option-select select': 'updateSettings',
+			'ifToggled .settings-option-autoprefixer > div': 'toggleAutoprefixer',
 		},
 		updateSettings: function (e) {
 			var target = $(e.currentTarget);
@@ -212,6 +213,9 @@ $(function () {
 		toggleEditorOptions: function (target) {
 			$(target).toggleClass('enabled');
 		},
+		toggleAutoprefixer: function () {
+			app.session.css.autoprefixer = !$('.settings-option-autoprefixer > div').hasClass('checked');
+		},
 		resizeInitialize: function (e) {
 			app.lock.editorResize = true;
 
@@ -314,7 +318,8 @@ $(function () {
 				css : {
 					state : true,
 					mode : 'css',
-					content : ''
+					content : '',
+					autoprefixer : true
 				},
 				js : {
 					state : true,
@@ -451,6 +456,7 @@ $(function () {
 
 			$('.settings-option-checkbox').iCheck({
 				checkboxClass: 'icheckbox_square-blue',
+				handle: 'checkbox',
 			});
 
 			// TODO: parameterize these depending on the editor's settings
