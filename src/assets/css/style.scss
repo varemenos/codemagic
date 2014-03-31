@@ -22,6 +22,10 @@
 	@include clearfix;
 }
 
+.hidden{
+	@include hidden;
+}
+
 @media only screen and (min-width: 1024px){
 	@import "_hint";
 }
@@ -480,4 +484,8 @@ label{
 	p{
 		line-height: $large;
 	}
+}
+
+#home{
+	text-align: center;
 }

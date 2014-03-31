@@ -57,15 +57,15 @@
 		<script type="text/template" id="login-template">
 			<div id="login" class="page">
 				<h1>Login page</h1>
+				<h2>Does not work yet</h2>
 				<!--TODO: check whether the user is logged in -->
 				<form action="https://github.com/login/oauth/authorize" method="get" accept-charset="utf-8">
 					<input type="hidden" name="client_id" value="dda706afb25722f3f8a1">
 					<input type="hidden" name="redirect_uri" value="http://codemagic.gr#ghauth">
 					<input type="hidden" name="scope" value="gist,user:email">
 					<input type="hidden" name="state" value="">
-					<button type="submit"><i class="fa fa-github"></i> Sign in via Github</button>
+					<button type="submit" disabled><i class="fa fa-github"></i> Sign in via Github</button>
 				</form>
-				<p>Does not work yet</p>
 			</div>
 		</script>
 
@@ -76,7 +76,7 @@
 					<a target="_blank" href="https://github.com/varemenos/codemagic" title="Source">Source</a><br>
 					<a target="_blank" href="https://github.com/varemenos/codemagic/issues" title="Report Bugs">Report Bugs</a><br>
 					<a target="_blank" href="https://github.com/varemenos/codemagic#license" title="License">License</a><br>
-					<span>Currently in alpha stage! so there is a lot to be done (like implmenting a backend, give proper attribution of libraries used, TOS etc).</span><br><br>
+					<span>Currently in alpha stage! so there is a lot to be done (like implementing a backend, give proper attribution of libraries used, TOS etc).</span><br><br>
 					<span>Designed, developed and maintained by <a href="http://adonisk.com" title="Adonis K.">Adonis K.</a>, &copy; 2014</span>
 				</p>
 			</div>
@@ -84,11 +84,10 @@
 
 		<script type="text/template" id="home-template">
 			<div id="home" class="page">
-				<h1><img src="http://i.imgur.com/L8Uwiza.png" alt="codemagic.gr"></h1>
-				<h2>Click the "New" button to get started</h2>
-				<h3>Currently in alpha stage!</h3>
-				<p>So there is a lot to be done, like implmenting a backend, give proper attribution of libraries used, TOS etc.<br>
-				<a href="http://codemagic.gr/#new">Click here to proceed</a></p>
+				<img src="http://i.imgur.com/L8Uwiza.png" alt="codemagic.gr">
+				<h1 class="hidden">codemagic.gr</h1>
+				<h2>Currently in alpha stage!</h2>
+				<h3>Click <a href="http://codemagic.gr/#new">here</a> or the <i class="fa fa-plus"></i> button to proceed.</h3>
 			</div>
 		</script>
 
