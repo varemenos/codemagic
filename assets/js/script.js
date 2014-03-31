@@ -18133,75 +18133,76 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
   }
 })(window.jQuery || window.Zepto);
 
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.autoprefixer=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+!function(e){"object"==typeof exports?module.exports=e():"function"==typeof define&&define.amd?define(e):"undefined"!=typeof window?window.autoprefixer=e():"undefined"!=typeof global?global.autoprefixer=e():"undefined"!=typeof self&&(self.autoprefixer=e())}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
   module.exports = {
     android: {
       prefix: "-webkit-",
       minor: true,
-      versions: [4.4, 4.3, 4.2, 4.1, 4, 3, 2.3, 2.2, 2.1],
-      popularity: [0.116989, 0.818925, 0.818925, 2.30729, 1.0464, 0.00649939, 1.29988, 0.0844921, 0.0259976]
+      future: [4.4],
+      versions: [4.3, 4.2, 4.1, 4, 3, 2.3, 2.2, 2.1],
+      popularity: [0.393833, 0.393833, 1.98513, 1.05377, 0.00532207, 1.3997, 0.0904751, 0.0266103]
     },
     bb: {
       prefix: "-webkit-",
       minor: true,
       versions: [10, 7],
-      popularity: [0, 0.136974]
+      popularity: [0, 0.160821]
     },
     chrome: {
       prefix: "-webkit-",
-      future: [36, 35, 34],
-      versions: [33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4],
-      popularity: [2.44037, 27.2658, 1.60432, 0.33894, 0.459452, 0.256088, 0.30128, 0.22596, 0.120512, 0.067788, 0.082852, 0.097916, 0.60256, 0.045192, 0.03766, 0.07532, 0.030128, 0.03766, 0.060256, 0.045192, 0.052724, 0.060256, 0.120512, 0.03766, 0.015064, 0.022596, 0.022596, 0.030128, 0.022596, 0.022596]
+      future: [33, 32],
+      versions: [31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4],
+      popularity: [14.7206, 15.7521, 0.631684, 0.415792, 0.335832, 0.391804, 0.263868, 0.175912, 0.191904, 0.231884, 0.47976, 0.03998, 0.03998, 0.095952, 0.031984, 0.047976, 0.071964, 0.055972, 0.055972, 0.063968, 0.111944, 0.03998, 0.023988, 0.031984, 0.023988, 0.031984, 0.023988, 0.023988]
     },
     ff: {
       prefix: "-moz-",
-      future: [31, 30, 29],
-      versions: [28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3.6, 3.5, 3, 2],
-      popularity: [0.293748, 6.04066, 6.51518, 0.241024, 0.256088, 0.135576, 0.128044, 0.143108, 0.11298, 0.097916, 0.090384, 0.128044, 0.173236, 0.105448, 0.07532, 0.07532, 0.180768, 0.07532, 0.090384, 0.045192, 0.067788, 0.030128, 0.045192, 0.03766, 0.052724, 0.233492, 0.03766, 0.07532, 0.015064]
+      future: [28, 27],
+      versions: [26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3.6, 3.5, 3, 2],
+      popularity: [0.415792, 9.51524, 2.47076, 0.295852, 0.1999, 0.191904, 0.143928, 0.11994, 0.095952, 0.191904, 0.23988, 0.135932, 0.087956, 0.087956, 0.191904, 0.087956, 0.103948, 0.055972, 0.063968, 0.03998, 0.047976, 0.03998, 0.063968, 0.311844, 0.03998, 0.087956, 0.015992]
     },
     ie: {
       prefix: "-ms-",
       versions: [11, 10, 9, 8, 7, 6, 5.5],
-      popularity: [6.68983, 3.50751, 2.98874, 5.19546, 0.185829, 0.240029, 0.009298]
+      popularity: [1.28176, 9.68717, 4.62585, 7.55911, 0.435471, 0.246493, 0.009298]
     },
     ios: {
       prefix: "-webkit-",
       versions: [7, 6.1, 6, 5.1, 5, 4.3, 4.2, 4.1, 4, 3.2],
-      popularity: [4.20662, 0.468007, 0.468007, 0.1333275, 0.1333275, 0.0108839, 0.0108839, 0.00544195, 0.00544195, 0]
+      popularity: [2.91427, 0.517185, 0.517185, 0.154512, 0.154512, 0.015022, 0.015022, 0.004292, 0.004292, 0.004292]
     },
     opera: {
       prefix: "-o-",
-      future: [21, 20],
-      versions: [19, 18, 17, 16, 15, 12.1, 12, 11.6, 11.5, 11.1, 11, 10.6, 10.5, 10.1, 10, 9.6, 9.5],
-      popularity: [0.361536, 0.082852, 0.022596, 0.015064, 0.015064, 0.391664, 0.030128, 0.022596, 0.007532, 0.008219, 0.008219, 0.007532, 0.008392, 0.007532, 0.007532, 0.0038115, 0.0038115]
+      future: [18],
+      versions: [17, 16, 15, 12.1, 12, 11.6, 11.5, 11.1, 11, 10.6, 10.5, 10.1, 10, 9.6, 9.5],
+      popularity: [0.191904, 0.03998, 0.023988, 0.447776, 0.03998, 0.023988, 0.015992, 0.008219, 0.008219, 0.007996, 0.008392, 0.007996, 0.007996, 0.003998, 0.003998]
     },
     safari: {
       prefix: "-webkit-",
       versions: [7, 6.1, 6, 5.1, 5, 4, 3.2, 3.1],
-      popularity: [1.26538, 0.760732, 0.497112, 0.881244, 0.256088, 0.090384, 0.008692, 0]
+      popularity: [0.751624, 0.583708, 0.943528, 1.0075, 0.295852, 0.111944, 0.008692, 0]
     }
   };
 
 }).call(this);
 
-},{}],2:[function(_dereq_,module,exports){
+},{}],2:[function(require,module,exports){
 (function() {
   module.exports = {
     "::placeholder": {
       selector: true,
-      browsers: ["android 4.4", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4 old", "ff 5 old", "ff 6 old", "ff 7 old", "ff 8 old", "ff 9 old", "ff 10 old", "ff 11 old", "ff 12 old", "ff 13 old", "ff 14 old", "ff 15 old", "ff 16 old", "ff 17 old", "ff 18 old", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ie 10", "ie 11", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ie 10", "ie 11", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "::selection": {
       selector: true,
-      browsers: ["ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31"]
+      browsers: ["ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28"]
     },
     ":fullscreen": {
       selector: true,
-      browsers: ["chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ie 11", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ie 11", "opera 15", "opera 16", "opera 17", "opera 18", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "@keyframes": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "align-content": {
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4 2009", "chrome 5 2009", "chrome 6 2009", "chrome 7 2009", "chrome 8 2009", "chrome 9 2009", "chrome 10 2009", "chrome 11 2009", "chrome 12 2009", "chrome 13 2009", "chrome 14 2009", "chrome 15 2009", "chrome 16 2009", "chrome 17 2009", "chrome 18 2009", "chrome 19 2009", "chrome 20 2009", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ie 10", "ios 3.2 2009", "ios 4 2009", "ios 4.1 2009", "ios 4.2 2009", "ios 4.3 2009", "ios 5 2009", "ios 5.1 2009", "ios 6 2009", "ios 6.1 2009", "ios 7", "opera 15", "opera 16", "safari 3.1 2009", "safari 3.2 2009", "safari 4 2009", "safari 5 2009", "safari 5.1 2009", "safari 6 2009", "safari 6.1 2009", "safari 7"]
@@ -18213,34 +18214,34 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4 2009", "chrome 5 2009", "chrome 6 2009", "chrome 7 2009", "chrome 8 2009", "chrome 9 2009", "chrome 10 2009", "chrome 11 2009", "chrome 12 2009", "chrome 13 2009", "chrome 14 2009", "chrome 15 2009", "chrome 16 2009", "chrome 17 2009", "chrome 18 2009", "chrome 19 2009", "chrome 20 2009", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ie 10", "ios 3.2 2009", "ios 4 2009", "ios 4.1 2009", "ios 4.2 2009", "ios 4.3 2009", "ios 5 2009", "ios 5.1 2009", "ios 6 2009", "ios 6.1 2009", "ios 7", "opera 15", "opera 16", "safari 3.1 2009", "safari 3.2 2009", "safari 4 2009", "safari 5 2009", "safari 5.1 2009", "safari 6 2009", "safari 6.1 2009", "safari 7"]
     },
     animation: {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-delay": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-direction": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-duration": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-fill-mode": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-iteration-count": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-name": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-play-state": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "animation-timing-function": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "backface-visibility": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "background-clip": {
       browsers: ["android 2.1", "android 2.2", "android 2.3", "ff 3.6", "opera 10", "opera 10.1"]
@@ -18287,52 +18288,52 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "bb 7", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "safari 3.1", "safari 3.2", "safari 4", "safari 5"]
     },
     "break-after": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "break-before": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "break-inside": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     calc: {
       props: ["*"],
       browsers: ["bb 10", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 6", "ios 6.1", "safari 6"]
     },
     "column-count": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "column-fill": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "column-gap": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "column-rule": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "column-rule-color": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "column-rule-style": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "column-rule-width": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "column-span": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "column-width": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     columns: {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "display-flex": {
@@ -18341,15 +18342,15 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     },
     "fill-available": {
       props: ["width", "min-width", "max-width", "height", "min-height", "max-height"],
-      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     filter: {
-      browsers: ["android 4.4", "bb 10", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 4.4", "bb 10", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "fit-content": {
       props: ["width", "min-width", "max-width", "height", "min-height", "max-height"],
-      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     flex: {
       transition: true,
@@ -18377,27 +18378,27 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4 2009", "chrome 5 2009", "chrome 6 2009", "chrome 7 2009", "chrome 8 2009", "chrome 9 2009", "chrome 10 2009", "chrome 11 2009", "chrome 12 2009", "chrome 13 2009", "chrome 14 2009", "chrome 15 2009", "chrome 16 2009", "chrome 17 2009", "chrome 18 2009", "chrome 19 2009", "chrome 20 2009", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ie 10", "ios 3.2 2009", "ios 4 2009", "ios 4.1 2009", "ios 4.2 2009", "ios 4.3 2009", "ios 5 2009", "ios 5.1 2009", "ios 6 2009", "ios 6.1 2009", "ios 7", "opera 15", "opera 16", "safari 3.1 2009", "safari 3.2 2009", "safari 4 2009", "safari 5 2009", "safari 5.1 2009", "safari 6 2009", "safari 6.1 2009", "safari 7"]
     },
     "font-feature-settings": {
-      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     "font-kerning": {
-      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     "font-language-override": {
-      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     "font-variant-ligatures": {
-      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     grab: {
       props: ["cursor"],
-      browsers: ["bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     grabbing: {
       props: ["cursor"],
-      browsers: ["bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     hyphens: {
-      browsers: ["ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ie 10", "ie 11", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ie 10", "ie 11", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "inline-flex": {
       props: ["display"],
@@ -18413,21 +18414,21 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     },
     "max-content": {
       props: ["width", "min-width", "max-width", "height", "min-height", "max-height"],
-      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     "min-content": {
       props: ["width", "min-width", "max-width", "height", "min-height", "max-height"],
-      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 6.1", "safari 7"]
+      browsers: ["android 4.4", "bb 10", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 6.1", "safari 7"]
     },
     order: {
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4 2009", "chrome 5 2009", "chrome 6 2009", "chrome 7 2009", "chrome 8 2009", "chrome 9 2009", "chrome 10 2009", "chrome 11 2009", "chrome 12 2009", "chrome 13 2009", "chrome 14 2009", "chrome 15 2009", "chrome 16 2009", "chrome 17 2009", "chrome 18 2009", "chrome 19 2009", "chrome 20 2009", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ie 10", "ios 3.2 2009", "ios 4 2009", "ios 4.1 2009", "ios 4.2 2009", "ios 4.3 2009", "ios 5 2009", "ios 5.1 2009", "ios 6 2009", "ios 6.1 2009", "ios 7", "opera 15", "opera 16", "safari 3.1 2009", "safari 3.2 2009", "safari 4 2009", "safari 5 2009", "safari 5.1 2009", "safari 6 2009", "safari 6.1 2009", "safari 7"]
     },
     perspective: {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "perspective-origin": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "radial-gradient": {
@@ -18445,35 +18446,19 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       mistakes: ["-ms-"],
       browsers: ["android 2.1 old", "android 2.2 old", "android 2.3 old", "android 3 old", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2 old", "ios 4 old", "ios 4.1 old", "ios 4.2 old", "ios 4.3 old", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "safari 4 old", "safari 5 old", "safari 5.1", "safari 6"]
     },
-    sticky: {
-      props: ["position"],
-      browsers: ["ios 6", "ios 6.1", "ios 7", "safari 6.1", "safari 7"]
-    },
     "tab-size": {
-      browsers: ["ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 12.1"]
-    },
-    "text-decoration-color": {
-      browsers: ["ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31"]
-    },
-    "text-decoration-line": {
-      browsers: ["ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31"]
-    },
-    "text-decoration-style": {
-      browsers: ["chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21"]
-    },
-    "touch-action": {
-      browsers: ["ie 10"]
+      browsers: ["ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 12.1"]
     },
     transform: {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "transform-origin": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"],
       transition: true
     },
     "transform-style": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ie 9", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     transition: {
       mistakes: ["-ms-"],
@@ -18496,74 +18481,59 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "opera 10.5", "opera 10.6", "opera 11", "opera 11.1", "opera 11.5", "opera 11.6", "opera 12", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6"]
     },
     "user-select": {
-      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31", "ie 10", "ie 11", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
-    },
-    wavy: {
-      props: ["text-decoration", "text-decoration-style"],
-      browsers: ["ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ff 29", "ff 30", "ff 31"]
+      browsers: ["android 2.1", "android 2.2", "android 2.3", "android 3", "android 4", "android 4.1", "android 4.2", "android 4.3", "android 4.4", "bb 7", "bb 10", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "ff 24", "ff 25", "ff 26", "ff 27", "ff 28", "ie 10", "ie 11", "ios 3.2", "ios 4", "ios 4.1", "ios 4.2", "ios 4.3", "ios 5", "ios 5.1", "ios 6", "ios 6.1", "ios 7", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "zoom-in": {
       props: ["cursor"],
-      browsers: ["bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     },
     "zoom-out": {
       props: ["cursor"],
-      browsers: ["bb 7", "bb 10", "chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "chrome 34", "chrome 35", "chrome 36", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "opera 19", "opera 20", "opera 21", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
+      browsers: ["chrome 4", "chrome 5", "chrome 6", "chrome 7", "chrome 8", "chrome 9", "chrome 10", "chrome 11", "chrome 12", "chrome 13", "chrome 14", "chrome 15", "chrome 16", "chrome 17", "chrome 18", "chrome 19", "chrome 20", "chrome 21", "chrome 22", "chrome 23", "chrome 24", "chrome 25", "chrome 26", "chrome 27", "chrome 28", "chrome 29", "chrome 30", "chrome 31", "chrome 32", "chrome 33", "ff 2", "ff 3", "ff 3.5", "ff 3.6", "ff 4", "ff 5", "ff 6", "ff 7", "ff 8", "ff 9", "ff 10", "ff 11", "ff 12", "ff 13", "ff 14", "ff 15", "ff 16", "ff 17", "ff 18", "ff 19", "ff 20", "ff 21", "ff 22", "ff 23", "opera 15", "opera 16", "opera 17", "opera 18", "safari 3.1", "safari 3.2", "safari 4", "safari 5", "safari 5.1", "safari 6", "safari 6.1", "safari 7"]
     }
   };
 
 }).call(this);
 
-},{}],3:[function(_dereq_,module,exports){
+},{}],3:[function(require,module,exports){
 (function() {
-  var Autoprefixer, Browsers, Prefixes, autoprefixer, infoCache, isPlainObject, postcss,
+  var Autoprefixer, Browsers, Prefixes, autoprefixer, infoCache, postcss,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  postcss = _dereq_('postcss');
+  postcss = require('postcss');
 
-  Browsers = _dereq_('./browsers');
+  Browsers = require('./browsers');
 
-  Prefixes = _dereq_('./prefixes');
+  Prefixes = require('./prefixes');
 
   infoCache = null;
 
-  isPlainObject = function(obj) {
-    return Object.prototype.toString.apply(obj) === '[object Object]';
-  };
-
   autoprefixer = function() {
-    var browsers, options, prefixes, reqs;
+    var browsers, prefixes, reqs;
     reqs = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-    if (reqs.length === 1 && isPlainObject(reqs[0])) {
-      options = reqs[0];
-      reqs = void 0;
+    if (reqs.length === 1 && reqs[0] instanceof Array) {
+      reqs = reqs[0];
     } else if (reqs.length === 0 || (reqs.length === 1 && (reqs[0] == null))) {
       reqs = void 0;
-    } else if (reqs.length <= 2 && (reqs[0] instanceof Array || (reqs[0] == null))) {
-      options = reqs[1];
-      reqs = reqs[0];
-    } else if (typeof reqs[reqs.length - 1] === 'object') {
-      options = reqs.pop();
     }
     if (reqs == null) {
       reqs = autoprefixer["default"];
     }
     browsers = new Browsers(autoprefixer.data.browsers, reqs);
-    prefixes = new Prefixes(autoprefixer.data.prefixes, browsers, options);
+    prefixes = new Prefixes(autoprefixer.data.prefixes, browsers);
     return new Autoprefixer(prefixes, autoprefixer.data);
   };
 
   autoprefixer.data = {
-    browsers: _dereq_('../data/browsers'),
-    prefixes: _dereq_('../data/prefixes')
+    browsers: require('../data/browsers'),
+    prefixes: require('../data/prefixes')
   };
 
   Autoprefixer = (function() {
-    function Autoprefixer(prefixes, data, options) {
+    function Autoprefixer(prefixes, data) {
       this.prefixes = prefixes;
       this.data = data;
-      this.options = options != null ? options : {};
       this.postcss = __bind(this.postcss, this);
       this.browsers = this.prefixes.browsers.selected;
     }
@@ -18575,13 +18545,32 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       return this.processor().process(str, options);
     };
 
+    Autoprefixer.prototype.compile = function(str, options) {
+      var fixed, name, value;
+      if (options == null) {
+        options = {};
+      }
+      fixed = {};
+      for (name in options) {
+        value = options[name];
+        if (name === 'file') {
+          name === 'from';
+        }
+        fixed[name] = value;
+      }
+      if (typeof console !== "undefined" && console !== null) {
+        console.warn('autoprefixer: replace compile() to process(). ' + 'Method compile() is deprecated and will be removed in 1.1.');
+      }
+      return this.process(str, options).css;
+    };
+
     Autoprefixer.prototype.postcss = function(css) {
-      this.prefixes.processor.remove(css);
-      return this.prefixes.processor.add(css);
+      this.prefixes.processor.add(css);
+      return this.prefixes.processor.remove(css);
     };
 
     Autoprefixer.prototype.info = function() {
-      infoCache || (infoCache = _dereq_('./info'));
+      infoCache || (infoCache = require('./info'));
       return infoCache(this.prefixes);
     };
 
@@ -18593,7 +18582,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
   })();
 
-  autoprefixer["default"] = ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'];
+  autoprefixer["default"] = ['> 1%', 'last 2 versions', 'ff 24', 'opera 12.1'];
 
   autoprefixer.loadDefault = function() {
     return this.defaultCache || (this.defaultCache = autoprefixer(this["default"]));
@@ -18625,11 +18614,11 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../data/browsers":1,"../data/prefixes":2,"./browsers":4,"./info":31,"./prefixes":36,"postcss":53}],4:[function(_dereq_,module,exports){
+},{"../data/browsers":1,"../data/prefixes":2,"./browsers":4,"./info":28,"./prefixes":32,"postcss":46}],4:[function(require,module,exports){
 (function() {
   var Browsers, utils;
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   Browsers = (function() {
     Browsers.prefixes = function() {
@@ -18637,7 +18626,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       if (this.prefixesCache) {
         return this.prefixesCache;
       }
-      data = _dereq_('../data/browsers');
+      data = require('../data/browsers');
       return this.prefixesCache = utils.uniq((function() {
         var _results;
         _results = [];
@@ -18651,38 +18640,30 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       });
     };
 
-    Browsers.withPrefix = function(value) {
-      if (!this.prefixesRegexp) {
-        this.prefixesRegexp = RegExp("" + (this.prefixes().join('|')));
-      }
-      return this.prefixesRegexp.test(value);
-    };
-
     function Browsers(data, requirements) {
       this.data = data;
       this.selected = this.parse(requirements);
     }
 
     Browsers.prototype.parse = function(requirements) {
-      var selected;
+      var selected,
+        _this = this;
       if (!(requirements instanceof Array)) {
         requirements = [requirements];
       }
       selected = [];
-      requirements.map((function(_this) {
-        return function(req) {
-          var i, match, name, _ref;
-          _ref = _this.requirements;
-          for (name in _ref) {
-            i = _ref[name];
-            if (match = req.match(i.regexp)) {
-              selected = selected.concat(i.select.apply(_this, match.slice(1)));
-              return;
-            }
+      requirements.map(function(req) {
+        var i, match, name, _ref;
+        _ref = _this.requirements;
+        for (name in _ref) {
+          i = _ref[name];
+          if (match = req.match(i.regexp)) {
+            selected = selected.concat(i.select.apply(_this, match.slice(1)));
+            return;
           }
-          return utils.error("Unknown browser requirement `" + req + "`");
-        };
-      })(this));
+        }
+        return utils.error("Unknown browser requirement `" + req + "`");
+      });
       return utils.uniq(selected);
     };
 
@@ -18752,12 +18733,6 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
           });
         }
       },
-      esr: {
-        regexp: /^(firefox|ff|fx) esr$/i,
-        select: function() {
-          return ['ff 24'];
-        }
-      },
       direct: {
         regexp: /^(\w+) ([\d\.]+)$/,
         select: function(browser, version) {
@@ -18824,25 +18799,24 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../data/browsers":1,"./utils":39}],5:[function(_dereq_,module,exports){
+},{"../data/browsers":1,"./utils":35}],5:[function(require,module,exports){
 (function() {
-  var Browsers, Declaration, Prefixer, utils, vendor,
+  var Browsers, Declaration, Prefixer, vendor, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Prefixer = _dereq_('./prefixer');
+  Prefixer = require('./prefixer');
 
-  Browsers = _dereq_('./browsers');
+  Browsers = require('./browsers');
 
-  vendor = _dereq_('postcss/lib/vendor');
-
-  utils = _dereq_('./utils');
+  vendor = require('postcss/lib/vendor');
 
   Declaration = (function(_super) {
     __extends(Declaration, _super);
 
     function Declaration() {
-      return Declaration.__super__.constructor.apply(this, arguments);
+      _ref = Declaration.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Declaration.prototype.check = function(decl) {
@@ -18858,10 +18832,10 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     Declaration.prototype.otherPrefixes = function(value, prefix) {
-      var other, _i, _len, _ref;
-      _ref = Browsers.prefixes();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        other = _ref[_i];
+      var other, _i, _len, _ref1;
+      _ref1 = Browsers.prefixes();
+      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+        other = _ref1[_i];
         if (other === prefix) {
           continue;
         }
@@ -18877,93 +18851,24 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       return decl;
     };
 
-    Declaration.prototype.needCascade = function(decl) {
-      return decl._autoprefixerCascade || (decl._autoprefixerCascade = !!this.all.options.cascade && decl.before.indexOf("\n") !== -1);
-    };
-
-    Declaration.prototype.maxPrefixed = function(prefixes, decl) {
-      var max, prefix, _i, _len;
-      if (decl._autoprefixerMax) {
-        return decl._autoprefixerMax;
-      }
-      max = 0;
-      for (_i = 0, _len = prefixes.length; _i < _len; _i++) {
-        prefix = prefixes[_i];
-        prefix = utils.removeNote(prefix);
-        if (prefix.length > max) {
-          max = prefix.length;
-        }
-      }
-      return decl._autoprefixerMax = max;
-    };
-
-    Declaration.prototype.calcBefore = function(prefixes, decl, prefix) {
-      var before, diff, i, max, _i;
-      if (prefix == null) {
-        prefix = '';
-      }
-      before = decl.before;
-      max = this.maxPrefixed(prefixes, decl);
-      diff = max - utils.removeNote(prefix).length;
-      for (i = _i = 0; 0 <= diff ? _i < diff : _i > diff; i = 0 <= diff ? ++_i : --_i) {
-        before += ' ';
-      }
-      return before;
-    };
-
-    Declaration.prototype.restoreBefore = function(decl) {
-      var lines, min;
-      lines = decl.before.split("\n");
-      min = lines[lines.length - 1];
-      this.all.group(decl).up(function(prefixed) {
-        var array, last;
-        array = prefixed.before.split("\n");
-        last = array[array.length - 1];
-        if (last.length < min.length) {
-          return min = last;
-        }
-      });
-      lines[lines.length - 1] = min;
-      return decl.before = lines.join("\n");
-    };
-
-    Declaration.prototype.insert = function(decl, prefix, prefixes) {
+    Declaration.prototype.insert = function(decl, prefix) {
       var cloned;
       cloned = this.set(this.clone(decl), prefix);
-      if (!cloned) {
-        return;
+      if (cloned) {
+        return decl.parent.insertBefore(decl, cloned);
       }
-      if (this.needCascade(decl)) {
-        cloned.before = this.calcBefore(prefixes, decl, prefix);
-      }
-      return decl.parent.insertBefore(decl, cloned);
     };
 
-    Declaration.prototype.add = function(decl, prefix, prefixes) {
+    Declaration.prototype.add = function(decl, prefix) {
       var already, prefixed;
       prefixed = this.prefixed(decl.prop, prefix);
       already = this.all.group(decl).up(function(i) {
         return i.prop === prefixed;
       });
-      already || (already = this.all.group(decl).down(function(i) {
-        return i.prop === prefixed;
-      }));
       if (already || this.otherPrefixes(decl.value, prefix)) {
         return;
       }
-      return this.insert(decl, prefix, prefixes);
-    };
-
-    Declaration.prototype.process = function(decl) {
-      var prefixes;
-      if (this.needCascade(decl)) {
-        this.restoreBefore(decl);
-        if (prefixes = Declaration.__super__.process.apply(this, arguments)) {
-          return decl.before = this.calcBefore(prefixes, decl);
-        }
-      } else {
-        return Declaration.__super__.process.apply(this, arguments);
-      }
+      return this.insert(decl, prefix);
     };
 
     Declaration.prototype.old = function(prop, prefix) {
@@ -18978,21 +18883,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./browsers":4,"./prefixer":35,"./utils":39,"postcss/lib/vendor":59}],6:[function(_dereq_,module,exports){
+},{"./browsers":4,"./prefixer":31,"postcss/lib/vendor":52}],6:[function(require,module,exports){
 (function() {
-  var AlignContent, Declaration, flexSpec,
+  var AlignContent, Declaration, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   AlignContent = (function(_super) {
     __extends(AlignContent, _super);
 
     function AlignContent() {
-      return AlignContent.__super__.constructor.apply(this, arguments);
+      _ref = AlignContent.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     AlignContent.names = ['align-content', 'flex-line-pack'];
@@ -19005,8 +18911,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     AlignContent.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2012) {
         return prefix + 'flex-line-pack';
       } else {
@@ -19037,21 +18943,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],7:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],7:[function(require,module,exports){
 (function() {
-  var AlignItems, Declaration, flexSpec,
+  var AlignItems, Declaration, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   AlignItems = (function(_super) {
     __extends(AlignItems, _super);
 
     function AlignItems() {
-      return AlignItems.__super__.constructor.apply(this, arguments);
+      _ref = AlignItems.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     AlignItems.names = ['align-items', 'flex-align', 'box-align'];
@@ -19062,8 +18969,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     AlignItems.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return prefix + 'box-align';
       } else if (spec === 2012) {
@@ -19096,21 +19003,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],8:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],8:[function(require,module,exports){
 (function() {
-  var AlignSelf, Declaration, flexSpec,
+  var AlignSelf, Declaration, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   AlignSelf = (function(_super) {
     __extends(AlignSelf, _super);
 
     function AlignSelf() {
-      return AlignSelf.__super__.constructor.apply(this, arguments);
+      _ref = AlignSelf.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     AlignSelf.names = ['align-self', 'flex-item-align'];
@@ -19121,8 +19029,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     AlignSelf.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2012) {
         return prefix + 'flex-item-align';
       } else {
@@ -19153,19 +19061,20 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],9:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],9:[function(require,module,exports){
 (function() {
-  var BorderImage, Declaration,
+  var BorderImage, Declaration, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   BorderImage = (function(_super) {
     __extends(BorderImage, _super);
 
     function BorderImage() {
-      return BorderImage.__super__.constructor.apply(this, arguments);
+      _ref = BorderImage.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     BorderImage.names = ['border-image'];
@@ -19183,21 +19092,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5}],10:[function(_dereq_,module,exports){
+},{"../declaration":5}],10:[function(require,module,exports){
 (function() {
-  var BorderRadius, Declaration,
+  var BorderRadius, Declaration, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   BorderRadius = (function(_super) {
-    var hor, mozilla, normal, ver, _i, _j, _len, _len1, _ref, _ref1;
+    var hor, mozilla, normal, ver, _i, _j, _len, _len1, _ref1, _ref2;
 
     __extends(BorderRadius, _super);
 
     function BorderRadius() {
-      return BorderRadius.__super__.constructor.apply(this, arguments);
+      _ref = BorderRadius.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     BorderRadius.names = ['border-radius'];
@@ -19206,12 +19116,12 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
     BorderRadius.toNormal = {};
 
-    _ref = ['top', 'bottom'];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      ver = _ref[_i];
-      _ref1 = ['left', 'right'];
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        hor = _ref1[_j];
+    _ref1 = ['top', 'bottom'];
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      ver = _ref1[_i];
+      _ref2 = ['left', 'right'];
+      for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+        hor = _ref2[_j];
         normal = "border-" + ver + "-" + hor + "-radius";
         mozilla = "border-radius-" + ver + hor;
         BorderRadius.names.push(normal);
@@ -19241,73 +19151,17 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5}],11:[function(_dereq_,module,exports){
-(function() {
-  var BreakInside, Declaration,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  Declaration = _dereq_('../declaration');
-
-  BreakInside = (function(_super) {
-    __extends(BreakInside, _super);
-
-    function BreakInside() {
-      return BreakInside.__super__.constructor.apply(this, arguments);
-    }
-
-    BreakInside.names = ['break-inside', 'page-break-inside', 'column-break-inside'];
-
-    BreakInside.prototype.prefixed = function(prop, prefix) {
-      if (prefix === '-webkit-') {
-        return prefix + 'column-break-inside';
-      } else if (prefix === '-moz-') {
-        return 'page-break-inside';
-      } else {
-        return BreakInside.__super__.prefixed.apply(this, arguments);
-      }
-    };
-
-    BreakInside.prototype.normalize = function() {
-      return 'break-inside';
-    };
-
-    BreakInside.prototype.set = function(decl, prefix) {
-      if (decl.value === 'avoid-column' || decl.value === 'avoid-page') {
-        decl.value = 'avoid';
-      }
-      return BreakInside.__super__.set.apply(this, arguments);
-    };
-
-    BreakInside.prototype.insert = function(decl, prefix, prefixes) {
-      if (decl.value === 'avoid-region') {
-
-      } else if (decl.value === 'avoid-page' && prefix === '-webkit-') {
-
-      } else {
-        return BreakInside.__super__.insert.apply(this, arguments);
-      }
-    };
-
-    return BreakInside;
-
-  })(Declaration);
-
-  module.exports = BreakInside;
-
-}).call(this);
-
-},{"../declaration":5}],12:[function(_dereq_,module,exports){
+},{"../declaration":5}],11:[function(require,module,exports){
 (function() {
   var DisplayFlex, OldDisplayFlex, OldValue, Value, flexSpec,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  OldValue = _dereq_('../old-value');
+  OldValue = require('../old-value');
 
-  Value = _dereq_('../value');
+  Value = require('../value');
 
   OldDisplayFlex = (function(_super) {
     __extends(OldDisplayFlex, _super);
@@ -19369,21 +19223,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../old-value":34,"../value":40,"./flex-spec":20}],13:[function(_dereq_,module,exports){
+},{"../old-value":30,"../value":36,"./flex-spec":19}],12:[function(require,module,exports){
 (function() {
-  var FillAvailable, OldValue, Value,
+  var FillAvailable, OldValue, Value, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  OldValue = _dereq_('../old-value');
+  OldValue = require('../old-value');
 
-  Value = _dereq_('../value');
+  Value = require('../value');
 
   FillAvailable = (function(_super) {
     __extends(FillAvailable, _super);
 
     function FillAvailable() {
-      return FillAvailable.__super__.constructor.apply(this, arguments);
+      _ref = FillAvailable.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     FillAvailable.names = ['fill-available'];
@@ -19412,19 +19267,20 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../old-value":34,"../value":40}],14:[function(_dereq_,module,exports){
+},{"../old-value":30,"../value":36}],13:[function(require,module,exports){
 (function() {
-  var Declaration, Filter,
+  var Declaration, Filter, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   Filter = (function(_super) {
     __extends(Filter, _super);
 
     function Filter() {
-      return Filter.__super__.constructor.apply(this, arguments);
+      _ref = Filter.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Filter.names = ['filter'];
@@ -19432,7 +19288,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     Filter.prototype.check = function(decl) {
       var v;
       v = decl.value;
-      return v.toLowerCase().indexOf('alpha(') === -1 && v.indexOf('DXImageTransform.Microsoft') === -1;
+      return v.indexOf('alpha(') === -1 && v.indexOf('DXImageTransform.Microsoft') === -1;
     };
 
     return Filter;
@@ -19443,43 +19299,48 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5}],15:[function(_dereq_,module,exports){
+},{"../declaration":5}],14:[function(require,module,exports){
 (function() {
-  var Declaration, FlexBasis, flexSpec,
+  var Declaration, FlexBasis, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   FlexBasis = (function(_super) {
     __extends(FlexBasis, _super);
 
     function FlexBasis() {
-      return FlexBasis.__super__.constructor.apply(this, arguments);
+      _ref = FlexBasis.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
-    FlexBasis.names = ['flex-basis', 'flex-preferred-size'];
+    FlexBasis.names = ['flex-basis'];
 
     FlexBasis.prototype.normalize = function() {
-      return 'flex-basis';
+      return 'flex';
     };
 
     FlexBasis.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2012) {
-        return prefix + 'flex-preferred-size';
+        return prefix + 'flex';
       } else {
         return FlexBasis.__super__.prefixed.apply(this, arguments);
       }
     };
 
     FlexBasis.prototype.set = function(decl, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
-      if (spec === 2012 || spec === 'final') {
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
+      if (spec === 2012) {
+        decl.prop = prefix + 'flex';
+        decl.value = '0 1 ' + decl.value;
+        return decl;
+      } else if (spec === 'final') {
         return FlexBasis.__super__.set.apply(this, arguments);
       }
     };
@@ -19492,21 +19353,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],16:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],15:[function(require,module,exports){
 (function() {
-  var Declaration, FlexDirection, flexSpec,
+  var Declaration, FlexDirection, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   FlexDirection = (function(_super) {
     __extends(FlexDirection, _super);
 
     function FlexDirection() {
-      return FlexDirection.__super__.constructor.apply(this, arguments);
+      _ref = FlexDirection.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     FlexDirection.names = ['flex-direction', 'box-direction', 'box-orient'];
@@ -19515,9 +19377,9 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       return 'flex-direction';
     };
 
-    FlexDirection.prototype.insert = function(decl, prefix, prefixes) {
-      var already, cloned, dir, orient, spec, value, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+    FlexDirection.prototype.insert = function(decl, prefix) {
+      var already, cloned, dir, orient, spec, value, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         already = decl.parent.some(function(i) {
           return i.prop === prefix + 'box-orient' || i.prop === prefix + 'box-direction';
@@ -19531,16 +19393,10 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
         cloned = this.clone(decl);
         cloned.prop = prefix + 'box-orient';
         cloned.value = orient;
-        if (this.needCascade(decl)) {
-          cloned.before = this.calcBefore(prefixes, decl, prefix);
-        }
         decl.parent.insertBefore(decl, cloned);
         cloned = this.clone(decl);
         cloned.prop = prefix + 'box-direction';
         cloned.value = dir;
-        if (this.needCascade(decl)) {
-          cloned.before = this.calcBefore(prefixes, decl, prefix);
-        }
         return decl.parent.insertBefore(decl, cloned);
       } else {
         return FlexDirection.__super__.insert.apply(this, arguments);
@@ -19548,8 +19404,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     FlexDirection.prototype.old = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return [prefix + 'box-orient', prefix + 'box-direction'];
       } else {
@@ -19565,28 +19421,29 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],17:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],16:[function(require,module,exports){
 (function() {
-  var Declaration, FlexFlow, flexSpec,
+  var Declaration, FlexFlow, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   FlexFlow = (function(_super) {
     __extends(FlexFlow, _super);
 
     function FlexFlow() {
-      return FlexFlow.__super__.constructor.apply(this, arguments);
+      _ref = FlexFlow.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     FlexFlow.names = ['flex-flow'];
 
     FlexFlow.prototype.set = function(decl, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2012) {
         return FlexFlow.__super__.set.apply(this, arguments);
       } else if (spec === 'final') {
@@ -19602,36 +19459,37 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],18:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],17:[function(require,module,exports){
 (function() {
-  var Declaration, Flex, flexSpec,
+  var Declaration, Flex, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   Flex = (function(_super) {
     __extends(Flex, _super);
 
     function Flex() {
-      return Flex.__super__.constructor.apply(this, arguments);
+      _ref = Flex.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
-    Flex.names = ['flex-grow', 'flex-positive'];
+    Flex.names = ['flex-grow'];
 
     Flex.prototype.normalize = function() {
       return 'flex';
     };
 
     Flex.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return prefix + 'box-flex';
       } else if (spec === 2012) {
-        return prefix + 'flex-positive';
+        return prefix + 'flex';
       } else {
         return Flex.__super__.prefixed.apply(this, arguments);
       }
@@ -19645,43 +19503,48 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],19:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],18:[function(require,module,exports){
 (function() {
-  var Declaration, FlexShrink, flexSpec,
+  var Declaration, FlexShrink, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   FlexShrink = (function(_super) {
     __extends(FlexShrink, _super);
 
     function FlexShrink() {
-      return FlexShrink.__super__.constructor.apply(this, arguments);
+      _ref = FlexShrink.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
-    FlexShrink.names = ['flex-shrink', 'flex-negative'];
+    FlexShrink.names = ['flex-shrink'];
 
     FlexShrink.prototype.normalize = function() {
-      return 'flex-shrink';
+      return 'flex';
     };
 
     FlexShrink.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2012) {
-        return prefix + 'flex-negative';
+        return prefix + 'flex';
       } else {
         return FlexShrink.__super__.prefixed.apply(this, arguments);
       }
     };
 
     FlexShrink.prototype.set = function(decl, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
-      if (spec === 2012 || spec === 'final') {
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
+      if (spec === 2012) {
+        decl.prop = prefix + 'flex';
+        decl.value = '0 ' + decl.value;
+        return decl;
+      } else if (spec === 'final') {
         return FlexShrink.__super__.set.apply(this, arguments);
       }
     };
@@ -19694,7 +19557,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],20:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],19:[function(require,module,exports){
 (function() {
   module.exports = function(prefix) {
     var spec;
@@ -19707,21 +19570,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],20:[function(require,module,exports){
 (function() {
-  var Declaration, FlexWrap, flexSpec,
+  var Declaration, FlexWrap, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   FlexWrap = (function(_super) {
     __extends(FlexWrap, _super);
 
     function FlexWrap() {
-      return FlexWrap.__super__.constructor.apply(this, arguments);
+      _ref = FlexWrap.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     FlexWrap.names = ['flex-wrap'];
@@ -19742,33 +19606,29 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],22:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],21:[function(require,module,exports){
 (function() {
-  var Declaration, Flex, flexSpec,
+  var Declaration, Flex, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   Flex = (function(_super) {
     __extends(Flex, _super);
 
     function Flex() {
-      return Flex.__super__.constructor.apply(this, arguments);
+      _ref = Flex.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Flex.names = ['flex', 'box-flex'];
 
-    Flex.oldValues = {
-      'auto': '1',
-      'none': '0'
-    };
-
     Flex.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return prefix + 'box-flex';
       } else {
@@ -19776,7 +19636,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       }
     };
 
-    Flex.prototype.normalize = function() {
+    Flex.prototype.normalize = function(prop) {
       return 'flex';
     };
 
@@ -19785,7 +19645,6 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       spec = flexSpec(prefix)[0];
       if (spec === 2009) {
         decl.value = decl.value.split(' ')[0];
-        decl.value = Flex.oldValues[decl.value] || decl.value;
         return Flex.__super__.set.call(this, decl, prefix);
       } else {
         return Flex.__super__.set.apply(this, arguments);
@@ -19800,19 +19659,20 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],23:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],22:[function(require,module,exports){
 (function() {
-  var Fullscreen, Selector,
+  var Fullscreen, Selector, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Selector = _dereq_('../selector');
+  Selector = require('../selector');
 
   Fullscreen = (function(_super) {
     __extends(Fullscreen, _super);
 
     function Fullscreen() {
-      return Fullscreen.__super__.constructor.apply(this, arguments);
+      _ref = Fullscreen.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Fullscreen.names = [':fullscreen'];
@@ -19835,52 +19695,52 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../selector":38}],24:[function(_dereq_,module,exports){
+},{"../selector":34}],23:[function(require,module,exports){
 (function() {
-  var Gradient, OldValue, Value, isDirection, list, utils,
+  var Gradient, OldValue, Value, isDirection, list, utils, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  OldValue = _dereq_('../old-value');
+  OldValue = require('../old-value');
 
-  Value = _dereq_('../value');
+  Value = require('../value');
 
-  utils = _dereq_('../utils');
+  utils = require('../utils');
 
-  list = _dereq_('postcss/lib/list');
+  list = require('postcss/lib/list');
 
-  isDirection = /top|left|right|bottom/gi;
+  isDirection = new RegExp('(top|left|right|bottom)', 'gi');
 
   Gradient = (function(_super) {
     __extends(Gradient, _super);
 
     function Gradient() {
-      return Gradient.__super__.constructor.apply(this, arguments);
+      _ref = Gradient.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Gradient.names = ['linear-gradient', 'repeating-linear-gradient', 'radial-gradient', 'repeating-radial-gradient'];
 
     Gradient.prototype.replace = function(string, prefix) {
-      var values;
-      values = list.comma(string).map((function(_this) {
-        return function(value) {
-          var after, args, close, params;
-          if (value.slice(0, +_this.name.length + 1 || 9e9) !== _this.name + '(') {
-            return value;
-          }
-          close = value.lastIndexOf(')');
-          after = value.slice(close + 1);
-          args = value.slice(_this.name.length + 1, +(close - 1) + 1 || 9e9);
-          params = list.comma(args);
-          params = _this.newDirection(params);
-          if (prefix === '-webkit- old') {
-            return _this.oldWebkit(value, args, params, after);
-          } else {
-            _this.convertDirection(params);
-            return prefix + _this.name + '(' + params.join(', ') + ')' + after;
-          }
-        };
-      })(this));
+      var values,
+        _this = this;
+      values = list.comma(string).map(function(value) {
+        var after, args, close, params;
+        if (value.slice(0, +_this.name.length + 1 || 9e9) !== _this.name + '(') {
+          return value;
+        }
+        close = value.lastIndexOf(')');
+        after = value.slice(close + 1);
+        args = value.slice(_this.name.length + 1, +(close - 1) + 1 || 9e9);
+        params = list.comma(args);
+        params = _this.newDirection(params);
+        if (prefix === '-webkit- old') {
+          return _this.oldWebkit(value, args, params, after);
+        } else {
+          _this.convertDirection(params);
+          return prefix + _this.name + '(' + params.join(', ') + ')' + after;
+        }
+      });
       return values.join(', ');
     };
 
@@ -20050,21 +19910,22 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../old-value":34,"../utils":39,"../value":40,"postcss/lib/list":49}],25:[function(_dereq_,module,exports){
+},{"../old-value":30,"../utils":35,"../value":36,"postcss/lib/list":43}],24:[function(require,module,exports){
 (function() {
-  var Declaration, JustifyContent, flexSpec,
+  var Declaration, JustifyContent, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   JustifyContent = (function(_super) {
     __extends(JustifyContent, _super);
 
     function JustifyContent() {
-      return JustifyContent.__super__.constructor.apply(this, arguments);
+      _ref = JustifyContent.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     JustifyContent.names = ['justify-content', 'flex-pack', 'box-pack'];
@@ -20077,8 +19938,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     JustifyContent.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return prefix + 'box-pack';
       } else if (spec === 2012) {
@@ -20114,28 +19975,29 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],26:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],25:[function(require,module,exports){
 (function() {
-  var Declaration, Order, flexSpec,
+  var Declaration, Order, flexSpec, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  flexSpec = _dereq_('./flex-spec');
+  flexSpec = require('./flex-spec');
 
-  Declaration = _dereq_('../declaration');
+  Declaration = require('../declaration');
 
   Order = (function(_super) {
     __extends(Order, _super);
 
     function Order() {
-      return Order.__super__.constructor.apply(this, arguments);
+      _ref = Order.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Order.names = ['order', 'flex-order', 'box-ordinal-group'];
 
     Order.prototype.prefixed = function(prop, prefix) {
-      var spec, _ref;
-      _ref = flexSpec(prefix), spec = _ref[0], prefix = _ref[1];
+      var spec, _ref1;
+      _ref1 = flexSpec(prefix), spec = _ref1[0], prefix = _ref1[1];
       if (spec === 2009) {
         return prefix + 'box-ordinal-group';
       } else if (spec === 2012) {
@@ -20168,34 +20030,29 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../declaration":5,"./flex-spec":20}],27:[function(_dereq_,module,exports){
+},{"../declaration":5,"./flex-spec":19}],26:[function(require,module,exports){
 (function() {
-  var Placeholder, Selector,
+  var Placeholder, Selector, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Selector = _dereq_('../selector');
+  Selector = require('../selector');
 
   Placeholder = (function(_super) {
     __extends(Placeholder, _super);
 
     function Placeholder() {
-      return Placeholder.__super__.constructor.apply(this, arguments);
+      _ref = Placeholder.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Placeholder.names = ['::placeholder'];
-
-    Placeholder.prototype.possible = function() {
-      return Placeholder.__super__.possible.apply(this, arguments).concat('-moz- old');
-    };
 
     Placeholder.prototype.prefixed = function(prefix) {
       if ('-webkit-' === prefix) {
         return '::-webkit-input-placeholder';
       } else if ('-ms-' === prefix) {
         return ':-ms-input-placeholder';
-      } else if ('-moz- old' === prefix) {
-        return ':-moz-placeholder';
       } else {
         return "::" + prefix + "placeholder";
       }
@@ -20209,122 +20066,41 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"../selector":38}],28:[function(_dereq_,module,exports){
+},{"../selector":34}],27:[function(require,module,exports){
 (function() {
-  var Declaration, TransformDecl,
+  var Transform, Value, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Declaration = _dereq_('../declaration');
+  Value = require('../value');
 
-  TransformDecl = (function(_super) {
-    __extends(TransformDecl, _super);
+  Transform = (function(_super) {
+    __extends(Transform, _super);
 
-    function TransformDecl() {
-      return TransformDecl.__super__.constructor.apply(this, arguments);
+    function Transform() {
+      _ref = Transform.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
-    TransformDecl.names = ['transform', 'transform-origin'];
+    Transform.names = ['transform'];
 
-    TransformDecl.prototype.keykrameParents = function(decl) {
-      var parent;
-      parent = decl.parent;
-      while (parent) {
-        if (parent.type === 'atrule' && parent.name === 'keyframes') {
-          return true;
-        }
-        parent = parent.parent;
-      }
-      return false;
-    };
-
-    TransformDecl.prototype.insert = function(decl, prefix, prefixes) {
-      if (prefix !== '-ms-' || !this.keykrameParents(decl)) {
-        return TransformDecl.__super__.insert.apply(this, arguments);
-      }
-    };
-
-    return TransformDecl;
-
-  })(Declaration);
-
-  module.exports = TransformDecl;
-
-}).call(this);
-
-},{"../declaration":5}],29:[function(_dereq_,module,exports){
-(function() {
-  var TransformValue, Value,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  Value = _dereq_('../value');
-
-  TransformValue = (function(_super) {
-    __extends(TransformValue, _super);
-
-    function TransformValue() {
-      return TransformValue.__super__.constructor.apply(this, arguments);
-    }
-
-    TransformValue.names = ['transform'];
-
-    TransformValue.prototype.replace = function(value, prefix) {
+    Transform.prototype.replace = function(value, prefix) {
       if (prefix === '-ms-') {
         return value;
       } else {
-        return TransformValue.__super__.replace.apply(this, arguments);
+        return Transform.__super__.replace.apply(this, arguments);
       }
     };
 
-    return TransformValue;
+    return Transform;
 
   })(Value);
 
-  module.exports = TransformValue;
+  module.exports = Transform;
 
 }).call(this);
 
-},{"../value":40}],30:[function(_dereq_,module,exports){
-(function() {
-  var OldValue, Transition, Value,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  OldValue = _dereq_('../old-value');
-
-  Value = _dereq_('../value');
-
-  Transition = (function(_super) {
-    __extends(Transition, _super);
-
-    function Transition() {
-      return Transition.__super__.constructor.apply(this, arguments);
-    }
-
-    Transition.names = ['flex', 'flex-grow', 'flex-shrink', 'flex-basis'];
-
-    Transition.prototype.prefixed = function(prefix) {
-      return this.all.prefixed(this.name, prefix);
-    };
-
-    Transition.prototype.replace = function(string, prefix) {
-      return string.replace(this.regexp(), '$1' + this.prefixed(prefix) + '$3');
-    };
-
-    Transition.prototype.old = function(prefix) {
-      return new OldValue(this.prefixed(prefix));
-    };
-
-    return Transition;
-
-  })(Value);
-
-  module.exports = Transition;
-
-}).call(this);
-
-},{"../old-value":34,"../value":40}],31:[function(_dereq_,module,exports){
+},{"../value":36}],28:[function(require,module,exports){
 (function() {
   var capitalize, names, prefix;
 
@@ -20349,7 +20125,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
   };
 
   module.exports = function(prefixes) {
-    var atrules, browser, data, list, name, needTransition, out, props, selector, selectors, string, transitionProp, useTransition, value, values, version, versions, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
+    var browser, data, list, name, needTransition, out, props, string, transitionProp, useTransition, value, values, version, versions, _i, _j, _len, _len1, _ref, _ref1, _ref2, _ref3, _ref4;
     if (prefixes.browsers.selected.length === 0) {
       return "No browsers selected";
     }
@@ -20373,36 +20149,14 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       });
       out += '  ' + browser + ': ' + list.join(', ') + "\n";
     }
-    atrules = '';
-    _ref2 = prefixes.add;
-    for (name in _ref2) {
-      data = _ref2[name];
-      if (name[0] === '@' && data.prefixes) {
-        atrules += prefix(name, false, data.prefixes);
-      }
-    }
-    if (atrules !== '') {
-      out += "\nAt-Rules:\n" + atrules;
-    }
-    selectors = '';
-    _ref3 = prefixes.add.selectors;
-    for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
-      selector = _ref3[_j];
-      if (selector.prefixes) {
-        selectors += prefix(selector.name, false, selector.prefixes);
-      }
-    }
-    if (selectors !== '') {
-      out += "\nSelectors:\n" + selectors;
-    }
     values = '';
     props = '';
     useTransition = false;
-    needTransition = (_ref4 = prefixes.add.transition) != null ? _ref4.prefixes : void 0;
-    _ref5 = prefixes.add;
-    for (name in _ref5) {
-      data = _ref5[name];
-      if (name[0] !== '@' && data.prefixes) {
+    needTransition = (_ref2 = prefixes.add.transition) != null ? _ref2.prefixes : void 0;
+    _ref3 = prefixes.add;
+    for (name in _ref3) {
+      data = _ref3[name];
+      if (data.prefixes) {
         transitionProp = needTransition && prefixes.data[name].transition;
         if (transitionProp) {
           useTransition = true;
@@ -20417,9 +20171,9 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       })) {
         continue;
       }
-      _ref6 = data.values;
-      for (_k = 0, _len2 = _ref6.length; _k < _len2; _k++) {
-        value = _ref6[_k];
+      _ref4 = data.values;
+      for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+        value = _ref4[_j];
         string = prefix(value.name, false, value.prefixes);
         if (values.indexOf(string) === -1) {
           values += string;
@@ -20440,19 +20194,20 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{}],32:[function(_dereq_,module,exports){
+},{}],29:[function(require,module,exports){
 (function() {
-  var Keyframes, Prefixer,
+  var Keyframes, Prefixer, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Prefixer = _dereq_('./prefixer');
+  Prefixer = require('./prefixer');
 
   Keyframes = (function(_super) {
     __extends(Keyframes, _super);
 
     function Keyframes() {
-      return Keyframes.__super__.constructor.apply(this, arguments);
+      _ref = Keyframes.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Keyframes.prototype.check = function(atRule) {
@@ -20482,81 +20237,11 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./prefixer":35}],33:[function(_dereq_,module,exports){
-(function() {
-  var OldSelector;
-
-  OldSelector = (function() {
-    function OldSelector(selector, prefix) {
-      var _i, _len, _ref;
-      this.prefix = prefix;
-      this.prefixed = selector.prefixed(this.prefix);
-      this.regexp = selector.regexp(this.prefix);
-      this.prefixeds = [];
-      _ref = selector.possible();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        prefix = _ref[_i];
-        this.prefixeds.push([selector.prefixed(prefix), selector.regexp(prefix)]);
-      }
-      this.unprefixed = selector.name;
-      this.nameRegexp = selector.regexp();
-    }
-
-    OldSelector.prototype.isHack = function(rule) {
-      var before, index, regexp, rules, some, string, _i, _len, _ref, _ref1;
-      index = rule.parent.index(rule) + 1;
-      rules = rule.parent.rules;
-      while (index < rules.length) {
-        before = rules[index].selector;
-        if (!before) {
-          return true;
-        }
-        if (before.indexOf(this.unprefixed) !== -1 && before.match(this.nameRegexp)) {
-          return false;
-        }
-        some = false;
-        _ref = this.prefixeds;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          _ref1 = _ref[_i], string = _ref1[0], regexp = _ref1[1];
-          if (before.indexOf(string) !== -1 && before.match(regexp)) {
-            some = true;
-            break;
-          }
-        }
-        if (!some) {
-          return true;
-        }
-        index += 1;
-      }
-      return true;
-    };
-
-    OldSelector.prototype.check = function(rule) {
-      if (rule.selector.indexOf(this.prefixed) === -1) {
-        return false;
-      }
-      if (!rule.selector.match(this.regexp)) {
-        return false;
-      }
-      if (this.isHack(rule)) {
-        return false;
-      }
-      return true;
-    };
-
-    return OldSelector;
-
-  })();
-
-  module.exports = OldSelector;
-
-}).call(this);
-
-},{}],34:[function(_dereq_,module,exports){
+},{"./prefixer":31}],30:[function(require,module,exports){
 (function() {
   var OldValue, utils;
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   OldValue = (function() {
     function OldValue(name, string, regexp) {
@@ -20583,15 +20268,15 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./utils":39}],35:[function(_dereq_,module,exports){
+},{"./utils":35}],31:[function(require,module,exports){
 (function() {
   var Browsers, Prefixer, utils, vendor;
 
-  Browsers = _dereq_('./browsers');
+  Browsers = require('./browsers');
 
-  vendor = _dereq_('postcss/lib/vendor');
+  vendor = require('postcss/lib/vendor');
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   Prefixer = (function() {
     Prefixer.hack = function(klass) {
@@ -20640,25 +20325,21 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     Prefixer.prototype.process = function(node) {
-      var parent, prefix, prefixes, _i, _j, _len, _len1, _ref;
+      var parent, prefix, _i, _len, _ref, _results;
       if (!this.check(node)) {
         return;
       }
       parent = this.parentPrefix(node);
-      prefixes = [];
       _ref = this.prefixes;
+      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         prefix = _ref[_i];
         if (parent && parent !== utils.removeNote(prefix)) {
           continue;
         }
-        prefixes.push(prefix);
+        _results.push(this.add(node, prefix));
       }
-      for (_j = 0, _len1 = prefixes.length; _j < _len1; _j++) {
-        prefix = prefixes[_j];
-        this.add(node, prefix, prefixes);
-      }
-      return prefixes;
+      return _results;
     };
 
     Prefixer.prototype.clone = function(node, overrides) {
@@ -20673,82 +20354,73 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./browsers":4,"./utils":39,"postcss/lib/vendor":59}],36:[function(_dereq_,module,exports){
+},{"./browsers":4,"./utils":35,"postcss/lib/vendor":52}],32:[function(require,module,exports){
 (function() {
-  var Browsers, Declaration, Keyframes, Prefixes, Processor, Selector, Value, declsCache, utils, vendor;
+  var Declaration, Keyframes, Prefixes, Processor, Selector, Value, declsCache, utils, vendor;
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
-  vendor = _dereq_('postcss/lib/vendor');
+  vendor = require('postcss/lib/vendor');
 
-  Declaration = _dereq_('./declaration');
+  Processor = require('./processor');
 
-  Processor = _dereq_('./processor');
+  Declaration = require('./declaration');
 
-  Keyframes = _dereq_('./keyframes');
+  Keyframes = require('./keyframes');
 
-  Browsers = _dereq_('./browsers');
+  Selector = require('./selector');
 
-  Selector = _dereq_('./selector');
+  Value = require('./value');
 
-  Value = _dereq_('./value');
+  Selector.hack(require('./hacks/fullscreen'));
 
-  Selector.hack(_dereq_('./hacks/fullscreen'));
+  Selector.hack(require('./hacks/placeholder'));
 
-  Selector.hack(_dereq_('./hacks/placeholder'));
+  Declaration.hack(require('./hacks/flex'));
 
-  Declaration.hack(_dereq_('./hacks/flex'));
+  Declaration.hack(require('./hacks/order'));
 
-  Declaration.hack(_dereq_('./hacks/order'));
+  Declaration.hack(require('./hacks/filter'));
 
-  Declaration.hack(_dereq_('./hacks/filter'));
+  Declaration.hack(require('./hacks/flex-flow'));
 
-  Declaration.hack(_dereq_('./hacks/flex-flow'));
+  Declaration.hack(require('./hacks/flex-grow'));
 
-  Declaration.hack(_dereq_('./hacks/flex-grow'));
+  Declaration.hack(require('./hacks/flex-wrap'));
 
-  Declaration.hack(_dereq_('./hacks/flex-wrap'));
+  Declaration.hack(require('./hacks/align-self'));
 
-  Declaration.hack(_dereq_('./hacks/align-self'));
+  Declaration.hack(require('./hacks/flex-basis'));
 
-  Declaration.hack(_dereq_('./hacks/flex-basis'));
+  Declaration.hack(require('./hacks/align-items'));
 
-  Declaration.hack(_dereq_('./hacks/align-items'));
+  Declaration.hack(require('./hacks/flex-shrink'));
 
-  Declaration.hack(_dereq_('./hacks/flex-shrink'));
+  Declaration.hack(require('./hacks/border-image'));
 
-  Declaration.hack(_dereq_('./hacks/break-inside'));
+  Declaration.hack(require('./hacks/align-content'));
 
-  Declaration.hack(_dereq_('./hacks/border-image'));
+  Declaration.hack(require('./hacks/border-radius'));
 
-  Declaration.hack(_dereq_('./hacks/align-content'));
+  Declaration.hack(require('./hacks/flex-direction'));
 
-  Declaration.hack(_dereq_('./hacks/border-radius'));
+  Declaration.hack(require('./hacks/justify-content'));
 
-  Declaration.hack(_dereq_('./hacks/transform-decl'));
+  Value.hack(require('./hacks/gradient'));
 
-  Declaration.hack(_dereq_('./hacks/flex-direction'));
+  Value.hack(require('./hacks/transform'));
 
-  Declaration.hack(_dereq_('./hacks/justify-content'));
+  Value.hack(require('./hacks/display-flex'));
 
-  Value.hack(_dereq_('./hacks/gradient'));
-
-  Value.hack(_dereq_('./hacks/transition'));
-
-  Value.hack(_dereq_('./hacks/display-flex'));
-
-  Value.hack(_dereq_('./hacks/fill-available'));
-
-  Value.hack(_dereq_('./hacks/transform-value'));
+  Value.hack(require('./hacks/fill-available'));
 
   declsCache = {};
 
   Prefixes = (function() {
-    function Prefixes(data, browsers, options) {
+    function Prefixes(data, browsers) {
       var _ref;
       this.data = data;
       this.browsers = browsers;
-      this.options = options != null ? options : {};
       _ref = this.preprocess(this.select(this.data)), this.add = _ref[0], this.remove = _ref[1];
       this.processor = new Processor(this);
     }
@@ -20756,7 +20428,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     Prefixes.prototype.transitionProps = ['transition', 'transition-property'];
 
     Prefixes.prototype.select = function(list) {
-      var add, all, data, name, notes, selected;
+      var add, all, data, name, notes, selected,
+        _this = this;
       selected = {
         add: {},
         remove: {}
@@ -20773,33 +20446,27 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
         });
         notes = add.filter(function(i) {
           return i.note;
-        }).map((function(_this) {
-          return function(i) {
-            return _this.browsers.prefix(i.browser) + ' ' + i.note;
-          };
-        })(this));
+        }).map(function(i) {
+          return _this.browsers.prefix(i.browser) + ' ' + i.note;
+        });
         notes = utils.uniq(notes);
-        add = add.filter((function(_this) {
-          return function(i) {
-            return _this.browsers.isSelected(i.browser);
-          };
-        })(this)).map((function(_this) {
-          return function(i) {
-            var prefix;
-            prefix = _this.browsers.prefix(i.browser);
-            if (i.note) {
-              return prefix + ' ' + i.note;
-            } else {
-              return prefix;
-            }
-          };
-        })(this));
-        add = this.sort(utils.uniq(add));
-        all = data.browsers.map((function(_this) {
-          return function(i) {
-            return _this.browsers.prefix(i);
-          };
-        })(this));
+        add = add.filter(function(i) {
+          return _this.browsers.isSelected(i.browser);
+        }).map(function(i) {
+          var prefix;
+          prefix = _this.browsers.prefix(i.browser);
+          if (i.note) {
+            return prefix + ' ' + i.note;
+          } else {
+            return prefix;
+          }
+        });
+        add = utils.uniq(add).sort(function(a, b) {
+          return b.length - a.length;
+        });
+        all = data.browsers.map(function(i) {
+          return _this.browsers.prefix(i);
+        });
         if (data.mistakes) {
           all = all.concat(data.mistakes);
         }
@@ -20817,19 +20484,6 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
         }
       }
       return selected;
-    };
-
-    Prefixes.prototype.sort = function(prefixes) {
-      return prefixes.sort(function(a, b) {
-        var aLength, bLength;
-        aLength = utils.removeNote(a).length;
-        bLength = utils.removeNote(b).length;
-        if (aLength === bLength) {
-          return b.length - a.length;
-        } else {
-          return bLength - aLength;
-        }
-      });
     };
 
     Prefixes.prototype.preprocess = function(selected) {
@@ -20875,7 +20529,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
           selector = Selector.load(name, prefixes);
           for (_j = 0, _len1 = prefixes.length; _j < _len1; _j++) {
             prefix = prefixes[_j];
-            remove.selectors.push(selector.old(prefix));
+            remove.selectors.push(selector.prefixed(prefix));
           }
         } else if (name[0] === '@') {
           for (_k = 0, _len2 = prefixes.length; _k < _len2; _k++) {
@@ -20888,7 +20542,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
         } else {
           props = this.data[name].transition ? this.transitionProps : this.data[name].props;
           if (props) {
-            value = Value.load(name, [], this);
+            value = Value.load(name);
             for (_l = 0, _len3 = prefixes.length; _l < _len3; _l++) {
               prefix = prefixes[_l];
               old = value.old(prefix);
@@ -20958,39 +20612,26 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     };
 
     Prefixes.prototype.group = function(decl) {
-      var checker, index, length, rule, unprefixed;
+      var checker, index, length, rule, unprefixed,
+        _this = this;
       rule = decl.parent;
       index = rule.index(decl);
       length = rule.decls.length;
       unprefixed = this.unprefixed(decl.prop);
-      checker = (function(_this) {
-        return function(step, callback) {
-          var other;
-          index += step;
-          while (index >= 0 && index < length) {
-            other = rule.decls[index];
-            if (other.type === 'decl') {
-              if (step === -1 && other.prop === unprefixed) {
-                if (!Browsers.withPrefix(other.value)) {
-                  break;
-                }
-              }
-              if (_this.unprefixed(other.prop) !== unprefixed) {
-                break;
-              } else if (callback(other) === true) {
-                return true;
-              }
-              if (step === +1 && other.prop === unprefixed) {
-                if (!Browsers.withPrefix(other.value)) {
-                  break;
-                }
-              }
-            }
-            index += step;
+      checker = function(step, callback) {
+        var other;
+        index += step;
+        while (index >= 0 && index < length) {
+          other = rule.decls[index];
+          if (_this.unprefixed(other.prop) !== unprefixed) {
+            break;
+          } else if (callback(other) === true) {
+            return true;
           }
-          return false;
-        };
-      })(this);
+          index += step;
+        }
+        return false;
+      };
       return {
         up: function(callback) {
           return checker(-1, callback);
@@ -21009,15 +20650,15 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./browsers":4,"./declaration":5,"./hacks/align-content":6,"./hacks/align-items":7,"./hacks/align-self":8,"./hacks/border-image":9,"./hacks/border-radius":10,"./hacks/break-inside":11,"./hacks/display-flex":12,"./hacks/fill-available":13,"./hacks/filter":14,"./hacks/flex":22,"./hacks/flex-basis":15,"./hacks/flex-direction":16,"./hacks/flex-flow":17,"./hacks/flex-grow":18,"./hacks/flex-shrink":19,"./hacks/flex-wrap":21,"./hacks/fullscreen":23,"./hacks/gradient":24,"./hacks/justify-content":25,"./hacks/order":26,"./hacks/placeholder":27,"./hacks/transform-decl":28,"./hacks/transform-value":29,"./hacks/transition":30,"./keyframes":32,"./processor":37,"./selector":38,"./utils":39,"./value":40,"postcss/lib/vendor":59}],37:[function(_dereq_,module,exports){
+},{"./declaration":5,"./hacks/align-content":6,"./hacks/align-items":7,"./hacks/align-self":8,"./hacks/border-image":9,"./hacks/border-radius":10,"./hacks/display-flex":11,"./hacks/fill-available":12,"./hacks/filter":13,"./hacks/flex":21,"./hacks/flex-basis":14,"./hacks/flex-direction":15,"./hacks/flex-flow":16,"./hacks/flex-grow":17,"./hacks/flex-shrink":18,"./hacks/flex-wrap":20,"./hacks/fullscreen":22,"./hacks/gradient":23,"./hacks/justify-content":24,"./hacks/order":25,"./hacks/placeholder":26,"./hacks/transform":27,"./keyframes":29,"./processor":33,"./selector":34,"./utils":35,"./value":36,"postcss/lib/vendor":52}],33:[function(require,module,exports){
 (function() {
   var Processor, Value, utils, vendor;
 
-  vendor = _dereq_('postcss/lib/vendor');
+  vendor = require('postcss/lib/vendor');
 
-  Value = _dereq_('./value');
+  Value = require('./value');
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   Processor = (function() {
     function Processor(prefixes) {
@@ -21025,7 +20666,8 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
     }
 
     Processor.prototype.add = function(css) {
-      var prefixer, selector, _i, _len, _ref;
+      var prefixer, selector, _i, _len, _ref,
+        _this = this;
       prefixer = this.prefixes.add['@keyframes'];
       if (prefixer) {
         css.eachAtRule(function(rule) {
@@ -21039,73 +20681,64 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
           return selector.process(rule);
         });
       }
-      css.eachDecl((function(_this) {
-        return function(decl) {
-          var prefix;
-          prefix = _this.prefixes.add[decl.prop];
-          if (prefix && prefix.prefixes) {
-            return prefix.process(decl);
-          }
-        };
-      })(this));
-      return css.eachDecl((function(_this) {
-        return function(decl) {
-          var unprefixed, value, _j, _len1, _ref1;
-          unprefixed = _this.prefixes.unprefixed(decl.prop);
-          _ref1 = _this.prefixes.values('add', unprefixed);
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            value = _ref1[_j];
-            value.process(decl);
-          }
-          return Value.save(_this.prefixes, decl);
-        };
-      })(this));
+      css.eachDecl(function(decl) {
+        var prefix;
+        prefix = _this.prefixes.add[decl.prop];
+        if (prefix && prefix.prefixes) {
+          return prefix.process(decl);
+        }
+      });
+      return css.eachDecl(function(decl) {
+        var unprefixed, value, _j, _len1, _ref1;
+        unprefixed = _this.prefixes.unprefixed(decl.prop);
+        _ref1 = _this.prefixes.values('add', unprefixed);
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          value = _ref1[_j];
+          value.process(decl);
+        }
+        return Value.save(_this.prefixes, decl);
+      });
     };
 
     Processor.prototype.remove = function(css) {
-      var checker, _i, _len, _ref;
-      css.eachAtRule((function(_this) {
-        return function(rule, i) {
-          if (_this.prefixes.remove['@' + rule.name]) {
-            return rule.parent.remove(i);
-          }
-        };
-      })(this));
+      var selector, _i, _len, _ref,
+        _this = this;
+      css.eachAtRule(function(rule, i) {
+        if (_this.prefixes.remove['@' + rule.name]) {
+          return rule.parent.remove(i);
+        }
+      });
       _ref = this.prefixes.remove.selectors;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        checker = _ref[_i];
-        css.eachRule((function(_this) {
-          return function(rule, i) {
-            if (checker.check(rule)) {
-              return rule.parent.remove(i);
-            }
-          };
-        })(this));
+        selector = _ref[_i];
+        css.eachRule(function(rule, i) {
+          if (rule.selector.indexOf(selector) !== -1) {
+            return rule.parent.remove(i);
+          }
+        });
       }
-      return css.eachDecl((function(_this) {
-        return function(decl, i) {
-          var notHack, rule, unprefixed, _j, _len1, _ref1, _ref2;
-          rule = decl.parent;
-          unprefixed = _this.prefixes.unprefixed(decl.prop);
-          if ((_ref1 = _this.prefixes.remove[decl.prop]) != null ? _ref1.remove : void 0) {
-            notHack = _this.prefixes.group(decl).down(function(i) {
-              return i.prop === unprefixed;
-            });
-            if (notHack) {
-              rule.remove(i);
-              return;
-            }
+      return css.eachDecl(function(decl, i) {
+        var checker, notHack, rule, unprefixed, _j, _len1, _ref1, _ref2;
+        rule = decl.parent;
+        unprefixed = _this.prefixes.unprefixed(decl.prop);
+        if ((_ref1 = _this.prefixes.remove[decl.prop]) != null ? _ref1.remove : void 0) {
+          notHack = _this.prefixes.group(decl).down(function(i) {
+            return i.prop === unprefixed;
+          });
+          if (notHack) {
+            rule.remove(i);
+            return;
           }
-          _ref2 = _this.prefixes.values('remove', unprefixed);
-          for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-            checker = _ref2[_j];
-            if (checker.check(decl.value)) {
-              rule.remove(i);
-              return;
-            }
+        }
+        _ref2 = _this.prefixes.values('remove', unprefixed);
+        for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+          checker = _ref2[_j];
+          if (checker.check(decl.value)) {
+            rule.remove(i);
+            return;
           }
-        };
-      })(this));
+        }
+      });
     };
 
     return Processor;
@@ -21116,115 +20749,52 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./utils":39,"./value":40,"postcss/lib/vendor":59}],38:[function(_dereq_,module,exports){
+},{"./utils":35,"./value":36,"postcss/lib/vendor":52}],34:[function(require,module,exports){
 (function() {
-  var Browsers, OldSelector, Prefixer, Selector, utils,
+  var Prefixer, Selector, utils, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  OldSelector = _dereq_('./old-selector');
+  Prefixer = require('./prefixer');
 
-  Prefixer = _dereq_('./prefixer');
-
-  Browsers = _dereq_('./browsers');
-
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   Selector = (function(_super) {
     __extends(Selector, _super);
 
-    function Selector(name, prefixes, all) {
-      this.name = name;
-      this.prefixes = prefixes;
-      this.all = all;
-      this.regexpCache = {};
+    function Selector() {
+      _ref = Selector.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Selector.prototype.check = function(rule) {
-      if (rule.selector.indexOf(this.name) !== -1) {
-        return !!rule.selector.match(this.regexp());
-      } else {
-        return false;
-      }
+      return rule.selector.indexOf(this.name) !== -1;
     };
 
     Selector.prototype.prefixed = function(prefix) {
       return this.name.replace(/^([^\w]*)/, '$1' + prefix);
     };
 
-    Selector.prototype.regexp = function(prefix) {
-      var name;
-      if (this.regexpCache[prefix]) {
-        return this.regexpCache[prefix];
-      }
-      name = prefix ? this.prefixed(prefix) : this.name;
-      return this.regexpCache[prefix] = RegExp("(^|[^:\"'=])" + (utils.escapeRegexp(name)), "gi");
-    };
-
-    Selector.prototype.possible = function() {
-      return Browsers.prefixes();
-    };
-
-    Selector.prototype.prefixeds = function(rule) {
-      var prefix, prefixeds, _i, _len, _ref;
-      if (rule._autoprefixerPrefixeds) {
-        return rule._autoprefixerPrefixeds;
-      }
-      prefixeds = {};
-      _ref = this.possible();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        prefix = _ref[_i];
-        prefixeds[prefix] = this.replace(rule.selector, prefix);
-      }
-      return rule._autoprefixerPrefixeds = prefixeds;
-    };
-
-    Selector.prototype.already = function(rule, prefixeds, prefix) {
-      var before, index, key, prefixed, some;
-      index = rule.parent.index(rule) - 1;
-      while (index >= 0) {
-        before = rule.parent.rules[index];
-        if (before.type !== 'rule') {
-          return false;
-        }
-        some = false;
-        for (key in prefixeds) {
-          prefixed = prefixeds[key];
-          if (before.selector === prefixed) {
-            if (prefix === key) {
-              return true;
-            } else {
-              some = true;
-              break;
-            }
-          }
-        }
-        if (!some) {
-          return false;
-        }
-        index -= 1;
-      }
-      return false;
+    Selector.prototype.regexp = function() {
+      return this.regexpCache || (this.regexpCache = new RegExp(utils.escapeRegexp(this.name), 'gi'));
     };
 
     Selector.prototype.replace = function(selector, prefix) {
-      return selector.replace(this.regexp(), '$1' + this.prefixed(prefix));
+      return selector.replace(this.regexp(), this.prefixed(prefix));
     };
 
     Selector.prototype.add = function(rule, prefix) {
-      var cloned, prefixeds;
-      prefixeds = this.prefixeds(rule);
-      if (this.already(rule, prefixeds, prefix)) {
+      var cloned, prefixed;
+      prefixed = this.replace(rule.selector, prefix);
+      if (rule.parent.some(function(i) {
+        return i.selector === prefixed;
+      })) {
         return;
       }
       cloned = this.clone(rule, {
-        selector: prefixeds[prefix]
+        selector: prefixed
       });
       return rule.parent.insertBefore(rule, cloned);
-    };
-
-    Selector.prototype.old = function(prefix) {
-      return new OldSelector(this, prefix);
     };
 
     return Selector;
@@ -21235,7 +20805,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./browsers":4,"./old-selector":33,"./prefixer":35,"./utils":39}],39:[function(_dereq_,module,exports){
+},{"./prefixer":31,"./utils":35}],35:[function(require,module,exports){
 (function() {
   module.exports = {
     error: function(text) {
@@ -21263,7 +20833,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       }
     },
     escapeRegexp: function(string) {
-      return string.replace(/[.?*+\^\$\[\]\\(){}|\-]/g, '\\$&');
+      return string.replace(/([.?*+\^\$\[\]\\(){}|\-])/g, "\\$1");
     },
     regexp: function(word, escape) {
       if (escape == null) {
@@ -21272,44 +20842,45 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
       if (escape) {
         word = this.escapeRegexp(word);
       }
-      return RegExp("(^|[\\s,(])(" + word + "($|[\\s(,]))", "gi");
+      return new RegExp('(^|\\s|,|\\()(' + word + '($|\\s|\\(|,))', 'gi');
     }
   };
 
 }).call(this);
 
-},{}],40:[function(_dereq_,module,exports){
+},{}],36:[function(require,module,exports){
 (function() {
-  var OldValue, Prefixer, Value, utils, vendor,
+  var OldValue, Prefixer, Value, utils, vendor, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Prefixer = _dereq_('./prefixer');
+  Prefixer = require('./prefixer');
 
-  OldValue = _dereq_('./old-value');
+  OldValue = require('./old-value');
 
-  vendor = _dereq_('postcss/lib/vendor');
+  vendor = require('postcss/lib/vendor');
 
-  utils = _dereq_('./utils');
+  utils = require('./utils');
 
   Value = (function(_super) {
     __extends(Value, _super);
 
     function Value() {
-      return Value.__super__.constructor.apply(this, arguments);
+      _ref = Value.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Value.save = function(prefixes, decl) {
-      var already, cloned, prefix, prefixed, propPrefix, rule, trimmed, value, _ref, _results;
-      _ref = decl._autoprefixerValues;
+      var cloned, prefix, prefixed, propPrefix, rule, value, _ref1, _results;
+      _ref1 = decl._autoprefixerValues;
       _results = [];
-      for (prefix in _ref) {
-        value = _ref[prefix];
+      for (prefix in _ref1) {
+        value = _ref1[prefix];
         if (value === decl.value) {
           continue;
         }
         propPrefix = vendor.prefix(decl.prop);
-        if (propPrefix === prefix) {
+        if (propPrefix === utils.removeNote(prefix)) {
           _results.push(decl.value = value);
         } else if (propPrefix === '-pie-') {
           continue;
@@ -21319,11 +20890,9 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
           if (rule.every(function(i) {
             return i.prop !== prefixed;
           })) {
-            trimmed = value.replace(/\s+/, ' ');
-            already = rule.some(function(i) {
-              return i.prop === decl.prop && i.value.replace(/\s+/, ' ') === trimmed;
-            });
-            if (!already) {
+            if (rule.every(function(i) {
+              return i.prop !== decl.prop || i.value !== value;
+            })) {
               cloned = this.clone(decl, {
                 value: value
               });
@@ -21379,9 +20948,7 @@ var emmet=(function(global){var defaultSyntax='html';var defaultProfile='plain';
 
 }).call(this);
 
-},{"./old-value":34,"./prefixer":35,"./utils":39,"postcss/lib/vendor":59}],41:[function(_dereq_,module,exports){
-
-},{}],42:[function(_dereq_,module,exports){
+},{"./old-value":30,"./prefixer":31,"./utils":35,"postcss/lib/vendor":52}],37:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -21436,9 +21003,8 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],43:[function(_dereq_,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
+},{}],38:[function(require,module,exports){
+var process=require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -21663,14 +21229,13 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,_dereq_("/home/ai/Dev/autoprefixer/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"))
-},{"/home/ai/Dev/autoprefixer/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":42}],44:[function(_dereq_,module,exports){
+},{"__browserify_process":37}],39:[function(require,module,exports){
 (function() {
   var AtRule, Container, name, _fn, _i, _len, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Container = _dereq_('./container');
+  Container = require('./container');
 
   AtRule = (function(_super) {
     __extends(AtRule, _super);
@@ -21680,25 +21245,8 @@ var substr = 'ab'.substr(-1) === 'b'
       AtRule.__super__.constructor.apply(this, arguments);
     }
 
-    AtRule.prototype.styleType = function() {
-      return this.type + ((this.rules != null) || (this.decls != null) ? '-body' : '-bodiless');
-    };
-
-    AtRule.prototype.defaultStyle = function(type) {
-      if (type === 'atrule-body') {
-        return {
-          between: ' ',
-          after: this.defaultAfter()
-        };
-      } else {
-        return {
-          between: ''
-        };
-      }
-    };
-
     AtRule.prototype.addMixin = function(type) {
-      var container, detector, mixin, name, value, _ref;
+      var mixin, name, value, _ref;
       mixin = type === 'rules' ? Container.WithRules : Container.WithDecls;
       if (!mixin) {
         return;
@@ -21709,11 +21257,6 @@ var substr = 'ab'.substr(-1) === 'b'
         if (name === 'constructor') {
           continue;
         }
-        container = Container.prototype[name] === value;
-        detector = name === 'append' || name === 'prepend';
-        if (container && !detector) {
-          continue;
-        }
         this[name] = value;
       }
       return mixin.apply(this);
@@ -21722,19 +21265,21 @@ var substr = 'ab'.substr(-1) === 'b'
     AtRule.raw('params');
 
     AtRule.prototype.stringify = function(builder, last) {
-      var name, params, semicolon, style;
-      style = this.style();
-      name = '@' + this.name;
-      params = this._params ? this._params.toString() : '';
-      name += this.afterName != null ? this.afterName : params ? ' ' : '';
-      if ((this.rules != null) || (this.decls != null)) {
-        return this.stringifyBlock(builder, name + params + style.between + '{');
+      var params, semicolon;
+      if (this.rules || this.decls) {
+        params = this._params.stringify({
+          before: ' ',
+          after: ' '
+        });
+        return this.stringifyBlock(builder, '@' + this.name + params + '{');
       } else {
         if (this.before) {
           builder(this.before);
         }
         semicolon = !last || this.semicolon ? ';' : '';
-        return builder(name + params + style.between + semicolon, this);
+        return builder('@' + this.name + this._params.stringify({
+          before: ' '
+        }) + semicolon, this);
       }
     };
 
@@ -21745,9 +21290,7 @@ var substr = 'ab'.substr(-1) === 'b'
   _ref = ['append', 'prepend'];
   _fn = function(name) {
     return AtRule.prototype[name] = function(child) {
-      var mixin;
-      mixin = child.type === 'decl' ? 'decls' : 'rules';
-      this.addMixin(mixin);
+      this.addMixin(child.type + 's');
       return this[name](child);
     };
   };
@@ -21760,65 +21303,27 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./container":46}],45:[function(_dereq_,module,exports){
+},{"./container":40}],40:[function(require,module,exports){
 (function() {
-  var Comment, Node,
+  var Container, Declaration, Node, _ref,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Node = _dereq_('./node');
+  Node = require('./node');
 
-  Comment = (function(_super) {
-    __extends(Comment, _super);
-
-    function Comment() {
-      this.type = 'comment';
-      Comment.__super__.constructor.apply(this, arguments);
-    }
-
-    Comment.prototype.defaultStyle = function() {
-      return {
-        left: ' ',
-        right: ' '
-      };
-    };
-
-    Comment.prototype.stringify = function(builder) {
-      var style;
-      if (this.before) {
-        builder(this.before);
-      }
-      style = this.style();
-      return builder("/*" + (style.left + this.text + style.right) + "*/", this);
-    };
-
-    return Comment;
-
-  })(Node);
-
-  module.exports = Comment;
-
-}).call(this);
-
-},{"./node":51}],46:[function(_dereq_,module,exports){
-(function() {
-  var Container, Declaration, Node,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  Node = _dereq_('./node');
-
-  Declaration = _dereq_('./declaration');
+  Declaration = require('./declaration');
 
   Container = (function(_super) {
     __extends(Container, _super);
 
     function Container() {
-      return Container.__super__.constructor.apply(this, arguments);
+      _ref = Container.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     Container.prototype.stringifyContent = function(builder) {
-      var last;
+      var last,
+        _this = this;
       if (!this.rules && !this.decls) {
         return;
       }
@@ -21829,35 +21334,20 @@ var substr = 'ab'.substr(-1) === 'b'
         });
       } else if (this.decls) {
         last = this.decls.length - 1;
-        return this.decls.map((function(_this) {
-          return function(decl, i) {
-            return decl.stringify(builder, last !== i || _this.semicolon);
-          };
-        })(this));
-      }
-    };
-
-    Container.prototype.defaultAfter = function() {
-      var _ref;
-      if (this.list.length === 0) {
-        return '';
-      } else if (((_ref = this.list[0].before) != null ? _ref.indexOf("\n") : void 0) === -1) {
-        return this.list[0].before;
-      } else {
-        return "\n";
+        return this.decls.map(function(decl, i) {
+          return decl.stringify(builder, last !== i || _this.semicolon);
+        });
       }
     };
 
     Container.prototype.stringifyBlock = function(builder, start) {
-      var style;
-      style = this.style();
       if (this.before) {
         builder(this.before);
       }
       builder(start, this, 'start');
       this.stringifyContent(builder);
-      if (style.after) {
-        builder(style.after);
+      if (this.after) {
+        builder(this.after);
       }
       return builder('}', this, 'end');
     };
@@ -21869,58 +21359,23 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Container.prototype.each = function(callback) {
-      var id, index, list, result;
+      var id, index, list;
       this.lastEach || (this.lastEach = 0);
       this.indexes || (this.indexes = {});
       this.lastEach += 1;
       id = this.lastEach;
       this.indexes[id] = 0;
       list = this.list;
-      if (!list) {
-        return;
-      }
       while (this.indexes[id] < list.length) {
         index = this.indexes[id];
-        result = callback(list[index], index);
-        if (result === false) {
-          break;
-        }
+        callback(list[index], index);
         this.indexes[id] += 1;
       }
       delete this.indexes[id];
-      if (result === false) {
-        return false;
-      }
-    };
-
-    Container.prototype.eachInside = function(callback) {
-      return this.each((function(_this) {
-        return function(child, i) {
-          var result;
-          result = callback(child, i);
-          if (result !== false && child.eachInside) {
-            result = child.eachInside(callback);
-          }
-          if (result === false) {
-            return result;
-          }
-        };
-      })(this));
+      return this;
     };
 
     Container.prototype.eachDecl = function(callback) {};
-
-    Container.prototype.eachComment = function(callback) {
-      return this.eachInside((function(_this) {
-        return function(child, i) {
-          var result;
-          result = child.type === 'comment' ? callback(child, i) : void 0;
-          if (result === false) {
-            return result;
-          }
-        };
-      })(this));
-    };
 
     Container.prototype.append = function(child) {
       child = this.normalize(child, this.list[this.list.length - 1]);
@@ -21929,25 +21384,25 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Container.prototype.prepend = function(child) {
-      var id, index, _ref;
+      var id, index, _ref1;
       child = this.normalize(child, this.list[0], 'prepend');
       this.list.unshift(child);
-      _ref = this.indexes;
-      for (id in _ref) {
-        index = _ref[id];
+      _ref1 = this.indexes;
+      for (id in _ref1) {
+        index = _ref1[id];
         this.indexes[id] = index + 1;
       }
       return this;
     };
 
     Container.prototype.insertBefore = function(exist, add) {
-      var id, index, _ref;
+      var id, index, _ref1;
       exist = this.index(exist);
       add = this.normalize(add, this.list[exist], exist === 0 ? 'prepend' : void 0);
       this.list.splice(exist, 0, add);
-      _ref = this.indexes;
-      for (id in _ref) {
-        index = _ref[id];
+      _ref1 = this.indexes;
+      for (id in _ref1) {
+        index = _ref1[id];
         if (index >= exist) {
           this.indexes[id] = index + 1;
         }
@@ -21956,13 +21411,13 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Container.prototype.insertAfter = function(exist, add) {
-      var id, index, _ref;
+      var id, index, _ref1;
       exist = this.index(exist);
       add = this.normalize(add, this.list[exist]);
       this.list.splice(exist + 1, 0, add);
-      _ref = this.indexes;
-      for (id in _ref) {
-        index = _ref[id];
+      _ref1 = this.indexes;
+      for (id in _ref1) {
+        index = _ref1[id];
         if (index > exist) {
           this.indexes[id] = index + 1;
         }
@@ -21971,12 +21426,12 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Container.prototype.remove = function(child) {
-      var id, index, _ref;
+      var id, index, _ref1;
       child = this.index(child);
       this.list.splice(child, 1);
-      _ref = this.indexes;
-      for (id in _ref) {
-        index = _ref[id];
+      _ref1 = this.indexes;
+      for (id in _ref1) {
+        index = _ref1[id];
         if (index >= child) {
           this.indexes[id] = index - 1;
         }
@@ -21999,18 +21454,6 @@ var substr = 'ab'.substr(-1) === 'b'
         return this.list.indexOf(child);
       }
     };
-
-    Container.prop('first', {
-      get: function() {
-        return this.list[0];
-      }
-    });
-
-    Container.prop('last', {
-      get: function() {
-        return this.list[this.list.length - 1];
-      }
-    });
 
     Container.prop('list', {
       get: function() {
@@ -22039,40 +21482,35 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 
     WithRules.prototype.eachDecl = function(callback) {
-      return this.each(function(child) {
-        var result;
-        if (!child.eachDecl) {
-          return;
-        }
-        result = child.eachDecl(callback);
-        if (result === false) {
-          return result;
-        }
+      this.each(function(child) {
+        return child.eachDecl(callback);
       });
+      return this;
     };
 
     WithRules.prototype.eachRule = function(callback) {
-      return this.each((function(_this) {
-        return function(child, i) {
-          var result;
-          result = child.type === 'rule' ? callback(child, i) : child.eachRule ? child.eachRule(callback) : void 0;
-          if (result === false) {
-            return result;
-          }
-        };
-      })(this));
+      var _this = this;
+      this.each(function(child, i) {
+        if (child.type === 'rule') {
+          return callback(child, i);
+        } else if (child.eachRule) {
+          return child.eachRule(callback);
+        }
+      });
+      return this;
     };
 
     WithRules.prototype.eachAtRule = function(callback) {
-      return this.eachInside((function(_this) {
-        return function(child, i) {
-          var result;
-          result = child.type === 'atrule' ? callback(child, i) : void 0;
-          if (result === false) {
-            return result;
+      var _this = this;
+      this.each(function(child, i) {
+        if (child.type === 'atrule') {
+          callback(child, i);
+          if (child.eachAtRule) {
+            return child.eachAtRule(callback);
           }
-        };
-      })(this));
+        }
+      });
+      return this;
     };
 
     return WithRules;
@@ -22095,18 +21533,11 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     WithDecls.prototype.eachDecl = function(callback) {
-      return this.each((function(_this) {
-        return function(node, i) {
-          var result;
-          if (node.type !== 'decl') {
-            return;
-          }
-          result = callback(node, i);
-          if (result === false) {
-            return result;
-          }
-        };
-      })(this));
+      var _this = this;
+      this.each(function(decl, i) {
+        return callback(decl, i);
+      });
+      return this;
     };
 
     return WithDecls;
@@ -22117,15 +21548,15 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./declaration":47,"./node":51}],47:[function(_dereq_,module,exports){
+},{"./declaration":41,"./node":44}],41:[function(require,module,exports){
 (function() {
   var Declaration, Node, vendor,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Node = _dereq_('./node');
+  Node = require('./node');
 
-  vendor = _dereq_('./vendor');
+  vendor = require('./vendor');
 
   Declaration = (function(_super) {
     __extends(Declaration, _super);
@@ -22135,42 +21566,28 @@ var substr = 'ab'.substr(-1) === 'b'
       Declaration.__super__.constructor.apply(this, arguments);
     }
 
-    Declaration.prototype.defaultStyle = function() {
-      return {
-        before: "\n    ",
-        between: ': '
-      };
-    };
-
     Declaration.raw('value');
 
-    Declaration.prop('important', {
-      get: function() {
-        return !!this._important;
-      },
-      set: function(value) {
-        if (typeof value === 'string' && value !== '') {
-          return this._important = value;
-        } else if (value) {
-          return this._important = ' !important';
-        } else {
-          return this._important = false;
-        }
-      }
-    });
-
     Declaration.prototype.stringify = function(builder, semicolon) {
-      var string, style;
-      style = this.style();
-      if (style.before) {
-        builder(style.before);
+      var string;
+      if (this.before) {
+        builder(this.before);
       }
-      string = this.prop + style.between + this._value.toString();
-      string += this._important || '';
+      string = this.prop + (this.between || '') + ':' + this._value.stringify({
+        before: ' '
+      });
       if (semicolon) {
         string += ';';
       }
       return builder(string, this);
+    };
+
+    Declaration.prototype.removeSelf = function() {
+      if (!this.parent) {
+        return;
+      }
+      this.parent.remove(this);
+      return this;
     };
 
     Declaration.prototype.clone = function(obj) {
@@ -22188,27 +21605,74 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./node":51,"./vendor":59}],48:[function(_dereq_,module,exports){
+},{"./node":44,"./vendor":52}],42:[function(require,module,exports){
 (function() {
-  var lazy;
+  var Result, SourceMap, generateMap;
 
-  lazy = function(klass, name, callback) {
-    var cache;
-    cache = name + 'Cache';
-    return klass.prototype[name] = function() {
-      if (this[cache] != null) {
-        return this[cache];
+  SourceMap = require('source-map');
+
+  Result = require('./result');
+
+  generateMap = function(css, opts) {
+    var builder, column, line, map, prev, result;
+    map = new SourceMap.SourceMapGenerator({
+      file: opts.to || 'to.css'
+    });
+    result = new Result(css, '');
+    line = 1;
+    column = 1;
+    builder = function(str, node, type) {
+      var last, lines, _ref, _ref1;
+      result.css += str;
+      if ((node != null ? (_ref = node.source) != null ? _ref.start : void 0 : void 0) && type !== 'end') {
+        map.addMapping({
+          source: node.source.file || 'from.css',
+          original: {
+            line: node.source.start.line,
+            column: node.source.start.column - 1
+          },
+          generated: {
+            line: line,
+            column: column - 1
+          }
+        });
+      }
+      lines = str.match(/\n/g);
+      if (lines) {
+        line += lines.length;
+        last = str.lastIndexOf("\n");
+        column = str.length - last;
       } else {
-        return this[cache] = callback.apply(this, arguments);
+        column = column + str.length;
+      }
+      if ((node != null ? (_ref1 = node.source) != null ? _ref1.end : void 0 : void 0) && type !== 'start') {
+        return map.addMapping({
+          source: node.source.file || 'from.css',
+          original: {
+            line: node.source.end.line,
+            column: node.source.end.column
+          },
+          generated: {
+            line: line,
+            column: column
+          }
+        });
       }
     };
+    css.stringify(builder);
+    if (typeof opts.map === 'string') {
+      prev = new SourceMap.SourceMapConsumer(opts.map);
+      map.applySourceMap(prev);
+    }
+    result.map = map.toString();
+    return result;
   };
 
-  module.exports = lazy;
+  module.exports = generateMap;
 
 }).call(this);
 
-},{}],49:[function(_dereq_,module,exports){
+},{"./result":48,"source-map":53}],43:[function(require,module,exports){
 (function() {
   var list;
 
@@ -22274,256 +21738,12 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{}],50:[function(_dereq_,module,exports){
+},{}],44:[function(require,module,exports){
 (function() {
-  var MapGenerator, Result, base64js, fs, lazy, mozilla, path;
-
-  base64js = _dereq_('base64-js');
-
-  mozilla = _dereq_('source-map');
-
-  Result = _dereq_('./result');
-
-  lazy = _dereq_('./lazy');
-
-  path = _dereq_('path');
-
-  fs = _dereq_('fs');
-
-  MapGenerator = (function() {
-    function MapGenerator(root, opts) {
-      this.root = root;
-      this.opts = opts;
-    }
-
-    MapGenerator.prototype.startWith = function(string, start) {
-      return string.slice(0, +(start.length - 1) + 1 || 9e9) === start;
-    };
-
-    MapGenerator.prototype.isMap = function() {
-      if (typeof this.opts.map === 'boolean') {
-        return this.opts.map;
-      }
-      return !!this.opts.inlineMap || !!this.prevMap();
-    };
-
-    lazy(MapGenerator, 'isInline', function() {
-      if (this.opts.inlineMap != null) {
-        return this.opts.inlineMap;
-      }
-      return this.isPrevInline();
-    });
-
-    lazy(MapGenerator, 'isPrevInline', function() {
-      var text;
-      if (!this.prevAnnotation()) {
-        return false;
-      }
-      text = this.prevAnnotation().text;
-      return this.startWith(text, '# sourceMappingURL=data:');
-    });
-
-    lazy(MapGenerator, 'prevMap', function() {
-      var file, map;
-      if (this.opts.map && typeof this.opts.map !== 'boolean') {
-        return this.opts.map;
-      }
-      if (this.isPrevInline()) {
-        return this.encodeInline(this.prevAnnotation().text);
-      } else if (this.opts.from) {
-        map = this.opts.from + '.map';
-        if (this.prevAnnotation()) {
-          file = this.prevAnnotation().text.replace('# sourceMappingURL=', '');
-          map = path.join(path.dirname(this.opts.from), file);
-        }
-        if (typeof fs.existsSync === "function" ? fs.existsSync(map) : void 0) {
-          return fs.readFileSync(map).toString();
-        } else {
-          return false;
-        }
-      }
-    });
-
-    lazy(MapGenerator, 'prevAnnotation', function() {
-      var last;
-      last = this.root.last;
-      if (!last) {
-        return null;
-      }
-      if (last.type === 'comment' && this.startWith(last.text, '# sourceMappingURL=')) {
-        return last;
-      } else {
-        return null;
-      }
-    });
-
-    MapGenerator.prototype.encodeInline = function(text) {
-      var base64, byte, bytes, uri;
-      uri = '# sourceMappingURL=data:application/json,';
-      base64 = '# sourceMappingURL=data:application/json;base64,';
-      if (this.startWith(text, uri)) {
-        return decodeURIComponent(text.slice(uri.length));
-      } else if (this.startWith(text, base64)) {
-        text = text.slice(base64.length);
-        bytes = base64js.toByteArray(text);
-        return ((function() {
-          var _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = bytes.length; _i < _len; _i++) {
-            byte = bytes[_i];
-            _results.push(String.fromCharCode(byte));
-          }
-          return _results;
-        })()).join('');
-      } else {
-        throw new Error('Unknown source map encoding');
-      }
-    };
-
-    MapGenerator.prototype.clearAnnotation = function() {
-      var _ref;
-      return (_ref = this.prevAnnotation()) != null ? _ref.removeSelf() : void 0;
-    };
-
-    MapGenerator.prototype.applyPrevMap = function() {
-      var from, prev;
-      if (this.prevMap()) {
-        prev = this.prevMap();
-        prev = typeof prev === 'string' ? JSON.parse(prev) : prev instanceof mozilla.SourceMapConsumer ? mozilla.SourceMapGenerator.fromSourceMap(prev).toJSON() : typeof prev === 'object' && prev.toJSON ? prev.toJSON() : prev;
-        prev = new mozilla.SourceMapConsumer(prev);
-        from = this.relative(this.opts.from);
-        return this.map.applySourceMap(prev, from, path.dirname(from));
-      }
-    };
-
-    MapGenerator.prototype.addAnnotation = function() {
-      var bytes, char, content;
-      if (this.opts.mapAnnotation === false) {
-        return;
-      }
-      if (this.prevMap() && !this.prevAnnotation()) {
-        return;
-      }
-      content = this.isInline() ? (bytes = (function() {
-        var _i, _len, _ref, _results;
-        _ref = this.map.toString();
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          char = _ref[_i];
-          _results.push(char.charCodeAt(0));
-        }
-        return _results;
-      }).call(this), "data:application/json;base64," + base64js.fromByteArray(bytes)) : this.outputFile() + '.map';
-      return this.css += "\n/*# sourceMappingURL=" + content + " */";
-    };
-
-    MapGenerator.prototype.outputFile = function() {
-      if (this.opts.to) {
-        return path.basename(this.opts.to);
-      } else {
-        return 'to.css';
-      }
-    };
-
-    MapGenerator.prototype.generateMap = function() {
-      this.stringify();
-      this.applyPrevMap();
-      this.addAnnotation();
-      if (this.isInline()) {
-        return new Result(this.css);
-      } else {
-        return new Result(this.css, this.map.toString());
-      }
-    };
-
-    MapGenerator.prototype.relative = function(file) {
-      var from;
-      from = this.opts.to ? path.dirname(this.opts.to) : '.';
-      file = path.relative(from, file);
-      if (path.sep === '\\') {
-        file = file.replace('\\', '/');
-      }
-      return file;
-    };
-
-    MapGenerator.prototype.sourcePath = function(node) {
-      return this.relative(node.source.file || 'from.css');
-    };
-
-    MapGenerator.prototype.stringify = function() {
-      var builder, column, line;
-      this.css = '';
-      this.map = new mozilla.SourceMapGenerator({
-        file: this.outputFile()
-      });
-      line = 1;
-      column = 1;
-      builder = (function(_this) {
-        return function(str, node, type) {
-          var last, lines, _ref, _ref1;
-          _this.css += str;
-          if ((node != null ? (_ref = node.source) != null ? _ref.start : void 0 : void 0) && type !== 'end') {
-            _this.map.addMapping({
-              source: _this.sourcePath(node),
-              original: {
-                line: node.source.start.line,
-                column: node.source.start.column - 1
-              },
-              generated: {
-                line: line,
-                column: column - 1
-              }
-            });
-          }
-          lines = str.match(/\n/g);
-          if (lines) {
-            line += lines.length;
-            last = str.lastIndexOf("\n");
-            column = str.length - last;
-          } else {
-            column = column + str.length;
-          }
-          if ((node != null ? (_ref1 = node.source) != null ? _ref1.end : void 0 : void 0) && type !== 'start') {
-            return _this.map.addMapping({
-              source: _this.sourcePath(node),
-              original: {
-                line: node.source.end.line,
-                column: node.source.end.column
-              },
-              generated: {
-                line: line,
-                column: column
-              }
-            });
-          }
-        };
-      })(this);
-      return this.root.stringify(builder);
-    };
-
-    MapGenerator.prototype.getResult = function() {
-      this.clearAnnotation();
-      if (this.isMap()) {
-        return this.generateMap();
-      } else {
-        return new Result(this.root.toString());
-      }
-    };
-
-    return MapGenerator;
-
-  })();
-
-  module.exports = MapGenerator;
-
-}).call(this);
-
-},{"./lazy":48,"./result":55,"base64-js":60,"fs":41,"path":43,"source-map":61}],51:[function(_dereq_,module,exports){
-(function() {
-  var Node, Raw, clone, keys,
+  var Node, Raw, clone,
     __hasProp = {}.hasOwnProperty;
 
-  Raw = _dereq_('./raw');
+  Raw = require('./raw');
 
   clone = function(obj, parent) {
     var cloned, name, value;
@@ -22549,19 +21769,6 @@ var substr = 'ab'.substr(-1) === 'b'
     return cloned;
   };
 
-  keys = function(obj, keys) {
-    var all, key;
-    all = {};
-    for (key in keys) {
-      if (obj[key] != null) {
-        all[key] = obj[key];
-      } else {
-        return false;
-      }
-    }
-    return all;
-  };
-
   Node = (function() {
     function Node(defaults) {
       var name, value;
@@ -22581,21 +21788,20 @@ var substr = 'ab'.substr(-1) === 'b'
     Node.raw = function(name) {
       var hidden;
       hidden = '_' + name;
+      this.prototype[hidden] = Raw.empty;
       return this.prop(name, {
         get: function() {
-          var prop;
-          prop = this[hidden];
-          if (prop instanceof Raw) {
-            return prop.value;
-          } else {
-            return prop;
-          }
+          var _ref;
+          return (_ref = this[hidden]) != null ? _ref.trimmed : void 0;
         },
         set: function(value) {
           if (value instanceof Raw) {
             return this[hidden] = value;
           } else {
-            return this[hidden] = value;
+            if (this[hidden] === Raw.empty) {
+              this[hidden] = new Raw();
+            }
+            return this[hidden].set(value);
           }
         }
       });
@@ -22652,55 +21858,6 @@ var substr = 'ab'.substr(-1) === 'b'
       return fixed;
     };
 
-    Node.prototype.defaultStyle = function() {
-      return {};
-    };
-
-    Node.prototype.styleType = function() {
-      return this.type;
-    };
-
-    Node.prototype.style = function() {
-      var all, defaults, key, merge, root, style, type;
-      type = this.styleType();
-      defaults = this.defaultStyle(type);
-      all = keys(this, defaults);
-      if (all) {
-        return all;
-      }
-      style = defaults;
-      if (this.parent) {
-        root = this;
-        while (root.parent) {
-          root = root.parent;
-        }
-        root.styleCache || (root.styleCache = {});
-        if (root.styleCache[type]) {
-          style = root.styleCache[type];
-        } else {
-          root.eachInside(function(another) {
-            if (another.styleType() !== type) {
-              return;
-            }
-            if (this === another) {
-              return;
-            }
-            all = keys(another, style);
-            if (all) {
-              style = all;
-              return false;
-            }
-          });
-          root.styleCache[type] = style;
-        }
-      }
-      merge = {};
-      for (key in style) {
-        merge[key] = this[key] != null ? this[key] : style[key];
-      }
-      return merge;
-    };
-
     return Node;
 
   })();
@@ -22709,23 +21866,21 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./raw":54}],52:[function(_dereq_,module,exports){
+},{"./raw":47}],45:[function(require,module,exports){
 (function() {
-  var AtRule, Comment, Declaration, Parser, Raw, Root, Rule, SyntexError;
+  var AtRule, Declaration, Parser, Raw, Root, Rule, SyntexError;
 
-  SyntexError = _dereq_('./syntax-error');
+  SyntexError = require('./syntax-error');
 
-  Declaration = _dereq_('./declaration');
+  Declaration = require('./declaration');
 
-  Comment = _dereq_('./comment');
+  AtRule = require('./at-rule');
 
-  AtRule = _dereq_('./at-rule');
+  Root = require('./root');
 
-  Root = _dereq_('./root');
+  Rule = require('./rule');
 
-  Rule = _dereq_('./rule');
-
-  Raw = _dereq_('./raw');
+  Raw = require('./raw');
 
   Parser = (function() {
     function Parser(source, opts) {
@@ -22783,19 +21938,7 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.inComment = function() {
-      var left, right, text, _ref, _ref1;
       if (this.inside('comment')) {
-        if (this.next('*/')) {
-          _ref = this.startSpaces(this.prevBuffer()), text = _ref[0], left = _ref[1];
-          _ref1 = this.endSpaces(text), text = _ref1[0], right = _ref1[1];
-          this.current.text = text;
-          this.current.left = left;
-          this.current.right = right;
-          this.move();
-          this.pop();
-        }
-        return true;
-      } else if (this.inside('value-comment')) {
         if (this.next('*/')) {
           this.popType();
           this.move();
@@ -22806,20 +21949,13 @@ var substr = 'ab'.substr(-1) === 'b'
 
     Parser.prototype.isComment = function() {
       if (this.next('/*')) {
-        if (this.inside('rules') || this.inside('decls')) {
-          this.init(new Comment());
-          this.addType('comment');
-          this.move();
-          return this.buffer = '';
-        } else {
-          this.commentPos = {
-            line: this.line,
-            column: this.column
-          };
-          this.addType('value-comment');
-          this.move();
-          return true;
-        }
+        this.commentPos = {
+          line: this.line,
+          column: this.column
+        };
+        this.addType('comment');
+        this.move();
+        return true;
       }
     };
 
@@ -22827,7 +21963,7 @@ var substr = 'ab'.substr(-1) === 'b'
       if (this.letter === '{' && (this.inside('decls') || this.inside('value'))) {
         this.error("Unexpected {");
       }
-      if (this.inside('prop') && (this.letter === '}' || this.letter === ';')) {
+      if (this.inside('property') && (this.letter === '}' || this.letter === ';')) {
         return this.error('Missing property value');
       }
     };
@@ -22842,7 +21978,6 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.inAtrule = function(close) {
-      var left, raw, right, _ref, _ref1;
       if (this.inside('atrule-name')) {
         if (this.space()) {
           this.checkAtruleName();
@@ -22850,7 +21985,6 @@ var substr = 'ab'.substr(-1) === 'b'
           this.trimmed = '';
           this.setType('atrule-param');
         } else if (this.letter === ';' || this.letter === '{' || close) {
-          this.current.between = '';
           this.checkAtruleName();
           this.endAtruleParams();
         } else {
@@ -22859,16 +21993,7 @@ var substr = 'ab'.substr(-1) === 'b'
         return true;
       } else if (this.inside('atrule-param')) {
         if (this.letter === ';' || this.letter === '{' || close) {
-          _ref = this.startSpaces(this.prevBuffer()), raw = _ref[0], left = _ref[1];
-          _ref1 = this.endSpaces(raw), raw = _ref1[0], right = _ref1[1];
-          this.current.params = this.raw(this.trimmed.trim(), raw);
-          if (this.current.params) {
-            this.current.afterName = left;
-            this.current.between = right;
-          } else {
-            this.current.afterName = '';
-            this.current.between = left + right;
-          }
+          this.current.params = new Raw(this.prevBuffer(), this.trim(this.trimmed));
           this.endAtruleParams();
         } else {
           this.trimmed += this.letter;
@@ -22878,12 +22003,9 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.inSelector = function() {
-      var raw, spaces, _ref;
       if (this.inside('selector')) {
         if (this.letter === '{') {
-          _ref = this.endSpaces(this.prevBuffer()), raw = _ref[0], spaces = _ref[1];
-          this.current.selector = this.raw(this.trimmed.trim(), raw);
-          this.current.between = spaces;
+          this.current.selector = new Raw(this.prevBuffer(), this.trim(this.trimmed));
           this.semicolon = false;
           this.buffer = '';
           this.setType('decls');
@@ -22899,8 +22021,7 @@ var substr = 'ab'.substr(-1) === 'b'
         this.init(new Rule());
         if (this.letter === '{') {
           this.addType('decls');
-          this.current.selector = '';
-          this.current.between = '';
+          this.current.selector = new Raw('', '');
           this.semicolon = false;
           this.buffer = '';
         } else {
@@ -22934,14 +22055,14 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.inProperty = function() {
-      if (this.inside('prop')) {
+      if (this.inside('property')) {
         if (this.letter === ':') {
           if (this.buffer[0] === '*' || this.buffer[0] === '_') {
             this.current.before += this.buffer[0];
             this.trimmed = this.trimmed.slice(1);
             this.buffer = this.buffer.slice(1);
           }
-          this.current.prop = this.trimmed.trim();
+          this.current.prop = this.trim(this.trimmed);
           this.current.between = this.prevBuffer().slice(this.current.prop.length);
           this.buffer = '';
           this.setType('value');
@@ -22958,7 +22079,7 @@ var substr = 'ab'.substr(-1) === 'b'
     Parser.prototype.isProperty = function() {
       if (this.inside('decls') && !this.space() && this.letter !== ';') {
         this.init(new Declaration());
-        this.addType('prop');
+        this.addType('property');
         this.buffer = this.letter;
         this.trimmed = this.letter;
         this.semicolon = false;
@@ -22967,7 +22088,6 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.inValue = function(close) {
-      var end, match, raw, spaces, trim, _ref;
       if (this.inside('value')) {
         if (this.letter === '(') {
           this.inBrackets = true;
@@ -22978,16 +22098,7 @@ var substr = 'ab'.substr(-1) === 'b'
           if (this.letter === ';') {
             this.semicolon = true;
           }
-          _ref = this.startSpaces(this.prevBuffer()), raw = _ref[0], spaces = _ref[1];
-          trim = this.trimmed.trim();
-          if (match = raw.match(/\s+!important\s*$/)) {
-            this.current._important = match[0];
-            end = -match[0].length - 1;
-            raw = raw.slice(0, +end + 1 || 9e9);
-            trim = trim.replace(/\s+!important$/, '');
-          }
-          this.current.value = this.raw(trim, raw);
-          this.current.between += ':' + spaces;
+          this.current.value = new Raw(this.prevBuffer(), this.trim(this.trimmed));
           this.pop();
         } else {
           this.trimmed += this.letter;
@@ -23008,11 +22119,9 @@ var substr = 'ab'.substr(-1) === 'b'
           return this.inAtrule('close');
         });
       }
-      if (this.inside('comment')) {
-        return this.error('Unclosed comment', this.current.source.start);
-      } else if (this.parents.length > 1) {
+      if (this.parents.length > 1) {
         return this.error('Unclosed block', this.current.source.start);
-      } else if (this.inside('value-comment')) {
+      } else if (this.inside('comment')) {
         return this.error('Unclosed comment', this.commentPos);
       } else if (this.quote) {
         return this.error('Unclosed quote', this.quotePos);
@@ -23056,7 +22165,7 @@ var substr = 'ab'.substr(-1) === 'b'
     };
 
     Parser.prototype.space = function() {
-      return this.letter.match(/\s/);
+      return this.letter === ' ' || this.letter === "\t" || this.letter === "\n" || this.letter === "\f" || this.letter === "\r";
     };
 
     Parser.prototype.init = function(node) {
@@ -23074,14 +22183,6 @@ var substr = 'ab'.substr(-1) === 'b'
       }
       this.current.before = this.buffer.slice(0, -1);
       return this.buffer = '';
-    };
-
-    Parser.prototype.raw = function(value, raw) {
-      if (value !== raw) {
-        return new Raw(value, raw);
-      } else {
-        return value;
-      }
     };
 
     Parser.prototype.fixEnd = function(callback) {
@@ -23169,26 +22270,8 @@ var substr = 'ab'.substr(-1) === 'b'
       }
     };
 
-    Parser.prototype.startSpaces = function(string) {
-      var match, pos;
-      match = string.match(/^\s*/);
-      if (match) {
-        pos = match[0].length;
-        return [string.slice(pos), match[0]];
-      } else {
-        return [string, ''];
-      }
-    };
-
-    Parser.prototype.endSpaces = function(string) {
-      var match, pos;
-      match = string.match(/\s*$/);
-      if (match) {
-        pos = match[0].length + 1;
-        return [string.slice(0, +(-pos) + 1 || 9e9), match[0]];
-      } else {
-        return [string, ''];
-      }
+    Parser.prototype.trim = function(string) {
+      return string.replace(/^\s*/, '').replace(/\s*$/, '');
     };
 
     return Parser;
@@ -23207,20 +22290,22 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./at-rule":44,"./comment":45,"./declaration":47,"./raw":54,"./root":56,"./rule":57,"./syntax-error":58}],53:[function(_dereq_,module,exports){
+},{"./at-rule":39,"./declaration":41,"./raw":47,"./root":49,"./rule":50,"./syntax-error":51}],46:[function(require,module,exports){
 (function() {
-  var AtRule, Comment, Declaration, PostCSS, Root, Rule, postcss,
+  var AtRule, Declaration, PostCSS, Result, Root, Rule, generateMap, postcss,
     __slice = [].slice;
 
-  Declaration = _dereq_('./declaration');
+  generateMap = require('./generate-map');
 
-  Comment = _dereq_('./comment');
+  Declaration = require('./declaration');
 
-  AtRule = _dereq_('./at-rule');
+  AtRule = require('./at-rule');
 
-  Rule = _dereq_('./rule');
+  Result = require('./result');
 
-  Root = _dereq_('./root');
+  Rule = require('./rule');
+
+  Root = require('./root');
 
   PostCSS = (function() {
     function PostCSS(processors) {
@@ -23246,7 +22331,11 @@ var substr = 'ab'.substr(-1) === 'b'
           parsed = returned;
         }
       }
-      return parsed.toResult(opts);
+      if (opts.map) {
+        return generateMap(parsed, opts);
+      } else {
+        return new Result(parsed, parsed.toString());
+      }
     };
 
     return PostCSS;
@@ -23259,18 +22348,14 @@ var substr = 'ab'.substr(-1) === 'b'
     return new PostCSS(processors);
   };
 
-  postcss.parse = _dereq_('./parse');
+  postcss.parse = require('./parse');
 
-  postcss.comment = function(defaults) {
-    return new Comment(defaults);
+  postcss.decl = function(defaults) {
+    return new Declaration(defaults);
   };
 
   postcss.atRule = function(defaults) {
     return new AtRule(defaults);
-  };
-
-  postcss.decl = function(defaults) {
-    return new Declaration(defaults);
   };
 
   postcss.rule = function(defaults) {
@@ -23285,29 +22370,33 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./at-rule":44,"./comment":45,"./declaration":47,"./parse":52,"./root":56,"./rule":57}],54:[function(_dereq_,module,exports){
+},{"./at-rule":39,"./declaration":41,"./generate-map":42,"./parse":45,"./result":48,"./root":49,"./rule":50}],47:[function(require,module,exports){
 (function() {
   var Raw;
 
   Raw = (function() {
-    Raw.load = function(value, raw) {
-      if ((raw != null) && value !== raw) {
-        return new Raw(value, raw);
-      } else {
-        return value;
+    function Raw(raw, trimmed) {
+      this.raw = raw;
+      this.trimmed = trimmed;
+    }
+
+    Raw.prototype.set = function(value) {
+      if (this.trimmed !== value) {
+        this.changed = true;
+        return this.trimmed = value;
       }
     };
 
-    function Raw(value, raw) {
-      this.value = value;
-      this.raw = raw;
-    }
-
-    Raw.prototype.toString = function() {
-      if (this.changed) {
-        return this.value || '';
+    Raw.prototype.stringify = function(opts) {
+      if (opts == null) {
+        opts = {};
+      }
+      if (!this.changed) {
+        return this.raw || '';
+      } else if (!this.raw) {
+        return (opts.before || '') + this.trimmed + (opts.after || '');
       } else {
-        return this.raw || this.value || '';
+        return (this.raw[0] === ' ' ? ' ' : '') + this.trimmed + (this.raw.slice(-1) === ' ' ? ' ' : '');
       }
     };
 
@@ -23315,20 +22404,20 @@ var substr = 'ab'.substr(-1) === 'b'
 
   })();
 
+  Raw.empty = new Raw();
+
   module.exports = Raw;
 
 }).call(this);
 
-},{}],55:[function(_dereq_,module,exports){
+},{}],48:[function(require,module,exports){
 (function() {
   var Result;
 
   Result = (function() {
-    function Result(css, map) {
+    function Result(parsed, css) {
+      this.parsed = parsed;
       this.css = css;
-      if (map) {
-        this.map = map;
-      }
     }
 
     Result.prototype.toString = function() {
@@ -23343,23 +22432,13 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],49:[function(require,module,exports){
 (function() {
-  var AtRule, Comment, Container, Declaration, MapGenerator, Root, Rule,
+  var Container, Root,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  MapGenerator = _dereq_('./map-generator');
-
-  Declaration = _dereq_('./declaration');
-
-  Container = _dereq_('./container');
-
-  Comment = _dereq_('./comment');
-
-  AtRule = _dereq_('./at-rule');
-
-  Rule = _dereq_('./rule');
+  Container = require('./container');
 
   Root = (function(_super) {
     __extends(Root, _super);
@@ -23385,15 +22464,6 @@ var substr = 'ab'.substr(-1) === 'b'
       }
     };
 
-    Root.prototype.toResult = function(opts) {
-      var map;
-      if (opts == null) {
-        opts = {};
-      }
-      map = new MapGenerator(this, opts);
-      return map.getResult();
-    };
-
     return Root;
 
   })(Container.WithRules);
@@ -23402,17 +22472,15 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./at-rule":44,"./comment":45,"./container":46,"./declaration":47,"./map-generator":50,"./rule":57}],57:[function(_dereq_,module,exports){
+},{"./container":40}],50:[function(require,module,exports){
 (function() {
-  var Container, Declaration, Rule, list,
+  var Container, Declaration, Rule,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Container = _dereq_('./container');
+  Container = require('./container');
 
-  Declaration = _dereq_('./declaration');
-
-  list = _dereq_('./list');
+  Declaration = require('./declaration');
 
   Rule = (function(_super) {
     __extends(Rule, _super);
@@ -23422,37 +22490,12 @@ var substr = 'ab'.substr(-1) === 'b'
       Rule.__super__.constructor.apply(this, arguments);
     }
 
-    Rule.prototype.styleType = function() {
-      return this.type + (this.decls.length ? '-body' : '-empty');
-    };
-
-    Rule.prototype.defaultStyle = function(type) {
-      if (type === 'rule-body') {
-        return {
-          between: ' ',
-          after: this.defaultAfter()
-        };
-      } else {
-        return {
-          between: ' ',
-          after: ''
-        };
-      }
-    };
-
     Rule.raw('selector');
 
-    Rule.prop('selectors', {
-      get: function() {
-        return list.comma(this.selector);
-      },
-      set: function(values) {
-        return this.selector = values.join(', ');
-      }
-    });
-
     Rule.prototype.stringify = function(builder) {
-      return this.stringifyBlock(builder, this._selector + this.style().between + '{');
+      return this.stringifyBlock(builder, this._selector.stringify({
+        after: ' '
+      }) + '{');
     };
 
     return Rule;
@@ -23463,7 +22506,7 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{"./container":46,"./declaration":47,"./list":49}],58:[function(_dereq_,module,exports){
+},{"./container":40,"./declaration":41}],51:[function(require,module,exports){
 (function() {
   var SyntaxError,
     __hasProp = {}.hasOwnProperty,
@@ -23492,7 +22535,7 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{}],59:[function(_dereq_,module,exports){
+},{}],52:[function(require,module,exports){
 (function() {
   var vendor;
 
@@ -23521,140 +22564,17 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this);
 
-},{}],60:[function(_dereq_,module,exports){
-var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-;(function (exports) {
-	'use strict';
-
-  var Arr = (typeof Uint8Array !== 'undefined')
-    ? Uint8Array
-    : Array
-
-	var ZERO   = '0'.charCodeAt(0)
-	var PLUS   = '+'.charCodeAt(0)
-	var SLASH  = '/'.charCodeAt(0)
-	var NUMBER = '0'.charCodeAt(0)
-	var LOWER  = 'a'.charCodeAt(0)
-	var UPPER  = 'A'.charCodeAt(0)
-
-	function decode (elt) {
-		var code = elt.charCodeAt(0)
-		if (code === PLUS)
-			return 62 // '+'
-		if (code === SLASH)
-			return 63 // '/'
-		if (code < NUMBER)
-			return -1 //no match
-		if (code < NUMBER + 10)
-			return code - NUMBER + 26 + 26
-		if (code < UPPER + 26)
-			return code - UPPER
-		if (code < LOWER + 26)
-			return code - LOWER + 26
-	}
-
-	function b64ToByteArray (b64) {
-		var i, j, l, tmp, placeHolders, arr
-
-		if (b64.length % 4 > 0) {
-			throw new Error('Invalid string. Length must be a multiple of 4')
-		}
-
-		// the number of equal signs (place holders)
-		// if there are two placeholders, than the two characters before it
-		// represent one byte
-		// if there is only one, then the three characters before it represent 2 bytes
-		// this is just a cheap hack to not do indexOf twice
-		var len = b64.length
-		placeHolders = '=' === b64.charAt(len - 2) ? 2 : '=' === b64.charAt(len - 1) ? 1 : 0
-
-		// base64 is 4/3 + up to two characters of the original data
-		arr = new Arr(b64.length * 3 / 4 - placeHolders)
-
-		// if there are placeholders, only get up to the last complete 4 chars
-		l = placeHolders > 0 ? b64.length - 4 : b64.length
-
-		var L = 0
-
-		function push (v) {
-			arr[L++] = v
-		}
-
-		for (i = 0, j = 0; i < l; i += 4, j += 3) {
-			tmp = (decode(b64.charAt(i)) << 18) | (decode(b64.charAt(i + 1)) << 12) | (decode(b64.charAt(i + 2)) << 6) | decode(b64.charAt(i + 3))
-			push((tmp & 0xFF0000) >> 16)
-			push((tmp & 0xFF00) >> 8)
-			push(tmp & 0xFF)
-		}
-
-		if (placeHolders === 2) {
-			tmp = (decode(b64.charAt(i)) << 2) | (decode(b64.charAt(i + 1)) >> 4)
-			push(tmp & 0xFF)
-		} else if (placeHolders === 1) {
-			tmp = (decode(b64.charAt(i)) << 10) | (decode(b64.charAt(i + 1)) << 4) | (decode(b64.charAt(i + 2)) >> 2)
-			push((tmp >> 8) & 0xFF)
-			push(tmp & 0xFF)
-		}
-
-		return arr
-	}
-
-	function uint8ToBase64 (uint8) {
-		var i,
-			extraBytes = uint8.length % 3, // if we have 1 byte left, pad 2 bytes
-			output = "",
-			temp, length
-
-		function encode (num) {
-			return lookup.charAt(num)
-		}
-
-		function tripletToBase64 (num) {
-			return encode(num >> 18 & 0x3F) + encode(num >> 12 & 0x3F) + encode(num >> 6 & 0x3F) + encode(num & 0x3F)
-		}
-
-		// go through the array every three bytes, we'll deal with trailing stuff later
-		for (i = 0, length = uint8.length - extraBytes; i < length; i += 3) {
-			temp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
-			output += tripletToBase64(temp)
-		}
-
-		// pad the end with zeros, but make sure to not forget the extra bytes
-		switch (extraBytes) {
-			case 1:
-				temp = uint8[uint8.length - 1]
-				output += encode(temp >> 2)
-				output += encode((temp << 4) & 0x3F)
-				output += '=='
-				break
-			case 2:
-				temp = (uint8[uint8.length - 2] << 8) + (uint8[uint8.length - 1])
-				output += encode(temp >> 10)
-				output += encode((temp >> 4) & 0x3F)
-				output += encode((temp << 2) & 0x3F)
-				output += '='
-				break
-		}
-
-		return output
-	}
-
-	module.exports.toByteArray = b64ToByteArray
-	module.exports.fromByteArray = uint8ToBase64
-}())
-
-},{}],61:[function(_dereq_,module,exports){
+},{}],53:[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
  * http://opensource.org/licenses/BSD-3-Clause
  */
-exports.SourceMapGenerator = _dereq_('./source-map/source-map-generator').SourceMapGenerator;
-exports.SourceMapConsumer = _dereq_('./source-map/source-map-consumer').SourceMapConsumer;
-exports.SourceNode = _dereq_('./source-map/source-node').SourceNode;
+exports.SourceMapGenerator = require('./source-map/source-map-generator').SourceMapGenerator;
+exports.SourceMapConsumer = require('./source-map/source-map-consumer').SourceMapConsumer;
+exports.SourceNode = require('./source-map/source-node').SourceNode;
 
-},{"./source-map/source-map-consumer":66,"./source-map/source-map-generator":67,"./source-map/source-node":68}],62:[function(_dereq_,module,exports){
+},{"./source-map/source-map-consumer":58,"./source-map/source-map-generator":59,"./source-map/source-node":60}],54:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -23662,11 +22582,11 @@ exports.SourceNode = _dereq_('./source-map/source-node').SourceNode;
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
-  var util = _dereq_('./util');
+  var util = require('./util');
 
   /**
    * A data structure which is a combination of an array and a set. Adding a new
@@ -23753,7 +22673,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"./util":69,"amdefine":70}],63:[function(_dereq_,module,exports){
+},{"./util":61,"amdefine":62}],55:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -23791,11 +22711,11 @@ define(function (_dereq_, exports, module) {
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
-  var base64 = _dereq_('./base64');
+  var base64 = require('./base64');
 
   // A single base 64 digit can contain 6 bits of data. For the base 64 variable
   // length quantities we use in the source map spec, the first bit is the sign,
@@ -23899,7 +22819,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"./base64":64,"amdefine":70}],64:[function(_dereq_,module,exports){
+},{"./base64":56,"amdefine":62}],56:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -23907,9 +22827,9 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
   var charToIntMap = {};
   var intToCharMap = {};
@@ -23943,7 +22863,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"amdefine":70}],65:[function(_dereq_,module,exports){
+},{"amdefine":62}],57:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -23951,9 +22871,9 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
   /**
    * Recursive implementation of binary search.
@@ -24026,7 +22946,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"amdefine":70}],66:[function(_dereq_,module,exports){
+},{"amdefine":62}],58:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -24034,14 +22954,14 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
-  var util = _dereq_('./util');
-  var binarySearch = _dereq_('./binary-search');
-  var ArraySet = _dereq_('./array-set').ArraySet;
-  var base64VLQ = _dereq_('./base64-vlq');
+  var util = require('./util');
+  var binarySearch = require('./binary-search');
+  var ArraySet = require('./array-set').ArraySet;
+  var base64VLQ = require('./base64-vlq');
 
   /**
    * A SourceMapConsumer instance represents a parsed source map which we can
@@ -24506,7 +23426,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"./array-set":62,"./base64-vlq":63,"./binary-search":65,"./util":69,"amdefine":70}],67:[function(_dereq_,module,exports){
+},{"./array-set":54,"./base64-vlq":55,"./binary-search":57,"./util":61,"amdefine":62}],59:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -24514,13 +23434,13 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
-  var base64VLQ = _dereq_('./base64-vlq');
-  var util = _dereq_('./util');
-  var ArraySet = _dereq_('./array-set').ArraySet;
+  var base64VLQ = require('./base64-vlq');
+  var util = require('./util');
+  var ArraySet = require('./array-set').ArraySet;
 
   /**
    * An instance of the SourceMapGenerator represents a source map which is
@@ -24905,7 +23825,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"./array-set":62,"./base64-vlq":63,"./util":69,"amdefine":70}],68:[function(_dereq_,module,exports){
+},{"./array-set":54,"./base64-vlq":55,"./util":61,"amdefine":62}],60:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -24913,12 +23833,12 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
-  var SourceMapGenerator = _dereq_('./source-map-generator').SourceMapGenerator;
-  var util = _dereq_('./util');
+  var SourceMapGenerator = require('./source-map-generator').SourceMapGenerator;
+  var util = require('./util');
 
   /**
    * SourceNodes provide a way to abstract over interpolating/concatenating
@@ -25294,7 +24214,7 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"./source-map-generator":67,"./util":69,"amdefine":70}],69:[function(_dereq_,module,exports){
+},{"./source-map-generator":59,"./util":61,"amdefine":62}],61:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -25302,9 +24222,9 @@ define(function (_dereq_, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = _dereq_('amdefine')(module, _dereq_);
+    var define = require('amdefine')(module, require);
 }
-define(function (_dereq_, exports, module) {
+define(function (require, exports, module) {
 
   /**
    * This is a helper function for getting values from parameter/options
@@ -25598,9 +24518,8 @@ define(function (_dereq_, exports, module) {
 
 });
 
-},{"amdefine":70}],70:[function(_dereq_,module,exports){
-(function (process,__filename){
-/** vim: et:ts=4:sw=4:sts=4
+},{"amdefine":62}],62:[function(require,module,exports){
+var process=require("__browserify_process"),__filename="/../node_modules/postcss/node_modules/source-map/node_modules/amdefine/amdefine.js";/** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 0.1.0 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/amdefine for details
@@ -25625,7 +24544,7 @@ function amdefine(module, requireFn) {
     var defineCache = {},
         loaderCache = {},
         alreadyCalled = false,
-        path = _dereq_('path'),
+        path = require('path'),
         makeRequire, stringRequire;
 
     /**
@@ -25900,8 +24819,7 @@ function amdefine(module, requireFn) {
 
 module.exports = amdefine;
 
-}).call(this,_dereq_("/home/ai/Dev/autoprefixer/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),"/../node_modules/postcss/node_modules/source-map/node_modules/amdefine/amdefine.js")
-},{"/home/ai/Dev/autoprefixer/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":42,"path":43}]},{},[3])
+},{"__browserify_process":37,"path":38}]},{},[3])
 (3)
 });
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
