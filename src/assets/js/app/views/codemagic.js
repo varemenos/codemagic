@@ -333,7 +333,7 @@ $(function () {
 				title : '',
 				description : '',
 				author : '',
-				theme : app.utils.getSettings('theme') || 'tomorrow',
+				theme : app.utils.getSettings('theme') || 'tomorrow_night_eighties',
 				tabSize : parseInt(app.utils.getSettings('tabSize'), 10) || 4,
 				showPrintMargin : app.utils.getSettings('showPrintMargin') || false,
 				wrap : app.utils.getSettings('wrap') || true,
