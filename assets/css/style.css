@@ -2180,6 +2180,71 @@
   border-top: 0 none;
 }
 
+.icheckbox_square-blue,
+.iradio_square-blue {
+  display: inline-block;
+  *display: inline;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  background: url(../img/icheck/blue.png) no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.icheckbox_square-blue {
+  background-position: 0 0;
+}
+
+.icheckbox_square-blue.hover {
+  background-position: -24px 0;
+}
+
+.icheckbox_square-blue.checked {
+  background-position: -48px 0;
+}
+
+.icheckbox_square-blue.disabled {
+  background-position: -72px 0;
+  cursor: default;
+}
+
+.icheckbox_square-blue.checked.disabled {
+  background-position: -96px 0;
+}
+
+.iradio_square-blue {
+  background-position: -120px 0;
+}
+
+.iradio_square-blue.hover {
+  background-position: -144px 0;
+}
+
+.iradio_square-blue.checked {
+  background-position: -168px 0;
+}
+
+.iradio_square-blue.disabled {
+  background-position: -192px 0;
+  cursor: default;
+}
+
+.iradio_square-blue.checked.disabled {
+  background-position: -216px 0;
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .icheckbox_square-blue,
+  .iradio_square-blue {
+    background-image: url(../img/icheck/blue@2x.png);
+    -webkit-background-size: 240px 24px;
+    background-size: 240px 24px;
+  }
+}
 /* normalize.css v2.1.3 | MIT License | git.io/normalize */
 /* ==========================================================================
 	 HTML5 display definitions
@@ -3072,6 +3137,9 @@ table {
     padding-bottom: 0;
   }
 }
+.row > .col-12-12 {
+  padding-right: 0;
+}
 
 html,
 body {
@@ -3342,7 +3410,7 @@ header {
   box-shadow: 0 1px 2px #c8c8c8;
 }
 
-#settings-modal label {
+label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -3350,19 +3418,17 @@ header {
   display: block;
   width: 100%;
   padding: 0.66667rem;
-  background-color: #fbfbfb;
-  border: 1px solid #eeeeee;
 }
-#settings-modal label:focus, #settings-modal label:hover {
+label:focus, label:hover {
   cursor: pointer;
 }
-#settings-modal label.vertical-spacing {
+label.vertical-spacing {
   margin-bottom: 1rem;
 }
-#settings-modal label.vertical-spacing:last-child {
+label.vertical-spacing:last-child {
   margin-bottom: 0;
 }
-#settings-modal label > input[type=text], #settings-modal label > textarea {
+label > input[type=text], label > textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -3373,7 +3439,16 @@ header {
   background-color: white;
   border: 1px solid #e1e1e1;
 }
-#settings-modal label.settings-option-checkbox {
+label span {
+  vertical-align: middle;
+}
+
+#settings-modal label {
+  background-color: #fbfbfb;
+  border: 1px solid #eeeeee;
+}
+
+.settings-option-checkbox {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -3381,16 +3456,20 @@ header {
   -ms-user-select: none;
   user-select: none;
 }
-#settings-modal label.settings-option-checkbox input {
+
+.settings-option-checkbox input {
   vertical-align: middle;
 }
-#settings-modal label.settings-option-input span, #settings-modal label.settings-option-select span, #settings-modal label.settings-option-textarea span {
+
+.settings-option-input span,
+.settings-option-select span,
+.settings-option-textarea span {
   display: inline-block;
   padding-bottom: 0.5rem;
   vertical-align: middle;
 }
 
-.settings-option-select {
+label .settings-option-select {
   width: 100%;
 }
 
