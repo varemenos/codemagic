@@ -171,10 +171,6 @@ $(function () {
 		var result = '';
 		var styleValue = app.editors.css.getValue();
 
-		if (app.session.css.autoprefixer) {
-			styleValue = autoprefixer().process(styleValue).css;
-		}
-
 		if ($('#styleChoice').val() === 'Less') {
 			var parser = new(less.Parser)();
 
@@ -195,6 +191,10 @@ $(function () {
 			app.utils.consoleLog('Stylus support is not implemented yet.');
 		} else {
 			result = styleValue;
+		}
+
+		if (app.session.css.autoprefixer) {
+			result = autoprefixer().process(result).css;
 		}
 
 		return result;
