@@ -136,13 +136,17 @@ $(function () {
 		// TODO: better error handling and object debugging
 		// WHY: breaking down logger into many pieces to prevent proxies from chocking by passing the 500 character limit
 
-		var result = '<script>window.eval = {};window.onerror=function(msg,url,line) {';
-		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code class=\'js-error\'>> "+msg+" </code>")};';
-		result += 'console.log=function() {var str="",count=0;for(var i=0;';
-		result += 'i<arguments.length;i++) {if (typeof arguments[i]=="object") {str="Object {<br>";for(var item in arguments[i])if (arguments[i].hasOwnProperty(item)) {count++;';
-		result += 'str+="\t"+item+" : "+arguments[i][item]+",<br>"}str=str.substring(0,str.length-5)+"<br>}";';
-		result += 'if (count===0) {str="Object {}";count=0}} else str=arguments[i];';
-		result += 'parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend","<code>> "+str+"</code><br>")}};</script>';
+		var result = '<script>';
+		result += 'var spacing = (function (size) {var result = "";for (var i = 0; i < size; i++) {result += "&nbsp;";}return result;})(4);';
+		result += 'var spacing4Depth = function (size) {var result = "";for (var i = 0; i < size; i++) {result += spacing;}return result;};';
+		result += 'var parseObj = function (items, depth) {if (checkDepth()) {return items;}var str;var count = 0;str = "{<br>";for (var item in items) {if (items.hasOwnProperty(item)) {count++;str += spacing4Depth(depth + 1) + "<b>" + item + "</b>: " + parseItem(items[item], depth + 1) + ",<br>";}}if (count > 0) {str = str.substring(0, str.length - 5) + "<br>" + spacing4Depth(depth) + "}";} else {str = "{}";}return str;};';
+		result += 'var parseArr = function (items, depth) {if (checkDepth()) {return items;}var str;var count = 0;str = "[<br>";for (var item in items) {if (items.hasOwnProperty(item)) {count++;str += spacing4Depth(depth + 1) + parseItem(items[item], depth + 1) + ",<br>";}}if (count > 0) {str = str.substring(0, str.length - 5) + "<br>" + spacing4Depth(depth) + "]";} else {str = "[]";}return str;};';
+		result += 'var checkDepth = function (depth) {return depth >= 20;};';
+		result += 'var parseItem = function (items, depth) {if (typeof items == "object") {if (items instanceof Array) {return parseArr(items, depth);} else {return parseObj(items, depth);}} else {return items;}};';
+		result += 'window.eval = {};window.onerror = function(msg, url, line) {parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend", "<code class=\'js-error\'>> " + msg + " </code>")};';
+		result += 'console.log = function() {for (var i = 0; i < arguments.length; i++) {var str = parseItem(arguments[i], 0);parent.document.getElementById("console-editor").insertAdjacentHTML("beforeend", "<code>> " + str + "</code><br>")}};';
+		result += '</script>';
+
 		return result;
 	};
 
