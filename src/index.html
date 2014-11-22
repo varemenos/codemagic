@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
-		<div id="container" class="grid"></div>
+		<div id="container"></div>
 		<script src="assets/js/script.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -23,7 +23,7 @@
 		</script>
 
 		<script type="text/template" id="header-template">
-			<div class="row">
+			<div>
 				<header>
 					<nav class="clearfix">
 						<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
@@ -76,11 +76,13 @@
 			<div id="information" class="page">
 				<h1>Information</h1>
 				<p>
-					<a target="_blank" href="https://github.com/varemenos/codemagic" title="Source">Source</a><br>
-					<a target="_blank" href="https://github.com/varemenos/codemagic/issues" title="Report Bugs">Report Bugs</a><br>
-					<a target="_blank" href="https://github.com/varemenos/codemagic#license" title="License">License</a><br>
+					<a target="_blank" href="https://github.com/varemenos/codemagic" title="Source">Source</a>,
+					<a target="_blank" href="https://github.com/varemenos/codemagic/issues" title="Report Bugs">Report Bugs</a>,
+					<a target="_blank" href="https://github.com/varemenos/codemagic#license" title="License">License</a>
+					<br>
+					<br>
 					<span>Currently in alpha stage! so there is a lot to be done (like implementing a backend, give proper attribution of libraries used, TOS etc).</span><br><br>
-					<span>Designed, developed and maintained by <a href="http://adonisk.com" title="Adonis K.">Adonis K.</a>, &copy; 2014</span>
+					<span>By <a href="http://adonisk.com" title="Adonis K.">Adonis K.</a>, &copy; 2014</span>
 				</p>
 			</div>
 		</script>
@@ -107,7 +109,7 @@
 		</script>
 
 		<script type="text/template" id="codemagic-template">
-			<div class="row full-height-row">
+			<div class="expanded">
 				<section id="editors" class="col-6-12">
 					<div class="editor-module">
 						<div class="editor-config clearfix">
@@ -140,9 +142,6 @@
 						</div>
 						<div class="editor-wrap">
 							<div id="html-editor" class="editor"></div>
-						</div>
-						<div class="resizer">
-							<span class="resizer--icon">&#8942;</span>
 						</div>
 					</div>
 					<div class="editor-module">
@@ -202,9 +201,6 @@
 						<div class="editor-wrap">
 							<div id="css-editor" class="editor"></div>
 						</div>
-						<div class="resizer">
-						<span class="resizer--icon">&#8942;</span>
-						</div>
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
@@ -262,9 +258,6 @@
 						<div class="editor-wrap">
 							<div id="js-editor" class="editor"></div>
 						</div>
-						<div class="resizer">
-							<span class="resizer--icon">&#8942;</span>
-						</div>
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
@@ -277,9 +270,6 @@
 						</div>
 						<div class="editor-wrap">
 							<div id="console-editor" class="editor"></div>
-						</div>
-						<div class="resizer">
-							<span class="resizer--icon">&#8942;</span>
 						</div>
 					</div>
 				</section>

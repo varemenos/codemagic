@@ -44,18 +44,20 @@ $xxlarge: $size*4;
 @include grid(12, $size);
 
 html,
-body{
+body,
+#container{
 	height: 100%;
 }
 
 #container{
-	height: 95%;
-	height: calc(100% - 1.5rem);
+	display: flex;
+	flex-direction: column;
 }
 
-.full-height-row{
-	height: 95%;
-	height: calc(100% - 2.5rem);
+.expanded{
+	display: flex;
+	flex-grow: 1;
+	padding: $size;
 }
 
 body{
@@ -75,7 +77,11 @@ header{
 }
 
 #editors{
-	padding: 0 $size;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	padding: 0 $size 0 0;
+    margin-bottom: -$size;
 
 	&.enlarged{
 		padding-bottom: 30%;
@@ -109,14 +115,13 @@ header{
 
 .editor-module{
 	display: none;
+	flex-grow: 1;
+    flex-direction: column;
+    margin-bottom: $size;
 	@include border-radius(0 0 5px 5px);
 
-	&:last-child{
-		margin-bottom: 0;
-	}
-
 	&.enabled{
-		display: block;
+	    display: flex;
 	}
 }
 
@@ -172,29 +177,12 @@ header{
 .editor-wrap{
 	@include borderbox;
 	position: relative;
-	height: 195px;
+	flex-grow: 1;
 }
 
 .editor{
 	width: 100%;
 	height: 100%;
-}
-
-.resizer{
-	position: relative;
-	z-index: 10;
-	height: $size;
-	width: 100%;
-	cursor: ns-resize;
-	text-align: center;
-	@include border-radius(0 0 5px 5px);
-}
-
-.resizer--icon{
-	display: inline-block;
-	cursor: ns-resize;
-	@include transform(rotate(90deg));
-	@include user-select(none);
 }
 
 #console-editor{
@@ -206,9 +194,8 @@ header{
 }
 
 #result{
-	float: right;
+	display: flex;
 	height: 100%;
-	padding-right: $size;
 
 	&.hideEditors{
 		padding-left: $size;
@@ -472,10 +459,19 @@ label{
 // Static page style
 // =============================
 .page{
+	width: 100%;
 	max-width: 1140px;
 	margin: $size auto;
 	padding: $size;
 	background-color: lighten($bg-color, 15%);
+
+	a{
+		text-decoration: none;
+
+		&:hover{
+			text-decoration: underline;
+		}
+	}
 
 	h1:first-child{
 		margin-top: 0;
