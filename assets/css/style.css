@@ -3191,7 +3191,7 @@ header {
   flex-direction: column;
   flex-grow: 1;
   padding: 0 1rem 0 0;
-  margin-bottom: -1rem;
+  margin-bottom: -0.5rem;
 }
 #editors.enlarged {
   padding-bottom: 30%;
@@ -3220,7 +3220,7 @@ header {
   display: none;
   flex-grow: 1;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
