@@ -37314,10 +37314,6 @@ $(function () {
 			}
 			app.utils.updateLayout();
 		},
-		editorHeightUpdate: function (e) {
-			$(".editor-module.enabled .editor-wrap").height($("#result").height() / $(".editor-module.enabled").length - (2.5 * 16));
-			app.utils.resizeEditors();
-		},
 		popupOpen: function (e) {
 			app.utils.updateShareUrls(function () {
 				var target = '#' + $(e.currentTarget).prop('id') + '-modal';
@@ -37413,10 +37409,6 @@ $(function () {
 				$('#' + target + '-editor-toggle').toggleClass('enabled');
 				$('#' + target + '-editor').closest('.editor-module').toggleClass('enabled');
 				app.utils.toggleEditorState(target);
-			}
-
-			if (!app.lock.editorResize) {
-				this.editorHeightUpdate();
 			}
 		},
 		toggleSelectedEditorOptions: function (e) {
@@ -37662,17 +37654,6 @@ $(function () {
 			app.utils.setTheme(app.session.theme);
 
 			this.toggleEditorState(['html', 'css', 'js']);
-
-			// editor height setup
-			app.lock.editorResize = false;
-			this.editorHeightUpdate();
-			$(window).on('resize', function (e) {
-				if (!app.lock.editorResize) {
-					app.mvc.views.codemagicView.editorHeightUpdate();
-				} else {
-					$(window).off('resize');
-				}
-			});
 
 			$(".codeChoice").selectize({
 				create: false
