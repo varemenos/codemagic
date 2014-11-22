@@ -81,7 +81,7 @@ header{
 	flex-direction: column;
 	flex-grow: 1;
 	padding: 0 $size 0 0;
-    margin-bottom: -$size;
+	margin-bottom: -$xsmall;
 
 	&.enlarged{
 		padding-bottom: 30%;
@@ -116,12 +116,12 @@ header{
 .editor-module{
 	display: none;
 	flex-grow: 1;
-    flex-direction: column;
-    margin-bottom: $size;
+	flex-direction: column;
+	margin-bottom: $xsmall;
 	@include border-radius(0 0 5px 5px);
 
 	&.enabled{
-	    display: flex;
+		display: flex;
 	}
 }
 
