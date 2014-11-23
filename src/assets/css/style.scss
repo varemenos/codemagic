@@ -56,7 +56,7 @@ body,
 
 .expanded{
 	display: flex;
-	flex-grow: 1;
+	flex: 1;
 	padding: $size;
 }
 
@@ -70,6 +70,7 @@ body{
 header{
 	display: block;
 	width: 100%;
+	min-height: 2.5rem;
 	padding: 0;
 	background-color: lighten($bg-color, 50%);
 	@include box-shadow(0 1px 2px darken($bg-color, 10%));
@@ -79,7 +80,7 @@ header{
 #editors{
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
+	flex: 1;
 	padding: 0 $size 0 0;
 	margin-bottom: -$xsmall;
 
@@ -115,7 +116,7 @@ header{
 
 .editor-module{
 	display: none;
-	flex-grow: 1;
+	flex: 1;
 	flex-direction: column;
 	margin-bottom: $xsmall;
 	@include border-radius(0 0 5px 5px);
@@ -126,6 +127,8 @@ header{
 }
 
 .editor-config{
+	display: flex;
+	min-height: 1.25rem;
 	position: relative;
 	padding-bottom: $xsmall;
 	@include user-select(none);
@@ -147,6 +150,11 @@ header{
 	span{
 		font-weight: bold;
 	}
+}
+
+.editor-config-right{
+	flex: 1;
+	text-align: right;
 }
 
 .editor-options{
@@ -176,18 +184,19 @@ header{
 
 .editor-wrap{
 	@include borderbox;
+	display: flex;
 	position: relative;
-	flex-grow: 1;
+	flex: 1;
 }
 
 .editor{
-	width: 100%;
-	height: 100%;
+	flex: 1;
 }
 
 #console-editor{
 	@include borderbox;
-	overflow: auto;
+	overflow-x: auto;
+	overflow-y: scroll;
 	font-size: $small;
 	background-color: lighten($bg-color, 50%);
 	padding: $size;

@@ -23,38 +23,36 @@
 		</script>
 
 		<script type="text/template" id="header-template">
-			<div>
-				<header>
-					<nav class="clearfix">
-						<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
-						<a id="new" href="#new" class="nav-btn navigating-btn hint--bottom" data-hint="New"><i class="fa fa-plus"></i></a>
-						<!--
-							<a id="login" href="#login" class="nav-btn navigating-btn hint--bottom" data-hint="Login"><i class="fa fa-sign-in"></i></a>
-						-->
-						<a id="about" href="#about" class="nav-btn navigating-btn hint--bottom" data-hint="About"><i class="fa fa-user"></i></a>
-						<a id="information" href="#information" class="nav-btn navigating-btn hint--bottom" data-hint="Information"><i class="fa fa-question-circle"></i></a>
-						<% if(page === 'codemagic'){ %>
-							<span class="placeholder nav-btn">&nbsp;</span>
-							<button id="html-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle HTML panel visibility"><span>HTML</span></button>
-							<button id="css-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle CSS panel visibility"><span>CSS</span></button>
-							<button id="js-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Javascript panel visibility"><span>JS</span></button>
-							<button id="console-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Console panel visibility"><span>Console</span></button>
-							<span class="placeholder nav-btn">&nbsp;</span><!--
-							<button id="share" class="nav-btn hint--bottom" data-hint="Share"><i class="fa fa-share"></i></button>
-							<button id="fork" class="nav-btn hint--bottom" data-hint="Fork"><i class="fa fa-cutlery"></i></button>
-							<button id="save" class="nav-btn hint--bottom" data-hint="Save"><i class="fa fa-save"></i></button>
-							--><a id="download" class="nav-btn hint--bottom" data-hint="Download Project as .zip" download="project.zip"><i class="fa fa-download"></i></a>
-							<span class="placeholder nav-btn">&nbsp;</span>
-							<button id="settings" class="nav-btn hint--bottom" data-hint="Settings"><i class="fa fa-cog"></i></button>
-							<button id="hide-editors" class="nav-btn hint--bottom" data-hint="Hide Editors"><i class="fa fa-caret-square-o-left"></i></button>
-							<button id="hide-result" class="nav-btn hint--bottom" data-hint="Hide Result"><i class="fa fa-caret-square-o-right"></i></button>
-							<button id="fullscreen" class="nav-btn hint--bottom" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
-							<button id="prettify" class="nav-btn hint--bottom" data-hint="Prettify Code"><i class="fa fa-magic"></i></button>
-							<button id="update" class="nav-btn hint--bottom" data-hint="Execute"><i class="fa fa-play"></i></button>
-						<% } %>
-					</nav>
-				</header>
-			</div>
+			<header>
+				<nav class="clearfix">
+					<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
+					<a id="new" href="#new" class="nav-btn navigating-btn hint--bottom" data-hint="New"><i class="fa fa-plus"></i></a>
+					<!--
+						<a id="login" href="#login" class="nav-btn navigating-btn hint--bottom" data-hint="Login"><i class="fa fa-sign-in"></i></a>
+					-->
+					<a id="about" href="#about" class="nav-btn navigating-btn hint--bottom" data-hint="About"><i class="fa fa-user"></i></a>
+					<a id="information" href="#information" class="nav-btn navigating-btn hint--bottom" data-hint="Information"><i class="fa fa-question-circle"></i></a>
+					<% if(page === 'codemagic'){ %>
+						<span class="placeholder nav-btn">&nbsp;</span>
+						<button id="html-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle HTML panel visibility"><span>HTML</span></button>
+						<button id="css-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle CSS panel visibility"><span>CSS</span></button>
+						<button id="js-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Javascript panel visibility"><span>JS</span></button>
+						<button id="console-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Console panel visibility"><span>Console</span></button>
+						<span class="placeholder nav-btn">&nbsp;</span><!--
+						<button id="share" class="nav-btn hint--bottom" data-hint="Share"><i class="fa fa-share"></i></button>
+						<button id="fork" class="nav-btn hint--bottom" data-hint="Fork"><i class="fa fa-cutlery"></i></button>
+						<button id="save" class="nav-btn hint--bottom" data-hint="Save"><i class="fa fa-save"></i></button>
+						--><a id="download" class="nav-btn hint--bottom" data-hint="Download Project as .zip" download="project.zip"><i class="fa fa-download"></i></a>
+						<span class="placeholder nav-btn">&nbsp;</span>
+						<button id="settings" class="nav-btn hint--bottom" data-hint="Settings"><i class="fa fa-cog"></i></button>
+						<button id="hide-editors" class="nav-btn hint--bottom" data-hint="Hide Editors"><i class="fa fa-caret-square-o-left"></i></button>
+						<button id="hide-result" class="nav-btn hint--bottom" data-hint="Hide Result"><i class="fa fa-caret-square-o-right"></i></button>
+						<button id="fullscreen" class="nav-btn hint--bottom" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+						<button id="prettify" class="nav-btn hint--bottom" data-hint="Prettify Code"><i class="fa fa-magic"></i></button>
+						<button id="update" class="nav-btn hint--bottom" data-hint="Execute"><i class="fa fa-play"></i></button>
+					<% } %>
+				</nav>
+			</header>
 		</script>
 
 		<script type="text/template" id="login-template">
@@ -113,7 +111,7 @@
 				<section id="editors" class="col-6-12">
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="html-option-title" class="editor-option-title">HTML</span>
 								<button class="editor-options-toggle hint--right" data-hint="Markup Options"><i class="fa fa-cog"></i></button>
 								<div id="html-editor-options" class="editor-options">
@@ -126,7 +124,6 @@
 													<option value="Slim">Slim</option>
 													<option value="Jade">Jade</option>
 													<option value="Markdown">Markdown</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -136,7 +133,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="html-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -146,7 +143,7 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="css-option-title" class="editor-option-title">CSS</span>
 								<button class="editor-options-toggle hint--right" data-hint="Stylesheet Options"><i class="fa fa-cog"></i></button>
 								<div id="css-editor-options" class="editor-options">
@@ -158,7 +155,6 @@
 													<option value="Less">Less</option>
 													<option value="SCSS">SCSS</option>
 													<option value="Stylus">Stylus</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -194,7 +190,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="css-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -204,7 +200,7 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="script-option-title" class="editor-option-title">JS</span>
 								<button class="editor-options-toggle hint--right" data-hint="JavaScript Options"><i class="fa fa-cog"></i></button>
 								<div id="js-editor-options" class="editor-options">
@@ -214,7 +210,6 @@
 												<select name="scriptChoice" id="scriptChoice" class="codeChoice">
 													<option value="JavaScript">JavaScript</option>
 													<option value="CoffeeScript">CoffeeScript</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -251,7 +246,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="js-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -261,10 +256,10 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="console-option-title" class="editor-option-title">Console</span>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="console-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
