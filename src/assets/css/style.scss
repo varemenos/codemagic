@@ -70,7 +70,6 @@ body{
 header{
 	display: block;
 	width: 100%;
-	min-height: 2.5rem;
 	padding: 0;
 	background-color: lighten($bg-color, 50%);
 	@include box-shadow(0 1px 2px darken($bg-color, 10%));
@@ -128,7 +127,6 @@ header{
 
 .editor-config{
 	display: flex;
-	min-height: 1.25rem;
 	position: relative;
 	padding-bottom: $xsmall;
 	@include user-select(none);
@@ -204,7 +202,7 @@ header{
 
 #result{
 	display: flex;
-	height: 100%;
+	flex: 1;
 
 	&.hideEditors{
 		padding-left: $size;
@@ -222,7 +220,7 @@ header{
 
 	iframe{
 		width: 100%;
-		height: 100%;
+		flex: 1;
 		background-color: lighten($bg-color, 15%);
 		border: none;
 	}

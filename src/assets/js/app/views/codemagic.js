@@ -477,6 +477,8 @@ $(function () {
 
 			this.render();
 			this.updateResults();
+
+			app.utils.updateLibraries();
 		},
 		render: function () {
 			return this;
