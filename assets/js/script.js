@@ -37127,6 +37127,187 @@ $(function () {
 			callback();
 		}
 	};
+
+	app.utils.updateLibraries = function (callback) {
+		$.getJSON('http://api.cdnjs.com/libraries?fields=version', function (data) {
+			var generateOption = function (name, version, filepath) {
+				return {
+					value: '//cdnjs.cloudflare.com/ajax/libs/' + name + '/' + version + '/' + filepath,
+					text: name + ' ' + version
+				};
+			};
+			var generateItem = function (name, version, filepath) {
+				return '//cdnjs.cloudflare.com/ajax/libs/' + name + '/' + version + '/' + filepath;
+			};
+
+			var cssLibs = [
+				'twitter-bootstrap',
+				'normalize',
+				'animate.css',
+				'1140',
+				'font-awesome',
+				'foundation'
+			];
+
+			var jsLibs = [
+				'prefixfree',
+				'backbone.js',
+				'ember.js',
+				'underscore.js',
+				'zepto',
+				'require.js',
+				'modernizr',
+				'jquery',
+				'angular.js',
+				'mootools',
+				'jqueryui',
+				'coffee-script',
+				'raphael',
+				'three.js',
+				'URI.js',
+				'SyntaxHighlighter',
+				'benchmark',
+				'twitter-bootstrap',
+				'foundation'
+			];
+
+			var cssPreferences = {
+				'normalize': {
+					selected: true,
+					filepath: 'normalize.min.css'
+				},
+				'twitter-bootstrap': {
+					selected: false,
+					filepath: 'css/bootstrap.min.css'
+				},
+				'animate.css': {
+					selected: false,
+					filepath: 'animate.min.css'
+				},
+				'1140': {
+					selected: false,
+					filepath: '1140.css'
+				},
+				'font-awesome': {
+					selected: false,
+					filepath: 'css/font-awesome.min.css'
+				},
+				'foundation': {
+					selected: false,
+					filepath: 'css/foundation.min.css'
+				}
+			};
+
+			var jsPreferences = {
+				'jquery': {
+					selected: true,
+					filepath: 'jquery.min.js'
+				},
+				'prefixfree': {
+					selected: false,
+					filepath: 'prefixfree.min.js'
+				},
+				'angular.js': {
+					selected: false,
+					filepath: 'angular.min.js'
+				},
+				'mootools': {
+					selected: false,
+					filepath: 'mootools-core-full-compat.min.js'
+				},
+				'backbone.js': {
+					selected: false,
+					filepath: 'backbone-min.js'
+				},
+				'ember.js': {
+					selected: false,
+					filepath: 'ember.min.js'
+				},
+				'underscore.js': {
+					selected: false,
+					filepath: 'underscore-min.js'
+				},
+				'zepto': {
+					selected: false,
+					filepath: 'zepto.min.js'
+				},
+				'require.js': {
+					selected: false,
+					filepath: 'require.min.js'
+				},
+				'modernizr': {
+					selected: false,
+					filepath: 'modernizr.min.js'
+				},
+				'jqueryui': {
+					selected: false,
+					filepath: 'jquery-ui.min.js'
+				},
+				'coffee-script': {
+					selected: false,
+					filepath: 'coffee-script.min.js'
+				},
+				'raphael': {
+					selected: false,
+					filepath: 'raphael-min.js'
+				},
+				'three.js': {
+					selected: false,
+					filepath: 'three.min.js'
+				},
+				'URI.js': {
+					selected: false,
+					filepath: 'URI.min.js'
+				},
+				'SyntaxHighlighter': {
+					selected: false,
+					filepath: 'scripts/shCore.js'
+				},
+				'benchmark': {
+					selected: false,
+					filepath: 'benchmark.js'
+				},
+				'twitter-bootstrap': {
+					selected: false,
+					filepath: 'js/bootstrap.min.js'
+				},
+				'foundation': {
+					selected: false,
+					filepath: 'js/foundation.min.js'
+				}
+			};
+
+			var cssResults = _.filter(data.results, function (a) {
+				return $.inArray(a.name, cssLibs) > -1;
+			});
+
+			var jsResults = _.filter(data.results, function (a) {
+				return $.inArray(a.name, jsLibs) > -1;
+			});
+
+			for (var i = 0; i < cssResults.length; i++) {
+				$('select[name=csslibrary]')[0].selectize.addOption(generateOption(cssResults[i].name, cssResults[i].version, cssPreferences[cssResults[i].name].filepath));
+
+				if (cssPreferences[cssResults[i].name].selected) {
+					$('select[name=csslibrary]')[0].selectize.addItem(generateItem(cssResults[i].name, cssResults[i].version, cssPreferences[cssResults[i].name].filepath));
+				}
+
+				$('select[name=csslibrary]')[0].selectize.refreshOptions();
+				$('select[name=csslibrary]')[0].selectize.refreshItems();
+			}
+
+			for (var i = 0; i < jsResults.length; i++) {
+				$('select[name=jslibrary]')[0].selectize.addOption(generateOption(jsResults[i].name, jsResults[i].version, jsPreferences[jsResults[i].name].filepath));
+
+				if (jsPreferences[jsResults[i].name].selected) {
+					$('select[name=jslibrary]')[0].selectize.addItem(generateItem(jsResults[i].name, jsResults[i].version, jsPreferences[jsResults[i].name].filepath));
+				}
+
+				$('select[name=jslibrary]')[0].selectize.refreshOptions();
+				$('select[name=jslibrary]')[0].selectize.refreshItems();
+			}
+		});
+	}
 });
 
 $(function () {
@@ -37704,6 +37885,8 @@ $(function () {
 
 			this.render();
 			this.updateResults();
+
+			app.utils.updateLibraries();
 		},
 		render: function () {
 			return this;

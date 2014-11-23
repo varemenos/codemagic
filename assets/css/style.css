@@ -3159,7 +3159,7 @@ body,
 
 .expanded {
   display: flex;
-  flex-grow: 1;
+  flex: 1;
   padding: 1rem;
 }
 
@@ -3189,7 +3189,7 @@ header {
 #editors {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
   padding: 0 1rem 0 0;
   margin-bottom: -0.5rem;
 }
@@ -3218,7 +3218,7 @@ header {
 
 .editor-module {
   display: none;
-  flex-grow: 1;
+  flex: 1;
   flex-direction: column;
   margin-bottom: 0.5rem;
   -webkit-border-radius: 0 0 5px 5px;
@@ -3230,6 +3230,7 @@ header {
 }
 
 .editor-config {
+  display: flex;
   position: relative;
   padding-bottom: 0.5rem;
   -webkit-touch-callout: none;
@@ -3253,6 +3254,11 @@ header {
 }
 .editor-config span {
   font-weight: bold;
+}
+
+.editor-config-right {
+  flex: 1;
+  text-align: right;
 }
 
 .editor-options {
@@ -3298,13 +3304,13 @@ header {
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+  display: flex;
   position: relative;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .editor {
-  width: 100%;
-  height: 100%;
+  flex: 1;
 }
 
 #console-editor {
@@ -3312,7 +3318,8 @@ header {
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
   font-size: 0.66667rem;
   background-color: white;
   padding: 1rem;
@@ -3320,7 +3327,7 @@ header {
 
 #result {
   display: flex;
-  height: 100%;
+  flex: 1;
 }
 #result.hideEditors {
   padding-left: 1rem;
@@ -3337,7 +3344,7 @@ header {
 }
 #result iframe {
   width: 100%;
-  height: 100%;
+  flex: 1;
   background-color: white;
   border: none;
 }

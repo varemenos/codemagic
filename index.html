@@ -4,38 +4,36 @@
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 			ga('create', 'UA-38829096-1', 'codemagic.gr');
-			ga('send', 'pageview');</script><script type="text/template" id="header-template"><div>
-				<header>
-					<nav class="clearfix">
-						<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
-						<a id="new" href="#new" class="nav-btn navigating-btn hint--bottom" data-hint="New"><i class="fa fa-plus"></i></a>
-						<!--
-							<a id="login" href="#login" class="nav-btn navigating-btn hint--bottom" data-hint="Login"><i class="fa fa-sign-in"></i></a>
-						-->
-						<a id="about" href="#about" class="nav-btn navigating-btn hint--bottom" data-hint="About"><i class="fa fa-user"></i></a>
-						<a id="information" href="#information" class="nav-btn navigating-btn hint--bottom" data-hint="Information"><i class="fa fa-question-circle"></i></a>
-						<% if(page === 'codemagic'){ %>
-							<span class="placeholder nav-btn">&nbsp;</span>
-							<button id="html-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle HTML panel visibility"><span>HTML</span></button>
-							<button id="css-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle CSS panel visibility"><span>CSS</span></button>
-							<button id="js-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Javascript panel visibility"><span>JS</span></button>
-							<button id="console-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Console panel visibility"><span>Console</span></button>
-							<span class="placeholder nav-btn">&nbsp;</span><!--
-							<button id="share" class="nav-btn hint--bottom" data-hint="Share"><i class="fa fa-share"></i></button>
-							<button id="fork" class="nav-btn hint--bottom" data-hint="Fork"><i class="fa fa-cutlery"></i></button>
-							<button id="save" class="nav-btn hint--bottom" data-hint="Save"><i class="fa fa-save"></i></button>
-							--><a id="download" class="nav-btn hint--bottom" data-hint="Download Project as .zip" download="project.zip"><i class="fa fa-download"></i></a>
-							<span class="placeholder nav-btn">&nbsp;</span>
-							<button id="settings" class="nav-btn hint--bottom" data-hint="Settings"><i class="fa fa-cog"></i></button>
-							<button id="hide-editors" class="nav-btn hint--bottom" data-hint="Hide Editors"><i class="fa fa-caret-square-o-left"></i></button>
-							<button id="hide-result" class="nav-btn hint--bottom" data-hint="Hide Result"><i class="fa fa-caret-square-o-right"></i></button>
-							<button id="fullscreen" class="nav-btn hint--bottom" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
-							<button id="prettify" class="nav-btn hint--bottom" data-hint="Prettify Code"><i class="fa fa-magic"></i></button>
-							<button id="update" class="nav-btn hint--bottom" data-hint="Execute"><i class="fa fa-play"></i></button>
-						<% } %>
-					</nav>
-				</header>
-			</div></script><script type="text/template" id="login-template"><div id="login" class="page">
+			ga('send', 'pageview');</script><script type="text/template" id="header-template"><header>
+				<nav class="clearfix">
+					<a id="home" href="#home" class="nav-btn navigating-btn hint--bottom" data-hint="Home">codeMagic <sub>[&alpha;]</sub></a>
+					<a id="new" href="#new" class="nav-btn navigating-btn hint--bottom" data-hint="New"><i class="fa fa-plus"></i></a>
+					<!--
+						<a id="login" href="#login" class="nav-btn navigating-btn hint--bottom" data-hint="Login"><i class="fa fa-sign-in"></i></a>
+					-->
+					<a id="about" href="#about" class="nav-btn navigating-btn hint--bottom" data-hint="About"><i class="fa fa-user"></i></a>
+					<a id="information" href="#information" class="nav-btn navigating-btn hint--bottom" data-hint="Information"><i class="fa fa-question-circle"></i></a>
+					<% if(page === 'codemagic'){ %>
+						<span class="placeholder nav-btn">&nbsp;</span>
+						<button id="html-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle HTML panel visibility"><span>HTML</span></button>
+						<button id="css-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle CSS panel visibility"><span>CSS</span></button>
+						<button id="js-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Javascript panel visibility"><span>JS</span></button>
+						<button id="console-editor-toggle" class="nav-btn editor-toggle hint--bottom" data-hint="Toggle Console panel visibility"><span>Console</span></button>
+						<span class="placeholder nav-btn">&nbsp;</span><!--
+						<button id="share" class="nav-btn hint--bottom" data-hint="Share"><i class="fa fa-share"></i></button>
+						<button id="fork" class="nav-btn hint--bottom" data-hint="Fork"><i class="fa fa-cutlery"></i></button>
+						<button id="save" class="nav-btn hint--bottom" data-hint="Save"><i class="fa fa-save"></i></button>
+						--><a id="download" class="nav-btn hint--bottom" data-hint="Download Project as .zip" download="project.zip"><i class="fa fa-download"></i></a>
+						<span class="placeholder nav-btn">&nbsp;</span>
+						<button id="settings" class="nav-btn hint--bottom" data-hint="Settings"><i class="fa fa-cog"></i></button>
+						<button id="hide-editors" class="nav-btn hint--bottom" data-hint="Hide Editors"><i class="fa fa-caret-square-o-left"></i></button>
+						<button id="hide-result" class="nav-btn hint--bottom" data-hint="Hide Result"><i class="fa fa-caret-square-o-right"></i></button>
+						<button id="fullscreen" class="nav-btn hint--bottom" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+						<button id="prettify" class="nav-btn hint--bottom" data-hint="Prettify Code"><i class="fa fa-magic"></i></button>
+						<button id="update" class="nav-btn hint--bottom" data-hint="Execute"><i class="fa fa-play"></i></button>
+					<% } %>
+				</nav>
+			</header></script><script type="text/template" id="login-template"><div id="login" class="page">
 				<h1>Login page</h1>
 				<h2>Does not work yet</h2>
 				<!--TODO: check whether the user is logged in -->
@@ -74,7 +72,7 @@
 				<section id="editors" class="col-6-12">
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="html-option-title" class="editor-option-title">HTML</span>
 								<button class="editor-options-toggle hint--right" data-hint="Markup Options"><i class="fa fa-cog"></i></button>
 								<div id="html-editor-options" class="editor-options">
@@ -87,7 +85,6 @@
 													<option value="Slim">Slim</option>
 													<option value="Jade">Jade</option>
 													<option value="Markdown">Markdown</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -97,7 +94,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="html-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -107,7 +104,7 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="css-option-title" class="editor-option-title">CSS</span>
 								<button class="editor-options-toggle hint--right" data-hint="Stylesheet Options"><i class="fa fa-cog"></i></button>
 								<div id="css-editor-options" class="editor-options">
@@ -119,7 +116,6 @@
 													<option value="Less">Less</option>
 													<option value="SCSS">SCSS</option>
 													<option value="Stylus">Stylus</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -130,19 +126,7 @@
 											<div class="col-12-12">
 												<label class="settings-option settings-option-select">
 													<span>External CSS Libraries</span>
-													<!-- TODO: update libraries -->
-													<select name="csslibrary" multiple>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.css" selected>Normalize.css 3.0.0</option>
-															<option value="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">YUI Reset.css 3.9.1</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/960gs/0/960.css">960gs</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">animate.css 3.0.0</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">1040 grid system 2.0</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">FontAwesome 4.0.3</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">Twitter Bootstrap CSS 3.1.1</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.no-icons.min.css">Twitter Bootstrap CSS 3.1.1 (No Icons)</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-responsive.min.css">Twitter Bootstrap CSS 3.1.1 (responsive)</option>
-															<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/stylesheets/foundation.min.css">Foundation CSS 5.1.1</option>
-													</select>
+													<select class="csslibrary" name="csslibrary" multiple></select>
 												</label>
 											</div>
 											<div class="col-12-12">
@@ -155,7 +139,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="css-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -165,7 +149,7 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="script-option-title" class="editor-option-title">JS</span>
 								<button class="editor-options-toggle hint--right" data-hint="JavaScript Options"><i class="fa fa-cog"></i></button>
 								<div id="js-editor-options" class="editor-options">
@@ -175,7 +159,6 @@
 												<select name="scriptChoice" id="scriptChoice" class="codeChoice">
 													<option value="JavaScript">JavaScript</option>
 													<option value="CoffeeScript">CoffeeScript</option>
-													option
 												</select>
 											</div>
 											<div class="col-1-12 align--right">
@@ -186,33 +169,13 @@
 											<label class="settings-option settings-option-select">
 												<span>External JS Libraries</span>
 												<!-- TODO: update libraries -->
-												<select name="jslibrary" multiple>
-														<option value="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" selected>JQuery 2.1.0</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js">Prefixfree 1.0.7</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js">Backbone.js 1.1.2</option>
-														<option value="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js">AngularJS 1.2.10</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.4.0/ember.min.js">Ember.js 1.4.0</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js">Underscore.js 1.6.0</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js">Zepto 1.1.3</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js">RequireJS 2.1.10</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js">Modernizr 2.7.1</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js">JQueryUI 1.10.3</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js">CoffeeScript 1.7.1</option>
-														<option value="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js">MooTools 1.4.5</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js">Raphael 2.1.2</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/three.js/r61/three.min.js">Three.js r61</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/URI.js/1.11.2/URI.min.js">URI.js 1.11.2</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js">SyntaxHighlighter 3.0.83</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/benchmark/0.3.0/benchmark.min.js">Benchmark.js 0.3.0</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js">Twitter Bootstrap JS 3.1.1</option>
-														<option value="//cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/javascripts/foundation.min.js">Foundation JS 5.1.1</option>
-												</select>
+												<select class="jslibrary" name="jslibrary" multiple></select>
 											</label>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="js-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
@@ -222,10 +185,10 @@
 					</div>
 					<div class="editor-module">
 						<div class="editor-config clearfix">
-							<div class="float--left">
+							<div>
 								<span id="console-option-title" class="editor-option-title">Console</span>
 							</div>
-							<div class="float--right">
+							<div class="editor-config-right">
 								<button id="console-editor-fullscreen-toggle" class="editor-extras-toggle editor-fullscreen-toggle hint--left" data-hint="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
 							</div>
 						</div>
