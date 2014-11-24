@@ -11,13 +11,12 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 
 * Markup: HTML, Markdown
 * Stylesheet: CSS, LESS, SASS
-* Script: Javascript
+* Script: Javascript, CoffeeScript
 
 ### Language wishlist
 
 * Markup: HAML, Slim, Jade
 * Stylesheet: Stylus
-* Script: CoffeeScript
 
 ### Highlights
 
