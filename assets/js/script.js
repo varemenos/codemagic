@@ -37047,6 +37047,7 @@ $(function () {
 			state = true;
 		}
 		app.session[target].state = state;
+		app.utils.resizeEditors();
 
 		if (typeof callback == 'function') {
 			callback();
