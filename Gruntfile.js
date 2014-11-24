@@ -61,6 +61,7 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/libs/jszip.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/toggles.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/less.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/coffee-script.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/utils.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/routers/*.js',
 					'<%= dirs.build %>/<%= dirs.js %>/app/views/*.js',

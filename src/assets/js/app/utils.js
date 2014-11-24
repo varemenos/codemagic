@@ -221,7 +221,7 @@ $(function () {
 		var result = '';
 
 		if ($('#scriptChoice').val() === 'CoffeeScript') {
-			app.utils.consoleLog('CoffeeScript support is not implemented yet.');
+			result = CoffeeScript.compile(app.editors.js.getValue());
 		} else {
 			result = app.editors.js.getValue();
 		}
