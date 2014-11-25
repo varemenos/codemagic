@@ -67,6 +67,10 @@ Read more about the editor features [here](https://github.com/ajaxorg/ace)
 
 	To-be-done
 
+## Chat with us
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/varemenos/codemagic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ## License
 
 	The MIT License (MIT)
