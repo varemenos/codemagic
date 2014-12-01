@@ -212,11 +212,6 @@ header{
 		display: none;
 	}
 
-	@media only screen and (max-width: 1023px){
-		padding-top: $size;
-		padding-left: $size;
-	}
-
 	iframe{
 		width: 100%;
 		flex: 1;
@@ -447,18 +442,6 @@ label{
 -webkit-full-screen #editors > section {
 	width: 100% !important;
 	height: 100% !important;
-}
-
-@media only screen and (max-width: 1023px){
-	.fa-toggle-right:before,
-	.fa-caret-square-o-right:before {
-		content: "\f151";
-	}
-
-	.fa-toggle-left:before,
-	.fa-caret-square-o-left:before {
-		content: "\f150";
-	}
 }
 
 // =============================
