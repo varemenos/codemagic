@@ -37127,12 +37127,9 @@ $(function () {
 				app.utils.toggleHideEditorsMode();
 			}
 
-			result.hide();
 			editors.addClass('hideResult');
 		} else {
 			editors.removeClass('hideResult');
-
-			result.show();
 			result.removeClass('hideResult');
 		}
 

@@ -105,7 +105,6 @@
   0% {
     -moz-transform: rotate(0deg);
   }
-
   100% {
     -moz-transform: rotate(359deg);
   }
@@ -114,7 +113,6 @@
   0% {
     -webkit-transform: rotate(0deg);
   }
-
   100% {
     -webkit-transform: rotate(359deg);
   }
@@ -123,7 +121,6 @@
   0% {
     -o-transform: rotate(0deg);
   }
-
   100% {
     -o-transform: rotate(359deg);
   }
@@ -132,7 +129,6 @@
   0% {
     -ms-transform: rotate(0deg);
   }
-
   100% {
     -ms-transform: rotate(359deg);
   }
@@ -141,7 +137,6 @@
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(359deg);
   }
@@ -3164,8 +3159,8 @@ body,
 }
 
 body {
-  color: #222222;
-  background-color: #eeeeee;
+  color: #222;
+  background-color: #eee;
   overflow-x: auto;
   overflow-y: scroll;
 }
@@ -3206,14 +3201,14 @@ header {
   width: auto;
 }
 #editors ::-webkit-scrollbar-track {
-  background: #eeeeee;
+  background: #eee;
 }
 #editors ::-webkit-scrollbar-thumb {
   background: #c8c8c8;
 }
 #editors ::-webkit-scrollbar-corner,
 #editors ::-webkit-scrollbar-thumb:window-inactive {
-  background: #eeeeee;
+  background: #eee;
 }
 
 .editor-module {
@@ -3244,7 +3239,7 @@ header {
 .editor-config .editor-extras-toggle {
   display: inline-block;
   padding: 0;
-  color: #222222;
+  color: #222;
   background: transparent;
   outline: 0;
   border: 1px solid transparent;
@@ -3273,7 +3268,7 @@ header {
   left: 0;
   width: 100%;
   padding: 0.5rem;
-  background-color: #eeeeee;
+  background-color: #eee;
   border: 1px solid #e1e1e1;
 }
 .editor-options.enabled {
@@ -3330,7 +3325,6 @@ header {
   flex: 1;
 }
 #result.hideEditors {
-  padding-left: 1rem;
   width: 100%;
 }
 #result.hideResult {
@@ -3393,7 +3387,7 @@ header {
   font-size: 0.85rem;
   padding: 0.5rem 0.66667rem;
   background-color: white;
-  border: 1px solid #eeeeee;
+  border: 1px solid #eee;
   -webkit-box-shadow: 0 1px 2px #c8c8c8;
   -moz-box-shadow: 0 1px 2px #c8c8c8;
   box-shadow: 0 1px 2px #c8c8c8;
@@ -3434,7 +3428,7 @@ label span {
 
 #settings-modal label {
   background-color: #fbfbfb;
-  border: 1px solid #eeeeee;
+  border: 1px solid #eee;
 }
 
 .settings-option-checkbox {
@@ -3489,9 +3483,9 @@ label .settings-option-select {
   text-decoration: none;
   background-color: #eee;
   border: 1px solid #ccc;
-  -webkit-box-shadow: 0 0 3px #cccccc;
-  -moz-box-shadow: 0 0 3px #cccccc;
-  box-shadow: 0 0 3px #cccccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  -moz-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
 }
 #share-modal a i,
 #share-modal a:visited i {
@@ -3528,9 +3522,9 @@ label .settings-option-select {
 #share-modal a:hover {
   background-color: #fff;
   border: 1px solid #f90;
-  -webkit-box-shadow: 0 0 3px #ff9900;
-  -moz-box-shadow: 0 0 3px #ff9900;
-  box-shadow: 0 0 3px #ff9900;
+  -webkit-box-shadow: 0 0 3px #f90;
+  -moz-box-shadow: 0 0 3px #f90;
+  box-shadow: 0 0 3px #f90;
 }
 #share-modal a:focus i,
 #share-modal a:hover i {
@@ -3549,7 +3543,7 @@ label .settings-option-select {
   border-right: 1px solid #e1e1e1;
 }
 .nav-btn, .nav-btn:visited {
-  color: #222222;
+  color: #222;
 }
 .nav-btn span {
   -webkit-transition: color 150ms;
@@ -3561,7 +3555,7 @@ label .settings-option-select {
 }
 .nav-btn:hover {
   cursor: pointer;
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 .nav-btn:active, .nav-btn:focus, .nav-btn:hover {
   outline: 0;
@@ -3580,7 +3574,7 @@ label .settings-option-select {
   background: transparent;
 }
 .nav-btn.enabled span {
-  color: #222222;
+  color: #222;
 }
 
 .no-margin {
@@ -3631,3 +3625,5 @@ label .settings-option-select {
 #home {
   text-align: center;
 }
+
+/*# sourceMappingURL=style.css.map */
