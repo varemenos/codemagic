@@ -37,16 +37,18 @@ $(function () {
 	app.utils.normalizeValue = function (value) {
 		var result = value;
 
-		if (value === 'true') {
+		if (value === 'true' || value === true) {
 			result = true;
-		} else  if (value === 'false') {
+		} else  if (value === 'false' || value === false) {
 			result = false;
-		} else  if (value === 'undefined') {
+		} else  if (value === 'undefined' || value === undefined) {
 			result = undefined;
-		} else  if (value === 'null') {
+		} else  if (value === 'null' || value === null) {
 			result = null;
-		} else  if (value === 'NaN') {
+		} else  if (value === 'NaN' || value === NaN) {
 			result = NaN;
+		} else  if (value === '') {
+			result = '';
 		} else  if (!isNaN(value)) {
 			result = parseInt(value, 10);
 		}
