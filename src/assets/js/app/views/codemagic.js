@@ -98,13 +98,9 @@ $(function () {
 			];
 
 			_.each(defaults, function (setting) {
-				console.log(setting.name, app.utils.getSettings(setting.name));
-
 				if (app.utils.getSettings(setting.name) === null) {
 					app.utils.setSettings(setting.name, setting.value);
 				}
-
-				console.log(app.utils.getSettings(setting.name));
 			});
 		},
 		updateSettings: function (e) {
