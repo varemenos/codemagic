@@ -3,7 +3,7 @@ $(function () {
 
 	app.mvc.views.CodemagicView = Backbone.View.extend({
 		el: '#container',
-		events : {
+		events: {
 			'click #update': 'updateResults',
 			'click #prettify': 'prettify',
 			'click #download': 'download',
@@ -27,6 +27,85 @@ $(function () {
 			'change .settings-option-textarea textarea': 'updateSettings',
 			'change .settings-option-select select': 'updateSettings',
 			'ifToggled .settings-option-autoprefixer > div': 'toggleAutoprefixer',
+		},
+		rememberSettings: function () {
+			var settings = app.utils.getAllSettings();
+
+			_.each(settings, function (value, setting) {
+				app.utils.setSettings(setting, value);
+			});
+		},
+		setDefaultSettings: function () {
+			var defaults = [
+				{
+					name: 'title',
+					value: ''
+				}, {
+					name: 'description',
+					value: ''
+				}, {
+					name: 'author',
+					value: ''
+				}, {
+					name: 'theme',
+					value: 'monokai'
+				}, {
+					name: 'tabSize',
+					value: 4
+				}, {
+					name: 'showPrintMargin',
+					value: false
+				}, {
+					name: 'wrap',
+					value: true
+				}, {
+					name: 'useWorker',
+					value: true
+				}, {
+					name: 'fontSize',
+					value: 12
+				}, {
+					name: 'showInvisibles',
+					value: false
+				}, {
+					name: 'behavioursEnabled',
+					value: true
+				}, {
+					name: 'enableSnippets',
+					value: true
+				}, {
+					name: 'enableLiveAutocompletion',
+					value: false
+				}, {
+					name: 'enableBasicAutocompletion',
+					value: true
+				}, {
+					name: 'useSoftTabs',
+					value: false
+				}, {
+					name: 'highlightActiveLine',
+					value: false
+				}, {
+					name: 'enableEmmet',
+					value: true
+				}, {
+					name: 'showGutter',
+					value: true
+				}, {
+					name: 'showFoldWidgets',
+					value: true
+				}
+			];
+
+			_.each(defaults, function (setting) {
+				console.log(setting.name, app.utils.getSettings(setting.name));
+
+				if (app.utils.getSettings(setting.name) === null) {
+					app.utils.setSettings(setting.name, setting.value);
+				}
+
+				console.log(app.utils.getSettings(setting.name));
+			});
 		},
 		updateSettings: function (e) {
 			var target = $(e.currentTarget);
@@ -85,6 +164,7 @@ $(function () {
 					throw new Error("unknown target at updateSettings()");
 				}
 			}
+
 			app.utils.updateLayout();
 		},
 		popupOpen: function (e) {
@@ -302,58 +382,53 @@ $(function () {
 			app.ace.language_tools = ace.require('ace/ext/language_tools');
 
 			app.session = {
-				html : {
-					state : true,
-					mode : 'html',
-					content : ''
+				html: {
+					state: true,
+					mode: 'html',
+					content: ''
 				},
-				css : {
-					state : true,
-					mode : 'css',
-					content : '',
-					autoprefixer : true
+				css: {
+					state: true,
+					mode: 'css',
+					content: '',
+					autoprefixer: true
 				},
-				js : {
-					state : true,
-					mode : 'javascript',
-					content : ''
+				js: {
+					state: true,
+					mode: 'javascript',
+					content: ''
 				},
-				console : {
-					state : false,
-					content : ''
-				},
-				title : '',
-				description : '',
-				author : '',
-				theme : app.utils.getSettings('theme') || 'tomorrow_night_eighties',
-				tabSize : parseInt(app.utils.getSettings('tabSize'), 10) || 4,
-				showPrintMargin : app.utils.getSettings('showPrintMargin') || false,
-				wrap : app.utils.getSettings('wrap') || true,
-				useWorker : true,
-				fontSize : parseInt(app.utils.getSettings('fontSize'), 10) || 12,
-				showInvisibles : app.utils.getSettings('showInvisibles') || false,
-				behavioursEnabled : app.utils.getSettings('behavioursEnabled') || true,
-				enableSnippets: app.utils.getSettings('enableSnippets') || true,
-				enableLiveAutocompletion: app.utils.getSettings('enableLiveAutocompletion') || false,
-				enableBasicAutocompletion: app.utils.getSettings('enableBasicAutocompletion') || true,
-				useSoftTabs: app.utils.getSettings('useSoftTabs') || false,
-				highlightActiveLine: app.utils.getSettings('highlightActiveLine') || false,
-				enableEmmet: app.utils.getSettings('enableEmmet') || true,
-				showGutter: app.utils.getSettings('showGutter') || true,
-				showFoldWidgets: app.utils.getSettings('showFoldWidgets') || true,
+				console: {
+					state: false,
+					content: ''
+				}
 			};
+
+			this.rememberSettings();
+			this.setDefaultSettings();
 
 			// Manually select the selected property for the select tags because of this bug of selectize
 			// TODO: find issue url and add here
 			// TODO: find a way to fix this mess, either by having the selectize bug fixed, by choosing a different tool for the job or by nip-tucking it somehow
-			$('.settings-option [name=theme] option').prop('selected', false);
-			$('.settings-option [name=theme] option[value=' + app.session.theme + ']').prop('selected', true);
+			$('#settings-modal .settings-option-select [name=theme] option').prop('selected', false);
+			$('#settings-modal .settings-option-select [name=theme] option[value=' + app.session.theme + ']').prop('selected', true);
 
-			$('.settings-option [name=fontSize] option').prop('selected', false);
-			$('.settings-option [name=fontSize] option[value=' + app.session.fontSize + ']').prop('selected', true);
+			$('#settings-modal .settings-option-select [name=fontSize] option').prop('selected', false);
+			$('#settings-modal .settings-option-select [name=fontSize] option[value=' + app.session.fontSize + ']').prop('selected', true);
 
-			$('.settings-option [name=tabSize] option').prop('selected', false);
-			$('.settings-option [name=tabSize] option[value=' + app.session.tabSize + ']').prop('selected', true);
+			$('#settings-modal .settings-option-select [name=tabSize] option').prop('selected', false);
+			$('#settings-modal .settings-option-select [name=tabSize] option[value=' + app.session.tabSize + ']').prop('selected', true);
+
+			_.each($('#settings-modal .settings-option-checkbox input'), function (checkbox) {
+				var name = checkbox.name;
+
+				// TODO: find a better way to parse the value inside the if() below
+				if (app.utils.normalizeValue(app.session[name])) {
+					$(checkbox).iCheck('check');
+				} else {
+					$(checkbox).iCheck('uncheck');
+				}
+			});
 
 			app.editors = {};
 			_.each(['html', 'css', 'js'], function(selector) {
@@ -402,21 +477,21 @@ $(function () {
 					readOnly: true
 				});
 				editor.setOptions({
-					tabSize: app.session.tabSize,
-					showPrintMargin: app.session.showPrintMargin,
-					wrap: app.session.wrap,
-					useWorker: app.session.useWorker,
-					fontSize: app.session.fontSize,
-					showInvisibles: app.session.showInvisibles,
-					behavioursEnabled: app.session.behavioursEnabled,
-					enableSnippets: app.session.enableSnippets,
-					enableLiveAutocompletion: app.session.enableLiveAutocompletion,
-					enableBasicAutocompletion: app.session.enableBasicAutocompletion,
-					useSoftTabs: app.session.useSoftTabs,
-					highlightActiveLine: app.session.highlightActiveLine,
-					enableEmmet: app.session.enableEmmet,
-					showGutter: app.session.showGutter,
-					showFoldWidgets: app.session.showFoldWidgets,
+					tabSize: app.utils.getSettings('tabSize'),
+					showPrintMargin: app.utils.getSettings('showPrintMargin'),
+					wrap: app.utils.getSettings('wrap'),
+					useWorker: app.utils.getSettings('useWorker'),
+					fontSize: app.utils.getSettings('fontSize'),
+					showInvisibles: app.utils.getSettings('showInvisibles'),
+					behavioursEnabled: app.utils.getSettings('behavioursEnabled'),
+					enableSnippets: app.utils.getSettings('enableSnippets'),
+					enableLiveAutocompletion: app.utils.getSettings('enableLiveAutocompletion'),
+					enableBasicAutocompletion: app.utils.getSettings('enableBasicAutocompletion'),
+					useSoftTabs: app.utils.getSettings('useSoftTabs'),
+					highlightActiveLine: app.utils.getSettings('highlightActiveLine'),
+					enableEmmet: app.utils.getSettings('enableEmmet'),
+					showGutter: app.utils.getSettings('showGutter'),
+					showFoldWidgets: app.utils.getSettings('showFoldWidgets'),
 				});
 			});
 
