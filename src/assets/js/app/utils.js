@@ -526,6 +526,7 @@ $(function () {
 				'jqueryui',
 				'coffee-script',
 				'raphael',
+				'snap.svg',
 				'three.js',
 				'URI.js',
 				'SyntaxHighlighter',
@@ -613,6 +614,10 @@ $(function () {
 				'raphael': {
 					selected: false,
 					filepath: 'raphael-min.js'
+				},
+				'snap.svg': {
+					selected: false,
+					filepath: 'snap.svg-min.js'
 				},
 				'three.js': {
 					selected: false,
