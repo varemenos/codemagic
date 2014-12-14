@@ -54,6 +54,7 @@ module.exports = function (grunt) {
 					'<%= dirs.build %>/<%= dirs.js %>/libs/selectize.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/icheck.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/autoprefixer.js',
+					'<%= dirs.build %>/<%= dirs.js %>/libs/jade.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-html.js',
 					'<%= dirs.build %>/<%= dirs.js %>/libs/beautify-css.js',

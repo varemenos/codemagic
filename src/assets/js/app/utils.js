@@ -160,14 +160,14 @@ $(function () {
 				sanitize: false
 			});
 			result = marked(app.editors.html.getValue());
+		} else if ($('#markupChoice').val() === 'Jade') {
+			result = jade.render(app.editors.html.getValue());
 		} else if ($('#markupChoice').val() === 'HAML') {
 			app.utils.consoleLog('HAML support is not implemented yet.');
 		} else if ($('#markupChoice').val() === 'Slim') {
 			app.utils.consoleLog('Slim support is not implemented yet.');
-		} else if ($('#markupChoice').val() === 'Jade') {
-			app.utils.consoleLog('Jade support is not implemented yet.');
-		} else {
 			result = app.editors.html.getValue();
+		} else {
 		}
 
 		return result;
