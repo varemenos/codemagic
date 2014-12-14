@@ -168,6 +168,7 @@ $(function () {
 			app.utils.consoleLog('Slim support is not implemented yet.');
 			result = app.editors.html.getValue();
 		} else {
+			result = app.editors.html.getValue();
 		}
 
 		return result;
