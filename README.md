@@ -45,8 +45,8 @@ __[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web d
 ### Feature wishlist
 
 * Automatic refresh
-* Sublime Text keybinding
-* Github-gist and Google Drive integration
+* Sublime Text keybinding (Cloud9 might soon open source their sublime text keybinding for ace.js)
+* Github-gist and other cloud storage integrations
 * real-time collaboration
 * Importing projects
 
