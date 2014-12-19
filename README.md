@@ -2,20 +2,20 @@
 
 ## About
 
-__[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web development__! It's open-source and it follows the philosophy of client-side and fast execution. It's built for creative people who do a lot of web-related experiments and want to test stuff in real-time without the hassle of preparing project files and whatnot. It is also a great place for people to come and learn various web-technologies like HTML, CSS, JS and their derivatives.
+__[Codemagic.gr](http://codemagic.gr) is a powerful online code editor for web development__! It's open-source and follows the philosophy of client-side/fast execution. It's built for creative people who do a lot of web-related experiments and want to test stuff in real-time without the hassle of preparing project files and whatnot. It is also a great place for people to come and learn various web-technologies like HTML, CSS, JS and their derivatives.
 
 
 ## Features
 
 ### Language support
 
-* Markup: HTML, Markdown
-* Stylesheet: CSS, LESS, SASS
+* Markup: HTML, Markdown, Jade
+* Stylesheet: CSS, LESS, SASS (sasslib)
 * Script: Javascript, CoffeeScript
 
 ### Language wishlist
 
-* Markup: HAML, Slim, Jade
+* Markup: HAML, Slim
 * Stylesheet: Stylus
 
 ### Highlights
