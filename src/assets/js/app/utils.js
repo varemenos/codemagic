@@ -676,5 +676,5 @@ $(function () {
 				$('select[name=jslibrary]')[0].selectize.refreshItems();
 			}
 		});
-	}
+	};
 });
