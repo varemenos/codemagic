@@ -527,6 +527,8 @@ $(function () {
 				'jqueryui',
 				'coffee-script',
 				'raphael',
+				'react',
+				'flight',
 				'snap.svg',
 				'three.js',
 				'URI.js',
@@ -615,6 +617,14 @@ $(function () {
 				'raphael': {
 					selected: false,
 					filepath: 'raphael-min.js'
+				},
+				'react': {
+					selected: false,
+					filepath: 'react.min.js'
+				},
+				'flight': {
+					selected: false,
+					filepath: 'flight.min.js'
 				},
 				'snap.svg': {
 					selected: false,
