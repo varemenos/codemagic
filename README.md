@@ -63,10 +63,6 @@ _The features and capabilities mentioned above will require server-side executio
 
 Read more about the editor features [here](https://github.com/ajaxorg/ace)
 
-## Browser support
-
-	To-be-done
-
 ## Chat with us
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/varemenos/codemagic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
